@@ -1,5 +1,5 @@
-# javascript-
-丛零开始学JS
+# javascript-丛零开始学JS
+
 # 周考
 **1. js中如何声明变量; JS中变量命名规则是什么.**
 ```
