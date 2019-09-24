@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>彩票</title>
+    <link rel="stylesheet" href="">
+    <style>
+        div{
+        width: 300px;
+        height: 100px;
+        background: pink;
+        text-align: center;
+        line-height: 90px;
+        margin: 0 auto;
+         box-shadow: 1px 2px 10px ;
+    }
+    #btn{
+        width: 300px;
+        border-radius: 10px;
+        margin: 0 auto;
+        background: pink;
+        border: none;
+        padding:20px;
+        box-shadow: 1px 3px 10px ;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="show"></div>
+        <input id="btn" type="button" value="摇号">
+    </div>
+</body>
+<script>
+var show = document.getElementById('show');
+var btn = document.getElementById('btn');
+var shows = [];
+var i = 0;
+
+//每隔两秒显示
+btn.onclick = function() {
+    var time = setInterval(function() {
+        //随机数
+        var math = Math.round(Math.random() * 99 + 1)
+        
+        if(math<10){
+            math = '0'+math;
+        }
+        console.log(math)
+        show.innerText = math
+        shows[i] = math;
+        i++;
+    }, 2000)
+    setTimeout(function() {
+        clearInterval(time);
+        shows.splice(shows.length - 1, 1);
+        showss=shows.join('-');
+        show.innerText = showss;
+    }, 12000)
+    shows=[];
+    i=0;
+}
+</script>
+
+</html>
