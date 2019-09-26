@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>时钟</title>
     <link rel="stylesheet" href="">
-    <style>
+    <style id="oStyle">
     #wrap {
         width: 500px;
         height: 500px;
@@ -157,6 +157,7 @@
 //1. 获取操作元素
 var ns = document.getElementsByClassName('needle');
 var ss = document.getElementsByClassName('scale'); //刻度
+var oStyle = document.getElementById('oStyle')
 
 //实现刻度布局
 for (var i = 0; i < ss.length; i++) {
@@ -177,16 +178,31 @@ setInterval(function() {
     //获取当前系统时间
     var date = new Date();
     var h = date.getHours();
-    h > ? h -= 12 : h;
-    var m = date.getrMinutes();
+    h > 12 ? h -= 12 : h;
+    var m = date.getMinutes();
     var s = date.getSeconds();
 
     //计算角度
     var sd = s * 6;
     var md = m * 6 + s / 10;
     var hd = h * 30 + m / 2 + s / 120;
-//  
+
+    //设置样式
+    ns[0].style.transform = 'rotate(' + hd + 'deg)';
+    ns[1].style.transform = 'rotate(' + md + 'deg)';
+    ns[2].style.transform = 'rotate(' + sd + 'deg)';
+    //  
 }, 500)
+var strCss = '';
+var j=1;
+for (var i = 6; i <= 56; i+=5) {  
+        strCss += "#wrap .scale:nth-of-type( "+i+")::after {content:'"+j+"'; transform: rotate(180deg);position:absolute;top:20px;}"; 
+    	j++;
+}
+strCss += "#wrap .scale:nth-of-type( "+1+")::after {content:'"+j+"'; transform: rotate(180deg);position:absolute;top:20px;}"; 
+strCss += "#wrap .scale:nth-of-type( "+16+")::after {content:'"+3+"'; transform: rotate(-90deg);position:absolute;top:20px;}"; 
+ oStyle.innerHTML += strCss;
+ console.log(strCss)
 </script>
 
 </html>

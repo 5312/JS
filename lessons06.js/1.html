@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>gif</title>
+    <link rel="stylesheet" href="">
+    <style>
+        body{
+			text-align: center;
+    }
+        #wrap {
+        width: 220px;
+        height: 220px;
+        /*border: 3px solid;*/
+        overflow: hidden; 	
+        margin: 0 auto;
+        position: relative;
+    }
+	
+    #box {
+        font-size: 0;
+        width: 900%;
+        height: 100%;
+        position: absolute;
+      /*  top: 0;
+        left: 0;
+*/    }
+	img{
+		width: 220px;
+	}
+    input {
+        margin:10px 0;
+        width: 40px;
+        height: 30px;
+        border-radius: 9px;
+        border: none;
+        padding: 0;
+        outline: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="box">
+            <img src="素材/1.jpg" alt="">
+            <img src="素材/2.jpg" alt="">
+            <img src="素材/3.jpg" alt="">
+            <img src="素材/4.jpg" alt="">
+            <img src="素材/5.jpg" alt="">
+            <img src="素材/6.jpg" alt="">
+            <img src="素材/7.jpg" alt="">
+            <img src="素材/8.jpg" alt="">
+            <img src="素材/1.jpg" alt="">
+        </div>
+    </div>
+    <input type="button" value="左">
+    <input type="button" value="右">
+    <input type="button" value="开始">
+    <input type="button" value="结束">
+</body>
+<script>
+var box = document.getElementById('box');
+var btn = document.getElementsByTagName('input');
+var img = document.getElementsByTagName('img')[0];
+
+var w = img.clientWidth;
+// console.log(w)
+var max = w * 8;
+//右
+var x = 0;
+btn[1].onclick = function() {
+    x += w;
+    if (x > max) {
+        x = 0;
+    }
+    box.style.left = -x + "px";
+    console.log(x)
+}
+//左
+btn[0].onclick = function() {
+    var ws = box.offsetLeft;   
+    if (ws == 0) {
+       x = max;
+    }
+    x = x-w;
+    console.log(x)
+    box.style.left = -x + 'px'
+}
+//开始
+btn[2].onclick = function() {
+    time1 = setInterval(function() {
+        x += w;
+        if (x > max) {
+            x = 0;
+        }
+        return box.style.left = -x + 'px'
+    }, 500);
+    btn[2].onclick = null;
+}
+//结束
+btn[3].onclick = function() {
+    clearInterval(time1);
+    btn[2].onclick =  function() {
+    time1 = setInterval(function() {
+        x += w;
+        if (x > max) {
+            x = 0;
+        }
+        return box.style.left = -x + 'px'
+    }, 500);
+    btn[2].onclick = null;
+}
+}
+</script>
+
+</html>
