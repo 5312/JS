@@ -21,7 +21,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 >原因是GitHub 中README.md 文件不在本地代码目录中  
 可以通过如下命令合并代码
 
-    git push --rebase origin master   
+    git pull --rebase origin master   
 解决 
 
 测试git连接情况  
