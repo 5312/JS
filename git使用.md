@@ -58,3 +58,12 @@ Branch master set up to track remote branch master from JS.
 测试git连接情况  
 
     ssh -T git@github.com
+
+>git 可以直接通过命令修改文件的名称  
+
+    git mv oldname newname
+>修改文件夹  
+
+    git mv -f oldfolder newfolder
+    git add -u newfolder (-u选项会更新已经追踪的文件和文件夹)
+    git commit -m "changed the foldername whaddup"
