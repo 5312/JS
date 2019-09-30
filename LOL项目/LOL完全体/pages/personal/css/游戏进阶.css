@@ -1,0 +1,80 @@
+
+.wrap>.nav:first-child+.nav+.nav+.nav{
+    background: url(../img/新手指引IMG1/nav.jpg) -599px -130px no-repeat;
+}
+.wrap>.nav:first-child{
+    background: url(../img/新手指引IMG1/nav.jpg) 0px -3px no-repeat;
+}
+.top>.left{
+    float: left;
+}
+.top>.right{
+  
+    width: 538px;
+}
+.right>p{
+    text-indent: 2em;
+    margin-top: 10px;
+}
+.middle{
+    font-size: 0px;
+}
+.info{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+    background: #ededed;
+    border-top: 4px solid #d7d7d7;
+    border-bottom: 1px solid #d7d7d7;
+    height: 49px;
+    line-height: 48px;
+    width: 230px;
+    text-align: center;
+    color: #525252;
+    font-size: 16px;
+    margin-top: 50px;
+}
+.info:hover{
+    background: #fff;
+    border-top: 4px solid #00a383;
+    border-bottom: 1px solid #fff;
+    color: #00a383;
+}
+.baby{
+    font-size: 12px;
+    margin-top: 40px;
+}
+.baby>.left{
+    width: 600px;
+   
+}
+.baby>.right{
+    
+    width: 456px;
+}
+.left>p{
+    margin-bottom: 10px;
+}
+.baby{
+    border-bottom: 1px solid #eee;
+    padding-bottom: 70px;
+    margin-bottom: 70px;
+}
+.paiwei>.left>img{
+    display: block;
+    margin-top: 30px;
+}
+.paiwei>.right{
+    margin-top: 70px;
+}
+.dowload{
+    display: inline-block;
+    width: 180px;
+    font-size: 15px;
+    height: 42px;
+    text-align: center;
+    line-height: 42px;
+    color: white;
+    background: url(../img/新手指引IMG2/page.png) -347px -0px no-repeat;
+}
+

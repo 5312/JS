@@ -1,0 +1,144 @@
+
+.biggest{
+    background: #ededed;
+}
+.wrap{
+    height: 126px;
+    width: 1240px;
+    font-size: 0;  
+    margin: 0 auto;
+    background: #ededed;
+}
+.nav{
+    width: 186px;
+    height: 126px;
+    background: url(../img/新手指引IMG1/nav.jpg)00px -130px no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+.wrap>.nav:first-child+.nav{
+    background: url(../img/新手指引IMG1/nav.jpg) -198px -3px no-repeat;
+}
+.wrap>.nav:first-child+.nav+.nav{
+    background: url(../img/新手指引IMG1/nav.jpg) -397px -3px no-repeat;
+}
+.wrap>.nav:first-child+.nav+.nav+.nav{
+    background: url(../img/新手指引IMG1/nav.jpg) -599px -3px no-repeat;
+}
+
+.wrap>.nav:first-child+.nav+.nav+.nav+.nav{
+    background: url(../img/新手指引IMG1/nav.jpg) -794px -3px no-repeat;
+}
+.content{
+    padding: 55px 40px;   
+    font-size: 14px;
+    line-height: 22px;
+    overflow: hidden;
+    width: 1156px;
+    margin: 0 auto;
+    margin-top: 35px;
+    border: 1px solid #e1e1e1;
+    border-top: 3px solid #00a887;
+    padding-bottom: 0px;
+    margin-bottom: 50px;
+}
+.top>.right{
+    width: 533px;
+    float: right;
+}
+.top,.middle{
+    border-bottom: 1px solid #eee;
+    padding-bottom: 70px;
+    margin-bottom: 70px;
+}
+.box1{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.box2,.box3,.box4,.box5{
+    text-indent: 2em;
+    margin-bottom: 20px;
+}
+.middle>.left{
+    width: 533px;
+    float: left;
+}
+.middle>.left>[class^=box]{
+    margin-bottom: 10px;
+}
+.middle>img{
+    float: right;
+}
+.middle{
+    border: none;
+    padding-bottom: 30px;
+    margin: 0;
+}
+.xiazai>a{
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 5px;
+    margin-left: 10px;
+    color: white;
+    width: 180px;
+    line-height: 42px;
+    height: 42px;
+    background: url(../img/新手指引IMG1/page.png)  -346px  0px no-repeat;
+}
+.bottom{
+    font-size: 0;
+    margin-top: 100px;
+}
+.bottom>div{
+    display: inline-block;
+    vertical-align: middle;
+}
+.dian1,.dian3,.dian5,.dian7,.dian9{
+    width: 19px;
+    height: 19px;
+    background: url(../img/新手指引IMG1/page.png) -799px  -39px no-repeat;
+    position: relative;
+    
+}
+.dian2,.dian4,.dian6,.dian8{
+    width: 219px;
+    height: 2px;
+    border-top: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
+    background: #e4e4e4;
+}
+.top1{
+    width: 19px;
+    height: 21px;
+    display: none;
+    top: -22px;
+    position: absolute;
+    background: url(../img/新手指引IMG1/page.png)  -766px  -80px no-repeat;
+}
+.dian1:hover,
+.dian3:hover,
+.dian5:hover,
+.dian7:hover,
+.dian9:hover{
+    background: url(../img/新手指引IMG1/page.png) -799px  -59px no-repeat;
+}
+.dian1:hover>.top1,
+.dian3:hover>.top1,
+.dian5:hover>.top1,
+.dian7:hover>.top1,
+.dian9:hover>.top1{
+    display: block;
+}
+
+
+
+
+
+
+    
+
+
+

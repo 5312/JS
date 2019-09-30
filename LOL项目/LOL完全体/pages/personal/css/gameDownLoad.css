@@ -1,0 +1,235 @@
+@keyframes m11 {
+    0% {
+        transform: translateY(0)
+    }
+    
+    40% {
+        transform: translateY(-10px)
+    }
+    60% {
+        transform: translateY(0px)
+    }
+    80%{
+        transform: translateY(-10px)
+    }
+    100%{
+      transform: translateY(0px)
+  }
+  }
+  .rightnav-bar-li:hover span i{
+    animation: m11 1s ease-in-out;
+  }
+.wrap {
+    width: 100%;
+    /* min-width: 1358px; */
+    height: auto;
+    margin: 0 auto;
+    background-color: #e3e2e2;
+}
+
+.content {
+    width: 1240px;
+    font-size: 12px;
+    /* line-height: 24px; */
+    margin: 0 auto;
+}
+.left{
+    padding: 40px;
+    width: 760px;
+    background: #fff;
+    float: left;
+}
+.left_1{
+    font-size: 0px;
+    margin-bottom: 10px;
+}
+.left_1>.menu{
+background: url(../img1/sprdown.png);
+width: 22px;
+height: 22px;
+background-position: 1008px 0px;
+
+}
+.left_1>.des{
+    font-size: 16px;
+    color: #287D7C;
+    margin-left: 10px;
+}
+.left_1>.menu,.left_1>.des{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.left_2>div{
+    color: #333;
+    font-size: 12px;
+    border-right: 1px solid #333;
+    height: 12px;
+    line-height: 12px;
+    float: left;
+    padding-right: 5px;
+    margin-right: 3px;
+
+}
+.left_2>.border1{
+    border-right: none;
+}
+a{
+    color: #00A383;
+    font-weight: bold;
+}
+.img{
+    background: url(../img1/sprdown.png);
+    background-position: 407px 128px;
+    width: 192px;
+    height: 63px;
+    margin: 5px 0px;
+}
+.left>p{
+    font-weight: bold;
+    margin-bottom: 10px;
+
+}
+.game{
+    margin-bottom: 30px;
+}
+.scan{
+    color: blue;
+}
+.down{
+    margin-top: 20px;
+
+}
+table{
+border-collapse: collapse;
+margin: 20px 0;
+}
+th{
+    height: 40px;
+    font-weight: normal;
+    background: #F6F6F6
+}
+td{
+    height: 32px;
+    border-bottom: 1px dotted #BFBFBF;
+}
+th,td{
+    text-align: center;
+    width: 100px;
+}
+.introduce{
+    margin-top: 10px;
+}
+.left>img{
+    display: block;
+}
+.right_1{
+    width: 350px;
+    height: 126px;
+    box-sizing: border-box;
+    padding: 15px 0 15px 15px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 0 10px #ddd;
+    margin: 0 0 10px 10px;
+}
+.right_1>.icon,.right_1>.infor{
+    display: inline-block;
+    vertical-align: middle;
+}
+.p1{
+    
+    width: 220px;
+    height: 35px;
+    line-height: 35px;
+    overflow: hidden;
+    color: #484848;
+    font-size: 24px;
+    font-weight: 700;
+    
+}
+.p2{
+    width: 220px;
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    color: #484848;
+    font-size: 14px;
+}
+.p3{
+    width: 220px;
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    color: #c3c3c3;
+    font-size: 12px;
+}
+.right{
+    float: right;
+}
+.right>ul{
+    width: 365px;
+}
+.right>ul>li{
+    width: 169px;
+    height: 64px;
+    border: 1px solid #fff;
+    text-align: center;
+    line-height: 65px;
+    background-color: #fefefe;
+    margin: 0 0 10px 10px;
+    float: left;
+}
+.play>.icon1{
+    width: 18px;
+    height: 22px;
+    background:url(../img1/comm-spr.png);
+    background-position: 177px 102px;
+}
+.cup>.icon1{
+    width: 24px;
+    height: 22px;
+    background: url(../img1/comm-spr.png);
+    background-position: 175px 156px;
+}
+.icon1,.play>p{
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon1,.cup>p{
+    display: inline-block;
+    vertical-align: middle;
+}
+.get>.icon1{
+    width: 22px;
+    height: 22px;
+    background: url(../img1/comm-spr.png);
+    background-position: 112px 100px;
+}
+.icon1,.get>p{
+    display: inline-block;
+    vertical-align: middle;
+}
+.universe>.icon1{
+    width: 22px;
+    height: 22px;
+    background: url(../img1/comm-spr.png);
+    background-position: 119px 156px;
+}
+.icon1,.universe>p{
+    display: inline-block;
+    vertical-align: middle;
+}
+li>p:hover{
+    color: rgb(154, 247, 242);
+    
+
+}
+
+.right>ul>li:hover{
+     box-shadow: 2px 2px 10px #ccc;
+     border-radius: 3px;
+}
+.rigth_4>li:hover .icon1{
+   animation: m11 1s linear;
+}
