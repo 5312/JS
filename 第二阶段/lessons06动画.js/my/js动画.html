@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    div {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: red;
+    }
+    </style>
+    <!--  tween.js 是一个js动画的缓动插件,使用之前要先引入 -->
+    <script src="tween.js"></script>
+</head>
+
+<body>
+    <div id="wrap"></div>
+</body>
+<script>
+var wrap = document.getElementById('wrap');
+var timer = null;
+wrap.onclick = function() {
+    /**
+     * tween.js的工作还是需要依赖于定时器setInterval;
+     * 核心:t,b,c,d;
+     * t:表示开始步数
+     * b:表示开始位置
+     * c:表示该变量
+     * d:表示总步数
+     *
+     * 1. t,d 共同决定了动画总共要分多少步完成,步数越多动画越连贯细致
+     * 一般情况下 t 的初始值都是零;
+     * 2.b和c 相加的结果决定了动画结束时元素所在的位置
+     */
+    var t = 0,  //开始步数
+        b = wrap.offsetLeft, //开始位置
+        c = 2000, // 改变量 结束位置减开始位置
+        d = 100;  // 总步数
+        if (timer == null) {
+            timer = setInterval(function() {
+            	t++;
+            	if(t == d){
+            		clearInterval(timer)
+            	}
+            	wrap.style.left = Tween.Quad.easeIn(t,b,c,d) + 'px';
+            },20)
+        }
+}
+
+//自己处理加速效果
+// var timer = null,speed = 3
+// wrap.onclick = function() {
+//     if (timer == null) {
+//         timer = setInterval(function() {
+//         	 speed *=1.1
+//             var s = wrap.offsetLeft + speed;
+//             if (s >= 500) {
+//                 s = 500;
+//                 clearInterval(timer);
+//             }
+//             wrap.style.left = s + 'px';
+//         }, 20)
+//     }
+// }
+</script>
+
+</html>

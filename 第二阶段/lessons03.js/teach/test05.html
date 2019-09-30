@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="grade">
+    <input type="button" value="评级" id="btn">
+</body>
+<script>
+    // 最低分0分，最高分100分
+    // 60分以下不及格，60以上80以下及格，80以上90以下良好，90以上到100优秀。
+    // 1.获取元素
+    var btn = document.getElementById('btn');
+    // 2.绑定事件
+    btn.onclick = function(){
+        // 3.获取分数并进行判断：
+        var grade = document.getElementById('grade').value;
+        if(grade>=0 && grade<=100){
+            // if(grade < 60){
+            //     alert('不及格');
+            // }else if(grade < 80){
+            //     alert('及格');
+            // }else if(grade < 90){
+            //     alert('良好');
+            // }else{
+            //     alert('优秀');
+            // }
+        }else{
+            alert('分数不合理');
+        }
+    }
+</script>
+</html>

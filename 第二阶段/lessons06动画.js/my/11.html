@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+</body>
+<script>
+function random(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+console.log(random(0,5))
+function rnArr() {
+    var arr = [];
+    // 去重
+    // 数组长度小于5时
+    while (arr.length < 5) {
+        // 生成0-4的随机数作为数组下标
+        var n = random(0, 5);
+        // 生成对应下标的数字在之前数组中不存在，push
+        if (arr.indexOf(n) == -1) {
+            arr.push(n);
+        }
+    }
+    return arr;
+}
+console.log(rnArr())
+</script>
+
+</html>

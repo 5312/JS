@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>逢七过</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//循环
+	for(var i = 0 ; i<100 ;i++ ){
+		//判断
+		var iG = i%10,//各位
+			iS = (i-iG)/10;//十位
+			//十位为7,各位为7,七的倍数 时跳过
+		if( iG ==7 || iS ==7 || i%7 ==0){
+			continue;
+		}
+		document.write(i +'<br>');
+	}
+</script>
+</html>

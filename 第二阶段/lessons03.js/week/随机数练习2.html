@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>随机数</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var i=0,
+		sum = 0;
+	while(i < 10){
+		i++;
+		var a =(Math.floor(Math.random()*100+1));
+		console.log(a);
+		if(a>50){
+			sum += a;
+			document.write('大于50 的数'+a+'<br>');
+		}
+
+	}
+		document.write('大于50 的数的和'+sum)
+</script>
+</html>

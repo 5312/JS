@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    .wrap {
+        width: 500px;
+        height: 600px;
+        border: 3px solid;
+        margin: 0 auto;
+        border-color: #ccc;
+    }
+
+    .dis {
+        width: 200px;
+        height: 60px;
+        font-size: 30px;
+        margin-top: 30px;
+    }
+
+    .time {
+        float: left;
+    }
+
+    .send {
+        float: right;
+        text-align: right;
+    }
+
+    #bag {
+        width: 500px;
+        height: 400px;
+        /*border: 1px solid;*/
+        float: left;
+        font-size: 100px;
+        text-align: center;
+        line-height: 300px;
+    }
+
+    .sp {
+        float: left;
+        font-size: 17px;
+        letter-spacing: .5em;
+        text-align: center;
+    }
+
+    .colors {
+        float: left;
+        width: 100%;
+        background: #ccc;
+    }
+
+    .colors>div {
+        float: left;
+        width: 37px;
+        font-size: 44px;
+        margin-left: 46px;
+        margin-top: 30px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="time dis">倒计时:20s</div>
+        <div class="send dis">得分:0</div>
+        <div id="bag"></div>
+        <div class="sp">根据上面字的颜色选出对应的的文字描述</div>
+        <div class="colors">
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+        </div>
+    </div>
+</body>
+<script>
+//获取元素
+var time = document.getElementsByClassName('time')[0],
+    send = document.getElementsByClassName('send')[0],
+    bagColor = document.getElementById('bag'),
+    smalls = document.getElementsByClassName('color');
+//定义变量
+var timeDown = 20,
+    sends = 0,
+    isplay = false,
+    timer = null,
+    colorsIndex = 0;
+//数组
+var fontsArr = ['黑', '红', '蓝', '黄', '绿'],
+    colorsArr = ['black', 'red', 'blue', 'yellow', 'green'];
+
+function random(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+}
+
+function rnArr() {
+    var arr = [];
+
+    while (arr.length < 5) {
+        var n = random(0, 4);
+        if (arr.indexOf(n) == -1) {
+            arr.push(n);
+        }
+    }
+    return arr;
+}
+
+function show() {
+    //大字随机字和颜色
+    var fontsIndex = random(0, 4);
+        colorsIndex = random(0, 4);
+    bagColor.innerText = fontsArr[fontsIndex];
+    bagColor.style.color = colorsArr[colorsIndex];
+    //小字随机字和颜色
+    var smallIndex = rnArr(),
+        sCindex = rnArr();
+    for (var i = 0; i < smalls.length; i++) {
+        smalls[i].innerText = fontsArr[smallIndex[i]];
+        smalls[i].style.color = colorsArr[sCindex[i]];
+        smalls[i].index = smallIndex[i];
+    }
+}
+show();
+for (var i = 0; i < smalls.length; i++) {
+    smalls[i].onclick = function() {
+        if (colorsIndex == this.index && timeDown != 0) {
+            sends++;
+            isplay = true;
+            send.innerText = '得分:' + sends;
+            show();
+        } else if (colorsIndex != this.index && isplay) {
+
+        }
+    }
+}
+timer = setInterval(function() {
+    if (isplay) {
+        timeDown--;
+        timeDown = timeDown < 10 ? '0' + timeDown : timeDown;
+        time.innerText = '倒计时:' + timeDown;
+        if (timeDown <= 0) {
+            clearInterval(timer);
+            isplay = false;
+            setTimeout(function() {
+                alert('gameover')
+            }, 1000)
+        }
+
+    }
+}, 1000)
+</script>
+
+</html>

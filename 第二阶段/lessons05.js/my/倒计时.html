@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+    <style>
+    div {
+        width: 200px;
+        height: 200px;
+        background: red;
+        font-size: 50px;
+        text-align: center;
+        color: white;
+        line-height: 150px;
+    }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <p></p>
+</body>
+<script>
+var di = document.getElementsByTagName('div')[0];
+var p = document.getElementsByTagName('p')[0];
+
+console.log(di)
+di.onmouseenter = function() {
+    var i = 3;
+    var r = Math.round(Math.random() * 255);
+    var g = Math.round(Math.random() * 255);
+    var b = Math.round(Math.random() * 255);
+    di.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    di.innerHTML = i;
+    var time2 = setInterval(function() {
+        i--;
+        di.innerHTML = i;
+
+        if (i == 0) {
+            clearInterval(time2);
+            di.style.backgroundColor = 'rgba(225,225,225,0)';
+        }
+    }, 1000);
+}
+</script>
+
+</html>

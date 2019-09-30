@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" value="red" id='color'>
+	<input type="button" value="改变" id="change">
+	<div id="box"></div>
+	<script>
+		//颜色支持red,green,blue;其他内容都是黑色。
+		/**
+		 * [btn description]
+		 * 获取可操作元素
+		 */
+		var color = document.getElementById('color'),
+			change = document.getElementById('change'),
+			box = document.getElementById('box');
+		//绑定事件
+		change.onclick = function(){
+			//获取输入框内容
+			var col = color.value;//string
+			//4.对输入内容进行判断，确定div的背景颜色
+		   if(col == 'red' || col =='green' || col == 'blue'){
+		   	
+		   			box.style.backgroundColor = col;
+		   }
+
+		   else{
+		   	box.style.backgroundColor = 'black';
+		   }
+	
+		 // 	语句
+		 // 	if(条件1){
+		 // 		条件1成立执行的代码，并且结束分支语句
+		 // 	}else if （条件2）{
+		 // 	条件2成立执行的代码，并且结束分支语句
+		 // 	}else if （条件3）{
+		 // 		条件3成立执行的代码，并且结束分支语句
+		 // 	}else {
+		 // 	上述条件都不成立时执行的代码
+		 // 	}
+		 
+		 
+		 
+	
+		 
+		
+
+		}
+	</script>
+</body>
+</html>

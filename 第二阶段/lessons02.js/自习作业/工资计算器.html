@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>工资计算</title>
+</head>
+<body>
+	请输入工资<input type="text" id="money">
+	<input type="button" value="计算" id="compute">
+</body>
+<script>
+	//获取输入数值
+	var m = document.getElementById('money')
+		com = document.getElementById('compute')
+
+	//绑定事件
+	compute.onclick = function(){
+		//工资
+		//税后工资
+		//应收税
+		
+		var m = money.value *1;
+		console.log(m);
+
+		if (m < 2000) {
+			var s = 0,
+			p = m;
+			alert('应收税'+s+'应得工资'+ p);
+		}else if (m > 2000 && m < 5000) {
+			var s = (m - 2000)* .05,
+				p = m -s;
+			alert('应收税'+s+'应得工资'+ p)
+		}else if (m>5000 && m <8000) {
+			var s = (5000-2000)*.05 + (m - 5000)*.10,
+				p = m - s;
+			alert('应收税'+s+'应得工资'+p)
+		}else if (m > 8000 && m <10000) {
+			var s =(5000-2000)*.05 + (8000 - 5000)*.10 + (m - 8000)*.15,
+				p = m - s;
+			alert('应收税'+s+ '税后工资'+p)
+		}else{
+			var s =(5000-2000)*.05 + (8000 - 5000)*.10 + (10000 - 8000)*.15 + (m - 10000)*.20,
+			p = m - s;
+			alert('应收税'+s + '税后工资'+ p)
+		}
+	}
+</script>
+</html>

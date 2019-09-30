@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        循环嵌套
+    </title>
+    </meta>
+</head>
+
+<body>
+</body>
+<script>
+//循环嵌套
+/*
+1
+1 2
+1 2 3
+ */
+// for (var j = 1; j <= 3; j++) {
+//     for (var i = 1; i <= j; i++) {
+//         document.write(i = ' ')
+//     }
+//     document.write('<br>')
+// }
+
+//循环嵌套执行过程:外层循环执行1次,内层循环执行最大次数(执行到不符合条件跳出内层循环).
+//然后外层循环继续执行.
+//
+//外层循环用来控制行,内层循环用来控制列.
+//
+//打印 99乘法表
+
+
+for (var i = 1; i < 10; i++) {
+
+    for (var j = 1; j <= i; j++) {
+        document.write(j + '*' + i + '=' + j * i + '&nbsp;&nbsp;&nbsp;&nbsp; ');
+
+    }
+    document.write('<br>')
+}
+</script>
+
+</html>

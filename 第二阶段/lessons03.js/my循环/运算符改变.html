@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="number">
+	<select name="" id="type" >
+		<option >+</option>
+		<option >-</option>
+		<option >*</option>
+		<option >/</option>
+	</select>
+	<input type="text" id="number2">
+	<input type="button" value="计算" id="button">
+</body>
+<script>
+	//获取元素
+	var num1 = document.getElementById('number')
+		computer = document.getElementById('type')
+		num2 = document.getElementById('number2')
+		btn = document.getElementById('button')
+		//绑定事件
+	
+	button.onclick = function(){
+		var a = num1.value*1,
+			com = computer.value,
+			b = num2.value*1;
+			//select
+		/**	
+		//判断
+		方法一：
+		if(com =='+'){
+			alert(a + b)
+		}else if (com =='-') {
+		
+			alert(a - b)
+		}else if (com =='*') {
+			alert(a * b)
+		}else if(b !=0) {
+			alert(a / b)
+		}else{
+			alert('除数不能为零')
+		}
+    }
+	方法2：
+	switch(com){
+		case "+":
+		alert(a + b)
+			break;
+		case "-":
+		alert(a-b)
+			break;
+		case "*":
+		alert(a * b)
+			break;
+		case "/" :
+		if (b !=0) {
+			alert(a/b)
+		}else{
+			alert('除数不能为零')
+			break;
+		}
+	}*/
+	//方法3：
+	(com =='+')? alert(a + b):(com =="-")? alert(a - b):(com == '*')? alert(a * b):(com == "/" && b !=0)? alert(a /b):alert('除数不能为零');
+}
+	
+</script>
+</html>

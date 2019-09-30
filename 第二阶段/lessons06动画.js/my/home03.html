@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width: 500px;
+            height: 300px;
+            position:relative; 
+            margin: 50px auto;
+            font-size: 0;
+        }
+        h1{
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            font-size: 30px;
+            text-align: center;
+            line-height: 100px;
+        }
+        #wrap div{
+            position: absolute;
+            width: 100px;
+            height: 20px;
+            background-color: pink;
+            left: 0;
+            /* transition: 1s all linear; */
+        }
+    </style>
+    <script src="tween.js"></script>
+</head>
+<body>
+   <div id="wrap">
+       <h1>1</h1>
+       <h1>2</h1>
+       <h1>3</h1>
+       <h1>4</h1>
+       <h1>5</h1>
+       <div id="tiao"></div>
+   </div> 
+</body>
+<script>
+    var tiao = document.getElementById('tiao'),
+        h = document.getElementsByTagName('h1'),
+        w = tiao.offsetWidth;
+    var timer = null;
+    for(var i = 0;i<h.length;i++){
+        (function(i){
+            h[i].onclick = function(){
+                clearInterval(timer);
+                var t=0,
+                    b=tiao.offsetLeft,
+                    //改变量 = 结束位置 - 开始位置
+                    c=this.offsetLeft - b,
+                    d=40;
+                timer = setInterval(function(){
+                    t++;
+                    if(t == d){
+                        clearInterval(timer);
+                    }
+                    tiao.style.left = Tween.Back.easeOut(t,b,c,d)+'px';
+                },20)
+            }
+        })(i)
+    }
+
+</script>
+</html>

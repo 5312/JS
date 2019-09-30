@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>for</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//比如，需要你在文档中连续输出10次‘hello world’，并且要求这10 个‘hello world’ 各自独占一行，
+	
+	//多用于已知循环次数的情况下
+
+	//循环语句帮助我们解决一些重复或者是有规律的事物
+	/*
+	for 循环语法：
+	for(;;){
+	
+	}
+
+		for (表达式1: 表达式2: 表达式3:){
+				code	
+		}
+		表达式1: 循环变量的声明
+		表达式2：对循环变量的限制条件，如果不符合条件，那么就立即结束循环结构。
+		表达式3：循环变量值改变
+
+		code :表达式2 成立时 执行的代码块
+
+
+
+
+	 */
+	
+	//重复执行10次
+	for ( var i = 0 ; i < 10 ; i ++){
+		//要重复执行的代码
+		document.write('<p>hello world</p>');
+		console.log(i);
+	}
+	console.log(i);
+//用来记录吃瓜数量
+	var sum = 0;
+	for (var i =1; i <=100; i++) {//i 是天数
+
+		sum += i;
+		
+	}
+	// document.write( sum) ;
+
+
+
+	//2. 围观群众吃瓜，一共只有3000个瓜，按照前面的吃法能吃多少天。
+	///天数 
+		var i = 1;
+
+	for(var sum =1;sum<3000 ;sum+=i ){//每天的瓜数
+		console.log(i)
+		console.log(sum)
+
+
+		i ++;
+	}
+
+
+</script>
+</html>

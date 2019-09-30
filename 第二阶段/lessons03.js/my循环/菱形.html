@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>菱形</title>
+    <style>
+    body {
+        text-align: center;
+    }
+
+    div {
+        width: 50px;
+        height: 50px;
+        background: red;
+        display: inline-block;
+    }
+    </style>
+</head>
+
+<body>
+</body>
+<script>
+//方法一:
+
+// for (var i = 1; i <= 7; i++) { //行 
+//     document.write('<div></div>' + ' ')
+//     for (var j = 1; j < 2 * i - 1; j++) { //列
+//         document.write('<div></div>' + ' ')
+//     }
+//     document.write('<br>');
+// }
+
+
+// for (var i = 1; i <= 6; i++) { //行 
+//     for (var j = 1; j <= 13 - 2 * i; j++) { //列
+//         document.write('<div></div>' + ' ')
+//     }
+//     document.write('<br>');
+
+// }
+
+for (var i = 1; i < 14; i ++) { //行 
+    document.write('<div></div>' + ' ')
+    for (var j = 1; j < 2*i-1; j++) { //列
+        document.write('<div></div>' + ' ')
+    }
+    document.write('<br>');
+    if (i > 7) {
+        for (var i = 1; i < 14; i ++) { //行 
+            for (var j = 14; j > 2*i-1; j--) { //列
+                document.write('<div></div>' + ' ')
+            }
+            document.write('<br>');
+
+        }
+    }
+}
+</script>
+
+</html>

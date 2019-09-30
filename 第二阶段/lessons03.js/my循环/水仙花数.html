@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>水仙花数</title>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	for(var i = 100; i<1000; i++){
+		//提取位数
+		var g = i%10,
+			s = (i -g )/10 %10 ,
+			b = (i - g*1 - s*10)/100;
+			//立方之和
+		var sum = g*g*g + s*s*s + b*b*b;
+		//判断立方和是否等于它自身
+			if(sum == i ){
+				console.log(i);	
+				document.write(i+'<br>')	
+			}
+
+	}
+</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width: 800px;
+            height: 500px;
+            border: 5px solid #000;
+            position: relative;
+            margin: 0 auto;
+        }
+        .ball{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="ball"></div>
+    </div>
+</body>
+<script>
+var wrap = document.getElementById('wrap'),
+    ball = document.getElementsByClassName('ball')[0];
+// 思路3：通过定义速度变量，在极端值改变速度方向。
+var max = wrap.clientWidth - ball.offsetWidth, min = 0;
+var timer = null;
+var v = 3;
+wrap.onclick = function(){
+    this.onclick = null;
+    timer = setInterval(function(){
+        var s = ball.offsetLeft + v;
+        if(s >= max){
+            s = max;
+            v *= -1;
+        }
+        if(s <= min){
+            s = min;
+            v *= -1;
+        }
+        ball.style.left = s + 'px';
+    },20)
+}
+
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	</style>
+</head>
+<body>
+	<!-- //编写：每次点击DIV ，放大或缩小DIV，倍数为2倍 -->
+	<div id="box" style='width: 100px;height: 100px;background:red;'></div>
+	<script>
+		//获取 div
+		var box = document.getElementById('box');
+		var	count = 0;//用来记录点击次数
+		var isBig = false;//规定了false就放大，否则缩小。
+
+		//绑定事件
+		//假设第一次点击是放大
+		box.onclick = function(){
+		//思路一;通过当前宽高
+			// //获取当前宽高
+			// var w = box.style.width;
+			// 	h = box.style.height; 
+			// if (w == '400px'){
+			// 	box.style.width = '100px';
+			// 	box.style.height = '100px';
+			// }
+			// else {
+			// 	box.style.width = '400px';
+			// 	box.style.height = '400px';
+			// }
+		
+
+
+		//思路二：通过点击次数
+			// count ++;//次数加一;
+			// if(count%2 == 0){
+			// 	box.style.width = '100px';
+			//  	box.style.height = '100px'
+			// }else
+			// {
+			// 	box.style.width = '400px';
+			// 	box.style.height = '400px'
+			// }
+		
+		//思路三：通过开关控制缩放；
+		if(isBig){
+			box.style.width = '100px';  
+		}
+		else{
+			box.style.widht = '400px';
+		}
+		//切换开关状态
+		isBig = !isBig;
+	}
+	</script>
+</body>
+</html>

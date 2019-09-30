@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    #wrap {
+        width: 800px;
+        height: 500px;
+        border: 5px solid #000;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .ball {
+        width: 30px;
+        height: 30px;
+        background: red;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="ball"></div>
+    </div>
+</body>
+<script>
+var box = document.getElementById('wrap');
+var timer = null; //安全判断开关,点击次数过多会导致计时器过多发生混乱.
+var ball = document.getElementsByClassName('ball')[0];
+var w = box.clientWidth;
+var b = ball.offsetWidth;
+var hs = box.clientHeight - ball.offsetHeight;
+w = w - b;
+box.onclick = function() {
+    var v1 = 10;  // 水平方向的 速度
+    var v2 = 11;  // 垂直方向的速度 
+    if (!timer) {
+        timer = setInterval(function() {
+            //左右移动
+            var s = ball.offsetLeft + v1;
+            //上下移动
+            var h = ball.offsetTop + v2;
+            if (s >= w) {
+                s = w;
+                v1 *= -1
+                // clearInterval(timer);
+            }
+            if (s <= 0) {
+                s = 0;
+                v1 *= -1
+            }
+            if (h >= hs) {
+                h = hs;
+                v2 *= -1
+            }
+            if (h <= 0) {
+                h = 0;
+                v2 *= -1;
+            }
+            ball.style.top = h + 'px'
+            ball.style.left = s + 'px';
+        }, 20)
+    }
+}
+</script>
+
+</html>

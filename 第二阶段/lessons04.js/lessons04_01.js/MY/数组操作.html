@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>排序</title>
+</head>
+<body>
+	
+</body>
+<script>
+		var arr= ['草莓','香蕉','西瓜','橘子','橙子','桃子','百香果'];
+	//数组常用的操作方法(添加,修改,删除,查询)
+	//1. 添加
+	//push():向指定数组的末尾添加一个或多个元素
+	arr.push('苹果','哈密瓜');
+	console.log(arr);
+
+	//unshift():向指定数组的开头添加一个或多个元素
+	arr.unshift('false','true','1','2','','undefined')
+		console.log(arr);
+
+	//splice();对指定数组进行添加,修改,删除操作.
+	//参数情况:
+	//参数一:必须元素,表示要操作的索引
+	//参数二:必须元素,表示要操作的长度
+	//参数三;要操作的结果内容
+	//
+	arr.splice(arr.length,0,'liulan')
+
+	//删除
+	//pop():删除指定数组末尾的元素,此方法没有参数,使用一次只能删除一个元素.
+	arr.pop();
+
+	//shift()删除指定数组开头的元素,同样没有参数,使用一次只能删除一个元素.
+	
+	//splice()
+	arr.splice(4,1);
+
+	//修改
+	//splice()
+	arr.splice(4,3,'蓝莓'); //三个变一个
+
+	//数组截取
+	//slice:从指定数组中获取指定位子的元素并装入新数组返回
+	/*
+		参数一:表示截取的开始位置
+		参数二:可选参数,表示截取的结束位置 (不包含结束位子上的元素),如果没有写结束位置,那么默认从开始位置截取到数组结束.
+
+	 */
+	var newArr =arr.slice(2,5);
+	console.log(newArr);
+
+	//数组拼接
+	//concat():数组拼接
+	var newArr1 = arr.slice(0,2),
+		newArr2 = arr.slice(5);
+	var newArr=	newArr1.concat(newArr2);
+	console.log(newArr)
+
+	//判断指定值是否为数组元素
+	//indexOf:判断指定值是否为指定数组的元素,如果是返回元素索引,如果不是返回 -1.
+	
+	var result = arr.indexOf('西瓜');
+	console.log(result);
+
+	//数组转换成字符串
+	//join():将数组转化成字符串
+	var str = arr.join();
+
+	//数组元素反转
+	//reverse():将数组元素反转,返回一个翻转后的新数组
+	var newArr = arr.reverse();
+
+
+</script>
+</html>

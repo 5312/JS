@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	
+</body>
+<script>
+var str = "            abcdefgh ";
+console.log(str)
+/* 
+while (str[0] == " ") {
+    str = str.substring(1); //去除首部空字符串
+    // if (str[0] != " ") { //判断当不等于空字符串的时候截取并跳出
+    //     break;
+    // }
+}
+while (str[str.length - 1] == " ") {
+    str = str.substring(0, str.length - 1); //去除尾部空字符串
+    // if (str[str.length - 1] != " ") { //判断当不等于空字符串的时候截取并跳出
+    //     break;
+    // }
+} */
+for (var i = 0; i < str.length; i++) {
+    if (str[0] == ' ') {
+        str = str.replace(' ', '');
+    }
+}
+str = str.split('').reverse().join('');
+for (var i = 0; i < str.length; i++) {
+    if (str[0] == ' ') {
+        str = str.replace(' ', '');
+    }
+}
+str = str.split('').reverse().join('');
+console.log(str);
+</script>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrap{
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+</body>
+<script>
+	//通过元素的ID属性值来获取body 中的元素
+	//document.getElementById()
+	var wrap = document.getElementById('wrap');
+	console.log(wrap);
+	//通过js方式为元素设置样式
+	//所有样式存在连字符，js中都去掉连字符，换成驼峰命名，例如：font-size ---> fontSize
+	wrap.style.backgroundColor = 'green';
+	wrap.style.opacity = .5;
+	//既可以设置元素的样式，也可以读取元素的样式，但是注意只能获取元素已经存在的行间样式。
+	//
+	//
+	//捕获用户操作：例如'点击操作'
+	wrap.onclick = function(){
+		document.write('我被点击了');
+		console.log("我被点击了");
+	}
+
+
+
+
+	1.js代码运行环境 --> 浏览器
+	2.文档输出: document.wrap()
+		控制台输出：console.log()
+		弹窗输出：alert（）；
+		F12 --> source -> 打断点
+
+
+	3.变量
+		js是一个弱类型语言
+		typeof 变量名
+		string ，number ，boolean ，undefined，object（null，array）
+
+		运算符：
+		赋值运算符 =
+		算数运算符 + - * / %
+		   |    ++   -- 
+		   |    +=   -=
+		js 获取元素: document.getElementById('id属性值')
+		元素设置样式
+		element.style.xxx = ''
+
+		元素捕获用户操作-点击操作
+		element.conclick = function（）{
+
+		 ///预先编写，当点击操作在当前元素发生时要做的事情
+		 ///
+		
+</script>
+</html>

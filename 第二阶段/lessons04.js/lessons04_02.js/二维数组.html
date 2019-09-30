@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>二维数组</title>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入姓名">
+    <input type="button" value="查询">
+    <h1 id="msg"></h1>
+</body>
+<script>
+//二维数组
+//例如: 对班里的人进行随机分组,每组4人,到最后剩下不足4人,这些人一组.
+var people = ['张凯斌', '张辉', '顾文江', '侯博洋', '侯玉忠', '李泽坤', '马茜', '王娇', '黄玉芮', '段圆圆', '马锐', '李莹', '李涛', '吴红霞', '王莎莎', '赵康', '周登华', '周叶凡', '李杰', '余学武', '赵璘', '李骞', '杜洁', '马鹏飞', '李锦涛', '汉宁辉'];
+
+//共能分几组
+var groupNum = Math.ceil(people.length / 4);
+//用来存储分好的组
+var groups = [];
+for (var j = 0; j < groupNum; j++) {
+
+    var group = [];
+
+    for (var i = 0; i < 4; i++) {
+        //开始第一组分组
+        var person = people[Math.round(Math.random() * (people.length - 1))];
+        group.push(person);
+        //把随机到的人从名单数组中删除,防止重复
+        //获取随机人在people中的下标
+        var index = people.indexOf(person);
+        //把index位置的元素people中删除
+        people.splice(index, 1);
+        //如果当前组人数到达4人那么结束本次分组
+        if (group.length == 4 || people.length == 0) {
+            break;
+        }
+    }
+    //把分好的组存起来
+    groups.push(group);
+}
+//所有分组工作,控制台打印
+console.log(groups);
+//获取要操作的元素,并绑定点击事件
+var inps = document.getElementsByTagName('input');
+var ms = document.getElementById('msg')
+
+inps[1].onclick = function() {
+
+    //1 . 获取输入内容
+    var pName = inps[0].value;
+    //2 . 从分组中找到当前名字所在的组,并把组内成员在<h1>标签中显示
+    //获取 输入的内容在 groups中的下标
+//思路一:将分好组的每一个名字与输入的名字进行比较
+//
+//
+
+ for(var i=0;i<groups.length;i++){
+
+ 	var g = groups[i];   //1:先从groups中挨个将组取出来 
+    var lN = gLders[i];//取组长的组
+ 	for(var j=0;j<g.length;j++){
+ 		var nName = g[j];  //2:在从组中挨个将名字取出来
+ 		if(pName == nName){ //将取出来的名字与输入的名字进行比较,如果相等,那么输入名字所在的组就是g
+ 			document.getElementById('msg').innerHTML = g;
+ 		}
+ 	}
+ }
+
+//思路简化
+    for (var j = 0; j < groups.length; j++) { //找7个组
+
+        for (var i = 0; i < groups[i].length; i++) { //找人
+
+            if ( pName == groups[j][i]) { 
+            	ms.innerText = groups[j];
+             }
+        }
+    }
+}
+
+//思路2 ; 通过数组提供的indexOf()方法来快速判断输入名字是否在组中
+for(var i=0;i<groups.length;i++){
+	var g = groups[i];
+	if(g.indexOf(pName)> -1){
+		document.getElementById('msg').innerHTML = g;
+	}
+}
+</script>
+
+</html>

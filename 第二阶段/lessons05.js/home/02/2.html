@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+        body{
+			text-align: center;
+		}
+		#wrap{
+			width: 520px;
+			height: 280px;
+			border: 1px solid;
+			overflow: hidden;
+			margin: auto;
+			position: relative;
+		}
+		#box{
+			width: 600%;
+			height: 100%;
+			font-size: 0;
+			position: absolute;
+		}
+		img{
+			width: 520px;
+		}
+	</style>
+</head>
+
+<body>
+    <input type="button" value="1">
+    <input type="button" value="2">
+    <input type="button" value="3">
+    <input type="button" value="4">
+    <input type="button" value="5">
+    <div id="wrap">
+        <div id="box">
+            <img src="素材/11.jpg" alt="">
+            <img src="素材/12.jpg" alt="">
+            <img src="素材/13.jpg" alt="">
+            <img src="素材/14.jpg" alt="">
+            <img src="素材/15.jpg" alt="">
+            <img src="素材/11.jpg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+var btn = document.getElementsByTagName('input');
+var box = document.getElementById('box');
+var img = document.getElementsByTagName('img');
+var w = img[0].offsetWidth;
+console.log(w)
+var max = w * 4;
+setInterval(function() {
+    var l = box.offsetLeft - 5;
+    if (l < -max) {
+        l = 0;
+    }
+    box.style.left = l + 'px';
+}, 2000)
+</script>
+
+</html>

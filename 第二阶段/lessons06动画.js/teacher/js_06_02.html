@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width: 520px;
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid;
+            margin: 50px auto;
+        }
+        #box{
+            width: 600%;
+            height: 100%;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            font-size: 0;
+            /* margin-left: 100px; */
+            /* padding-left: 100px; */
+            /* animation: banner 12.5s infinite; */
+            transition: .5s all;
+        }
+        img{
+            width: 520px;
+            height: 280px;
+        }
+        @keyframes banner{
+            0%{
+                left: 0;
+            }
+            20%{
+                left: 0;
+            }
+            25%{
+                left: -100%;
+            }
+            40%{
+                left: -100%;
+            }
+            45%{
+                left: -200%;
+            }
+            60%{
+                left: -200%;
+            }
+            65%{
+                left: -300%;
+            }
+            80%{
+                left: -300%;
+            }
+            85%{
+                left: -400%;
+            }
+            95%{
+                left: -400%;
+            }
+            100%{
+                left: -500%;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="box">
+            <img src="./素材/11.jpg" alt="">
+            <img src="./素材/12.jpg" alt="">
+            <img src="./素材/13.jpg" alt="">
+            <img src="./素材/14.jpg" alt="">
+            <img src="./素材/15.jpg" alt="">
+            <img src="./素材/11.jpg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+var box = document.getElementById('box');
+var wrap = document.getElementById('wrap');
+var img = document.getElementsByTagName('img')[0];
+// 获取元素宽和高
+// 元素的 offsetWidth & offsetHeight 可以获取元素的宽和高，获取的是元素盒模型的宽和高（border+padding+content）。
+// 元素的 clientWidth & clientHeight 可以获取元素的宽和高（padding+content）
+// 元素的 offsetLeft & offsetTop 可以获取元素的偏移量（获取的是当前元素左边缘与父元素内容区域的左边缘间的距离，负数表示元素向左/上移动了，如果是正数表示元素向右/下移动）
+// 注意上面3对属性是只读属性，只可以获取值不可以赋值。
+
+var w = img.offsetWidth,
+    h = box.offsetTop;
+console.log(w,h);
+var max = w*5;
+setInterval(function(){
+    box.style.transition = '.5s all';
+    var x = box.offsetLeft - w;
+    if(x < -max){
+        x = 0;
+    }
+    box.style.left = x+'px';
+    setTimeout(function(){
+        if(box.offsetLeft == -max){
+            console.log(-max,box.offsetLeft);
+            box.style.left = 0;
+            box.style.transition = 'none';
+        }
+    },1000)
+},2000)
+
+</script>
+</html>

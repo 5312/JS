@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+//函数：函数就是一段可以重复执行的代码块，但是这段代码不会自动随着脚本加载执行，需要通过触发机制或调用才会执行。
+/*
+    语法：
+    声明函数：
+    function 函数名 () {
+        //函数体，重复执行的代码块
+    }
+
+    // 匿名函数
+    function () {
+        //函数体，重复执行的代码块
+    }
+    注意：
+    1、语法规则上声明函数必须要有函数名，所以直接声明匿名函数是会报错的。
+    2、但是匿名函数可以作为值赋值给其他属性或变量。
+
+    调用：
+    1.被动调用：将函数绑定给事件。
+    2.主动调用：函数名();
+
+    一旦执行到函数调用，那么代码的执行立即跳转到对应函数体执行代码，函数体代码执行完才会接着刚才的代码继续向下执行。
+
+    函数除了函数名和函数体，还可以拥有参数以及返回值。
+*/ 
+
+// 声明一个函数，每次调用输出'hello world'
+// function hello(){
+//     console.log('hello world');
+// }
+// hello();
+// hello();
+// hello();
+
+// 1.无参数，无返回值
+function sum1(){
+    console.log(10+20);
+}
+//sum1();
+//sum1();
+// 2.有参数，无返回值
+function sum2(x,y){
+    console.log(x+y);
+}
+//sum2(10,20);
+//sum2(40,50);
+
+// 3.无参数，有返回值
+function sum3(){
+    return 10+20;//函数体内，通过return关键字来对外返回结果。
+}
+// var a = sum3();
+// console.log(a);
+// console.log(a);
+
+// 4.有参数，有返回值
+function sum4(x,y){//形式参数，形参
+    return x+y;//函数体内的return就相当于循环中的break，会立即结束函数体代码的执行，也就是说，return下面的函数体代码是不会执行的。
+    console.log(x+y);
+}
+var s = sum4(1,20);//实际参数，实参
+// 声明函数时()里写的都是形式参数，没有具体的值，只为了占位用，而调用函数时()里写的叫实际参数，此时函数体内代码的执行，形式参数会被实际参数所替代。
+
+
+
+</script>
+</html>

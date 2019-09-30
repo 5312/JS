@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 比如，需要你在文档中连续输出10次'hello world'，并且要求这10个'hello world'各自独占一行。
+    
+    // 循环语句帮助我们解决一些重复或者有规律的事物
+    /*
+       for循环语法：
+
+       for(;;){
+
+       }
+
+       for(表达式1;表达式2;表达式3){
+            code
+       }
+
+        //表达式1：循环变量的声明
+        //表达式2：对循环变量的限制条件，如果不符合条件，那么就立即结束循环结构
+        //表达式3：循环变量值改变
+        //code：表达式2成立时执行的代码块  
+        -----------------------------
+
+        // 注意：避免出现死循环
+
+    */ 
+
+    //重复执行10次  
+    // for(var i=0;i<10;i++){
+    //     // 要重复执行的代码
+    //     document.write('<p>hello world</p>');
+    //     console.log('<p>hello world</p>'+i);
+    // }
+    // console.log(i);
+
+    //1. 围观群众吃瓜，第一天群众吃1个瓜，第二天群众吃2个瓜，...，问，群众100天吃了多少个瓜？
+    // 用来记录吃瓜的数量
+    // var sum = 0;
+    // for(var i=1;i<=100;i++){//i就是天数
+    //     sum += i;
+    // }    
+    // alert(sum);
+
+    //2. 围观群众吃瓜，一共只有3000个瓜，按照前面的吃法能吃多少天？
+    /*    
+    var day = 0; //用来记录可以吃的天数
+    var num = 10;//当前所拥有的瓜的总数
+    var x = 1;//当前天应该吃的瓜数量
+    var y = 0;//今天过完已经吃的瓜
+
+    // 1天
+    y += x;//今天过完吃了多少个    
+    if(y<=num){//如果今天吃完总数管够
+        day++;//天数+1
+        x++;//明天要吃的瓜在今天基础上+1
+    }
+
+    // 2天
+    y += x;//3
+    if(y<=num){//true
+        day++;
+        x++;
+    }
+
+    // 3天
+    y += x;//6
+    if(y<=num){//true
+        day++;
+        x++;
+    }
+
+    // 4天
+    y += x;//10
+    if(y<=num){//true
+        day++;
+        x++;
+    }
+
+    // 5天
+    y += x;//15
+    if(y<=num){//false
+        day++;
+        x++;
+    }
+
+    console.log(day);
+    */
+    var x = 1,sum = 0,n = 3000,i = 0;
+    // for(var i=0;sum<=n;){
+    //     i++;
+    //     x++;
+    //     sum += x;
+    // }
+    // console.log(i);
+
+    // while(true){
+    //     sum += x;
+    //     if(sum <= n){
+    //         i++;
+    //         x++;
+    //     }else{
+    //         break;
+    //     }
+    // }
+    // console.log(i);
+
+    // 群众吃瓜，一共有1000个瓜，第一天吃1个，第二天吃2个，...，但是因为没有冰箱，所以从第三天开始，坏1个，第四天坏2个，...问着1000个瓜一共能吃几天，坏了多少个？    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>群众吃瓜</title>
+</head>
+
+<body>
+    <!-- 群众吃瓜，一共有1000个瓜，第一天吃1个，第二天吃2个，...，
+    但是因为没有冰箱，所以从第三天开始，坏1个，第四天坏2个，...
+    问着1000个瓜一共能吃几天，坏了多少个？
+    导图，周报，加上3个作业 -->
+</body>
+<script>
+//一共有1000个瓜
+    // var i = 0; //用来记录可以吃的天数
+    // var n = 1000; //当前拥有的瓜的总数
+    // var x = 1; //当前天应该吃的瓜数
+    // var sum = 1; //今天过完已经吃的瓜
+    // var bad = 0; //第三天开始坏的瓜
+    // var nbad = 0; //坏的瓜的总数
+    //     y = 0;   //消耗的瓜的总数
+
+    // for (var i = 0; y <= n;) {
+    //     i++;
+    //     x++;
+    //     // console.log(sum);
+    //     sum += x;//吃的瓜数
+
+    //     // sum = 1035 所以 i 要减一天
+    //     if (i >= 3) {   
+    //         bad++; 
+    //         nbad += bad;
+    //     }
+        
+    //     y = sum + nbad;
+    //     console.log(y);
+    // }
+    // document.write('坏了的瓜'+nbad+'<br>');
+    // document.write('瓜能吃'+i+'天'+'<br>');
+
+
+    var count = 0,bad = 0, sum = 0,a = 0,day=0;
+    for(var i =1; true;i++){
+        if(i>2){
+            bad++;
+            a += bad;
+        }
+        sum +=i;
+        count = sum + a;
+        if(count > 1000){
+            break;
+        }
+        day++;
+    }
+    document.write(day,'<br>',a-bad);
+</script>
+
+</html>

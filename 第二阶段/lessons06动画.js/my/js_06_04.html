@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 20px auto;
+            /* position: absolute; */
+            /* left: 0; */
+            /* top: 0; */
+        }
+    </style>
+    <!-- tween.js是一个js动画的缓动效果插件，使用之前要先引入 -->
+    <script src="tween.js"></script>
+</head>
+<body>
+    <div id="wrap"></div>
+</body>
+<script>
+    var wrap = document.getElementById('wrap');
+    var timer = null;
+    wrap.onclick = function(){
+        /*
+            tween.js的工作还是需要依赖于定时器setInterval;
+
+            核心：t,b,c,d
+            t:表示开始步数
+            b:表示开始位置
+            c:表示改变量
+            d:表示总的步数
+
+            1.t和d共同决定了动画总共要分多少步完成，步数越多动画越连贯细致，一般情况下t初始值都是0；
+            2.b和c相加的结果决定了动画结束时元素所在的位置。
+        */ 
+        var t = 0,//开始步数
+            b = 100,//开始位置
+            c = 200,//改变量
+            d = 80;//总的步数
+        if(timer == null){
+            timer = setInterval(function(){
+                t++;//步数累加
+                if(t == d){
+                    //动画播放结束
+                    clearInterval(timer);
+                }
+                wrap.style.width = Tween.Bounce.easeOut(t,b,c,d) + 'px';
+                wrap.style.height = Tween.Bounce.easeOut(t,b,c,d) + 'px';
+            },20)
+        }
+    }
+
+
+
+
+
+
+    // 自己处理加速效果
+    // var timer = null, speed = 3;
+    // wrap.onclick = function(){
+    //     if(timer == null){
+    //         timer = setInterval(function(){
+    //             speed *= 1.1; 
+    //             var s = wrap.offsetLeft + speed;
+    //             if(s >= 1000){
+    //                 s = 1000;
+    //                 clearInterval(timer);
+    //             }
+    //             wrap.style.left = s + 'px';
+    //         },20)
+    //     }
+    // }
+</script>
+</html>

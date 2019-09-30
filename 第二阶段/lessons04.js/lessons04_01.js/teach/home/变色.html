@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>变色</title>
+    <style>
+        div{
+            width: 50px;
+            height:50px;
+            /*background:red;*/
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="oul"></ul>
+    <input type="button" id="btn" value="变色">
+</body>
+<script>
+var oUl = document.getElementById('oul')
+for (var i = 0; i < 10; i++) {
+    //创建ul子集元素li
+    var oLi = document.createElement('li');
+    oUl.appendChild(oLi);
+}
+    //10个盒子
+    //获取div 盒子
+    var divs = document.getElementsByTagName('li');
+    console.log(divs);
+    var btn1 = document.getElementById('btn');
+    //数组遍历
+    for (var i = 0; i < divs.length; i++) {
+        var r = Math.round(Math.random() * 255);
+        var g = Math.round(Math.random() * 255);
+        var b = Math.round(Math.random() * 255);
+
+        divs[i].style.background = 'rgb(' + r + ',' + g + ',' + b + ')';
+    }
+    //绑定事件
+    btn1.onclick = function() {
+        //数组遍历
+        for (var i = 0; i < divs.length; i++) {
+            var r = Math.round(Math.random() * 255);
+            var g = Math.round(Math.random() * 255);
+            var b = Math.round(Math.random() * 255);
+
+            divs[i].style.background = 'rgb(' + r + ',' + g + ',' + b + ')';
+        }
+    }
+
+</script>
+</html>

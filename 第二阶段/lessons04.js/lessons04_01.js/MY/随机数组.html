@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>练习</title>
+</head>
+
+<body>
+</body>
+<script>
+var n = 0; //随机数之和
+var nums = []; //创建数组
+var max = 10;
+var min = 40;
+for (var i = 0; i < 10; i++) {
+    var a = Math.round(Math.random() * 30 + 10);
+    //每一个随机数放入数组中
+    nums[i] = a;
+    document.write(a + '<br />');
+    n += a; //求和
+
+    //求最大值
+    //如果数组中的元素比假设的最大值还要大,那么久更新变量max的值,
+    //来记录当前的最大值
+    if (max < nums[i]) {
+        max = nums[i];
+    }
+    //求最小值
+    if(min >nums[i]){
+    	min = nums[i];
+    }
+}
+document.write('最大值为' + max + '<br />');
+document.write('最小值为' + min + '<br />');
+console.log(nums);
+document.write('和' + n + '<br />');
+
+
+    //假设法
+    //1.咋知道取值范围的时候,通过假设下限为最大值来进行比较比较,
+    //假设上限为最小值来进行比价.
+    //
+    //2. 假设数组中的第一个元素时最值来进行最值的比较
+    var max = nums[0],min = nums[0];
+
+    for(var i=1;i<nums.length;i++){
+    	if(max<nums[i]){
+    		max = nums[i];
+    	}
+    	if(min > nums[i]){
+    		min = nums[i];
+    	}
+    }
+    console.log(max,min);
+    console.log(nums)
+</script>
+
+</html>

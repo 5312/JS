@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width: 300px;
+            height: 400px;
+            border: 5px solid #000;
+            margin: 0 auto;
+            position: relative;
+        }
+        #wrap>div:nth-of-type(1){
+            width: 50%;
+            float: left;
+            text-align: left;
+        }
+        #wrap>div:nth-of-type(2){
+            width: 50%;
+            float: left;
+            text-align: right;
+        }
+        #bfEl{
+            width: 100%;
+            height: 300px;
+            font-size: 150px;
+            text-align: center;
+            line-height: 300px;
+        }
+        #rule{
+            text-align: center;
+        }
+        #wrap>div:nth-last-child(1){
+            width: 100%;
+            height: 60px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .sfEl{
+            width: 20%;
+            height: 100%;
+            text-align: center;
+            line-height: 60px;
+            font-size: 30px;
+            float: left;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!-- 倒计时 -->
+        <div>倒计时：<span id="timeEl">60</span>s</div>
+        <!-- 得分 -->
+        <div>得分：<span id="scoreEl">00</span></div>
+        <!-- 大字 -->
+        <div id="bfEl">红</div>
+        <!-- 规则 -->
+        <div id="rule">根据上面的字体颜色从下面选出对应的文字描述</div>
+        <!-- 小字 -->
+        <div>
+            <div class="sfEl">红</div>
+            <div class="sfEl">黄</div>
+            <div class="sfEl">蓝</div>
+            <div class="sfEl">绿</div>
+            <div class="sfEl">黑</div>
+        </div>
+    </div>
+</body>
+<script>
+// 1.获取要操作的元素
+    // 用于显示小字的元素集合
+var sfs = document.getElementsByClassName('sfEl'),
+    // 用于显示时间的元素
+    timeEl = document.getElementById('timeEl'),
+    // 用于显示得分的元素
+    scoreEl = document.getElementById('scoreEl'),
+    // 用于显示大字的元素
+    bf = document.getElementById('bfEl');
+
+// 2.定义需要用到的变量
+    // 记录时间的变量
+var time = 6,
+    // 记录得分的变量
+    score = 0,
+    // 用来控制交互的锁
+    lock = false,
+    timer = null,
+    // 文字数据
+    fonts = ['红','黄','蓝','绿','黑'],
+    // 颜色数据
+    colors = ['red','yellow','blue','green','black'];
+
+    // 游戏完成
+    resetBigFont();
+    resetSmallFont();
+    for(var i=0;i<sfs.length;i++){
+        sfs[i].onclick = function(){
+            if(lock){
+                return;
+            }
+            var color = bf.style.color,
+                font = this.innerHTML,
+                result = anwserFn(font,color);
+            if(result){
+                if(score == 0){
+                    beginFn();
+                }
+                scoreFn();
+            }
+            resetBigFont();
+            resetSmallFont();
+        }
+    }
+
+    // 再来一局
+    bf.onclick = function(){
+        clearInterval(timer);
+        score = 0;
+        scoreEl.innerHTML = '0'+score;
+        time = 60;
+        timeEl.innerHTML = time;
+        resetSmallFont();
+        resetBigFont();
+        lock = false;
+    }
+
+// 3.公共函数（功能函数）的定义
+function randomNum(){
+    return Math.floor(Math.random()*5);
+}
+function beginFn(){
+        timer = setInterval(function(){
+        time -- ;
+        time = time<10?'0'+time:time;
+        timeEl.innerHTML = time;
+        if(time == 0){
+            clearInterval(timer);
+            lock = true;
+            setTimeout(function(){
+                alert('游戏结束，得分：'+score);
+            },20);
+        }
+    },1000)
+}
+function scoreFn(){
+    score ++;
+    score = score<10?'0'+score:score;
+    scoreEl.innerHTML = score;
+}
+function resetBigFont(){
+    var font = fonts[randomNum()],
+        color = colors[randomNum()];
+    bf.style.color = color;
+    bf.innerHTML = font;
+}
+function resetSmallFont(){
+    var fontIndex = [], colorIndex = [];
+    while(fontIndex.length<5){
+        var x = randomNum();
+        if(fontIndex.indexOf(x) == -1){
+            fontIndex.push(x);
+        }
+    }
+    while(colorIndex.length<5){
+        var x = randomNum();
+        if(colorIndex.indexOf(x) == -1){
+            colorIndex.push(x);
+        }
+    }
+    for(var i=0;i<sfs.length;i++){
+        sfs[i].innerHTML = fonts[fontIndex[i]];
+        sfs[i].style.color = colors[colorIndex[i]];
+    }
+}
+function anwserFn(font,color){
+    if(fonts.indexOf(font) == colors.indexOf(color)){
+        return true;
+    }
+    return false;
+}
+
+
+
+
+
+
+</script>
+</html>

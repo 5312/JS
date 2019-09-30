@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//函数的一些其他功能和方式
+	//1.递归函数 (递归调用函数): 主要用于解决重复且有规律的问题.
+	//有一家公司,注册资金1000w ,第一天运营成本是注册资金的1/3.随着每天的经营.公司的运营成本不断减少.运营成本是剩余的1/3,当公司注册紫荆不足一元时,公司破产,问公司能运营多少天
+// var money = 10000000;
+// var s =0;//天数
+// 	while(true){
+// 		s++;
+// 		money -= money /3 //剩余的资金
+	 
+// 		if(money<1){
+// 			break;
+// 		}
+// 	}
+// 	console.log(s-1)
+//需要一个参数表示拥有的钱数,具有返回值,返回可以运营的天数.
+var day = 0;
+function live(money){
+	money = money/3*2;
+	if(money >=1 ){//今天顺利度过,天数+1 ,并且要继续过明天
+		day++;
+		live(money);
+	}else {//今天无法顺利度过,直接返回当前天数
+		return day;
+	}
+}
+
+console.log(live(10000000,0));
+
+//回调函数
+</script>
+</html>

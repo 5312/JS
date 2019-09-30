@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>直角三角形</title>
+</head>
+<body>
+	<input type="number" id="b1">
+	<input type="number" id="b2">
+	<input type="number" id="b3">
+	<input type="button" id='btn'>
+</body>
+<script>
+	/**
+	 * [number1 description]
+	 * 获取数字
+	 */
+	var number1 = document.getElementById('b1'),
+		number2 = document.getElementById('b2'),
+		number3 = document.getElementById('b3'),
+		bt = document.getElementById('btn');
+		//绑定事件
+	bt.onclick = function(){
+		var a = b1.value*1,
+			b = b2.value*1,
+			c = b3.value*1;
+			//判断
+		if (a*a+ b*b==c*c || a*a + c*c == b*b || c*c + b*b == a*a)  {
+			alert('这能构成直角三角形');
+		}else{
+			alert('这不能构成直角三角形');
+		}
+	}
+</script>
+</body>
+</html>

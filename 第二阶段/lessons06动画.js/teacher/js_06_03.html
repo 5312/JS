@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* div{
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 30px;
+            border: 5px solid #000;
+            float: left;
+            margin: 5px;
+        }
+        .active{
+            background: pink;
+            font-size: 50px;
+            color: #fff;
+            text-shadow: 5px 5px 5px #000;
+            box-shadow: 5px 5px 5px #000;
+        } */
+        #wrap{
+            width: 800px;
+            height: 500px;
+            border: 5px solid #000;
+            margin: 0 auto;
+            position: relative;
+        }
+        .ball{
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            position: absolute;
+            border-radius: 50%;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="active" class="active">click1</div> -->
+    <!-- <div>click2</div> -->
+    <div id="wrap">
+        <div class="ball"></div>
+    </div>
+</body>
+<script>
+// var ds = document.getElementsByTagName('div');
+// ds[0].onclick = function(){
+//     // 通过元素的id属性 读写 元素的id属性值
+//     // 通过元素的className属性 读写 元素的class属性值
+//     // this.id = 'active';
+//     // ds[1].id = '';
+//     this.className = 'active';
+//     ds[1].className = '';
+// }
+// ds[1].onclick = function(){
+//     // this.id = 'active';
+//     // ds[0].id = '';
+//     this.className = 'active';
+//     ds[0].className = '';
+// }
+
+var wrap = document.getElementById('wrap');
+var ball = document.getElementsByClassName('ball')[0];
+var timer = null;
+var timer2 = null;
+var dir = true;
+wrap.onclick = function(){
+    var x = 0;
+    // 1.点击wrap小球开始匀速向右移动。
+    // 2.当球运动到wrap的右边缘，停止。
+    // 3.当球运动到wrap的右边缘，开始向左匀速移动，运动到初始位置停止。
+    var w = wrap.clientWidth - ball.offsetWidth;//770
+    var v = 3;
+    /*
+    if(!timer){
+        timer = setInterval(function(){
+            if(dir){
+                x += 3;
+            }else{
+                x -= 3;
+            }
+            if(x >= w){
+                x = w;
+                dir = false;
+            }
+            if(x <= 0){
+                x = 0;
+                clearInterval(timer);
+            }
+            ball.style.left = x+'px';
+        },20)
+    } 
+    */
+    if(!timer){
+        timer = setInterval(function(){
+            var s = ball.offsetLeft + v;
+            if(s >= w){
+                s = w;
+                // v = 100;
+                v *= -1;
+                // clearInterval(timer);
+            }
+            if(s <= 0){
+                s = 0;
+                v *= -1;
+                // clearInterval(timer);
+            }
+            ball.style.left = s+'px';
+        },20)
+    }
+
+    // 实现思路：
+    // 1.双定时器
+    // 2.开关
+    // 3.速度方向
+}
+
+
+</script>
+</html>

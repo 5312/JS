@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="a">
+    <input type="number" id="b">
+    <input type="number" id="c">
+    <input type="button" id="d" value="比较">
+</body>
+<script>
+    // 1.获取元素
+    var d = document.getElementById('d');
+    d.onclick = function(){
+        var a = document.getElementById('a').value*1,
+            b = document.getElementById('b').value*1,
+            c = document.getElementById('c').value*1;
+        // 思路1：枚举
+        // if(a>b && a>c){
+        //     alert(a);
+        // }else if(b>a && b>c){
+        //     alert(b);
+        // }else{
+        //     alert(c);
+        // }   
+
+        // 思路2：两两比较
+        if(a>b){
+            // 只能说明b一定不是最大
+            if(a>c){
+                alert(a);
+            }else{
+                alert(c);
+            }
+        }else{
+            // 只能说明a一定不是最大
+            if(b>c){
+                alert(b);
+            }else{
+                alert(c);
+            }
+        }
+    }
+</script>
+</html>

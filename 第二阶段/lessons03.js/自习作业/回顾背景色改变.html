@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        2
+    </title>
+    <style>
+        div{
+			width: 100px;
+			height: 100px;
+			background:red;
+		}
+		</style>
+    </meta>
+</head>
+
+<body>
+    <input id="into" type="text">
+    <input id="btn" type="button" value="变色">
+    <div id="box">
+    </div>
+    </input>
+    </input>
+</body>
+<script>
+//获取盒子元素
+var b = document.getElementById('box'),
+    a = document.getElementById('into'),
+    btn = document.getElementById('btn');
+//绑定事件
+btn.onclick = function() {
+    //获取输入框的颜色
+    var color = a.value;
+    //判断颜色
+    if (color == 'red') {
+        box.style.background = 'red';
+    } else if (color == 'green') {
+        box.style.background = 'green';
+    } else if (color == 'blue') {
+        box.style.background = 'blue'
+    } else {
+        box.style.background = 'black';
+    }
+}
+</script>
+
+</html>

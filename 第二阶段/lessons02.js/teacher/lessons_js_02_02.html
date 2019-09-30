@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 逻辑运算符
+        // &&与逻辑  ||或逻辑  !非逻辑
+        // &&与逻辑（并且）：当运算符左右条件都成立，整个逻辑运算结果就是true，否则为false。
+        //10 < 20 && 20 < 30
+        // &&与逻辑运算结果并不一定是布尔值，因为逻辑运算符不仅可以连接关系表达式，也可以连接具体的值，当整个表达式结果为true，逻辑运算的结果是最后一个成立的表达式的值；如果表达式结果为false，那么逻辑元素的结果是第一个不成立的表达式的值。
+        // var b;
+        // var a = b && 0 && 10; //不成立
+        // 表达式1：true  表达式2：false  表达式3：true
+        // console.log(a);
+        // 以下值在进行判断时会被自动判定为false:
+        // 1.""：空字符串
+        // 2.0：数字0
+        // 3.NaN
+        // 4.undefined
+        // 5.null：空值
+
+        // ||或逻辑（或者）：运算符两侧至少要有一个条件成立整个逻辑运算就成立，否则就是不成立
+        // var a;
+        // a > 20 && a < 100;(21,99)
+        // a > 20 || a < 100;任意值都成立
+        // 或逻辑运算结果也不一定是布尔值
+        // var a = 0 || NaN || null;
+        // console.log(a);
+        // 或逻辑运算规则：逻辑成立那么就是第一个为true的表达式的值；逻辑不成立，就是最后一个为false的表达式的值。
+
+        // !非逻辑（逻辑取反）：非逻辑的结果一定是布尔值。
+        var a = 3;
+        console.log(!a);//false
+
+        // 优先级：
+        // ! > && > ||
+
+        var b = 2 > 3 || 5 > 3 && !a;
+        // var b = false || true && false;
+        // var b = false || false;
+        console.log(b); 
+
+        // 算数 > 关系 > 逻辑 > 赋值
+    </script>
+</body>
+</html>

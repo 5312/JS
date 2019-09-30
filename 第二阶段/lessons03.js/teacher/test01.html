@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    // 计算1-100内所有奇数的和
+    // var sum = 0;
+    // for(var i=1;i<=50;i++){
+    //     // i%2==1?sum+=i:1;
+    //     sum = sum + (2*i-1);
+    // }
+    // for(var i=1;i<=100;i+=2){
+    //     sum += i;
+    // }
+    // var i=1;    
+    // while(i<101){
+    //     if(i%2!=0){
+    //         sum += i;
+    //     }
+    //     i++;
+    // }
+
+    // 1-100，输出所有能被3整除的数，并且最后输出不能被3整除的数的和
+    
+    // var sum = 0;
+    // for(var i=1;i<101;i++){
+    //     if(i%3==0){
+    //         console.log(i);
+    //     }else{
+    //         sum+=i;
+    //     }
+    // }
+    // console.log(sum);
+
+    // 打印所有的水仙花数（各个位立方和等于自身的三位数）；
+    for(var i=100;i<1000;i++){
+        var a = i%10,//个位数
+            b = (i-a)/10%10,//十位数
+            c = (i-a-b*10)/100%10;//百位数
+        if(a*a*a+b*b*b+c*c*c == i){
+            console.log(i);
+        }    
+    }
+    
+
+</script>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 练习：模拟逢1-100的七过，从1开始挨个报数，遇到7的倍数或者包含7的数跳过不报。
+    for(var i=1;i<101;i++){
+        if(i%7!=0 && i%10!=7 && (i-i%10)/10!=7){
+            console.log(i);
+        }
+    }
+</script>
+</html>

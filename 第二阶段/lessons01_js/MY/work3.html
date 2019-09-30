@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>work</title>
+
+</head>
+<body>
+	<button id="btn">去注册1</button>
+	<button id="btn">去注册2</button>
+	<button id="btn">去注册3</button>
+</body>
+<script>
+	//在js中可以直接使用元素的ID名称作为变量来操作这个元素，但是一般不要这么做
+	//
+	//btn.style.backgroundColr = 'yellow';
+	//btn = 10;
+	//btn.style.backgroundColor = 'purple';
+	//console.log(wwrap);
+	//通过元素的ID属性值来获取body中的元素
+	//document.getElementById()
+	//var wrap = document.getElementById('btn');
+	//var wrap1 = document.getElementById('btn');
+	//var wrap2 = document.getElementById('btn');
+	console.log(btn);
+	//通过js方式为元素设置样式
+	//
+	//所有样式存在连字符的，js中都去掉连字符，换成驼峰命名，例如：font-size
+	//-->fontSize
+	//
+	//wrap.style.backgroundColor = 'green';
+	//wrap.style.opacity = .5;
+	//console.log(wrap.style.backgroundColor);
+	//既可以设置元素的样式，也可以读取元素的样式，但是注意只能读取元素已经存在的行间样式。
+	//
+	document.wrap('我被点击的');
+	///////////////////
+	//捕获用户操作：例如‘点击操作 //
+	///////////////////
+	// wrap.onclick = function(){
+	// 	document.write('我被点击了')；
+	// 	document.write('
+	// 		<form action=""><input type="text"
+	// 		placeholder="请输入账号"><input type="password" placeholder="请输入密码"><input type="password" placeholder="请确认密码"><input type="submit" value="提交"></form>');
+	// 	
+	// wrap1.style.display = 'none';
+	// wrap2.style.color = 'red';
+	// }
+	//     // 1.js代码运行环境 -> 浏览器
+    // 2.文档输出：document.write()
+    //     控制台输出：console.log()
+    //     弹窗输出：alert();
+    //     F12 -> source -> 打断点
+    
+    // 3.变量
+    //     js是弱类型语言 -> 赋值才有类型
+    //     typeof 变量名
+    //     string,number,boolean,undefined,object(null,array)
+
+    //     运算符：
+    //     赋值运算符 =
+    //     算数运算符 + - * / % 
+    //             ++ -- 符号在前，先运算后赋值；
+    //                   符号在后，先赋值后运算；  
+
+    //     js获取元素：document.getElementById('id属性值')
+    //     元素设置样式
+    //     element.style.xxx = ''
+
+    //     元素捕获用户操作-点击操作
+    //     element.onclick = function(){
+    //         //预先编写，当点击操作在当前元素上发生时要做的事情
+    //     }
+
+
+</script>
+</html>

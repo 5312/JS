@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 5px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+</body>
+<script>
+    //定时器：用于解决重复有规律的并且需要固定时间间隔的问题。
+    //setTimeout()方法用于设置在一定时间后执行某些代码。也被叫做一次性定时器或者倒计时定时器。
+    //两个参数：
+    //参数1：需要一个函数作为参数，表示时间到了需要执行的代码
+    //参数2：需要一个number作为参数，表示倒计时的时间，单位是ms
+    //页面加载后5s，弹窗显示‘hello’;
+    // setTimeout(function(){
+    //     alert('hello');
+    //     console.log(2222);
+    // },5000)
+    //setTimeout最短计时是4ms
+    //回调函数：作为其他函数参数的函数，称为回调函数，回调函数更多的用于对函数的包装或声明（也应对异步操作）。
+    // function randomNum(min,max,callback){
+    //     var n = Math.floor(Math.random()*(max-min+1)+min);
+    //     callback(n);
+    // }
+    // randomNum(1,100,qqq)
+    // function qqq(x){
+    //     console.log(x);
+    // }
+
+    //setInterval():定时器，每隔指定的时间间隔会执行一次执行的代码。
+    //setInterval():最小计时间隔10ms
+    var timer1 = setInterval(function(){
+        document.write('<div style="width:100px;height:100px;background:red;margin:5px;float:left;"></div>');
+    },1000)
+    var timer2 = setInterval(function(){
+        document.write('<div style="width:100px;height:100px;background:green;margin:5px;float:left;"></div>');
+    },1000)
+    var timer3 = setInterval(function(){
+        document.write('<div style="width:100px;height:100px;background:blue;margin:5px;float:left;"></div>');
+    },1000)
+    
+    //clearInterval():关闭指定的定时器。 
+    setTimeout(function(){
+        clearInterval(timer1);
+        setTimeout(function(){
+            clearInterval(timer2);
+            setTimeout(function(){
+                clearInterval(timer3);
+            },4000)
+        },2000)
+    },5000)
+
+    // 日期对象：Date
+    // 和Math不同的是，Date需要先手动创建一个对象实例。
+    // 通过关键字new创建Date对象实例，包含了当前设备的系统时间信息。
+    var date = new Date();
+    console.log(date);
+    date.setMonth(8+4);
+    console.log(date);
+    // 1.获取当前时间的年
+    var year = date.getFullYear();
+    console.log(year);
+    // 2.获取当前时间的月,比真实月份少1
+    var month = date.getMonth();
+    console.log(month);
+    // 3.获取当前时间的日期
+    var day = date.getDate();
+    console.log(day);
+    // 4.获取当前时间的星期
+    var week = date.getDay();
+    console.log(week);
+    // 5.获取当前时间的时,24小时制
+    var hour = date.getHours();
+    console.log(hour);
+    // 6.获取当前时间的分
+    var minute = date.getMinutes();
+    console.log(minute);
+    // 7.获取当前时间的秒
+    var second = date.getSeconds();
+    console.log(second);
+    // 8.获取当前时间的时间戳:表示当前时间距离1970年1月1日0时0分0秒的总毫秒数
+    var time = date.getTime();
+    console.log(time);
+
+    // Date对象在创建的时候，可以通过添加参数来设置时间
+    // var newDate = new Date();
+    // console.log(newDate);
+
+    // 自己声明一个函数，可以得到指定数的绝对值
+    // function abs(n){
+    //     if(n>=0){
+    //         return n;
+    //     }
+    //     return n*(-1);
+    // }
+    // console.log(abs(20))
+
+</script>
+</html>

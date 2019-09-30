@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>计算器</title>
+</head>
+<body>
+	FirstNum:<input type="text" id='num1'>
+	<br>
+	SecondNum；<input type="text" id="num2">
+	<br>
+	<input type="button" value="加" id="add">
+	<input type="button" value="减" id="subtract">
+	<input type="button" value="乘" id="ride">
+	<input type="button" value="除" id="divide">
+	<input type="button" value="取余" id="fetch">
+</body>
+<script>
+	//获取用户可操作的元素
+	var num1 = document.getElementById('num1'),
+		num2 = document.getElementById('num2'),
+		btn1 = document.getElementById('add'),
+		btn2 = document.getElementById('subtract'),
+		btn3 = document.getElementById('ride'),
+		btn4 = document.getElementById('divide'),
+		btn5 = document.getElementById('fetch');
+
+	//为元素绑定事件处理程序
+	
+	btn1.onclick = function() {
+		///////////////////
+		//将两个输入框是值进行+法运算 //
+		//获得输入框输入的值
+		var m = num1.value * 1,
+			n = num2.value * 1;
+		//计算结果
+		//通过value属性获取的input元素值，都是string类型，那么在进行加法运算前
+		//，需要对值进行数据类型的转换，将他们转成number类型。
+		var result = m + n;
+		//弹窗显示结果
+		alert(result);
+	};
+	btn2.onclick = function() {
+		var m = num1.value,
+		 	n = num2.value;
+		var result = m - n;
+		alert(result);
+	}
+	/**
+	 * [onclick description]
+	 * @return {[type]} [description]
+	 
+	btn3.onclick = function(){
+		var m = num1.value,
+			n = num2.value;
+		var result = m * n;
+		alert(result);
+	}
+	/**
+	 * [onclick description]
+	 * @return {[type]} [description]
+	 */
+	btn4.onclick = function(){
+		var m = num1.value,
+			n = num2.value;
+		var result = m % n;
+		alert(result);
+	}
+	btn5.onclick = function(){
+		var m = num1.value,
+		 	n = num2.value;
+		 var result = m / n;
+		 alert(result);
+	}
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	
+</body>
+<script>
+	var nums = [];
+	for(var i=0;i<10 ; i++){
+
+		 var num = Math.floor(Math.random()*20+10);
+		 nums.push(num);
+	}
+	console.log(nums);
+
+	var myArr=[];
+	for(var j = 0;j<nums.length;j++){
+
+		if(myArr.indexOf(nums[j])== -1){
+			myArr.push(nums[j]);
+		}
+	}
+	console.log(myArr);
+</script>
+</html>

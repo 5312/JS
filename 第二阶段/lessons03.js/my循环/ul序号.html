@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ul序号</title>
+    <style>
+ 
+    #oUl {
+        list-style-type: demical;
+        width: 200px;
+    }
+
+    ul li {
+        list-style-position: outside;
+    }
+    </style>
+</head>
+
+<body>
+    <ul id="oUl">
+    </ul>
+    <ol></ol>
+</body>
+<script>
+ var a = document.getElementById('oUl');
+    
+// for (var i = 0; i < 10; i++) {
+
+//     var oLi = document.createElement('li');
+
+// 	//作为ul的子集
+//     a.appendChild(oLi);
+//  }
+
+// 
+//方法二;
+	var i = 0;
+	while (i < 10) {
+	    var oLi = document.createElement('li');	    
+	    a.appendChild(oLi);
+	    i++;
+        
+        // oLi[i].innerHTML=i+1;
+	}
+	 // a.style.listStyle='decimal';
+</script>
+
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>猜拳</title>
+    <style>
+        .box,h1{
+        	margin-top: 30px;
+    		display: inline-block;
+    	}
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <h2>美女</h2>
+        <input type="text" disabled="false" placeholder="美女的手指数" id="int1">
+        <input type="text" disabled="false" placeholder="美女说的数" id="int2">
+    </div>
+    <div class="box">
+        <h3>帅哥</h3>
+        <h1>帅哥的手指数:</h1>
+        <div class="box">
+            <select name="number" id="num">
+                <option>0</option>
+                <option>5</option>
+                <option>10</option>
+            </select>
+        </div>
+    </div>
+    <div class="box">
+        <h1>帅哥说的数:</h1>
+        <div class="box">
+            <select name="number2" id="numb">
+                <option>0</option>
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+            </select>
+        </div>
+    </div><br>
+    <input type="button" id="btn" value="Come On!!" style="background: blue"><br>
+    游戏结果 :<h1 id="result"></h1>
+</body>
+<script>
+//1.获取按钮
+var btn = document.getElementById('btn');
+//2.手指数范围
+var items = ['0', '5', '10']; 
+//3.说的范围
+var item1 = ['0', '5', '10', '15', '20']; 
+console.log(item1);
+console.log(items);
+//4.输出框
+var btn1 = document.getElementById('int1');
+var btn2 = document.getElementById('int2');
+
+//5.绑定事件
+btn.onclick = function() {
+
+    var mnv = items[Math.floor(Math.random() * items.length)]; //随机手指数
+    var say = item1[Math.floor(Math.random() * item1.length)]; //随机说的数
+    // console.log(say);
+    btn1.value = mnv; //输出到框框里
+    btn2.value = say; //输出到框框里
+    //获取帅哥的手指数
+    var shIG = num.value;
+    //获取帅哥的说的数
+    var sSay = numb.value;
+    console.log(mnv);
+    console.log(say);
+    var n = mnv * 1 + shIG * 1; //双方相加
+    if (n == say && n == sSay) {
+    	result.innerHTML='平局';
+        // alert('平局')
+  
+    } else if (n == say) {
+    	result.innerHTML='美女赢';
+        // alert('美女赢')
+  
+    } else if (n == sSay) {
+    	result.innerHTML='帅哥赢';
+        // alert('帅哥赢')
+
+    } else {
+        // alert('在来一局');
+   result.innerHTML='再来一局';
+    }
+
+}
+</script>
+
+</html>

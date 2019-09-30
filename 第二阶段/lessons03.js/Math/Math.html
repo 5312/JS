@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Math</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//////////////////////
+	//JS提供的数学对象  ; Math //
+	//////////////////////
+	////////////////////////////
+	//Math 为我们提供了众多关于数学计算的方法: //
+	////////////////////////////
+	//1.Math.max():返回 参数中的最大数
+	console.log(Math.max(10,20,30));
+
+	//2.Math.min():返回参数中的最小数
+	console.log(Math.min(10,20,30));
+
+	//3.Math.abs():返回一个数的绝对值
+	console.log(Math.abs(-3));
+
+	//4.Math.pow(x,y):计算x 的y次方
+	console.log(Math.pow(3,3));
+
+	//5.Math.floor(): 对小数进行向下取整操作.
+	console.log(Math.floor(3.9));
+
+	//6.Math.ceil():对小数进行向上取整操作
+	console.log(Math.ceil(1.00001));   //有小数就向上进一.
+
+	//7.Math.round(): 对小数进行四舍五入取整
+	console.log(Math.round(3.4999));  // 3
+
+	//8.Math.random():生成一个 0-1 但是不包含1 的随机数
+	console.log(Math.random());  
+		//生成0-10 之间的随机数
+		console.log(Math.round(Math.random()*10))
+		console.log(Math.floor(Math.random()*11))
+		//生成100 - 200 之间的随机数
+		console.log(Math.floor(Math.random()*(77-31+1))+31);
+		console.log(Math.round(Math.random()*(77-31))+31);
+
+		//生成指定区间的公式
+		Math.floor(Math.random() * ( max - min + 1)+min);
+		Math.round(Math.random() * ( max - min) + min);
+</script>
+</html>

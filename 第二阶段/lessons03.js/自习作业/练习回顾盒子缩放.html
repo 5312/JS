@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>盒子大小更改</title>
+</head>
+
+<body>
+    <div id="box" style="width: 100px;height:100px;background:red"></div>
+</body>
+<script>
+//获取元素1
+var box1 = document.getElementById('box')
+//初始点击次数2
+time = 0,
+    //设置开关3
+    siBig = true;
+//绑定事件
+box.onclick = function() {
+    /**
+     *方法一： 
+     //获取点击次数 自增
+    time ++;
+    //大小判断
+    if (time % 2 == 0 ) {
+    	box.style.width = '300px',
+    	box.style.height = '300px';
+    }else {
+    	box.style.width = '100px',
+    	box.style.height = '100px';
+    }
+    //方法2;
+    //获取宽高：
+    var w = box.style.width,
+    	h = box.style.height;
+    	//判断宽高改变
+    	if (w == '100px') {
+    		box.style.width = '400px';
+    		box.style.height = '400px';
+    	}else{
+    		box.style.width ='100px';
+    		box.style.height = '100px';
+    	}*/
+
+    //方法三：通过开关控制
+    if (siBig) {
+        box.style.width = '100px';
+        box.style.height = '100px';
+    } else {
+        box.style.width = '400px';
+        box.style.height = '400px';
+    }
+    //切换开关状态
+    siBig = !siBig;
+}
+</script>
+
+</html>

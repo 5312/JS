@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>组长</title>
+</head>
+
+<body>
+    <input type="text" id="pe">
+    <input type="button" id="btn" value="查询">
+    <h1 id="msg"></h1>
+</body>
+<script>
+//班里的人
+var people = ['张凯斌', '张辉', '顾文江', '侯博洋', '侯玉忠', '李泽坤', '马茜', '王娇', '黄玉芮', '段圆圆', '马锐', '李莹', '李涛', '吴红霞', '王莎莎', '赵康', '周登华', '周叶凡', '李杰', '余学武', '赵璘', '李骞', '杜洁', '马鹏飞', '李锦涛', '汉宁辉'];
+//一共能分几组
+var grNum = Math.ceil(people.length / 4)
+//分好组的容器
+var containers = [];
+//获取按钮
+var peo = document.getElementById('pe');
+var btn = document.getElementById('btn');
+//组长容器
+var gLders = [];
+//为26个人分组
+for (var g = 0; g < grNum; g++) {
+    //组容器
+    var container = [];
+
+    //取四人
+    for (var i = 0; i < 4; i++) {
+        //随机取出数组里的数
+        var peop = people[Math.floor(Math.random() * people.length)];
+        //每取一个就放入一组中
+        container.push(peop);
+        //获取随机的人的下标
+        var index = people.indexOf(peop);
+
+        //防止重复 ,所以把已经取出来的数从people中删除
+        people.splice(index, 1);
+        if (people.length == 0 || container.length == 4) {
+            break;
+        }
+    }
+    //每一组随机组长
+    var groupsLeader = container[Math.floor(Math.random() * container.length)];
+    // console.log(groupsLeader);//组长
+    //把每一组都放入
+    containers.push(container)
+    gLders.push(groupsLeader);
+}
+console.log(containers)
+//绑定事件
+btn.onclick = function() {
+    //获取到输入的 人
+    var po = peo.value;
+
+    for( var i = 0;i <containers.length;i++){//找组
+
+    			var lN = gLders[i];//找到这个组的组长
+    			console.log(lN)
+    		for( var j=0;j<containers[i].length;j++){//找人
+
+    			if( po == containers[i][j] ){
+                    //可以确定人在下标为 i 的那组
+    				document.getElementById('msg').innerText= containers[i]+' '+'组长'+lN;
+
+    			}
+    		}
+
+    }
+}
+</script>
+
+</html>

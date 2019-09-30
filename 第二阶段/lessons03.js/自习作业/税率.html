@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>税率</title>
+</head>
+
+<body>
+    <input type="text" id="money">
+    <input type="button" value="计算" id="btn">
+</body>
+<script>
+var m = document.getElementById('money');
+
+btn.onclick = function() {
+    var p = m.value;
+
+    if (p <= 2000) {
+
+
+
+        alert('应的工资' + p)
+    } else if (p <= 5000) {
+        var s = (p - 2000) * .05,
+            p = p - s;
+        alert('应得工资' + p)
+    } else if (p <= 8000) {
+        var s = (5000 - 2000) * .05 + (p - 5000) * .10,
+            p = p - s;
+        alert('你的工资有拉莫多' + p);
+    } else if (p < 10000) {
+        var s = (5000 - 2000) * .05 + (8000 - 5000) * .10 + (p - 8000) * .15,
+            p = p - s;
+        alert('你 工资' + p);
+    } else {
+        var s = (5000 - 2000) * .05 + (8000 - 5000) * .10 + (10000 - 8000) * .15 + (p - 10000) * .20,
+            p = p - s;
+        alert('ni gongzu ' + p);
+    }
+}
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分数查询</title>
+</head>
+<body>
+	<input type="number" id="grade">
+	<input type="button" value="评级" id="btn">
+</body>
+<script>
+	//获取
+	var g = document.getElementById('grade')
+		b = document.getElementById('btn')
+
+		//绑定事件
+		btn.onclick = function (){
+
+			//获取分数
+		var	a = g.value*1
+		//判断分数
+		if (a>=0 && a<=100) {
+			if (a < 60) {
+				alert('不及格')
+			}else if (a < 80 ) {
+				alert('及格')
+			}else if (a<90) {
+				alert('良好')
+			}else if (a > 90) {
+				alert('优秀')
+		}else{
+			alert('分数不合理')
+		}
+		}
+	}
+</script>
+</html>

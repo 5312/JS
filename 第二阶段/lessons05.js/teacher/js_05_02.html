@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+//变量的作用域：变量在脚本中起作用的区域。
+//js中作用域主要分两部分：1.函数内作用域；2.函数外作用域；
+//1.函数外作用域又称为全局作用域，在全局作用域下声明的变量称为全局变量，可以在脚本的任何地方访问。
+//2.函数内作用域又称为局部作用域，在局部作用域下声明的变量称为局部变量，只能在当前作用域或当前作用域下的局部作用域访问。
+//3.函数内声明的变量，正常情况下会在函数体执行完成自动销毁。
+//4.js中变量及函数声明存在提升现象，会先将脚本中的变量及函数的声明提升到当前所在作用域的最顶端;其中函数的提升要比变量的提升更靠上。
+//5.当全局变量和局部变量重名时，局部作用域的代码执行会优先使用当前作用域中声明的变量，这种现象称为变量降低，也叫'就近原则'。
+//6.this关键字：this只存在于函数内，函数外的this是无意义的；this在函数内指向函数的拥有者。
+//7.在全局作用域下声明的全局变量以及全局函数，会自动被作为window对象的属性和方法。也可以说window就是我们js中的根对象。 
+//8.函数的作用域在声明的时候就已经确定了，与调用位置无关。
+
+// function fn(){
+//     console.log(this);//window
+// }
+// window.fn();
+// console.log(window);
+// var a = 10;
+// console.log(window.a);
+
+// document.getElementsByTagName('div')[0].innerHTML = 'window';
+// document.getElementsByTagName('div')[0].onclick = function(){
+//     console.log(this);
+// }
+
+// var a = 10;
+// function fn(){
+//     console.log(a);//undefind
+//     var a = 20; 
+//     console.log(a);//20
+// }
+// fn();
+// console.log(a);//10
+
+
+</script>
+</html>

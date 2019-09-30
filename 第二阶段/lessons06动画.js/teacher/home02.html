@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width: 520px;
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+        }
+        #box{
+            width: 600%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: .5s;
+        }
+        
+        img{
+            width: 520px;
+            float: left;
+        }
+        input{
+            width: 40px;
+            height: 40px;
+        }
+        .btn{
+            position: absolute;
+            z-index: 1001;
+        }
+        #page{
+            position: absolute;
+            left: 126px;
+            top: 240px;
+            z-index: 1000;
+        }
+        .btn:nth-of-type(1){
+            left: 10px;
+            top:  120px;
+        }
+        .btn:nth-of-type(2){
+            left: 480px;
+            top:  120px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        图片路径
+        './home/02/素材/11.jpg'
+     -->
+     <div id="page">
+            <input type="button" value="1">
+            <input type="button" value="2">
+            <input type="button" value="3">
+            <input type="button" value="4">
+            <input type="button" value="5">
+     </div>
+     
+     <button class="btn">上一张</button >
+     <button class="btn">下一张</button>
+     <div id="wrap">
+         <div id="box">
+             <img src="./home/02/素材/11.jpg" alt="">
+             <img src="./home/02/素材/12.jpg" alt="">
+             <img src="./home/02/素材/13.jpg" alt="">
+             <img src="./home/02/素材/14.jpg" alt="">
+             <img src="./home/02/素材/15.jpg" alt="">
+             <img src="./home/02/素材/11.jpg" alt="">
+         </div>
+     </div>
+</body>
+<script>
+    // 获取元素
+    var box=document.getElementById('box');
+    var img=document.getElementsByTagName('img')[0];
+    var inps=document.getElementsByTagName('input');
+    var btn = document.getElementsByTagName('button');
+
+    // 获取图片宽度
+    var w=img.offsetWidth;
+    // 最大宽度
+    var max=w*5;
+    var timer = setInterval(next,4000);
+    var lock = false;
+
+    // 绑定点击事件
+    for(var i=0;i<inps.length;i++){
+        (function(i){
+            inps[i].onclick=function(){
+                // box.style.transition='none';
+                box.style.left=i*(-w)+'px';
+                clearInterval(timer);
+                timer = setInterval(next,4000);  
+            }
+        })(i)
+        // inps[i].onclick=function(){
+        //     // box.style.transition='none';
+        //     box.style.left=(this.value-1)*(-w)+'px';
+        //     clearInterval(timer);
+        //     timer = setInterval(next,4000);
+        // }
+    }
+
+    btn[1].onclick = function(){//下一张
+        if(lock){
+            return;
+        }
+        lock = true;//关锁
+        setTimeout(function(){
+            lock = false;//开锁
+        },500)
+        // 重新开启过度
+        box.style.transition='.5s';
+        var x = box.offsetLeft - w;
+        if(x<-max){
+            x=0;
+        }
+        box.style.left= x+'px';
+        if(x == -max){
+            setTimeout(function(){
+                if(box.offsetLeft==-max){
+                    box.style.transition='none';
+                    box.style.left=0+'px';
+                }
+            },500)
+        }
+        clearInterval(timer);
+        timer = setInterval(next,4000);
+    }
+    btn[0].onclick = function(){//下一张
+        if(lock){
+            return;
+        }
+        lock = true;//关锁
+        setTimeout(function(){
+            lock = false;//开锁
+        },500)
+        // 重新开启过度
+        box.style.transition='.5s';
+        var x = box.offsetLeft + w;
+        if(x > 0){
+            x = -max;
+            box.style.transition='none';
+        }
+        box.style.left= x+'px';
+        if(x == -max){
+            setTimeout(function(){
+                if(box.offsetLeft==-max){
+                    box.style.transition='.5s';
+                    box.style.left = x+w +'px';
+                }
+            },4)
+        }
+        clearInterval(timer);
+        timer = setInterval(next,4000);
+    }
+    function next(){
+        // 获取偏移量
+        var b=box.offsetLeft;
+        // 重新开启过度
+        box.style.transition='.5s';
+        var x=b-w;
+        if(x<-max){
+            x=0;
+        }
+        box.style.left=x+'px';
+        setTimeout(function(){
+            if(box.offsetLeft==-max){
+                box.style.transition='none';
+                box.style.left=0+'px';
+            }
+        },500)
+    }
+</script>
+</html>

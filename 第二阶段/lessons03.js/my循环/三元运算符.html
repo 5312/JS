@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>三元运算符</title>
+</head>
+<body>
+	<input type="number" id="third">
+	<input type="button" value="算数" id="btn">
+</body>
+<script>
+	//三目运算符 （三元运算符），本质上就是对 if …… else……语句的改写形式
+	//
+	/**
+	 * 语法：
+	 *    表达式1 ？ 表达式2：表达式3；
+	 *
+	 *
+	 *
+	 * 		当表达式1 为true ，执行表达式2 ，否则执行表达式3；
+	 * 		
+	 */
+	//获取元素
+	var t = document.getElementById('third')
+		n = document.getElementById('btn')
+
+	//绑定事件
+	btn.onclick = function(){
+
+		var num = t.value*1;
+
+			//奇偶判断
+		 num !=0?((num % 2 == 0) ? alert('这是偶数'):alert('这是奇数')):alert('既不是奇数也不是偶数');
+		 
+	}
+</script>
+</html>

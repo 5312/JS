@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 表盘 */
+        #wrap{
+            width: 500px;
+            height: 500px;
+            border: 5px solid;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 5px 5px 160px lightgray inset;
+        }
+        /* 表针 */
+        /* 时针 */
+        .needle{
+            position: absolute;
+            /* 设置旋转变换参照点 */
+            transform-origin: center bottom;
+        }
+        #hNeedle{
+            width: 12px;
+            height: 150px;
+            background: #000;
+            left: calc(50% - 6px);
+            top: 100px;
+            border-radius: 50% 50% 0 0 ;
+        }
+        #mNeedle{
+            width: 6px;
+            height: 170px;
+            background: #000;
+            left: calc(50% - 3px);
+            top: 80px;
+            border-radius: 50% 50% 0 0 ;
+        }
+        #sNeedle{
+            width: 2px;
+            height: 200px;
+            background: red;
+            left: calc(50% - 1px);
+            top: 50px;
+            border-radius: 50% 50% 0 0 ;
+        }
+        /* 钉子 */
+        #point{
+            width: 30px;
+            height: 30px;
+            background: #000;
+            border-radius: 50%;
+            position: absolute;
+            left: calc(50% - 15px);
+            top: calc(50% - 15px);
+        }
+        /* 刻度 */
+        .scale{
+            width: 4px;
+            height: 8px;
+            background:#000;
+            position: absolute;
+            left: calc(50% - 2px);
+            top: 0px;
+            /* 设置旋转变换参照点 */
+            transform-origin: center 250px;
+        }
+        /* 装数字容器的容器 */
+        .num_f{
+            width: 60px;
+            height: 30px;
+            position: absolute;
+            left: calc(50% - 30px);
+            top: 25px;
+            /* 设置旋转变换参照点 */
+            transform-origin: center 225px;
+        }
+        /* 装数字的容器 */
+        .num{
+            height: 100%;
+            font-size: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .scale:nth-child(5n+1){
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">
+        <div id="d2"></div>
+    </div>
+    <div id="wrap">
+        <!-- 刻度 -->
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div>
+        <div class="scale"></div> 
+        <!-- 数字 -->
+        <div class="num_f"><div class="num"></div></div>
+        <div class="num_f"><div class="num"></div></div>
+        <div class="num_f"><div class="num"></div></div>
+        <div class="num_f"><div class="num"></div></div>
+        <div class="num_f"><div class="num"></div></div>
+        <div class="num_f"><div class="num"></div></div>
+        <div class="num_f"><div class="num"></div></div>
+        <div class="num_f"><div class="num"></div></div>
+        <div class="num_f"><div class="num"></div></div>
+        <div class="num_f"><div class="num"></div></div>
+        <div class="num_f"><div class="num"></div></div>
+        <div class="num_f"><div class="num"></div></div>
+        <!-- 表针 -->
+        <div class="needle" id="hNeedle"></div>
+        <div class="needle" id="mNeedle"></div>
+        <div class="needle" id="sNeedle"></div>
+        <!-- 钉子 -->
+        <div id="point"></div>
+    </div>
+</body>
+<script>
+// 1.获取操作元素
+var ns = document.getElementsByClassName('needle'),//表针
+    ss = document.getElementsByClassName('scale'),//刻
+    度
+    num_fs = document.getElementsByClassName('num_f'),
+    nums = document.getElementsByClassName('num');//数字
+// 实现刻度的布局
+for(var i=0;i<ss.length;i++){
+    ss[i].style.transform = 'rotate('+i*6+'deg)';
+}
+for(var i=0;i<nums.length;i++){
+    nums[i].innerHTML = i+1;
+    num_fs[i].style.transform = 'rotate('+(i+1)*30+'deg)';
+    nums[i].style.transform = 'rotate('+(i+1)*(-30)+'deg)';
+}
+
+// 表针旋转
+currentTime();
+setInterval(currentTime,1000);
+
+function currentTime(){
+    // 获取当前系统时间
+    var date = new Date();
+    var h = date.getHours();
+    h>12?h-=12:h;
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+
+    // 计算角度
+    var sd = s*6;
+    var md = m*6 + s/10;//s*(6/60)
+    var hd = h*30 + m/2 + s/120;
+
+    // 设置样式
+    ns[0].style.transform = 'rotate('+hd+'deg)';
+    ns[1].style.transform = 'rotate('+md+'deg)';
+    ns[2].style.transform = 'rotate('+sd+'deg)';
+
+    // for(var i=0;i<ss.length;i++){
+    //     ss[i].style.background = randomColor();
+    //     if(ns[i]){
+    //         ns[i].style.background = randomColor();
+    //     }
+    // }
+
+    point.style.background = randomColor();
+    wrap.style.boxShadow = '5px 5px 160px' + randomColor() + 'inset';
+}
+
+function randomColor(){
+    return 'rgb('+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+')';
+}
+</script>
+</html>

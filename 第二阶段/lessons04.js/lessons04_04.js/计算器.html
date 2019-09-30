@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>计算器</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .calculator {
+        width: 326px;
+        height: 460px;
+        margin: 80px auto;
+        background-color: #368590;
+        border-radius: 5px;
+        box-shadow: 0 2px 15px black;
+        overflow: hidden;
+    }
+
+    .calculator .c_screen {
+        position: relative;
+        width: 326px;
+        height: 110px;
+        background-color: #96a4c2;
+        border-radius: 5px;
+        box-shadow: inherit;
+    }
+
+    .calculator .c_screen>p {
+        position: absolute;
+        top: 50%;
+        margin-top: -28px;
+        width: 236px;
+        text-align: center;
+        word-break: break-all;
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px 45px;
+    }
+
+    .calculator .c_row {
+        margin: 0 23px;
+    }
+
+    button {
+        cursor: pointer;
+        width: 60px;
+        height: 45px;
+        margin: 20px 2px 0;
+        border: 0px;
+        border-radius: 5px;
+        color: #fff;
+        background-color: #2b2f5b;
+        outline: none;
+    }
+
+    button::selection {
+        color: #fff;
+    }
+
+    button:active {
+        box-shadow: 0 0 5px 5px dodgerblue;
+    }
+
+    .c_func_btn {
+        background: linear-gradient(to bottom, rgba(252, 156, 23, 1) 0%, rgba(247, 126, 27, 1) 100%);
+    }
+
+    .d {
+        width: 60px;
+        height: 110px;
+        float: right;
+        position: relative;
+        bottom: 66px;
+        right: 32px;
+    }
+
+    .z {
+        width: 129px;
+        height: 45px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="c_screen">
+            <p></p>
+        </div>
+        <div class="c_btn_wrapper">
+            <div class="c_row">
+                <button class="c_func_btn">/</button>
+                <button class="c_func_btn">*</button>
+                <button class="c_func_btn">CE</button>
+                <button class="c_func_btn">AC</button>
+            </div>
+            <div class="c_row">
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button class="c_func_btn">+</button>
+            </div>
+            <div class="c_row">
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button class="c_func_btn">-</button>
+            </div>
+            <div class="c_row">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+            </div>
+            <button class="c_func_btn d">=</button>
+            <div class="c_row">
+                <button class="z">0</button>
+                <button>.</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+var btnList = document.getElementsByTagName('button');
+var show = document.getElementsByTagName('p')[0];
+var symbolB = false;
+//记录符号
+var symbol = null;
+//记录a值，b值,记录结果,保存计算结果
+var aNum = 0,
+    bNum = 0,
+    result = 0,
+    resultCookic = 0;
+for (var i = 0, len = btnList.length; i < len; i++) {
+    btnList[i].onclick = function() {
+        //结果
+        if (this.innerText == '=') {
+            console.log(aNum, bNum);
+            if (symbol == '+') {
+                addition(aNum, bNum);
+            } else if (symbol == '-') {
+                subtraction(aNum, bNum);
+            } else if (symbol == '*') {
+                multiplication(aNum, bNum);
+            } else if (symbol == '/') {
+                division(aNum, bNum);
+            }
+            console.log(result);
+            resultCookic = result;
+            result = 0;
+            aNum = 0;
+            bNum = 0;
+            symbolB = false;
+        } else {
+            //初始化和归零
+            if (this.innerText == 'AC') {
+                //初始化所有值
+                result = 0;
+                resultCookic = 0;
+                aNum = 0;
+                bNum = 0;
+                show.innerText = "";
+                return;
+            } else if (this.innerText == 'CE') {
+                //初始化所有值
+                result = 0;
+                resultCookic = 0;
+                aNum = 0;
+                bNum = 0;
+                show.innerText = result;
+                return;
+            } else if (this.innerText == '+' ||
+                this.innerText == '-' ||
+                this.innerText == '*' ||
+                this.innerText == '/'
+            ) {
+                //如果点击了符号按钮，那么之后输入的值就是b值
+                //记录符号
+                symbol = this.innerText;
+                show.innerText = symbol;
+                symbolB = true;
+            } else {
+                if (symbolB == false) {
+                    aNum += this.innerText;
+                    aNum = Number(aNum);
+                    console.log(aNum);
+                    show.innerText = aNum;
+                } else {
+                    //如果计算完一次结果，再次点击符号按钮进行计算，就把上一次的计算结果赋值给a
+                    if (aNum == 0) {
+                        aNum = resultCookic;
+                    }
+                    bNum += this.innerText;
+                    bNum = Number(bNum);
+                    console.log(bNum);
+                    show.innerText = bNum;
+                }
+            }
+        }
+    }
+}
+/**
+ * 加法
+ * @param a{number}
+ * @param b{number}
+ */
+function addition(a, b) {
+    result = a + b;
+    show.innerText = result;
+}
+/**
+ * 减法
+ * @param a{number}
+ * @param b{number}
+ */
+function subtraction(a, b) {
+    result = a - b;
+    show.innerText = result;
+}
+/**
+ * 乘法
+ * @param a{number}
+ * @param b{number}
+ */
+function multiplication(a, b) {
+    result = a * b;
+    show.innerText = result;
+}
+/**
+ * 除法
+ * @param a{number}
+ * @param b{number}
+ */
+function division(a, b) {
+    result = a / b;
+    show.innerText = result;
+}
+</script>
+
+</html>

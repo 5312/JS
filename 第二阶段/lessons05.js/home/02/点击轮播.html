@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        #wrap {
+            width: 520px;
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+            /* border: 5px solid; */
+            margin: 50px auto;
+        }
+
+        #box {
+            width: 600%;
+            height: 100%;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            font-size: 0;
+            transform: .5s;
+        }
+
+        img {
+            width: 520px;
+            height: 280px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="box">
+            <img src="素材/11.jpg" alt="">
+            <img src="素材/12.jpg" alt="">
+            <img src="素材/13.jpg" alt="">
+            <img src="素材/14.jpg" alt="">
+            <img src="素材/15.jpg" alt="">
+            <img src="素材/11.jpg" alt="">
+        </div>
+    </div>
+    <input type="button" value="1">
+    <input type="button" value="2">
+    <input type="button" value="3">
+    <input type="button" value="4">
+    <input type="button" value="5">
+    <input type="button" value="上一张">
+    <input type="button" value="下一张">
+</body>
+<script>
+//获取可操作元素
+var box = document.getElementById('box'),
+    wrap = document.getElementById('wrap'),
+    img = document.getElementsByTagName('img')[0],
+    inps = document.getElementsByTagName('input');
+console.log(inps);
+
+var w = wrap.offsetWidth,
+    h = box.offsetHeight;
+console.log(w, h);
+var max = w * 5;
+var x= 0;
+var time1 = setInterval(next, 2000)
+for (var i = 0; i < inps.length - 2; i++) {
+    (function(i) {
+        inps[i].onclick = function() {
+            box.style.left = i*(-w) + 'px';
+            clearInterval(time1)
+            time1 = setInterval(next, 2000)
+        }
+    })(i)
+}
+function next() {
+    box.style.transition = '.5s all';
+    var x = box.offsetLeft - w;
+    if (x < -max) {
+        x = 0;
+    }
+    box.style.left = x + 'px';
+    setTimeout(function() {
+        if (box.offsetLeft == -max) {
+            console.log(-max, box.offsetLeft);
+            box.style.left = 0;
+            box.style.transition = 'none';
+        }
+    }, 1000)
+}
+
+//上一张
+inps[5].onclick = function(){
+    var ws = box.offsetLeft;
+     x = x - w;
+    if(ws == 0){
+        x=max
+    }
+   
+    box.style.left = -x +'px'
+    clearInterval(time1)
+    time1 = setInterval(next, 2000)
+}
+//下一张
+inps[6].onclick = function(){
+    var ws = box.offsetLeft;  
+    x += w; 
+    if(x > max){
+        x=0;
+    }
+    
+    box.style.left = -x +'px'
+    clearInterval(time1)
+    time1 = setInterval(next, 2000)
+}
+</script>
+
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            width: 280px;
+            border: 1px solid;
+            margin: 20px auto;
+        }
+        #res{
+            width: 270px;
+            height: 40px;
+            padding-top: 20px;
+            padding-right: 10px;
+            background: #000;
+            color: #fff;
+            font-size: 30px;
+            text-align: right;
+            line-height: 40px;
+        }
+        .box::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .leftBox,.rightBox{
+            float: left;
+        }
+        .leftBox{
+            width: 210px;
+        }
+        .leftBox>.btn{
+            width: 68px;
+            background: lightgray;
+            height: 48px;
+            border: 1px solid;
+            float: left;
+            text-align: center;
+            line-height: 48px;
+            font-size: 30px;
+        }
+        .rightBox{
+            width: 70px;
+        }
+        .rightBox>.btn{
+            font-size: 30px;
+            height: 38px;
+            width: 68px;
+            text-align: center;
+            line-height: 40px;
+            background: orange;
+            border: 1px solid;
+        }
+        .btn{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!-- 显示区域 -->
+        <div id="res">0</div>
+        <!-- 按钮容器 -->
+        <div class="box">
+            <!-- 数字及归0还有小数点 -->
+            <div class="leftBox">
+                <div class="num btn">7</div>
+                <div class="num btn">8</div>
+                <div class="num btn">9</div>
+                <div class="num btn">4</div>
+                <div class="num btn">5</div>
+                <div class="num btn">6</div>
+                <div class="num btn">1</div>
+                <div class="num btn">2</div>
+                <div class="num btn">3</div>
+                <div class="num btn">0</div>
+                <div class="point btn">.</div>
+                <div class="ac btn">AC</div>
+            </div>
+            <!-- 运算符 -->
+            <div class="rightBox">
+                <div class="symble btn">+</div>
+                <div class="symble btn">-</div>
+                <div class="symble btn">*</div>
+                <div class="symble btn">/</div>
+                <div class="symble btn">=</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+// 1.获取需要操作的元素
+// (1)显示框
+var resBox = document.getElementById('res');
+// (2)数字按钮
+var nums = document.getElementsByClassName('num');
+// (3)获取运算符
+var symbles = document.getElementsByClassName('symble');
+// (4)获取小数点
+var point = document.getElementsByClassName('point')[0];
+// (5)获取归零
+var ac = document.getElementsByClassName('ac')[0];
+
+// 2.根据业务逻辑，声明需要使用的变量，并赋予初始值。
+var sum = 0,//用来记录运算结果，也用于结果的显示
+    firNum = '',//用来记录点击运算符（+、-、*、/）前的数
+    secNum = '',//用来记录点击运算符（+、-、*、/）后的数
+    type = '';//用来记录运算方式（+、-、*、/）
+var lock = false;
+
+// 3.绑定点击事件
+// (1)ac的点击
+ac.onclick = function(){
+    // 数据重置
+    sum = 0;
+    firNum = '';
+    secNum = '';
+    type = '';
+    resBox.innerHTML = sum;
+}
+
+// (2)=的点击  
+symbles[4].onclick = function(){
+    // 对不同情况进行判断
+    if(secNum != ''){//已经完成了两个数以及运算符的输入，此时'='就需要对结果进行计算，否则'='的点击就无意义，什么操作都不做。
+        firNum.indexOf('.')==(firNum.length-1)?firNum+='0':firNum;
+        secNum.indexOf('.')==(secNum.length-1)?secNum+='0':secNum;
+        firNum *= 1;
+        secNum *= 1;
+        // 对运算类型进行判断
+        switch(type){
+            case '+':
+                sum = firNum + secNum;
+                break;
+            case '-':
+                sum = firNum - secNum;
+                break;
+            case '*':
+                sum = firNum * secNum;
+                break;
+            case '/':
+                if(secNum == '0'){//安全判断
+                    sum = '除数不能是0';
+                }else{
+                    sum = firNum / secNum;
+                }
+                break;        
+        }
+        resBox.innerHTML = sum;
+        lock = true;
+    }
+}
+
+// 三个变量的重置，要放在数字的点击事件中
+// 必须在=点击之后
+    
+// (3).的点击
+point.onclick = function(){
+    // 各种情况的判断
+    
+    if(type){//说明正在编辑第二个数
+        if(secNum == ''){//如果尚未输入数字，直接点击.，那么应该显示'0.'
+            resBox.innerHTML = '0.';
+            secNum = '0.';
+        }
+        if(secNum.indexOf('.')==-1){
+            secNum += '.';
+            resBox.innerHTML = secNum;
+        }
+    }else{//说明正在编辑第一个数
+        if(firNum == ''){//如果尚未输入数字，直接点击.，那么应该显示'0.'
+            resBox.innerHTML = '0.';
+            firNum = '0.';
+        }
+        if(firNum.indexOf('.')==-1){//如果之前已经输入过了小数点，那么再输入小数点就不起作用了
+            firNum += '.';
+            resBox.innerHTML = firNum;
+        }
+    }
+}
+
+// 数字的点击
+nums[0].onclick = function(){//7
+
+    if(lock){
+        firNum = '';
+        secNum = '';
+        type = '';
+        lock = false;
+    }
+
+    //判断正在编辑的数是第几个
+    if(type){//2
+        secNum += '7';
+        resBox.innerHTML = secNum;
+    }else{//1
+        firNum += '7';
+        resBox.innerHTML = firNum;
+    }
+}
+nums[1].onclick = function(){//8
+
+    if(lock){
+        firNum = '';
+        secNum = '';
+        type = '';
+        lock = false;
+    }
+    //判断正在编辑的数是第几个
+    if(type){//2
+        secNum += '8';
+        resBox.innerHTML = secNum;
+    }else{//1
+        firNum += '8';
+        resBox.innerHTML = firNum;
+    }
+}
+nums[2].onclick = function(){//9
+    if(lock){
+        firNum = '';
+        secNum = '';
+        type = '';
+        lock = false;
+    }
+    //判断正在编辑的数是第几个
+    if(type){//2
+        secNum += '9';
+        resBox.innerHTML = secNum;
+    }else{//1
+        firNum += '9';
+        resBox.innerHTML = firNum;
+    }
+}
+nums[3].onclick = function(){//4
+    if(lock){
+        firNum = '';
+        secNum = '';
+        type = '';
+        lock = false;
+    }
+    //判断正在编辑的数是第几个
+    if(type){//2
+        secNum += '4';
+        resBox.innerHTML = secNum;
+    }else{//1
+        firNum += '4';
+        resBox.innerHTML = firNum;
+    }
+}
+nums[4].onclick = function(){//5
+    if(lock){
+        firNum = '';
+        secNum = '';
+        type = '';
+        lock = false;
+    }
+    //判断正在编辑的数是第几个
+    if(type){//2
+        secNum += '5';
+        resBox.innerHTML = secNum;
+    }else{//1
+        firNum += '5';
+        resBox.innerHTML = firNum;
+    }
+}
+nums[5].onclick = function(){//6
+    if(lock){
+        firNum = '';
+        secNum = '';
+        type = '';
+        lock = false;
+    }
+    //判断正在编辑的数是第几个
+    if(type){//2
+        secNum += '6';
+        resBox.innerHTML = secNum;
+    }else{//1
+        firNum += '6';
+        resBox.innerHTML = firNum;
+    }
+}
+nums[6].onclick = function(){//1
+    if(lock){
+        firNum = '';
+        secNum = '';
+        type = '';
+        lock = false;
+    }
+    //判断正在编辑的数是第几个
+    if(type){//2
+        secNum += '1';
+        resBox.innerHTML = secNum;
+    }else{//1
+        firNum += '1';
+        resBox.innerHTML = firNum;
+    }
+}
+nums[7].onclick = function(){//2
+    if(lock){
+        firNum = '';
+        secNum = '';
+        type = '';
+        lock = false;
+    }
+    //判断正在编辑的数是第几个
+    if(type){//2
+        secNum += '2';
+        resBox.innerHTML = secNum;
+    }else{//1
+        firNum += '2';
+        resBox.innerHTML = firNum;
+    }
+}
+nums[8].onclick = function(){//3
+    if(lock){
+        firNum = '';
+        secNum = '';
+        type = '';
+        lock = false;
+    }
+    //判断正在编辑的数是第几个
+    if(type){//2
+        secNum += '3';
+        resBox.innerHTML = secNum;
+    }else{//1
+        firNum += '3';
+        resBox.innerHTML = firNum;
+    }
+}
+nums[9].onclick = function(){//0
+    if(lock){
+        firNum = '';
+        secNum = '';
+        type = '';
+        lock = false;
+    }
+    //判断正在编辑的数是第几个
+    if(type){//2
+        if(secNum.indexOf('0')!=0&&secNum!='' || secNum.indexOf('.')!=-1){
+            secNum += '0';
+            resBox.innerHTML = secNum;
+        }else{
+            resBox.innerHTML = '0';
+        }
+        
+    }else{//1
+        if(firNum.indexOf('0')!=0&&secNum!='' || firNum.indexOf('.')!=-1){
+            firNum += '0';
+            resBox.innerHTML = firNum;
+        }else{
+            resBox.innerHTML = '0';
+        }
+    }
+}
+
+// 运算符的点击
+symbles[0].onclick = function(){//+
+    if(lock){
+        lock = false;
+        firNum = sum+'';
+        secNum = '';
+        type = '+';
+    }
+    if(firNum && !secNum){//正在编辑第一个数
+        type = '+';
+    }else if(firNum && secNum){
+        type = '+';
+        sum = firNum*1 + secNum*1;
+        resBox.innerHTML = sum;
+        firNum = sum+'';
+        secNum = '';
+    }
+}
+symbles[1].onclick = function(){//-
+    if(lock){
+        lock = false;
+        firNum = sum+'';
+        secNum = '';
+        type = '-';
+    }
+    if(firNum && !secNum){//正在编辑第一个数
+        type = '-';
+    }else if(firNum && secNum){
+        type = '-';
+        sum = firNum - secNum;
+        resBox.innerHTML = sum;
+        firNum = sum+'';
+        secNum = '';
+    }
+}
+symbles[2].onclick = function(){//*
+    if(lock){
+        lock = false;
+        firNum = sum+'';
+        secNum = '';
+        type = '*';
+    }
+    if(firNum && !secNum){//正在编辑第一个数
+        type = '*';
+    }else if(firNum && secNum){
+        type = '*';
+        sum = firNum * secNum;
+        resBox.innerHTML = sum;
+        firNum = sum+'';
+        secNum = '';
+    }
+}
+symbles[3].onclick = function(){// /
+    if(lock){
+        lock = false;
+        firNum = sum+'';
+        secNum = '';
+        type = '/';
+    }
+    if(firNum && !secNum){//正在编辑第一个数
+        type = '/';
+    }else if(firNum && secNum){
+        type = '/';
+        sum = firNum / secNum;
+        resBox.innerHTML = sum;
+        firNum = sum+'';
+        secNum = '';
+    }
+}
+</script>
+</html>

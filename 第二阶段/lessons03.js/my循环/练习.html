@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+	/**
+	//练习： 计算1-100 所有奇数和
+	// 奇数判断  n%2 = 1
+	var n = 0,
+	    i = 1;
+	
+	for( var i = 0; i<=100;i++ ){
+		//1-100之间的数
+		console.log(i);
+		//判断奇数
+		if(i%2 !=0 ){
+			//奇数相加
+			n +=i;
+		}
+	}
+	document.write(n)
+---------------------------------------------------------------------------------
+	while (i < 101) {
+
+	    //输出1-100之间所有的数
+	    console.log(i);
+	    n += i;
+    	i += 2;
+	
+	}
+	document.write(n);*/
+----------------------------------------------------------------------------------
+//输出 1-100所有能被3整除的数，剩余不能被整除的吧和输出出来
+	var n = 0,
+		s = 0;
+		for( var i = 0; i <= 100;i++){
+
+
+			if(i%3 == 0){//所有能被三整除的数
+					console.log(i)
+				n +=i;
+			}else{
+				s +=i;
+			}
+		}
+		console.log(n)
+		console.log(s)	
+</script>
+
+</html>

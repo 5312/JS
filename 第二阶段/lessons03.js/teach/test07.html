@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+                <meta content="ie=edge" http-equiv="X-UA-Compatible">
+                    <title>
+                        Document
+                    </title>
+                </meta>
+            </meta>
+        </meta>
+    </head>
+    <body>
+        <input id="a" type="text">
+            <select id="type">
+                <option>
+                    +
+                </option>
+                <option>
+                    -
+                </option>
+                <option>
+                    *
+                </option>
+                <option>
+                    /
+                </option>
+            </select>
+            <input id="b" type="text">
+                <input id="btn" type="button" value="计算">
+                </input>
+            </input>
+        </input>
+    </body>
+    <script>
+        // 1.不允许出现字符串拼接的结果；2.不允许出现NaN；3.弹窗显示计算结果。
+    // 1.获取元素
+    //
+    document.getElementById('btn').onclick = function(){
+        // 获取第一个输入框输入的值
+        var a = document.getElementById('a').value*1;
+        var b = document.getElementById('b').value*1;
+        var c = document.getElementById('type').value*1;
+        // 判断计算类型
+        switch(c){
+            case '+':
+                alert(a+b);
+                break;
+            case '-':
+                alert(a-b);
+                break;
+                case '*':
+                    alert(a*b);
+                    break;
+            case '/':
+                if(b!=0){
+                    alert(a/b);
+                }else{
+                    alert('除数不能是0');
+                }
+        }
+    }
+    </script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 10px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 50px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div>+</div>
+    <div>-</div>
+    <div>*</div>
+    <div>/</div>
+</body>
+<script>
+    var ds = document.getElementsByTagName('div');
+    // for(var i=0;i<ds.length;i++){
+    //     ds[i].index = i;
+    //     ds[i].onclick = function(){
+    //         console.log(this.index);
+    //     }
+    // }
+
+    for(var j=0;j<ds.length;j++){
+        (function (q){//形式参数
+            ds[q].onclick = function(){
+                console.log(q);
+            }
+        })(j)//实际参数
+    }
+
+    // 1.为元素添加自定义属性，通过自定义属性来记录循环时元素的下标。
+    // 2.可以使用闭包实现局部变量来保存循环时元素的下标。
+    // 闭包：外层函数A外面调用它内部声明的函数B，并且内部函数B中还使用了外部函数A中声明的局部变量，这样形成的闭合环境称为闭包。
+    // 闭包的作用：闭包用来对变量进行永久存储，或者用来防止变量污染。
+    // 闭包的注意事项：正因为闭包会使变量永久的驻扎在内存中不被销毁，那么必然会造成内存的浪费，所以不要滥用闭包。
+
+    // 有一个变量，作为计数器
+    // function addCount(){
+    //     var count = 0;
+    //     return function (){
+    //         count++;
+    //         console.log(count);
+    //     }
+    // }
+    // count = 100;
+    // var q = addCount();
+    // q();
+    // q();
+    // q();
+
+    // 自调用函数
+    // (function (){
+    //     console.log('11111');
+    // })()
+
+</script>
+</html>

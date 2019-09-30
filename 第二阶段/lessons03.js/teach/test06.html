@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num">
+    <input type="button" id="btn">
+</body>
+<script>
+    document.getElementById('btn').onclick = function(){
+        var num = document.getElementById('num').value;
+
+        num!=0?(num%2==0?(alert('偶数')):(alert('奇数'))):(alert('0既不是奇数，也不是偶数'));
+        
+        // if(num != 0){
+        //     if(num % 2 == 0){
+        //         alert('偶数');
+        //     }else{
+        //         alert('奇数');
+        //     }
+        // }else{
+        //     alert('0既不是奇数，也不是偶数');
+        // }
+    }
+</script>
+</html>

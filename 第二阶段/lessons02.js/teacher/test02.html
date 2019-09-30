@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 假设div初始大小为200px -->
+    <div id="box"></div>
+</body>
+<script>
+    // 1.获取元素
+    var box = document.getElementById('box');
+    // 2.绑定事件
+    // 假设第一次点击放大
+    var count = 0;//用来记录点击次数
+    var isBig = false;//规定了值为false就需要放大，否则缩小
+    box.onclick = function(){
+        // 思路1：判断当前div尺寸来确定应该缩小还是放大
+        // 先获取div当前的宽
+        // var w = box.width;
+        // console.log(w);
+        // if(w == '400px'){
+        //     box.style.width = '100px';
+        //     box.style.height = '100px';
+        // }else{
+        //     box.style.width = '400px';
+        //     box.style.height = '400px';
+        // }
+
+        // 思路2：通过点击次数来判断缩放
+        // count ++;//次数+1
+        // if(count%2 == 0){//偶数，缩小
+        //     box.style.width = '100px';
+        //     box.style.height = '100px';
+        // }else{
+        //     box.style.width = '400px';
+        //     box.style.height = '400px';
+        // } 
+        
+        // switch(count%2){
+        //     case 1:
+        //         box.style.width = '400px';
+        //         box.style.height = '400px';
+        //         break;
+        //     default:
+        //         box.style.width = '100px';
+        //         box.style.height = '100px';
+        //         break;   
+        // }
+
+        // 思路3：通过‘开关’来控制缩放
+        if(isBig){
+            // 缩小
+            box.style.width = '100px';
+            box.style.height = '100px';
+            // isBig = false;
+        }else{
+            // 放大
+            box.style.width = '400px';
+            box.style.height = '400px';
+            // isBig = true;
+        }
+        // 切换开关状态
+        isBig = !isBig;
+    }
+</script>
+</html>

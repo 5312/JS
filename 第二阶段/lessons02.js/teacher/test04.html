@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 闰年定义：四年一润，百年不润，四百年润。
+        var year = 2000;
+        // 判断：
+        if(year%4==0&&year%100!=0 || year%400==0){
+            alert('闰年');
+        }else{
+            alert('平年');
+        }
+    </script>
+</body>
+</html>

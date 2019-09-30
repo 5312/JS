@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 220px;
+            height: 220px;
+            border: 1px solid red;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #box{
+            width: 800%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .btn {
+            position: absolute;
+            bottom: -30px;
+        }
+        input {
+            margin-right: 5px;
+        }
+        img{
+           float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        图片路径：
+            ./home/01/素材/1.jpg
+     -->
+     <div class="wrap">
+         <div id='box'>
+            <img src="./home/01/素材/1.jpg" alt="">
+            <img src="./home/01/素材/2.jpg" alt="">
+            <img src="./home/01/素材/3.jpg" alt="">
+            <img src="./home/01/素材/4.jpg" alt="">
+            <img src="./home/01/素材/5.jpg" alt="">
+            <img src="./home/01/素材/6.jpg" alt="">
+            <img src="./home/01/素材/7.jpg" alt="">
+            <img src="./home/01/素材/8.jpg" alt="">
+        </div>
+     </div>
+     <div class="btn">
+            <input type="button" value="左">
+            <input type="button" value="右">
+            <input type="button" value="开始">
+            <input type="button" value="结束">
+        </div>
+</body>
+<script>
+    var btn = document.getElementsByTagName('input');
+    // var img = document.getElementsByTagName('img');
+    var box = document.getElementById('box');
+    var timer = null, max = 7*220;
+    btn[0].onclick = function() {
+        var l = box.offsetLeft + 220;
+        if(l > 0) {
+            l = -max;
+        }
+        box.style.left = l+'px';
+    }
+    btn[1].onclick = next;
+
+    function next() {
+        var l = box.offsetLeft - 220;
+        if(l < -max) {
+            l = 0;
+        }
+        box.style.left = l+'px';
+    }
+    btn[2].onclick = function() {
+        if(!timer){//timer现在有为true的值吗？
+            timer = setInterval(function(){
+                next();
+            },500)
+        }
+    }
+    btn[3].onclick = function() {
+        clearInterval(timer);
+        timer = null;
+    }
+
+</script>
+</html>

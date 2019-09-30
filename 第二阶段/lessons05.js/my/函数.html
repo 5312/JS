@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="">
+	<title>函数</title>
+	
+</head>
+<body>
+	
+</body>
+<script>
+	//函数:一段可以重复执行的代码块,但是这段代码块不会自动随着脚本的加载自动执行,需要通过触发机制或调用才会被执行
+	//.
+	/*
+		语法:
+		声明函数:
+		function 函数名 (){
+			// 函数体. 重复执行的代码块
+		} 
+
+		//匿名函数
+		function(){
+		//函数体,重复执行的代码块
+		}
+		注意:
+		1.语法规则上声明函数必须要有函数名,所以直接生明函数是会报错的.
+		2.但是匿名函数作为值赋予给其他属性或变量
+
+		调用:
+		1.被动调用:将函数绑定给事件.
+		2.主动调用:函数名();
+		
+		一旦执行到函数调用,那么代码的执行立即跳转到对应函数体执行代码,函数替代码执行完才会接着刚才的代码继续向下执行.
+
+		函数除了函数名和函数体,还可以拥有参数以及返回值
+	 */
+	//声明一个函数,每次调用输出'hello,world'
+// function hello(){
+// console.log('hello world')
+// }
+// hello();
+ /*
+// 1.无参数 ,无返回值
+function sum(){
+	console.log(10+20);
+}
+//2. 有参数 ,无返回值
+function sum2(x,y){
+	console.log(x+y);
+}
+sum2(20,30);
+sum2(40,50);
+
+//3.无参数 ,有返回值
+function sum3(){
+	return 10+20;//函数体内,通过return关键字来对外返回结果.
+}
+var a=sum3();
+console.log(sum3())
+
+//4.有参数,有返回值
+function sum4(x,y){ //形式参数,形参
+	return x+y;  //函数体内的return 就相当于循环中的break,会立即结束函数体代码的执行,也就是说,return下面的函数体代码是不会执行的.
+}
+var s = sum4(1,20);  //实际参数,实参
+
+//声明函数时()里写的都是形式参数,没有具体的值 ,只为了占位用,而调用函数时()里写的叫实际参数,此时函数体内代码块的执行,形式参数会被实际参数所替代.
+*/
+//1.
+// function ran1(){
+// 	alert(Math.floor(Math.random()*100+1))
+// }
+// ran1()
+
+
+// 2.
+// function ran2(x,y){
+// 	alert(Math.floor(Math.random()*(y-x+1)+x))
+// }
+// ran2(20,30)
+
+// 3
+// function ran3(){
+// 	return (Math.floor(Math.random()*100+1));
+// }
+// var r = ran3();
+// console.log(r);
+
+// 4
+// function ran4(x,y){//x表示区间的下限值,y表示区间的上限值并且包含上限值
+// 	return Math.floor(Math.random()*(y-x+1)+x);
+// }
+// var r = ran4(10,30);
+// console.log(r);
+
+
+function conter(a,b,c){
+		// if(a>b && a>c){
+		// 	if(b>c){
+		// 		return b;
+		// 	}else{
+		// 		return c;
+		// 	}
+		// }else if(b>a&& b>c){
+		// 	if(a>c){
+		// 		return a;
+		// 	}else{
+		// 		return c;
+		// 	}
+		// }else if(c>a&& c>b){
+		// 	if(a>b){
+		// 		return a;
+		// 	}else{
+		// 		return b;
+		// 	}
+		// }
+	//方法二
+	var min = Math.min(x,y,z);
+	var max = Math.max(x,y,z);
+	return x+y+z-min-max;
+}
+console.log(conter(10,15,20))
+
+</script>
+</html>

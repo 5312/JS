@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串操作方法</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str1 = 'hello,word',
+		str2 = ' 你好 世界';
+	//字符串操作方法
+	//1. length属性:用来获取字符串长度(字符串中字符的数量)
+	// 在js 中 中文字符和英文字符占的长度是一样的.
+	//字符串和数组比较类似,所以也可以使用循环来遍历字符串,挨个获得字符串的每个字符.
+// 	for (var i = 0; i<str.length; i++) {
+			
+// }
+// 
+// //2. 字符串拼接:concat()
+ var newStr = str1.concat(str2);
+ console.log(newStr);
+
+ //3 . indexOf():判断字符是否在字符串中,如果在返回下标,如果不在返回 -1.
+ //
+ //
+ //4 . lastIndexOf(): 是从字符串末尾向前查找,是否存在.
+ 
+ // 5 . charAt():根据给出的下标返回指定字符串对应位置的字符.
+  console.log(str1.charAt(2));
+
+  // 6 . replace(): 将字符串中的指定字符替换成其他字符,
+  // 只能替换第一次存的字符
+ var newStr =  str.replace('o','O');
+ console.log(newStr);
+ //字符串是基础数据类型,值是定值,所以没有删除字符串的方法,如果需要删除字符,只能通过替换为空字符串的方式来实现
+ //
+ //7.substring(index,index):截取字符串.不包含结束位置上的字符
+ //8.substr(index,length): 截取字符串
+ ////共同点:第二个参数都是可选参数,如果不写,那么默认截取到字符串结束.
+ 
+ //9 .split():字符串转数组
+ var arr = str1.split('-');
+
+ //10 . toUpperCase():将指定字符串中所有的字符转化成大写
+ //11 . toLowerCase():将指定字符串中所有的字符转化成小写
+ console.log(str1.toUpperCase()); 
+
+ </script>

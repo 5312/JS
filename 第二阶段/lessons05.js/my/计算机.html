@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>计算器</title>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .calculator {
+        width: 326px;
+        height: 460px;
+        margin: 80px auto;
+        background-color: #368590;
+        border-radius: 5px;
+        box-shadow: 0 2px 15px black;
+        overflow: hidden;
+    }
+
+    .calculator .c_screen {
+        position: relative;
+        width: 326px;
+        height: 110px;
+        background-color: #96a4c2;
+        border-radius: 5px;
+        box-shadow: inherit;
+    }
+
+    .calculator .c_screen>p {
+        position: absolute;
+        top: 50%;
+        margin-top: -28px;
+        width: 236px;
+        text-align: center;
+        word-break: break-all;
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px 45px;
+    }
+
+    .calculator .c_row {
+        margin: 0 23px;
+    }
+
+    input {
+        cursor: pointer;
+        width: 60px;
+        height: 45px;
+        margin: 20px 2px 0;
+        border: 0px;
+        border-radius: 5px;
+        color: #fff;
+        background-color: #2b2f5b;
+        outline: none;
+    }
+
+    input::selection {
+        color: #fff;
+    }
+
+    input:active {
+        box-shadow: 0 0 5px 5px dodgerblue;
+    }
+
+    .c_func_btn {
+        background: linear-gradient(to bottom, rgba(252, 156, 23, 1) 0%, rgba(247, 126, 27, 1) 100%);
+    }
+
+    .d {
+        width: 60px;
+        height: 110px;
+        float: right;
+        position: relative;
+        bottom: 66px;
+        right: 32px;
+    }
+
+    .z {
+        width: 129px;
+        height: 45px;
+    }
+    input[type=text]{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(225,225,225,0);
+        font-size:  40px;
+        text-align: right;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="c_screen">
+            <input type="text" disabled=disabled;>
+        </div>
+        <div class="c_btn_wrapper">
+            <div class="c_row">
+                <input type="button" class="c_func_btn" value="/"></button>
+                <input type="button" class="c_func_btn" value="*"></button>
+                <input type="button" class="c_func_btn" value="CE"></button>
+                <input type="button" class="c_func_btn" value="AC"></button>
+            </div>
+            <div class="c_row">
+                <input type="button" value="7"></button>
+                <input type="button" value="8"></button>
+                <input type="button" value="9"></button>
+                <input type="button" class="c_func_btn" value="+"></button>
+            </div>
+            <div class="c_row">
+                <input type="button" value="4"></button>
+                <input type="button" value="5"></button>
+                <input type="button" value="6"></button>
+                <input type="button" class="c_func_btn" value="-"></button>
+            </div>
+            <div class="c_row">
+                <input type="button" value="1"></button>
+                <input type="button" value="2"></button>
+                <input type="button" value="3"></button>
+            </div>
+            <input type="button" class="c_func_btn d" value="="></button>
+            <div class="c_row">
+                <input type="button" class="z" value="0"></button>
+                <input type="button" value="."></button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+//获取按钮元素
+var btnList = document.getElementsByTagName('input');
+
+//获取显示窗口
+var show = document.getElementsByTagName('input')[0];
+// console.log(btnList[0])
+//前面的数
+var aNum = '';
+//运算符号
+var type = '';
+//后面的数
+var bNum = '';
+//计算结果
+var result = '';
+//清楚数据的开关
+var lock = false;
+for (var i = 0; i < btnList.length; i++) { //遍历按钮数组
+    // console.log(btnList[i].value)
+    // console.log(typeof(btnList[i].value))
+    btnList[i].onclick = function() {
+        //AC按钮
+        if (this.value == 'AC') {
+            //清空
+            aNum = '';
+            bNum = '';
+            type = '';
+            result = '';
+            show.value = '';
+            console.log(this.value)
+        }
+        // =  在输入=的情况下判断
+        if (this.value == '=') {
+            if (bNum != '') { // 符号后的数字不为空的情况下=运算否则什么都不做
+                //判断运算类型
+                aNum *= 1;
+                bNum *= 1;
+                switch (type) {
+                    case '+':
+                        result = aNum + bNum;
+                        break;
+                    case '-':
+                        result = aNum - bNum;
+                        break;
+                    case '*':
+                        result = aNum * bNum;
+                        break;
+                    case '/':
+                        if (bNum == '0') { //安全判断
+                            show.value = '除数不能为零'
+                        } else {
+                            result = aNum / bNum;
+                        }
+                        break;
+                }
+                show.value = result;
+                lock = true;
+            }
+        }
+        //当前点击的数是 数字
+        if (this.value == '1' || this.value == '2' || this.value == '3' || this.value == '4' || this.value == '5' || this.value == '6' || this.value == '7' || this.value == '8' || this.value == '9' || this.value == '0') {
+            //判断开关状态 是否清楚数据
+            if (lock) {
+                //清空
+                aNum = '';
+                bNum = '';
+                type = '';
+                lock = false;
+            }
+            //判断输入的数是 符号前还是符号后
+            if (type) { // bNum
+                bNum += this.value;
+                show.value = bNum;
+            } else { //aNum
+                aNum += this.value;
+                show.value = aNum;
+                console.log(this.value)
+            }
+        }
+        //当前点击的 是 符号
+        if (this.value == '+') {
+            type = '+';
+            addition(aNum, bNum);
+        }
+        if (this.value == '-') {
+            type = '-';
+            subtraction(aNum, bNum);
+        }
+        if (this.value == '*') {
+            type = '*';
+            multiplication(aNum, bNum);
+        }
+        if (this.value == '/') {
+            type = '/';
+            division(aNum, bNum);
+        }
+    }
+
+
+}
+/**
+ * 加法
+ * @param a{number}
+ * @param b{number}
+ */
+function addition(a, b) {
+    result = a*1 + b*1;
+    show.value = result;
+    aNum = result + '';
+    bNum = '';
+}
+/**
+ * 减法
+ * @param a{number}
+ * @param b{number}
+ */
+function subtraction(a, b) {
+    result = a - b;
+    show.value = result;
+}
+/**
+ * 乘法
+ * @param a{number}
+ * @param b{number}
+ */
+function multiplication(a, b) {
+    result = a * b;
+    show.value = result;
+}
+/**
+ * 除法
+ * @param a{number}
+ * @param b{number}
+ */
+function division(a, b) {
+    result = a / b;
+    show.value = result;
+}
+</script>
+
+</html>

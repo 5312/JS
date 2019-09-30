@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>js</title>
+	<!-- 1.一般写一些功能性js代码，不直接对文档中的标签进行操作的js代码 -->
+	<script></script>
+
+</head>
+<body>
+	<!-- 2，一般情况都会将script标签写在其他标签之后，确保标签先加载后操作 -->
+	<script></script>
+	<!-- 
+		javascript是浏览器内置的脚本语言，后面简称js，执行依赖浏览器引擎。现在主流浏览器都到了v8引擎。
+
+		JavaScript与java完全没有关系。
+		
+		HTML + CSS + JS
+		JS: ES +DOM + BOM
+
+		ECMAScript:是js语言的规范，当前学习版本ES5，后面会学习es6
+
+		DOM: document object model 文档对象模型
+
+		BOM：Browser Object Model 浏览器对象模型
+	 -->
+
+
+<!--引入方式：
+	 1.行间 ,必须依赖标签的行间属性，大多是事件属性
+	 2.内部引入：
+		script标签内编写js代码：
+	 	（1）head标签内
+	 	（2）body标签内
+	 	（3）body标签后。html标签内
+
+	3.外部引入：
+		通过创建.js文件编写js 代码，使用script标签的src属性将外部js文件引入当前文档
+	  -->
+</body>
+<!-- 3. -->
+<script>
+	//单行注释，快捷键 ctrl+/ 
+	/*
+	 多行注释
+	 */
+	//一般学习一门新语言，都是从hello ，world开始
+	//
+	//js 中的输出语句
+	//1.文档输出，会将指定的内容直接输出到HTML文档上。
+	//window,document 都是浏览器引擎提供的内置对象（包含了浏览器窗口和文档相关信息以及操作方法）
+	//document 对象调用自己的write（）方法
+	//
+	//
+	document.write("hello,world!");
+	document.write("<h1>'hellow,world'</h1>");
+	//注意
+	//
+	//
+	//2.控制台输出，用于代码调试
+	console.log('hello world');
+
+	//3.提示窗输出，可以用于代码调试，更多用于对用户的信息提醒。
+	alert('hello world');
+	//js 中提示窗优先级非常高，当提示窗出现在窗口时，会先将脚本暂时挂起，停止运行。
+	//
+	//
+	//
+	//
+	//JS只做两件事
+	//处理交互逻辑
+	//2.渲染数据
+	//
+	//1.什么是变量？
+	//变量就是数据的容器，用于存储数据的。
+	//js中创建（声明）变量使用关键字var
+	//
+	var number = 20 ;
+	var message = 'hello world';
+	//控制台输出变量的值
+	//
+	console.log(number,message);
+
+	/*
+		变量的命名规则：
+		1，变量名只能包含数字，字母，_ 还有 $.
+		2.不能以数字开头。
+		3.不能以系统关键字或保留字命名。例如class 、name 。new、var 等。
+		4，js 的变量名明确区分大小写。
+
+		命名规范：
+		1.驼峰命名
+		2.见名知意
+	 */
+	
+	//数据类型：
+	//1，string ：字符串类型，将文本（中文和英文）包裹在引号内。单引号或双引号都可以，但是要成对出现。
+	//
+	var a = '他说:"今天天气不错！"'
+	console.log(a);
+	//字符串嵌套的时候。单引号可以嵌套双引号，双引号也可以包裹单引号，但是同类型引号不能嵌套。
+	
+
+	//2.number:数字类型 ，用来表示数字。不区分整数还是小数，统统都属于number。
+	//
+	var g = 9.8;
+	var pi = 3.14;
+	// 十进制于二进制之间的相互转化
+	// 1.十进制  --> 二进制 ：不断除二找余数，将余数倒序连接
+	//77  -> 01001101
+	//2.二进制 --> 十进制 ：从低位成2 的0 递增累加
+	//
+	//01001101  -> 1*1 + 0*2 + 1*4 +1*8 +0 + 0+ 1*64  ---> 1+4+8+64 -> 77
+	
+
+	// 3.boolean:布尔类型，通常用于条件的判断，它的值只有两个 true 和false
+	// 
+	var b = true;
+
+	//4.undefined:未定义类型，只有一个值就是
+	//
+	//undefined，当变量只做了声明，并没有赋值的时候，js引擎会自动为此变量赋值为undefined
+	//
+	var c;
+	console.log(c);
+
+
+	//上面四种数据类型称为基础数据类型
+	//5.object:对象类型（引用数据类型）
+	
+	var d = {
+		name:'汉宁辉',
+		sex:'男'
+	}
+	//object类型下还包含一下子类型：
+	//1.array数组
+	//2，null空
+	
+	//如何查看一个变量的数据类型？
+	//typeof:得到全小写的类型字符串
+	console.log(typeof d);
+</script>
+
+	
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    .wrap {
+        width: 700px;
+        margin: 0 auto;
+        padding-top: 30px;
+        position: relative;
+        font-size: 0;
+    }
+
+    button {
+        width: 100px;
+        font-size: 30px;
+        border: none;
+        outline: none;
+        background: #fff;
+        /*border: 1px solid;*/
+    }
+
+    #rectangle {
+        width: 100px;
+        height: 10px;
+        background: #ccc;
+        font-size: 0;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        transition: 0.5s;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <button>老</button>
+        <button>坛</button>
+        <button>酸</button>
+        <button>菜</button>
+        <button>面</button>
+        <div id="rectangle"> 0</div>
+    </div>
+</body>
+<script>
+var btn = document.getElementsByTagName('button');
+var rec = document.getElementById('rectangle');
+var w = rec.offsetWidth;
+var timer = null;
+
+for (var i = 0; i < btn.length; i++) {
+    (function(i) {
+        btn[i].onclick = function() {
+/**
+ * [r description]
+ * @type {[type]}
+ */
+            var r = Math.floor(Math.random() * 255 + 1),
+                g = Math.floor(Math.random() * 255 + 1),
+                b = Math.floor(Math.random() * 255 + 1);
+            btn[i].style.color = 'rgb(' + r + ',' + g + ',' + b + ')';
+
+
+            var ws = rec.offsetLeft ;
+            var s = w * i;
+            if (s >= ws) {
+
+                console.log(r, g, b)
+                s = w * i + 40;
+                rec.style.left = s + 'px';
+              timer =   setTimeout(function() {
+                    s = s - 40;
+                    rec.style.left = s + 'px';
+                }, 500)
+            } else {
+
+                s = w * i - 40;
+                rec.style.left = s + 'px';
+              timer =   setTimeout(function() {
+                    s = s + 40;
+                    rec.style.left = s + 'px';
+                }, 500)
+            }
+
+
+        }
+
+    })(i)
+}
+</script>
+
+</html>

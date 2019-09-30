@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="nub1">
+	<input type="text" id="nub2">
+	<input type="text" id="nub3">
+	<input type="button" value="比较大小" id="btn">
+</body>
+<script>
+	//获取数字
+	var num1 = document.getElementById('nub1');
+	var num2 = document.getElementById('nub2');
+	var num3 = document.getElementById('nub3');
+	var btn = document.getElementById('btn');
+	//绑定事件
+	btn.onclick = function(){
+		//获取输入值
+		//假设nub1 最大
+		var max = nub1;
+		var a = nub1.value *1,
+			b = nub2.value *1,
+			c = nub3.value *1;
+		//思路一
+		//比较大小
+		if (a > b){
+			max = a
+		}
+		else{
+			max = b
+		}
+
+		if (max > c){
+			alert(max)
+		}else{
+			alert(c)
+		}
+		
+
+		//思路二
+		// if(a>b){
+		// 	if(a>c){
+		// 		//只能说明b一定不是最大
+		// 		alert(a);
+		// 	}else{
+		// 		alert(c)
+		// 	}
+
+		// }else{
+		// 	//只能说明a一定不是最大
+		// 	if(b>c){
+		// 		alert(b);
+		// 	}else{
+		// 		alert(c)
+		// 	}
+		// }
+	}
+</script>
+</html>

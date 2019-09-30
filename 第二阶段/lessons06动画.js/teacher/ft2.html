@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width: 800px;
+            height: 500px;
+            border: 5px solid #000;
+            position: relative;
+            margin: 0 auto;
+        }
+        .ball{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="ball"></div>
+    </div>
+</body>
+<script>
+var wrap = document.getElementById('wrap'),
+    ball = document.getElementsByClassName('ball')[0];
+// 思路2：通过定义变量记录运动方向，在极端值改变运动方向
+var max = wrap.clientWidth - ball.offsetWidth, min = 0;
+var timer = null;  //安全判断,点击次数
+var dir = true;
+wrap.onclick = function(){
+    this.onclick = null;
+    timer = setInterval(function(){
+        var s = ball.offsetLeft;  //小球的偏移量
+
+        if(dir){  //向左
+            s += 3;
+        }else{
+            s -= 3;
+        }
+        if(s >= max){ //向右
+            s = max;
+            dir = !dir;
+        }
+        if(s <= min){
+            s = min;
+            dir = !dir;
+        }
+        ball.style.left = s + 'px';  
+    },20)
+}
+
+</script>
+</html>

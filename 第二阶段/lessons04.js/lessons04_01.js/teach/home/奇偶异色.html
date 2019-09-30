@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>奇偶异色</title>
+	<style>
+		/*li{
+			width: 100px;
+			height:100px;
+		}*/
+	</style>
+</head>
+<body>
+	<ul id="oul"></ul>
+</body>
+<script>
+	//获取ul
+	var oUl = document.getElementById('oul')
+	for(var i =0;i<10;i++){
+		//创建ul子集元素li
+		var oLi = document.createElement('li');
+		oUl.appendChild(oLi);
+		oLi.style.background='red';
+		if(i%2!=0){
+			oLi.style.background='yellow';
+		}
+		
+			
+	
+	}
+</script>
+</html>
