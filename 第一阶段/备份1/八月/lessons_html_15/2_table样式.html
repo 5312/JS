@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表格基本样式</title>
+
+</head>
+<body>
+    <table>
+        <tr>
+            <th>语文</th>
+            <th>数学</th>
+            <th>英语</th>
+        </tr>
+        <tr>
+            <td>90</td>
+            <td>80</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>周一</td>
+            <td>周二</td>
+            <td>周三</td>
+        </tr>
+    </table>
+    <!-- 
+        table样式设置问题
+        1 table标签本身是一个display：table标签
+        特点与block标签基本一致，拥有块级标签，居中，独占一行，支持所有css属性，唯一的区别在于
+        table在不设置宽高尺寸时，靠内容撑开
+       2 tr 标签：盒模型只有内容，没有padding ，margin
+        tr 不能设置padding和margin。只能设置height，width
+        但一般情况下，tr 只用来表示一行，不做样式设置。
+        3 th ，td 标签：盒模型没有margin ：意味着，th ，td 不能设置
+        margin ，要想设置单元格之间距离，必须通过table标签的
+        行间属性 cellspacing ="值"来完成
+        4 table在设置样式时，有两种设置思路
+        a：给定父级table 宽度尺寸，首先，表格中的行列大小会根据内容
+        大小，进行自适应平分。然后在内部按照从左到右的方式
+         给每一个给定宽度，但是至少要留一列宽度不设置，靠内容
+         撑开并且自适应
+        b：table 宽度尺寸不设置，完全靠内部的th ，td 来撑开整个表格的大小。
+        5：表格最大特点就是行列对齐，因此设置表格的一行高度，只需要一个单元格
+        设置高度即可。设置表格一列宽度，只需要一个单元格设置宽度即可。
+        6：表中的常用位置样式设置
+            水平方向：text-align：设置内容的水平排列方式，仅对行级元素有效
+                    left ，center ，right
+            垂直方向：vertical-align：设置内容的垂直排列方式：
+                    top；middle；bottom;
+     -->
+</body>
+</html>

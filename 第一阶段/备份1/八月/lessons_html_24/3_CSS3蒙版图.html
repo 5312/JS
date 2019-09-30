@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            width: 500px;
+            /* 蒙版背景图 */
+            -webkit-mask-image: url(images/apple.png);
+            -webkit-mask-repeat: no-repeat;
+        }
+        /* 
+        蒙版图具有固定的格式。蒙版图属性的使用方法，与背景图的使用方法一致，目前
+        蒙版图只支持-webkit内核浏览器
+         */
+    </style>
+</head>
+
+<body>
+    <img src="images/main.jpg" alt="">
+</body>
+
+</html>

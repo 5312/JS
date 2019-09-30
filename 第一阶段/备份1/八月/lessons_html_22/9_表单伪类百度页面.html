@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>百度一下</title>
+    <style>
+        input {
+            outline: none;
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .wrap {
+            width: 540px;
+            margin: 0 auto;
+        }
+        
+        input {
+            box-sizing: border-box;
+            border: 1px solid #333;
+        }
+        
+        input[type=submit] {
+            background: blue;
+            width: 30%;
+            height: 30px;
+        }
+        
+        input[type=text] {
+            width: 70%;
+            height: 30px;
+        }
+        
+        .hidden {
+            display: none;
+            width: 70%;
+            border: 1px solid #999;
+        }
+        
+        input[type=text]:focus+input[type=submit]+.hidden {
+            display: block;
+        }
+        
+        .hidden>div:hover {
+            background: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <img src="bd_logo1.png" alt="">
+        <input type="text" name="" id=""><input type="submit" value="百度一下">
+        <div class="hidden">
+            <div>网易云音乐</div>
+            <div>魔兽世界</div>
+            <div>蔡徐坤</div>
+            <div>唱，跳，rap ，篮球</div>
+        </div>
+    </div>
+</body>
+
+</html>

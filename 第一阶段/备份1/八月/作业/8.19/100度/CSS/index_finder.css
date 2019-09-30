@@ -1,0 +1,130 @@
+.main .finder {
+	width: 1000px;
+	height: 160px;
+	margin-top: 40px;
+	border: 2px solid #ececec;
+	border-radius: 10px;
+	margin-left: 10px;
+	margin: 0 auto;
+	position: relative;
+}
+.main .finder .content1 {
+	width: 996px;
+	height: 60px;
+	border-radius: 7px;
+	margin-top: 22px;
+	padding-top: 30px;
+	background-color: #de2104;
+	margin-bottom: 12px;
+	border: 2px solid #c80000;
+	position: absolute;
+	z-index: 10;
+}
+.main .finder .content1 .p3 {
+	width: 285px;
+	height: 12px;
+	color: #f1f2f2;
+	margin-bottom: 5px;
+	margin-left: 770px;
+
+}
+.main .finder .content2 {
+	margin-left: 310px;
+	margin-top: 130px;
+}
+.main .finder .content2 .s1 {
+	color: #d77271;
+}
+.main .finder .content2 .s2 {
+	color: #b2b1b2;
+}
+.main .finder .img1 {
+	height: 160px;
+	margin-left: 40px;
+	position: absolute;
+	top: 0px;
+	z-index: 20;
+}
+.main .finder .content3 {
+	width: 76px;
+	height: 40px;
+	color: #454545;
+	border: 2px solid #f9ddd2;
+	font-size: 1.2em;
+	border-bottom-width: 0;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+	text-align: center;
+	line-height: 40px;
+	background-color: white;
+}
+.main .finder .d1 {
+	position: absolute;
+	top: -18px;
+	left: 290px;
+	z-index: 1;
+}
+.main .finder .d2 {
+	position: absolute;
+	top: -18px;
+	left: 370px;
+	z-index: 1;
+}
+.main .finder .d3 {
+	position: absolute;
+	top: -18px;
+	left: 450px;
+	z-index: 1;
+}
+.main .finder .d4 {
+	position: absolute;
+	top: -18px;
+	left: 530px;
+	z-index: 1;
+}
+.main .finder .d5 {
+	position: absolute;
+	top: -18px;
+	left: 610px;
+	z-index: 1;
+}
+.main .content3:hover {
+	color: white;
+	background-color: #de2104;
+	border-color: #c80000;
+	z-index: 11;
+	border-bottom-color: #de2104;
+}
+
+.main .finder .content1 .form_place {
+	position: absolute;
+	left: 290px;
+}
+.main .finder .content1 .form_place .in1 {
+	height: 23px;
+	width: 400px;
+	border-radius: 5px;
+	color: black;
+}
+.main .finder .content1 .form_place .in2 {
+	height: 23px;
+	width: 58px;
+	font-weight: 900;
+	background-color: white;
+	border-radius: 10px;
+	margin-left: 5px;
+	padding-left: 10px;
+}
+.main .finder .content1 .pic1 {
+	width: 17px;
+	height: 17px;
+	position: absolute;
+	top: 33px;
+	left: 702px;
+}
+
+
+
+
+
+

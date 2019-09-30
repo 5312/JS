@@ -1,0 +1,70 @@
+<!DOCTYPE html> <html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>过度</title>
+    <style>
+        .box {
+            width: 150px;
+            height: 150px;
+            background: red;
+            /* 过度属性
+                只有数值类型的样式属性可以响应过度效果
+             */
+            transition-property: all;
+            /* 简写属性 
+                transition:过度属性 过度时间 延时时间 时间曲线
+                IE9 及以下不支持
+            */
+            transition: all 20s 1s linear;
+            transition: 1s;
+            /* 过度时间控制 */
+            transition-duration: 1s;
+            /* 过度时间曲线
+                时间曲线控制的是过度的速度
+                本质是通过内赛尔曲线设置速度，速度为贝塞尔曲线斜率
+                cublic-bezier(控制点 1x 控制点1y，控制点2x ，控制点2y）;
+                有一些特殊值
+                linear：匀速
+                ease-in ：加速
+                ease-out ：减速
+                ease-in-out;先加速，后减速
+                step(n):阶跃过度
+                step-end ：先将过度时间消耗完，在直接到第二个状态
+                step-start 直接到第二个样式状态，然后在将过度时间消耗完
+             */
+            transition-timing-function: ;
+            /* 过度延迟时间设置 
+                主要用来控制多个和=盒子同时响应过度时的先后顺序
+                盒子1 过度时间1s 延时 2s
+                盒子2 过度时间2s 延时3s
+                盒 子3 过度时间4s 延时 5s
+            */
+            transition-delay: 1s;
+        }
+        
+        .box:hover {
+            width: 600px;
+        }
+        
+        .cell {
+            width: 100px;
+        }
+        /* 
+        
+         */
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <div class="wrap">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+    </div>
+</body>
+
+</html>1

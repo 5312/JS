@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            /* 最小宽度 */
+            min-width: 500px;
+            /* 最大宽度 */
+            max-width: 1000px;
+         }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <!-- 
+            流式布局;就是讲原来网页中 的width方向的固定像素单位改成百分比布局，让界面能够
+            随着浏览器视窗的大小，进行等比例的缩放。
+            一般配合：max-width最大缩放宽度，超过最大宽度比例失效
+                    min-width 最小缩放宽度，超过最小宽度比例失效
+                缺点：快速的等比缩放，导致小屏幕尺寸下的网页内容变的过小，
+                影响用户体验。
+         -->
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+    </div>
+</body>
+</html>

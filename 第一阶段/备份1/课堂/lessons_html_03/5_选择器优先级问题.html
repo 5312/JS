@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选择器优先级问题</title>
+    <style>
+        #box1{
+            background: red;
+        }
+        .box{
+            background: blue;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+     /* 
+            三大基本选择器
+            标签、class、id 都是通过特殊字符
+            在样式表中选中标签，设置样式
+            在优先级上
+            标签 < class < id
+            优先级高的样式会覆盖优先级低的样式
+            如果优先级一致，由于样式表是从上到下
+            执行，因此，样式表中后面选择器中的样式
+            会叠加前面选择器中的样式
+
+            由于ID选择器优先级最高，导致一些交互性的
+            选择器无法生效，因此前端规范要求，在设置
+            标签样式时，只使用class和标签选择器，id
+            选择器不用来设置样式，一般用在js中。
+
+            选择器优先级判断依据：选择越准确，优先级越高
+            
+     
+     
+     
+     
+     
+      */
+    
+    </style>
+</head>
+<body>
+    <div style="background-color: saddlebrown" class="box" id="box1"></div>
+</body>
+</html>

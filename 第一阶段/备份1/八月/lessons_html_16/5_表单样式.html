@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单样式</title>
+    <style>
+        form{
+            border: 1px solid red;
+            height: 400px;
+        }
+        .text{
+            width: 200px;
+            height: 50px;
+            /* 外轮廓 */
+            outline: none;
+        }
+        .area{
+            width: 200px;
+            height: 100px;
+            vertical-align: top;
+            /*初始化 *//*背景色，边框，*/
+            resize: both;  
+            overflow: hidden;
+            
+        }
+      /* :checked伪类。表示表单标签被点击选择时，选中该标签 */
+      input:checked+.box{
+          background: red;
+      }
+    </style>
+</head>
+<body>
+    <form action="">
+        <input type="text">
+        <textarea class="area" name="" id="" cols="30" rows="10"></textarea>
+
+        <input type="radio" name="" id="">
+
+    </form>
+    <!-- 
+        表单标签样式初始化：
+        1.input text ：outline-none 
+                        border:1px solid #ccc;
+        2.textarea : resize none;
+
+        3 .input :button
+                 submit :background
+                        border
+        4 : select ； background 
+                        border
+        5； radio，CheckBox ：dispaly ;none
+                                与label 标签配合
+         
+        
+    
+    
+    
+    
+    -->
+
+</body>
+</html>

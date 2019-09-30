@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h1,p,body{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            line-height: 1.5;
+        }
+        .wrap{
+            width: 500px;
+            border:1px solid red;
+            margin: 100px auto;
+            position: relative;
+        }
+        .wrap>img{
+            width: 100%;
+            display: block;
+        }
+        .mask{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background:rgba(0,0,0,0.5);
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        .text{
+            position: absolute;
+            border:1px solid blue;
+            /* width: 290px; */
+            height: 74px;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            color: white;
+            z-index: 11;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <img src="img/1.jpg" alt="">
+        <div class="mask"></div>
+        <div class="text">
+            <h1>哈哥还是人类的朋友</h1>
+            <p>嘿嘿</p>
+        </div>
+    </div>
+</body>
+</html>

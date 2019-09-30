@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        .wrap{
+            width: 500px;
+            height: 500px;
+            border:1px solid red;
+            font-size: 0;
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .box2{
+            width: 250px;
+            height: 200px;
+            background-color: blue;
+        }
+        .box1,.box2{
+            display: inline-block;
+            vertical-align: top;
+            font-size: 14px;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+            浮动布局所解决的问题
+            浮动解决的是布局中，盒子同行排列的问题，可以快速让所有盒子同行排列
+            ，并且顶对齐。没有 间隙问题。
+            相比与display：inline-block 的方式，代码结构更加简单。
+
+
+
+
+     -->
+    <div class="wrap">
+        <div class="box1">1<br>11</div>
+        <div class="box2">2</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         body{line-height: 1.5}
+        .box{
+            display: inline-block;
+            border:1px solid red;
+            /* 文字行高属性:UI设计规范 1.5-2 */
+            
+            font-size: 50px;
+        }
+        .box2{
+            border:1px solid red;
+            line-height: 40px;
+        }
+        /* 
+            文字在浏览器中，高度方向的大小
+            由字体大小和所占的行高共同决定
+
+            在不设置行高时，不同浏览器上的默认
+            行高大小不一样，往造成浏览器高度方向
+            不兼容，因此在布局时，要统一设置明确
+            的行高。保证各个浏览器高度方向样式一
+            致
+
+            line-height:固定像素／当前盒子字体大小整倍数
+            一般不设置固定像素。
+
+            在使用时，利用继承特性，将line-height设置
+            给body／html保证文档中的所有盒子都有统一的
+            行高设置
+
+            UI设计规范要求，行高一般在1.5-2倍字体大小之间
+
+        
+        
+        
+        
+         */
+    </style>
+</head>
+<body>
+    <div class="box">
+        嘿嘿
+    </div>
+    <div class="box2">
+        呵呵
+    </div>
+</body>
+</html>

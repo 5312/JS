@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	html,body{
+		height: 100%;
+	}
+	body{
+		perspective: 1000px;
+		background: #0A0A0A;
+	}
+	.wrap{
+		width: 200px;
+		height: 200px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -100px;
+		margin-top: -100px;
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+		/*-webkit-transform: rotateZ(180deg);*/
+		/*transform:;*/
+		-webkit-transform: rotateY(0deg) rotateZ(45deg) rotateX(45deg);
+		transform: rotateY(0deg) rotateZ(45deg) rotateX(45deg);
+		-webkit-transition: all 50000s;
+		transition: all 50000s;
+		transition-timing-function: linear;		
+		/*-webkit-transform:  rotateY(45deg);
+		transform:  rotateY(45deg);*/
+	}
+	img{
+		width: 200px;
+		height: 200px;
+		opacity: 0.7;
+		border-radius: 50px;
+	}
+	.wrap:hover{
+		-webkit-transform: rotateY(-1000000deg) rotateZ(45deg) rotateX(45deg);
+		transform: rotateY(-1000000deg) rotateZ(45deg) rotateX(45deg);
+	}
+	.wrap div{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 200px;
+		height: 200px;
+		border-radius: 50px;
+		box-shadow: inset 10px 10px 200px yellow, 0 0 150px #6F6;
+	}
+	.wrap div{
+		-webkit-transform: rotateY(0deg) translate3d(0, 0, 100px);
+		transform: rotateY(0deg) translate3d(0, 0, 100px);
+	}
+	.wrap div:nth-child(2){
+		background: #000;
+		-webkit-transform: rotateY(90deg) translate3d(0, 0, 100px);
+		transform: rotateY(90deg) translate3d(0, 0, 100px);
+	}
+	.wrap div:nth-child(3){
+		background: pink;
+		-webkit-transform: rotateY(180deg) translate3d(0, 0, 100px);
+		transform: rotateY(180deg) translate3d(0, 0, 100px);
+	}
+	.wrap div:nth-child(4){
+		background: skyblue;
+		-webkit-transform: rotateY(270deg) translate3d(0, 0, 100px);
+		transform: rotateY(270deg) translate3d(0, 0, 100px);
+	}
+	.wrap div:nth-child(5){
+		background: yellow;
+		-webkit-transform: rotateX(90deg) translate3d(0, 0, 100px);
+		transform: rotateX(90deg) translate3d(0, 0, 100px);
+	}
+	.wrap div:nth-child(6){
+		background: green;
+		-webkit-transform: rotateX(270deg) translate3d(0, 0, 100px);
+		transform: rotateX(270deg) translate3d(0, 0p, 100px);
+	}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div>
+			<img src="1.jpg" alt="">
+		</div>
+		<div>
+			<img src="2.jpg" alt="">
+		</div>
+		<div>
+			<img src="3.jpg" alt="">
+		</div>
+		<div>
+			<img src="4.jpg" alt="">
+		</div>
+		<div>
+			<img src="5.jpg" alt="">
+		</div>
+		<div>
+			<img src="2.gif" alt="">
+		</div>
+	</div>
+</body>
+</html>

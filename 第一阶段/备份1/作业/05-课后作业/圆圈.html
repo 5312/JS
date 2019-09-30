@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	html,body{
+		height: 100%;
+	}
+	body{
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+		perspective: 1000px;
+	}
+	#wrap{
+		width: 200px;
+		height: 200px;
+		border: 1px solid red;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -100px;
+		margin-top: -100px;
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+		
+		-webkit-transition: all 10s;
+		-o-transition: all 10s;
+		transition: all 10s;
+	}
+	#wrap div{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 200px;
+		height: 200px;
+	}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</body>
+<script type="text/javascript">
+var wrap = document.getElementById("wrap");
+var divs = wrap.children;
+
+function rand(min,max){
+	return parseInt(Math.random()*(max-min)+min);
+}
+function randColor(){
+	return "rgba("+rand(0,256)+","+rand(0,256)+","+rand(0,256)+",1)";
+}
+
+for (var i=0; i<divs.length; i++){
+
+	var deg = 360/divs.length;
+	divs[i].style.transform = "rotateY("+deg*i+"deg) translateZ(500px)";
+	divs[i].style.backgroundColor = randColor();
+}
+document.onclick = function (){
+
+	wrap.style.transform = "rotateY(360deg)";
+}
+</script>
+</html>
+
+
+
+
+
+

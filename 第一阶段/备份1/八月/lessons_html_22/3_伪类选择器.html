@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>伪类选择器</title>
+    <style>
+        /* 链接被点击之前选中 */
+        
+        a:link {
+            color: purple;
+        }
+        /* 链接被访问后选中 */
+        
+        a:visited {
+            color: green;
+        }
+        /* 链接被点击不松开是选中（激活状态） */
+        
+        a:active {
+            color: blue;
+        }
+        /* 鼠标悬停后选中 */
+        
+        a:hover {
+            color: yellow;
+        }
+        /* :link :visited :hover ：active 
+            a标签相关伪类顺序
+            原因:选择器优先级一致，需要按照操作顺序进行叠加
+            排放，保证各个伪类选择器都生效。
+        */
+        /* 空选择器  */
+        
+        p {
+            width: 200px;
+            height: 200px;
+        }
+        
+        p:empty {
+            background: red;
+        }
+        /* 
+            :not(选择器)
+            表示除了选择器对应的标签以外的其他标签都被选中
+        */
+        
+        .box1>:not(span) {
+            background: red;
+        }
+        /* 
+            nth-child(an+b)
+            表示以子级位置优先，先找到an+b的子级位置
+            然后在查看该子级位置的标签，是否与选择器描述的标签一致，如果一致就选中
+        */
+        /* 
+            选择器;nth-of-type(an+b)
+            nth-fo-type以选择器对应的标签为优先
+            表示选中，第几个标签。
+        
+        */
+        
+        .box3>h1:nth-of-type(1) {}
+    </style>
+</head>
+
+<body>
+    <a href="">你好</a>
+    <p>sfaa </p>
+    <p></p>
+
+    <!-- nth-child -->
+    <div class="box2">
+        <h1>1</h1>
+        <h1>2</h1>
+        <h1>3</h1>
+    </div>
+    <div class="box3">
+        <h1>1</h1>
+        <h1>2</h1>
+        <h1>3</h1>
+    </div>
+</body>
+
+</html>

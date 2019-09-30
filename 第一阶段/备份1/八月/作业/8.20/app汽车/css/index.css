@@ -1,0 +1,164 @@
+input{
+    border: none;
+    outline: none;
+    padding: 0;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 0.16rem;
+    background: #eeeeee;
+}
+html{
+    font-size: calc(100 * 100vw / 750);
+    line-height: 1.5;
+    letter-spacing: 0;
+    font-family: PingFang,微软雅黑;
+}
+.topBar{
+    /* 弹性盒子 */
+    display: flex;
+    box-sizing: border-box;
+    background-color: #333;
+    /* 子级同行排列 */
+    flex-flow: wrap row;
+    /* 平均分布 */
+    width: 100%;
+    padding: 0.2rem 0.2rem;
+    font-size: 0.24rem;
+}
+.address{
+    color: white;
+    margin-right:0.5rem;
+    vertical-align: middle;
+}
+.search{
+    width: 70%;
+    box-sizing: border-box;
+    padding:0.05rem 0.2rem;
+    border-radius: 0.05rem;
+    background: white;
+}
+.search>span{
+    margin-right: 0.05rem;
+}
+.navBar{
+    /* width: 100%; */
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-between;
+    padding: 0.2rem;
+    padding-right: 0;
+    background: white;
+    margin-bottom: 0.2rem;
+}
+.nav{
+    box-sizing: border-box;
+    border-right: 0.01rem solid #999;
+    display: flex;
+    flex-flow: wrap row;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.2rem;
+}
+.navBar>.nav:nth-child(4){
+    border-right: none;
+}
+.hotCar{
+    background: white;
+    margin-bottom: 0.2rem;
+}
+.showTime{
+    display: flex;
+    border-top: 1px solid #eeeeee;
+    flex-flow: wrap row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.1rem;
+    padding-right: 0.2rem;
+    margin: 0.2rem;
+}
+.header{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.2rem;
+    padding-bottom: 0;
+
+}
+.showTime>img{
+    width: 40%;
+}
+.red{
+    color: red;
+    font-weight: bold;
+    margin-top: 10%;
+}
+.conter{
+    padding: 0.2rem;
+    white-space: nowrap;
+    overflow:hidden;
+}
+.circle{
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    flex-flow: wrap column;
+    align-items: center;
+    justify-content: space-around;
+    box-sizing: border-box;
+    padding:0.04rem 0;
+    border: 0.01rem solid #333;
+    border-radius: 50%;
+}
+.more{
+    background: #999;
+    color: white;
+    width: 30%;
+    margin: 0.2rem auto;
+    text-align: center;
+}
+.newsCar{
+    background: white;
+    padding: 0 0.4rem;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-between;
+}
+.showWind{
+    width: 50%;
+    /* border-top: 0.01rem solid #999; */
+}
+.showWind>img{
+    width: 100%;
+}
+.newsCar>.header{
+    padding-left: 0;
+    padding-bottom: 0.2rem;
+    border-bottom: 0.01rem solid #eeeeee;
+}
+.newsCar>.more{
+    background: white;
+    color: #999;
+}
+.footer{
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index:9;
+    background: white;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-around;
+    text-align: center;
+}
+.footer>.item{
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 0.18rem;
+ 
+}
+.item>span{
+    font-size: 0.43rem;
+}

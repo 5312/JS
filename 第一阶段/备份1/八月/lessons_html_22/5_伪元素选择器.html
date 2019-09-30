@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 
+        :::after{}伪元素。用来在指定父级的最后一个子级位置上添加元素
+        :::before{}伪元素，用来在指定父级的第一个子级位置上添加元素
+
+         */
+        
+        p {
+            widows: 300px;
+        }
+        /* 
+            :::first-letter 给标签中第一个文字，添加元素
+            标签，并设置样式。
+         */
+        
+        p::first-letter {
+            color: red;
+        }
+        
+        p::first-line {}
+        /* :::selection表示鼠标在网页上选中文字时，
+            给选中的文字添加元素，设置样式
+             */
+        
+        p::selection {
+            background: red;
+        }
+        
+        p::-moz-selection {}
+        /*           
+            主流浏览器样式前缀
+            谷歌  ： -webkit-selection
+            火狐：-moz
+            欧朋: -o
+            IE: -ms
+         */
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <span></span>
+    </div>
+    <p>香港是中国神圣不可分割的一部分</p>
+</body>
+
+</html>

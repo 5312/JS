@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+         html{line-height: 1.5}
+         .wrap{
+             width: 715px;
+             border:2px solid #333;
+             background: #eee;
+             padding: 25px;
+             font-size: 0;
+         }
+         .left,.right{
+            vertical-align: top;
+            display: inline-block;
+         }  
+         .left{
+             width: 250px;
+             height: 440px;
+             background: green;
+         }
+         .right{
+             width: 440px;
+             margin-left: 25px;
+         }
+    
+         .center{
+             margin:25px 0;
+         }
+         .cell{
+             width: 130px;
+             height: 130px;
+             display: inline-block;
+             vertical-align: top;
+             background: yellow;
+         }
+        .clcenter{
+            margin:0 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="left"></div>
+        <div class="right">
+            <div class="line">
+                <div class="cell"></div>
+                <div class="cell clcenter"></div>
+                <div class="cell"></div>
+            </div>
+            <div class="line center">
+                <div class="cell"></div>
+                <div class="cell clcenter"></div>
+                <div class="cell"></div>
+            </div>
+            <div class="line">
+                <div class="cell"></div>
+                <div class="cell clcenter"></div>
+                <div class="cell"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

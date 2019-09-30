@@ -1,0 +1,18 @@
+标题
+<style>
+   div{
+       color : red;
+       text-align: center;
+   }
+   .box{
+       color: blue;
+   }
+</style>
+<div onclick="fn(this)">标题</div>
+<div class="box">标题2</div>
+<script>
+   function fn(obj){
+       alert("别碰我");
+       obj.style.color = "yellow";
+   }
+</script>

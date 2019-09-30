@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hover2</title>
+    <style>
+    
+        .wrap{
+            width: 500px;
+            height: 500px;
+            border:1px solid red;
+            position: relative;
+        }
+        .box1,.box2{
+            width: 200px;
+            height: 200px;
+            background: blue;
+            position: absolute;
+            right: -300px;
+        }
+        .box2{
+            top: 300px;
+        }
+        .wrap:hover>.box1{
+            background: yellow;
+        }
+        .wrap:hover>.box2{
+            background: green;
+        }
+        /* 
+            hover第二种用法：
+            父级选择器:hover>子级选择器{样式}
+            鼠标悬停在父级盒子上，让子级样式发生改变
+            特点：
+            1、可以让多个子级盒子同时发生样式改变
+            2、鼠标悬停在子级也会触发父级的hover效果
+
+            hover第三种用法：
+            选择器1:hover+向下相邻选择器{样式}
+            鼠标悬停在盒子上，让相邻的盒子样式发生改变
+            特点：
+            1、一对一，鼠标悬停在自己身上，让其他一个盒子样式改变
+            2、鼠标悬停在相邻盒子上，无法触发hover效果
+
+
+        
+        
+        
+        
+         */
+
+    
+    </style>
+</head>
+<body>
+    <div class="wrap">
+            <div class="box1"></div>
+            <div class="box2"></div>
+    </div>
+    
+</body>
+</html>

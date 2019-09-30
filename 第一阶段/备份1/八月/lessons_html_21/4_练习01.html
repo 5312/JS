@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习</title>
+    <style>
+        .box{
+
+            width: 500px;
+            height:500px;
+        }
+
+        @media only screen and  (max-width:768px){
+            .box{
+                background: pink;
+            }
+        }
+        @media only screen and (min-width:768px) and (max-width: 992px) {
+            .box{
+                background: green;
+            }
+             
+        }
+
+        @media only screen and (min-width:992px) and (max-width: 1200px) {
+            .box{
+                background: blue;
+            }
+             
+        }
+        @media only screen and (min-width:1200px){
+            .box{
+                background: red;
+            }
+             
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

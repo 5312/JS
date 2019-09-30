@@ -1,0 +1,84 @@
+.main .part2 {
+	width: 1000px;
+	padding: 10px 0px;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 30px;
+}
+.main .part2 div {
+	width: 66px;
+	height: 65px;
+	background-repeat: no-repeat;
+	background-size: 46px 46px;
+	background-position: 10px 0px;
+	overflow: hidden;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.p2 {
+	margin-top: 49px;
+}
+.left1 {
+	background-image: url(../img/2_03.png);
+}
+.left1:hover {
+	background-image: url(../img/3_03.png);
+}
+.left2 {
+	background-image: url(../img/2_05.png);
+}
+.left2:hover {
+	background-image: url(../img/3_05.png);
+}
+.left3 {
+	background-image: url(../img/2_07.png);
+}
+.left3:hover {
+	background-image: url(../img/3_07.png);
+}
+.left4 {
+	background-image: url(../img/2_09.png);
+}
+.left4:hover {
+	background-image: url(../img/3_09.png);
+}
+.left5 {
+	background-image: url(../img/2_11.png);
+}
+.left5:hover {
+	background-image: url(../img/3_11.png);
+}
+.right5 {
+	background-image: url(../img/2_13.png);
+}
+.right5:hover {
+	background-image: url(../img/3_13.png);
+}
+.right4 {
+	background-image: url(../img/2_15.png);
+}
+.right4:hover {
+	background-image: url(../img/3_15.png);
+}
+.right3 {
+	background-image: url(../img/2_17.png);
+}
+.right3:hover {
+	background-image: url(../img/3_17.png);
+}
+.right2 {
+	background-image: url(../img/2_19.png);
+}
+.right2:hover {
+	background-image: url(../img/3_19.png);
+}
+.right1 {
+	background-image: url(../img/2_21.png);
+}
+.right1:hover {
+	background-image: url(../img/3_21.png);
+}

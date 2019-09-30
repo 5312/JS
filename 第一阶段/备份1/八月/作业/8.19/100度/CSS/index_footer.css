@@ -1,0 +1,18 @@
+.main .footer {
+	width: 996px;
+	height: 78px;
+	border: 2px solid #E5e5e5;
+	border-radius: 8px;
+	background-color: #f9f9f9;
+	margin: 0 auto;
+	margin-top: 10px;
+	text-align: center;
+}
+.main .footer>p {
+	margin-top: 21px;
+	margin-bottom: 10px;
+}
+.main .footer>p>a {
+	text-decoration: none;
+	color: #454545;
+}

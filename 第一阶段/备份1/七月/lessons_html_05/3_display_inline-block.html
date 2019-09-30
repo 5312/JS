@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>inline-block</inline-block></title>
+    <style>
+        body{
+            font-size: 0px;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            display: inline-block;
+            font-size: 16px;
+            /* 设置盒子的对齐基线 */
+            vertical-align: middle;
+        }
+        /* 
+            display:inline-block
+            1，可以让盒子同行排列
+            2，支持所有的CSS样式设置
+            3，间隙问题：在浏览器上同行排列的盒子，会将文档中对应标签之间的空白符
+               解析成一个大小不固定的间隙，相同浏览器在不同系统平台上，该间隙大小
+               不一致，具有危害性，需要消除。
+               消除方法：为同行排列的盒子父级标签设置font-size：0；
+               同时由于font-size具有继承性，因此需要给子级盒子恢复字体大小。
+            4，对齐问题：默认情况下，同行排列的盒子，是按照盒子内部最后一行文字的
+               底部对齐。当文字行数不一样时，会导致不对齐，通过vertical-align属性
+               可以设置盒子的对齐基线，一般情况常用三个值
+               top：顶部对齐，middle：居中对齐，bottom：底部对齐
+               在使用时，一般情况下要给同行的盒子同时设置相同的对齐方式
+            5，居中问题：通过给父级设置text-align：center来实现
+            6，在不设置宽高大小时，由内容撑开宽度和高度。
+        */
+    
+    </style>
+</head>
+<body>
+    <div class="box">box2<br>111</div>
+    <div class="box">box1</div>
+</body>
+</html>

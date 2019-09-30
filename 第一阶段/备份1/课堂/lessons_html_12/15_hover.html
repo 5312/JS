@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hover1</title>
+    <style>
+        html>body>.box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            border:1px solid red;
+        }
+        div:hover{
+            background: blue !important;
+            width: 100px;
+        }
+        /* 
+                选择器:hover{样式}
+                表示鼠标悬停在选择器对应的盒子上时
+                选中该盒子，并设置样式。
+
+                !important 用来提升样式的优先级为最高
+                一般用在hover选择器样式中。
+        
+        
+        
+         */
+    </style>
+</head>
+<body>
+    <div class="box" id="box1">
+        我是box
+    </div>
+     <div class="box">
+        我是box
+    </div>
+</body>
+</html>

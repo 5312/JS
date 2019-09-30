@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	html,body{
+		height: 100%;
+	}
+	body{
+		perspective: 1000px;
+		/*background-color: #000;*/
+	}
+	.wrap{
+		width: 200px;
+		height: 200px;
+		/*border: 1px solid red;*/
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -100px;
+		margin-top: -100px;
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+		/*-webkit-transform: rotateZ(45deg) ;
+		-ms-transform: rotateZ(45deg) ;
+		-o-transform: rotateZ(45deg) ;
+		transform: rotateZ(45deg) ;*/
+		-webkit-transform: rotateY(0deg) rotateZ(45deg) rotateX(45deg);
+		-ms-transform: rotateY(0deg) rotateZ(45deg) rotateX(45deg);
+		-o-transform: rotateY(0deg) rotateZ(45deg) rotateX(45deg);
+		transform: rotateY(0deg) rotateZ(45deg) rotateX(45deg);
+		-webkit-transition: all 100s;
+		-o-transition: all 100s;
+		transition: all 100s;
+	}
+	.wrap img{
+		width: 200px;
+		height:200px;
+		/*opacity: 0.8;*/
+		border-radius: 100px;
+	}
+	.wrap:hover{
+		-webkit-transform: rotateY(10000deg) rotateZ(45deg) rotateX(45deg);
+		-ms-transform: rotateY(10000deg) rotateZ(45deg) rotateX(45deg);
+		-o-transform: rotateY(10000deg) rotateZ(45deg) rotateX(45deg);
+		transform: rotateY(10000deg) rotateZ(45deg) rotateX(45deg);
+	}
+	.wrap div{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 200px;
+		height: 200px;
+		/*box-shadow: 5px 5px 200px purple;*/
+		border-radius: 100px;
+	}
+	.wrap div:nth-child(1){
+		-webkit-transform: rotateY(0deg) translate3d(0,0px,100px) ;
+		-ms-transform: rotateY(0deg) translate3d(0,0px,100px) ;
+		-o-transform: rotateY(0deg) translate3d(0,0px,100px) ;
+		transform: rotateY(0deg) translate3d(0,0px,100px) ;
+		
+	}
+	.wrap div:nth-child(2){
+		-webkit-transform: rotateY(90deg) translate3d(0,0px,100px) ;
+		-ms-transform: rotateY(90deg) translate3d(0,0px,100px) ;
+		-o-transform: rotateY(90deg) translate3d(0,0px,100px) ;
+		transform: rotateY(90deg) translate3d(0,0px,100px) ;
+		
+	}
+	.wrap div:nth-child(3){
+		-webkit-transform: rotateY(180deg) translate3d(0,0px,100px);
+		-ms-transform: rotateY(180deg) translate3d(0,0px,100px);
+		-o-transform: rotateY(180deg) translate3d(0,0px,100px);
+		transform: rotateY(180deg) translate3d(0,0px,100px);
+		
+	}
+	.wrap div:nth-child(4){
+		-webkit-transform: rotateY(270deg) translate3d(0,0px,100px);
+		-ms-transform: rotateY(270deg) translate3d(0,0px,100px);
+		-o-transform: rotateY(270deg) translate3d(0,0px,100px);
+		transform: rotateY(270deg) translate3d(0,0px,100px);
+		
+	}
+	.wrap div:nth-child(5){
+		-webkit-transform: rotateX(90deg) translate3d(0,0px,100px);
+		-ms-transform: rotateX(90deg) translate3d(0,0px,100px);
+		-o-transform: rotateX(90deg) translate3d(0,0px,100px);
+		transform: rotateX(90deg) translate3d(0,0px,100px);
+	}
+	.wrap div:nth-child(6){
+		-webkit-transform: rotateX(270deg) translate3d(0,,100px);
+		-ms-transform: rotateX(270deg) translate3d(0,0,100px);
+		-o-transform: rotateX(270deg) translate3d(0,0,100px);
+		transform: rotateX(270deg) translate3d(0,0,100px);	
+	}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div>
+			<img src="2.gif" alt="">
+		</div>
+		<div>
+			<img src="3.gif" alt="">
+		</div>
+		<div>
+			<img src="4.gif" alt="">
+		</div>
+		<div>
+			<img src="5.gif" alt="">
+		</div>
+		<div>
+			<img src="6.gif" alt="">
+		</div>
+		<div>
+			<img src="7.gif" alt="">
+		</div>  
+	</div>
+</body>
+</html>

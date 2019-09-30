@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* div{
+            width:100px;
+            height: 100px;
+        } */
+
+       .schoolNews{
+           border:1px solid red;
+       }
+      
+        .news{
+           font-size: 20px;
+           border:1px solid blue;
+       }
+    </style>
+</head>
+
+<body>
+
+  <!-- 
+        标签编写容易出的问题
+        1、子级没有写在父级中
+        2、忘写父级结束标签
+
+        检查方法：
+        1、利用编辑器整理代码格式
+           子级没有写在父级中，整理完代码格式后
+           子级缩进消失。
+        2、利用chrome浏览器的控制台查看标签结构
+   -->
+
+     <div class="schoolNews news" style="background-color:blue">呵呵</div>
+   <!-- 
+       样式不生效的原因
+       1、属性名写错 ⚠️ unknown property name 
+       2、属性值写错 ⚠️ invalid property value
+          a:值错
+          b:中文分号、中文冒号
+          c:忘写结束分号
+       3、在chrome控制台中找不到对应的选择器
+          a:样式表中的选择器名和标签class属性中的选择器名不一致
+          b:样式表中选择器之前有其他字符（最常见问题，是有一个
+            结束的"}"）
+       4、样式被其他的选择器的样式覆盖
+          在控制台中，该条样式被删除线标注，同时没有⚠️符，就要观察
+          其他选择器的相同样式，看看哪个选择器的该条属性生效。
+          然后对比后面的“代码行提示”，比较先后顺序，确定优先级先后关系
+          来调整需要生效代码在样式表中的位置，或者提升该条选择器的优先
+          级。
+        5、其他问题
+          style标签结束标签忘写
+            浏览器会一直查找style结束标签，搜索完整个文档后
+            会在结束的时候自动补全该标签，导致原来写在body中
+            的内容，在渲染时被包含进了style标签中，导致整个
+            页面没有内容。在控制台中可以看到body标签内容为空
+          title标签忘写
+
+    -->
+    <style>
+        .box{
+          /* width:1000px; */
+          border:1px solid red;
+        }
+        
+        .box1{
+          width:0;
+          height: 100px;
+          background: blue;
+          padding: 0 10%;
+        }
+    </style>
+
+    <div class="box">
+      <div class="box1"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品列表</title>
+    <style>
+        /* 
+           星号选择器，称为通配符，作用是选中所有的标签
+           一般用在样式初始化，给所有标签设置margin：0
+           padding:0
+
+           之所以要给所有标签设置margin：0；padding：0
+           是因为语义化标签在不同浏览器上默认的初始margin
+           初始padding不一定一致，为了保持一致性，必须在代码编写时
+           进行统一设置，称为CSS样式初始化
+
+           一般不推荐使用*号选择器来做设置，因为这样会造成性能损失
+           不是所有的标签都拥有初始的margin和padding
+
+           在实际初始化，我们只将项目中用到的语义化标签，进行样式统一
+           设置，设置的样式包含两种类型
+           1、在不同浏览器上样式有差异的CSS（margin padding）
+           2、默认样式不需要使用的CSS (a,ul)
+         */
+         /* CSS初始化 */
+        ul,li,p,body{
+            margin: 0;
+            padding: 0;
+        }
+        ul{list-style: none}
+        a{
+            text-decoration: none;
+            color: #333;
+        }
+        html{
+            line-height: 1.5;
+            letter-spacing: 0;
+        }
+        .productList{
+            width: 1300px;
+            border:1px solid red;
+            margin: 0 auto;
+            font-size: 0;
+        }
+        /* 子代选择器 父级选择器>子级选择器 */
+        .productList>li{
+            width:210px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            vertical-align: top;
+            font-size: 16px;
+            margin: 14px;
+        }
+        /* 后代选择器 父级选择器 后代选择器 */
+        .productList>li>img{
+            width: 100%;
+            display: block;
+        }
+        .price{
+            color: red;
+            font-size: 20px;
+            margin: 5px 0;
+        }
+        .productList p{
+            white-space: nowrap;
+            font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .mark{
+            color: bisque;
+        }
+        .productList>li>a{
+            color: rgb(143,146,160);
+            text-decoration: underline;
+            font-size: 12px;
+            display: block;
+            margin: 5px 0;
+        }
+        .saleInfo{
+            padding: 5px 0;
+            font-size: 0;
+            color: #999;
+            border-top: 1px solid #ddd;
+        }
+        .saleCount,.commentCount{
+            display: inline-block;
+            width: 85px;
+            overflow: hidden;
+            text-align: center;
+            border-right: 1px solid #ddd;
+            font-size: 12px;
+            vertical-align: middle;
+        }
+        .commentCount a{
+            color: purple;
+        }
+        .saleInfo>img{
+            width: 15px;
+            vertical-align: middle;
+            margin-left: 15px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <ul class="productList">
+        <!-- 1个产品 -->
+        <li>
+            <img src="img/img/j1.jpg" alt="">
+            <div class="price">¥239</div>
+            <p><a href="">树傲六层角钢家用轻型小货<span class="mark">架</span>仓库储物架仓库储物置物展示架铁架超市货架陈列</a></p>
+            <a href="">树傲旗舰店</a>
+            <div class="saleInfo">
+                <span class="saleCount">
+                    月成交<span class="mark">2012笔</span>
+                </span>
+                <span class="commentCount">
+                    评价<a href="">2192</a>
+                </span>
+                <img src="img/img/icon.png" alt="">
+            </div>
+        </li>
+        <!-- 1个产品 -->
+        <li>
+                <img src="img/img/j1.jpg" alt="">
+                <div class="price">¥239</div>
+                <p><a href="">树傲六层角钢家用轻型小货<span class="mark">架</span>仓库储物架仓库储物置物展示架铁架超市货架陈列</a></p>
+                <a href="">树傲旗舰店</a>
+                <div class="saleInfo">
+                    <span class="saleCount">
+                        月成交<span class="mark">2012笔</span>
+                    </span>
+                    <span class="commentCount">
+                        评价<a href="">2192</a>
+                    </span>
+                    <img src="img/img/icon.png" alt="">
+                </div>
+            </li>
+
+            <!-- 1个产品 -->
+        <li>
+                <img src="img/img/j1.jpg" alt="">
+                <div class="price">¥239</div>
+                <p><a href="">树傲六层角钢家用轻型小货<span class="mark">架</span>仓库储物架仓库储物置物展示架铁架超市货架陈列</a></p>
+                <a href="">树傲旗舰店</a>
+                <div class="saleInfo">
+                    <span class="saleCount">
+                        月成交<span class="mark">2012笔</span>
+                    </span>
+                    <span class="commentCount">
+                        评价<a href="">2192</a>
+                    </span>
+                    <img src="img/img/icon.png" alt="">
+                </div>
+            </li>
+
+            <!-- 1个产品 -->
+        <li>
+                <img src="img/img/j1.jpg" alt="">
+                <div class="price">¥239</div>
+                <p><a href="">树傲六层角钢家用轻型小货<span class="mark">架</span>仓库储物架仓库储物置物展示架铁架超市货架陈列</a></p>
+                <a href="">树傲旗舰店</a>
+                <div class="saleInfo">
+                    <span class="saleCount">
+                        月成交<span class="mark">2012笔</span>
+                    </span>
+                    <span class="commentCount">
+                        评价<a href="">2192</a>
+                    </span>
+                    <img src="img/img/icon.png" alt="">
+                </div>
+            </li>
+
+            <!-- 1个产品 -->
+        <li>
+                <img src="img/img/j1.jpg" alt="">
+                <div class="price">¥239</div>
+                <p><a href="">树傲六层角钢家用轻型小货<span class="mark">架</span>仓库储物架仓库储物置物展示架铁架超市货架陈列</a></p>
+                <a href="">树傲旗舰店</a>
+                <div class="saleInfo">
+                    <span class="saleCount">
+                        月成交<span class="mark">2012笔</span>
+                    </span>
+                    <span class="commentCount">
+                        评价<a href="">2192</a>
+                    </span>
+                    <img src="img/img/icon.png" alt="">
+                </div>
+            </li>
+
+            <!-- 1个产品 -->
+        <li>
+                <img src="img/img/j1.jpg" alt="">
+                <div class="price">¥239</div>
+                <p><a href="">树傲六层角钢家用轻型小货<span class="mark">架</span>仓库储物架仓库储物置物展示架铁架超市货架陈列</a></p>
+                <a href="">树傲旗舰店</a>
+                <div class="saleInfo">
+                    <span class="saleCount">
+                        月成交<span class="mark">2012笔</span>
+                    </span>
+                    <span class="commentCount">
+                        评价<a href="">2192</a>
+                    </span>
+                    <img src="img/img/icon.png" alt="">
+                </div>
+            </li>
+
+            <!-- 1个产品 -->
+        <li>
+                <img src="img/img/j1.jpg" alt="">
+                <div class="price">¥239</div>
+                <p><a href="">树傲六层角钢家用轻型小货<span class="mark">架</span>仓库储物架仓库储物置物展示架铁架超市货架陈列</a></p>
+                <a href="">树傲旗舰店</a>
+                <div class="saleInfo">
+                    <span class="saleCount">
+                        月成交<span class="mark">2012笔</span>
+                    </span>
+                    <span class="commentCount">
+                        评价<a href="">2192</a>
+                    </span>
+                    <img src="img/img/icon.png" alt="">
+                </div>
+            </li>
+
+            <!-- 1个产品 -->
+        <li>
+                <img src="img/img/j1.jpg" alt="">
+                <div class="price">¥239</div>
+                <p><a href="">树傲六层角钢家用轻型小货<span class="mark">架</span>仓库储物架仓库储物置物展示架铁架超市货架陈列</a></p>
+                <a href="">树傲旗舰店</a>
+                <div class="saleInfo">
+                    <span class="saleCount">
+                        月成交<span class="mark">2012笔</span>
+                    </span>
+                    <span class="commentCount">
+                        评价<a href="">2192</a>
+                    </span>
+                    <img src="img/img/icon.png" alt="">
+                </div>
+            </li>
+
+            <!-- 1个产品 -->
+        <li>
+                <img src="img/img/j1.jpg" alt="">
+                <div class="price">¥239</div>
+                <p><a href="">树傲六层角钢家用轻型小货<span class="mark">架</span>仓库储物架仓库储物置物展示架铁架超市货架陈列</a></p>
+                <a href="">树傲旗舰店</a>
+                <div class="saleInfo">
+                    <span class="saleCount">
+                        月成交<span class="mark">2012笔</span>
+                    </span>
+                    <span class="commentCount">
+                        评价<a href="">2192</a>
+                    </span>
+                    <img src="img/img/icon.png" alt="">
+                </div>
+            </li>
+
+            <!-- 1个产品 -->
+        <li>
+                <img src="img/img/j1.jpg" alt="">
+                <div class="price">¥239</div>
+                <p><a href="">树傲六层角钢家用轻型小货<span class="mark">架</span>仓库储物架仓库储物置物展示架铁架超市货架陈列</a></p>
+                <a href="">树傲旗舰店</a>
+                <div class="saleInfo">
+                    <span class="saleCount">
+                        月成交<span class="mark">2012笔</span>
+                    </span>
+                    <span class="commentCount">
+                        评价<a href="">2192</a>
+                    </span>
+                    <img src="img/img/icon.png" alt="">
+                </div>
+            </li>
+    </ul>
+</body>
+</html>

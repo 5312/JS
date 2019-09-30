@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3D变形</title>
+    <style>
+        body {
+            /* 开启body内的3d视图 只要子级有3d 变换就开启*/
+            transform-style: preserve-3d;
+            /* 设置观察者距离 ：需要看到子级3d变换时进大远小的效果时
+            才开启*/
+            perspective: 150px;
+            /* 设置观察者位置 */
+            perspective-origin: left;
+        }
+        
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+            transition: 1s;
+            margin: 100px auto;
+            color: white;
+            transform-origin: bottom;
+        }
+        
+        .box:nth-child(1):hover {
+            transform: translateZ(100px)
+        }
+        
+        .box:nth-child(2):hover {
+            transform: rotateX(360deg);
+        }
+        
+        .box:nth-child(3):hover {
+            transform: rotateY(360deg)
+        }
+        
+        .box:nth-child(4) {
+            transform: rotateY(10deg)
+        }
+        
+        .box:nth-child(4):hover {
+            transform: rotateZ(360deg);
+        }
+        /* 
+        transform: skew ()
+        3d 变形主要包含的是，3d移动，3d 旋转
+        缩放 倾斜主要用于2d
+         */
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        z轴移动
+    </div>
+    <div class="box">
+        3d旋转x轴
+    </div>
+    <div class="box">
+        3d旋转y轴
+    </div>
+    <div class="box">
+        3d旋转z轴
+    </div>
+</body>
+
+</html>

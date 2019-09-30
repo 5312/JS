@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>display</title>
+    <style>
+       .box{
+           width: 100px;
+           height: 100px;
+           border:1px solid red;
+           display: block;
+       }
+       heihei{
+        width: 100px;
+           height: 100px;
+           border:1px solid red;
+           display: inline-block;
+       }
+    </style>
+</head>
+<body>
+    <!-- 
+        文档中的盒子在界面上渲染时，其排列方式
+        是由一个通用CSS属性display决定的，与
+        标签的名称没有关系
+
+        当前情况下：
+           盒子的display属性值有三种，将盒子
+           分成了三大类
+           1、block        : 块级标签
+           2、inline-block : 内联级标签
+           3、inline       : 内嵌级标签
+             行级标签
+
+
+
+
+
+
+     -->
+
+
+    <heihei></heihei>
+    <heihei></heihei>
+
+    <div class="box">2</div>
+    <div class="box">1</div>
+</body>
+</html>

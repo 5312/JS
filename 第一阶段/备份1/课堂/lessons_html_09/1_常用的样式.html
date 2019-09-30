@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>常用样式</title>
+    <style>
+        body{
+            /* background-image: url(img/3.jpg); */
+            background-repeat: repeat;
+        }
+        .box{
+            width: 500px;
+            height: 500px;
+            margin: 100px;
+            border:10px solid ;
+            border-width: 10px;
+            border-style:double;
+            border-color: #ccc;
+            border: 1px solid red; 
+            /* 
+                CSS中一些样式存在两种设置方式
+                1、是通过分立属性，进行样式的叠加设置
+                2、是通过简写属性，进行样式的统一设置
+                3、简写属性在使用时，将分立属性的值写在后面，以
+                空格隔开，一般没有先后顺序要求，简写属性中没有设置
+                的分立属性值，自动会设置成默认值。
+                4、分立属性一般用来对样式做单独修改，写在简写属性
+                之后
+             */
+             /* color: white; */
+             /* 背景色 */
+             /* background-color : red; */
+             /* 背景图 */
+             /* background-image : url(img/1.png); */
+             /* 背景图平铺控制 */
+             /* background-repeat: no-repeat; */
+             /* 背景图定位 
+                当是固定像素时：
+                第一个值表示背景图与容器左边缘之间距离
+                水平向右为正
+                第二个值表示背景图与容器上边缘之间距离
+                垂直向下为正
+
+                当写的是百分比时
+                x = （容器宽度 - 背景图宽度) * x百分比
+                y =  (容器高度 - 背景图高度) * y百分比
+                如果容器尺寸小于背景图尺寸，定位就为负值
+
+                特殊位置
+                水平方向： left center right
+                垂直方向： top  center bottom
+             */
+             background-position:0px 0px;
+             /* 简写属性 */
+             /* background: url(img/1.png) 0 0 no-repeat; */
+             /* 背景图固定 */
+             /* background-attachment: fixed; */
+             /* background-position:100px 100px */
+             /* 
+                    背景图固定，允许我们将背景图按照
+                    浏览器的视窗进行定位，背景图不再随着容器
+                    一起移动，而是固定在浏览器可视窗口的指定
+                    位置。当该背景的容器移动到达这个位置的时候
+                    显示出来，离开该位置后，背景图隐藏
+             
+              */
+              /* 设置文字大小 
+                 浏览器默认字体大小 html :16px
+                 浏览器最小显示的字体大小 : 12px;
+              */
+              font-size: 30px;
+              /* 字体颜色 */
+              color : #26a69a;
+              /* 字体的加粗 
+                100 : lighter
+                400 : normal
+                800 : bold / bolder
+              */
+              font-weight: 400;
+              /* 设置斜体 */
+              font-style: italic;
+              /* 划线设置: underline 下划线
+                         line-through 贯穿线
+                         none : 不设置划线
+               */
+              text-decoration: line-through;
+              /* 设置字型 ： 
+                 兼容配置：在属性后面，将多个字体值列出来
+                 浏览器会自动监测匹配的字体，进行渲染。字体和
+                 字体之间以逗号隔开
+                 等距字符宽度字型：monospace
+              */
+              font-family:monospace,STkaiti,kaiti;
+              /*字体的水平排列 */
+              text-align: left;
+              /*设置字符缩进 
+                em单位：1em = 1 * 当前盒子字体大小
+                       nem = n * 当前盒子字体大小
+                缩进一般与字体大小相关，因此采用em作为单位
+                自动适配字体大小，一般设置成2个字缩进：2em
+              */
+              text-indent: 2em;
+              /* 设置字符间隙 */
+              letter-spacing:-0.1px;
+              /* 设置词间隙:消除英文单词之间由空白符导致的间隙 */
+              word-spacing: 20px;
+              /* 设置文字强制换行 */
+              word-wrap: break-word;
+              /* 设置文字强制不换行 */
+              white-space: nowrap;
+              /* 设置超出盒子可视区域内容如何显示
+                  visiable : 超出可见
+                  hidden   : 超出隐藏
+                  scroll   : 超出滚动
+               */
+              overflow: hidden;
+              /* 设置文字溢出样式 */
+              text-overflow: ellipsis;
+        }
+
+        .box1{
+            width: 200px;
+            height: 200px;
+            background: blue;
+            display:inline-block;
+            margin-left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        树傲旗舰店免费送吃的和米阿飞的狗粮，过不过七夕你看着办。春天又来了
+    </div>
+  
+</body>
+</html>

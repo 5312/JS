@@ -1,0 +1,8 @@
+/* 选择器{样式} */
+div{
+    width: 100px;
+    height: 100px;
+    /* background:url(img/1.png) 0 0 no-repeat; */
+    background: blue;
+    
+}

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>合赢商城</title>
+    <style>
+        /* 样式初始化 */
+        body {
+            line-height: 1.5;
+            letter-spacing: 0;
+            font-size: 0;
+        }
+
+        ul,
+        .li,
+        h3 {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            letter-spacing: 0;
+        }
+
+        a {
+            text-decoration: none;
+
+        }
+
+        /* 清浮动 */
+        .clear::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        /* 整体盒子 */
+        .wrap {
+            width: 1320px;
+            border: 1px solid #999999;
+            margin: 0 auto;
+            background-color: #f6f6f6;
+        }
+
+        /* 顶部黑色区域 */
+        .navBar {
+            width: 1320px;
+            background-color: black;
+            text-align: center;
+            padding: 11px 0;
+        }
+
+        .content>a {
+            color: #999999;
+            font-size: 14px;
+            line-height: 26px;
+            font-weight: 400;
+            float: right;
+            padding: 0 10px;
+            border-left: 1px solid #999999;
+        }
+
+        .content {
+            width: 756px;
+            margin: 0 auto;
+        }
+
+        /* 设置店面栏 */
+        .storeFront {
+            padding: 20px 0;
+            background-color: #ffffff;
+        }
+
+        /* 搜索框 */
+        .searchBox {
+            width: 239px;
+            height: 30px;
+            font-size: 12px;
+            border: 1px solid black;
+            line-height: 26px;
+            border-radius: 15px;
+            background: url(psd/放大镜.png) right center no-repeat;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .seek {
+            padding: 13px 0;
+            width: 280px;
+            float: right;
+        }
+
+        .indexes {
+            margin-top: 30px;
+        }
+
+        .indexes>a {
+            color: #333333;
+            font-size: 18px;
+            margin-right: 14px;
+            padding: 20px 10px;
+        }
+
+        .indexes .alone {
+            margin-right: 0;
+            padding-right: 0;
+        }
+
+        .indexes .red {
+            color: red;
+            border-bottom: 2px solid #e81313;
+        }
+
+        .topBar {
+            font-size: 14px;
+            line-height: 26px;
+            padding: 10px 0;
+        }
+
+        /* 牛仔裤总体左边样式 */
+        .imgLeft {
+            width: 40%;
+            display: inline-block;
+            vertical-align: bottom;
+        }
+
+        /* 牛仔裤小图片样式 */
+        .small>img {
+            width: 22.5%;
+            margin-right: 10px;
+        }
+
+        .small>.small4 {
+            margin-right: 0;
+        }
+
+        .jeans {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .desRight {
+            display: inline-block;
+            vertical-align: bottom;
+            font-size: 12px;
+            padding-left: 10px;
+        }
+
+        li>span {
+            padding-right: 10px;
+        }
+
+        .r {
+            margin-left: 27px;
+        }
+
+        ul {
+            color: #999999;
+            line-height: 25px;
+        }
+
+        .red {
+            color: #e81313;
+        }
+
+        /*限时促销 */
+        li>.time {
+            display: inline-block;
+            border: 1px solid #e81313;
+            line-height: 1.5;
+            padding-left: 40px;
+            background-image: url(psd/r1.png);
+            background-repeat: no-repeat;
+            background-position: 5px 0px;
+        }
+        li{
+            margin-top: 6px;
+        }
+        /* 地址部分结构 */
+        .address {
+            border-top: 1px solid #d2d2d2;
+            border-bottom: 1px solid #d2d2d2;
+            font-size: 0;
+        }
+
+        .address1,
+        .address2 {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 12px;
+        }
+
+        .address1 {
+            margin-right: 34px;
+        }
+
+        .address2 {
+            width: 380px;
+            background-image: url(psd/r3.png);
+            background-repeat: no-repeat;
+            background-position: 240px 30px;
+
+        }
+
+        .address2>a {
+            margin-left: 40px;
+            color: #333333;
+        }
+
+        .line>span {
+            border: 1px solid #d2d2d2;
+            padding: 5px;
+            margin-left: 16px;
+        }
+
+        .line>.bor {
+            border: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        .line{
+            margin-bottom: 10px;
+        }
+        .bottom{
+            margin-top: 60px;
+        }
+        span>a{
+            color: #fe320a;
+            border: 1px solid #fe320a;
+            margin-left: 20px;
+            margin-top: 10px;
+            vertical-align: bottom;
+            padding: 5px;
+            padding-left: 30px;
+        }
+        .img1{
+            background-image: url(psd/r4.png);
+            background-repeat: no-repeat;
+            background-position-y: 5px;
+        }
+        .img2{
+            background-image: url(psd/r5.png);
+            background-repeat: no-repeat;
+            background-position-y: 5px;
+        }
+       .img3{
+            background-color: red;
+            color: #f6f6f6;
+            padding: 5px 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 总界面 -->
+    <div class="wrap">
+        <!-- 导航栏 -->
+        <div class="navBar">
+            <div class="content clear">
+                <a href="">我的收藏</a>
+                <a href="">联系客服</a>
+                <a href="">购物车</a>
+                <a href="">个人中心</a>
+                <a href="">登录/注册</a>
+            </div>
+        </div>
+        <!-- 店面 -->
+        <div class="storeFront">
+            <div class="content clear">
+                <img src="psd/合赢商城.png" alt="404">
+                <div class="seek clear ">
+                    <img src="psd/购物车.png" alt="">
+                    <div class="searchBox">音乐耳机</div>
+                </div>
+                <div class="indexes">
+                    <a href="" class="red">首页</a>
+                    <a href="">优惠活动</a>
+                    <a href="">服饰</a>
+                    <a href="">家电</a>
+                    <a href="">鞋包</a>
+                    <a href="">护肤/彩妆</a>
+                    <a href="">母婴</a>
+                    <a href="">饮食</a>
+                    <a href="">家居</a>
+                    <a href="" class="alone">其他</a>
+                </div>
+            </div>
+        </div>
+        <!-- 商品内容区域 -->
+        <div class="commodity">
+            <div class="content clear">
+                <div class="topBar">
+                    <span>首页 ></span>
+                    <span>服饰 ></span>
+                    <span>牛仔裤 ></span>
+                </div>
+                <div class="imgLeft">
+                    <img src="psd/c1.png" alt="404" class="jeans">
+                    <div class="small">
+                        <img src="psd/c2.png" alt="404">
+                        <img src="psd/c3.png" alt="404">
+                        <img src="psd/c4.png" alt="404">
+                        <img src="psd/c5.png" alt="404" class="small4">
+                    </div>
+                </div>
+                <!-- 右边价格相关信息 -->
+                <div class="desRight">
+                    <h3>2018春季新款牛仔裤女士显瘦小腿裤韩版高腰弹力铅笔裤女长裤子新品</h3>
+                    <ul class="clear">
+                        <!-- 价格相关信息 -->
+                        <li>
+                            <span>参考价：</span><span> ￥ 298</span>
+
+                        </li>
+                        <li class="red">
+                            <span>活动价：</span><span> ￥ 108</span>
+                            <div class="time">
+                                限时促销
+                            </div>
+                        </li>
+                        </span>
+                        <li>
+                            <span>积</span>分:<span class="r">购买最高的10积分</span>
+
+                        </li>
+                        <li>
+                            <span>刮</span>卷:<span class="red r">100%刮中奖，最高50元无敌卷</span>
+                        </li>
+                        <li>
+                            <span>累计评价:</span><span>300+</span>
+                        </li>
+                        <!-- 地址框架 -->
+                        <div class="address">
+                            <div class="address1">送至</div>
+                            <div class="address2">陕西 西安 新城区<br>
+                                由班晓服务店销售和发货并提供售后服务
+                                <a href="">联系客服</a>
+                            </div>
+
+                        </div>
+                        <li class="line">
+                            <span class="bor">颜</span>色:
+                            <span class="">浅蓝色</span>
+                            <span class="red">黑灰色</span>
+                            <span>深蓝色</span>
+                        </li>
+                        <li class="line">
+                            <span class="bor">尺</span>码:
+                            <span>25</span>
+                            <span>26</span>
+                            <span>27</span>
+                            <span class="red">28</span>
+                            <span>29</span>
+                            <span>30</span>
+                            <span>31</span>
+                            <span>32</span>
+                        </li>
+                        <div class="bottom">
+                            <span>
+                                <a href="" class="img1">加入购物车</a>
+                                <a href="" class="img2">扫一扫购买</a>
+                                <a href="" class="img3">立即购买</a>
+                            </span>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 底部服务区域 -->
+        <div class="base"></div>
+    </div>
+</body>
+
+</html>

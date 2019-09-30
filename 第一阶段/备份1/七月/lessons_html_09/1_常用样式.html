@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>常用样式</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+            /* 
+    css中一些样式存在两种设置方式
+    1， 是通过分立属性，进行样式的叠加属性
+    2. 是通过简写属性，进行样式的统一属性
+    3. 简写属性在使用时，将分立属性的值写在后面，用空格隔开，一般没有先后顺序要求
+    简写属性中没有设置的分立属性值，自动会设置成默认值。
+    4.分立属性一般用来对样式做单独修改，写在简写属性之后。
+
+     */
+
+            /* 背景色 */
+            background-color: red;
+            /* 背景图 */
+            background-image: url(img/2.png);
+            /* 背景图平铺控制 */
+            background-repeat: no-repeat;
+            /* 背景图定位 当时固定像素时，
+            第一个值表示背景图与容器左边缘之间的距离
+            水平向右为正
+            第二个值表示背景图与容器上边缘之间距离
+            垂直向下为正
+
+            当写的是百分比时
+            x = （容器宽度 - 背景图宽度）* x百分比
+            y = （容器高度 - 背景图高度）*y百分比
+            如果容器尺寸小于背景图尺寸，定位就为负值
+
+            特殊位置
+            水平方向 ： left center right
+            垂直方向 ： top center bottom
+
+            
+            */
+            background-position: 10px 100px;
+
+            /* 背景图固定  ,允许我们将背景图按照浏览器的视窗进行定位，背景图不在
+            随着容器一起移动，而是固定在浏览器可视窗口的指定位置
+            。当该背景图的容器的移动到这个位置的时候显示出来。离开该位置后，背景图隐藏
+              */
+            /* 简写属性 */
+            /* 跟浏览器视窗有关系 */
+            background-attachment: fixed;
+
+            /* 背景图固定 */
+            /* background-attachment: fixed; */
+            /* background-position: 100px 100px; */
+
+            /* 设置文字大小 */
+            /* 浏览器最小显示字体大小;12px */
+            font-size: 30px;
+            /* 字体颜色 */
+            color: ;
+            /* 字体加粗 */
+            font-weight: 100;
+            /* 100 : lighter */
+            /* 400: normal */
+            /* 800 : bold */
+            /* 设置划线  underline  下划线
+                        line-through 贯穿线
+                        none ；不设置划线
+             */
+            text-decoration: underline;
+            /* 设置字形：
+                兼容配置： 在属性后面，将多个字体值列出来
+                浏览器会自动监测匹配的字体，进行渲染。字体和字体之间以
+                逗号隔开
+                等距字符宽度字形;monospace;
+            */
+            font-family: kaiti;      
+            /* 字体水平排列 */                 
+            text-align: center;
+            /* 设置字符缩进 
+                em单位; 1em =1* 当前盒子字体大小
+                        nem = n* 当前盒子字体大小
+                缩进一般与字体大小相关，因此采用em作为单位自动适配字体大小，一般设置成2个子缩进; 2em
+                */
+            text-indent: 2em;
+            /* 设置字符间隙 */
+            letter-spacing: 10px;
+            /* 设置词间隙 :消除英文单词之间由空白符导致的间隙 */
+            
+            word-spacing: 10px;
+            /* 设置文字强制换行 */
+            word-wrap: break-word;
+            /* 设置文字强制不换行 */
+            white-space: nowrap;
+            /* 设置超出 盒子可视区域如何显示内容 
+                visiable: 超出可见
+                hidden： 超出隐藏\
+                sroll : 超出滚动
+            */
+            overflow: hidden;
+            /* 设置文字溢出样式 */
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">我是box word word 
+
+
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>

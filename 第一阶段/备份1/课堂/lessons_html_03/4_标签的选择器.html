@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本选择器</title>
+    <!-- 内部样式表，一般都写在head标签中，要在body中标签加载之前书写 -->
+    <style>
+        /* 标签选择器：在样式表中，用标签的名称作为选择器设置样式
+           标签名{样式}
+           特点：能够为一群具有相同名称的标签，同时
+           设置相同的样式。
+         */
+        div{
+            width:100px;
+            height:100px;
+            background-color: blue;
+        }
+        /* 
+            类型选择器：在标签内部通过class属性，给标签设置类型名
+            在样式表中通过 .类型名{样式} 的方式给标签盒子设置样式
+            特点：相当于给标签起了一个别名，可以重名，也可以有多个
+            可重名表示   ： 类型选择器可以选中一堆具有相同类型名的标签
+            给它们同时设置相同的样式
+            可以有多个表示： 多个选择器可以选中同一个标签，由于样式
+            表是从上到下依次执行,因此，当多个选择器同时选中同一个
+            标签，并设置相同样式时，写在样式表最后的选择器生效
+
+            类型名命名规范：
+            1、不能以数字开头
+            2、见名知义
+            3、驼峰命名法
+               当名称需要多个英文单词描述时
+               从第二个英文单词开始，首字母大写
+         */
+        .box1{
+            background-color: green;
+        }
+        .box{
+            background-color: red;
+        }
+        .😄{
+            background-color: black;
+        }
+        /* 
+            id选择器，是通过给标签设置id属性
+            在样式表中通过 #id{样式}对标签设置样式
+            有且只能有一个，不能重名，不能有多个
+            一般不用来设置样式
+        
+         */
+        #box2{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+   <div></div>
+   <div class="box"></div>
+   <div class="box1 box"></div>
+   <div class="box1 box" id="box2"></div>
+   
+
+  
+</body>
+</html>

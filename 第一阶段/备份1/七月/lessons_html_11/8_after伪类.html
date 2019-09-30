@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>伪类选择器</title>
+    <style>
+        .box::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        /* 
+        父级选择器：：after{
+                    content：""::after
+                    }
+        after伪元素选择器，允许我们通过CSS为标签最后一个子级位置上添加一个inline
+        型标签元素。
+
+        利用这个特点。可以来实现清浮动
+        清浮动三行代码：
+                    父级元素：：after{
+                        content ："";
+                        display；block;
+                        clear:both;
+                        }
+     */
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+</body>
+
+</html>

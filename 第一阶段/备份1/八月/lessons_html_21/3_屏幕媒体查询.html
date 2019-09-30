@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 移动端屏幕适配，保证媒体查询的有效性 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>屏幕媒体查询</title>
+    <style>
+        .box{
+            width: 500px;
+            height: 500px;
+            background: blue;
+            border: 1px solid red;
+        }
+        @media only screen and (min-width:600px) {
+            .box{
+                background: green;
+            }
+        }
+
+        /* 
+        媒体查询检测屏幕尺寸
+
+        在样式表内的写法
+         @madia screen and （条件1） and （条件2） and （条件） {
+             样式列表
+         }
+
+            min-width：尺寸1：最小宽度，表示 尺寸1 < 
+            max-width；尺寸2;最大宽度，表示 < 尺寸2 生效
+
+            min-width:表示 的是浏览器的尺寸大小
+            min-device-width：表示的设备的尺寸大小
+            当文档 <meta name="viewport" content="wodth=device-width">
+            min-width 和min-device-width是等效的
+        */
+    </style>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

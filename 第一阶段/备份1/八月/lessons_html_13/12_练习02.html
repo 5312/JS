@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对定位场景应用一</title>
+    <style>
+        .wrap{
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            position: relative;
+        }
+        .wrap>img{
+            width: 100%;
+            height: 500px;
+        }
+        .text{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.5);
+            color: aliceblue;
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <img src="gou.jpg" alt="">
+        <div class="text">
+            <h1>是人尅的朋友</h1>    
+        </div>
+    </div>
+
+
+
+</body>
+</html>

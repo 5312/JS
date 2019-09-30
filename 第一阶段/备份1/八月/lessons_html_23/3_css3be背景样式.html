@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css3背景样式</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            border: 50px solid red;
+            padding: 50px;
+            /* 配置背景图的显示区域 */
+            background-clip: border-box;
+            /* 配置背景图定位起点 */
+            background-origin: content-box;
+            /* 
+            background-clip控制背景图的显示区域
+            padding-box是默认值，显示在padding区域以内
+            border-box ;显示在border区域以内
+            contet-box;显示在内容区域内
+
+            background-origin：控制背景图的定位起点
+            padding-box;默认值。以padding左上角为定位起点
+            border-box：以盒子边框左上角为定位起点
+            content-box;以盒子内容区域为定位起点；
+             */
+            background-size: cover;
+            /* background-size:设置背景图大小
+                一般后面跟两个值 ，宽度  高度
+                两个常用特殊值：
+                contain：背景图等比缩放，在盒子中显示==>占不满
+                cover：背景图等比缩放。占满盒子==>图不能显示全
+                    一般在流式布局中与background-position:center 配合
+                    让背景图跟着父级盒子缩放并居中
+                 */
+        }
+        /* 
+        背景图大小控制：
+        
+
+         */
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

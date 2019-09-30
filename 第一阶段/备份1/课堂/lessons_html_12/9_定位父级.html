@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定位父级</title>
+    <style>
+        .wrap1{
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+            margin: 100px auto;
+            /* position: relative; */
+        }
+        .wrap2{
+            width: 400px;
+            height: 400px;
+            margin: 49px;
+            border:1px solid blue;
+            position: relative;
+        }
+        .box{
+            width:100%;
+            height: 100px;
+            background: green;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap1">
+        <div class="wrap2">
+            <div class="box"></div>
+        </div>
+    </div>
+    <!-- 
+         定位父级设置：
+         盒子发生绝对定位后，只能按照某一个父级区域进行定位
+         该父级必须具备两个条件：
+         1、该父级的 position：属性为非static
+         2、该父级在文档结构上，距离绝对定位的盒子最近
+         实际使用时
+         设置定位父级，优先使用position：relative，因为该
+         位置属性，对父级盒子特性没有影响，不会影响父级所在区域
+         的布局结构。
+         其他position：fixed,absolute只用作被动判断，是否为
+         定位父级，不做主动设置。
+
+         绝对定位的盒子，其宽高大小，按照定位父级的宽高大小，进行
+         百分比变化，与盒子的直接父级无关
+
+
+
+
+     -->
+</body>
+</html>

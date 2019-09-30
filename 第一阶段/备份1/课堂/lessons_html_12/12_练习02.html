@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对定位应用场景一，盒子叠盒子</title>
+    <style>
+            h1,p{
+                margin: 0;
+                padding: 0;
+            }
+            html{
+                line-height: 1.5;
+            }
+
+            .cell{
+                width: 500px;
+                border:1px solid blue;
+            }
+    
+            .wrap{
+                
+                border:1px solid red;
+                margin: auto;
+                position: relative;
+            }
+            .wrap>img{
+                width: 100%;
+            }
+            .mask{
+                background: rgba(0,0,0,0.5);
+                color: white;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                z-index: 10;
+                text-align: center;
+                /* 盒子的透明度属性 */
+                opacity: 0;
+            }
+            .mask>h1{
+                /* border:1px solid white; */
+                margin-top: 129px;
+            }
+            /* .mask:hover{
+                opacity: 1;
+            } */
+            .cell:hover .mask{
+                opacity: 1;
+            }
+            .cell:hover .title{
+                color: red;
+            }
+    </style>
+</head>
+<body>
+    <div class="cell">
+            <div class="wrap">
+                    <img src="img/1.jpg" alt="">
+                    <div class="mask">
+                        <h1>哈哥是人类的朋友</h1>
+                        <p>哈哈</p>
+                    </div>
+                </div>
+
+            <div class="title">今日头条</div>
+    </div>
+</body>
+</html>

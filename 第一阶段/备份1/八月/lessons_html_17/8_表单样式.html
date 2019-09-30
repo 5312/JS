@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+       form{
+           border:1px solid red;
+           padding: 20px;
+           /* height: 800px; */
+       }
+       .text{
+           width: 200px;
+           height: 50px;
+           /* 外轮廓:input常用初始化样式 */
+           outline: none;
+           vertical-align: top;
+       }
+       .area{
+           width: 200px;
+           height: 100px;
+           vertical-align: top;
+           resize: none;
+       }
+       span{
+           border:1px solid blue;
+           resize: both;
+           overflow:hidden;
+           display: block;
+           margin: auto;
+       }
+       .radio{
+           width: 100px;
+           height: 100px;
+           background: red;
+           display: none;
+       }
+
+       .box{
+           border:1px solid red;
+           width: 100px;
+           height: 100px;
+       }
+       /* :checked伪类，表示表单标签被点击选择时，选中该标签 */
+       input:checked+.box{
+           background: red;
+       }
+       .checkbox{
+            display: none;
+       }
+       .box1{
+           display: inline-block;
+           width: 50px;
+           height: 50px;
+           border:1px solid blue;
+           vertical-align: middle;
+       }
+       :checked+.box1{
+           background: url(normal.png) center center no-repeat;
+           background-size: 80%;
+       }
+       select{
+           width: 200px;
+           height: 50px;
+           background: white;
+           outline: none;
+           border:1px solid #ccc;
+           color: red;
+       }
+       .submit{
+           width: 100px;
+           height: 50px;
+           background: white;
+           border:1px solid #ddd;
+       }
+    </style>
+</head>
+<body>
+    <form action="login.php">
+        <!-- <input type="text" class="text">
+        <textarea class="area"></textarea> -->
+        
+        <label>
+            <input class="radio"  type="s s name="sex" value="女">
+            <div class="box"></div>
+        </label>
+
+        <label>
+            抽烟
+            <input type="checkbox" name="hobby[]" class="checkbox" value="smoking">
+            <div class="box1"></div> 
+        </label>
+        
+        <select name="" id="">
+            <option value="">宝鸡</option>
+            <option value="">西安</option>
+        </select>
+        <input type="submit" value="提交" class="submit">
+      <!-- 
+
+         表单标签样式初始化:
+         1、input text : outline:none
+                         border:1px solid #ccc;
+         2、textarea   :  resize:none
+         3、input   
+                 button
+                 submit : background  border
+         4、select      : background  border
+         5、radio,checkbox : display:none
+                              与label标签相配合
+
+
+
+
+       -->
+
+    </form>
+
+</body>
+</html>

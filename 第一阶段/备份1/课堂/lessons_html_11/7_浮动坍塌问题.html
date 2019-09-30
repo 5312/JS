@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        .wrap{
+            width: 200px;
+            height: 100px;
+            border:1px solid red;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background: blue;
+            float: right;
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+    
+    </style>
+</head>
+<body>
+    <!-- 
+        浮动坍塌：
+        是指当父级不设置高度，靠内容撑开时，所有的子级都
+        发生浮动，从而导致父级高度丢失的现象，称为浮动坍塌
+        浮动坍塌，会造成父级所在文本流的布局紊乱，因此需要
+        将浮动坍塌问题消除，而消除浮动坍塌问题的方法称为：
+        “清浮动”
+
+     -->
+
+
+    <div class="wrap">
+        <div class="box"></div>
+    </div>
+    <div class="box1"></div>
+</body>
+</html>

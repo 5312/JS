@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @keyframes leftFly {
+            from {
+                transform: translateX(0px);
+            }
+
+            to {
+                transform: translateX(-8000px);
+            }
+        }
+
+        .inFor {
+            width: 800px;
+            height: 450px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        img {
+            width: 800px;
+            height: 450px;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+
+        }
+
+        img:nth-child(1) {
+            z-index: 9;
+            animation: leftFly 10s infinite;
+        }
+
+        img:nth-child(2) {
+            z-index: 8;
+
+            animation: leftFly 10s 20s infinite;
+        }
+
+        img:nth-child(3) {
+            z-index: 7;
+
+            animation: leftFly 10s 30s infinite;
+        }
+
+        img:nth-child(4) {
+            z-index: 6;
+            animation: leftFly 10s 40s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="inFor">
+            <img src="img/1.jpg" alt="">
+            <img src="img/2.jpg" alt="">
+            <img src="img/3.jpg" alt="">
+            <img src="img/4.jpg" alt="">
+        </div>
+    </div>
+</body>
+
+</html>

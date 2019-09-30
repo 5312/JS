@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹性盒子布局flex</title>
+    <style>
+        .wrap{
+            width: 500px;
+            border: 1px solid red;
+            /* 设置父级盒子为弹性盒子 */
+            display: flex;
+            /* 设置子级的排列方式 ：
+                默认：row 同行从左到右排列
+                    column：从上到下排列
+                    row-reverse：反向同行排列
+                    column-reverse:反向从上到下排列；
+            
+            */
+            flex-direction: row;
+            /* 设置盒子是否换行
+                默认;nowrap,子级不换行
+                    wrap换行;
+            */
+            flex-wrap: nowrap;
+            /* 简写属性 */
+            flex-flow: wrap row;
+            /* 子级盒子水平方向上的分布 
+                默认：flex-start;居左
+                    center ：居中
+                    flex-end：居右
+                    space-between：平均分配
+                    space-around：带间隙平局分配
+            */
+            justify-content: space-between;
+            /*子级盒子同行排列时 垂直方向对齐设置
+                默认：
+                    flex-start;顶对齐
+                    center ：居中
+                    flex-end：低对齐
+                    stretch : 拉伸（默认值）;
+             */ 
+            align-items: flex-end; 
+            /*设置子级盒子垂直方向上，行与行的分布：align-content:align-items: 
+                同行排列，形成多行，并且父级高给定的情况下才有效
+                flex-start；局上
+                center ：居中
+                flex-end ：局下
+                space-between:垂直方向平局分配
+                space-around ：垂直方向带间隙平均分配   
+            */
+            align-content: flex-start;
+
+            /* 设置子级自身的对齐方式 */
+            align-self: flex-start;
+            }
+            p{
+                /* 设置子级在界面的渲染先后顺序
+                    值越小越靠前，如果使用，所有的子级
+                    都要有明确的order设置
+                */
+                order: 2;
+            }
+    
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <p>从辅助诊断到全周期解决方案，「推想科技」“攻坚”肺癌成果落从辅助诊断到全周期解决方案</p>
+        <p>从辅助诊断到全周期解决方案，「推想科技」“攻坚”肺癌成果落地从辅助诊断到全周期解决方案，「推想科技」“攻坚”肺癌成果落地</p>
+        <p>从辅助诊断到全周期解决方案，「推想科技」“攻坚”肺癌成果落地</p>
+    </div>    
+</body>
+</html>

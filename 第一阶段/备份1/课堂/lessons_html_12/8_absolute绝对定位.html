@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对定位</title>
+    <style>
+        .wrap{
+            width: 500px;
+            height: 500px;
+            border:1px solid red;
+            margin: 100px auto;
+            position: relative;
+        }
+        .box{
+            height: 200px;
+            background: red;
+            position: absolute;
+            top:0;
+            left: 0;
+            z-index: 10;
+            width: 100px;
+            height: 100px;
+        }
+        .box1{
+            width: 200px;
+            height: 250px;
+            background: blue;
+            position: absolute;
+            top:0;
+            left: 0;
+            z-index: 8;
+        }
+        /* 
+            position：absolute
+            盒子设置绝对定位以后，脱离原来的文本流，盖在其他默认文本流
+            之上，盒子不再具有默认文本流的盒子特性，而是具有新的特点。
+            支持所有的CSS样式，在不设置大小时，靠内容撑开。
+
+            绝对定位，可以让盒子按照某一个指定的父级盒子边界进行位置改变
+            通过top，left,right,bottom四个值
+            top:盒子的上边界到定位父级上边界的之间的距离
+            right:盒子的右边界到定位父级右边界之间的距离
+            bottom:盒子的下边界到定位父级下边界之间的距离
+            left:盒子的左边界到定位父级左边界之间的距离
+
+            绝对定位的盒子之间进行位置改变，互相没有影响，当位置
+            重叠时，可通过z-index来设置该盒子的显示层级，值越大
+            显示越靠前s
+        
+        
+        
+        
+        
+         */
+        
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box">box1</div>
+        <div class="box1">box2</div>
+    </div>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+    <p>chun mian</p>
+</body>
+</html>

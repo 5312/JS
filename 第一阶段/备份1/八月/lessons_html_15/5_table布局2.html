@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>课表</title>
+    <style>
+        /* 初始化 */
+        table {
+            border-collapse: collapse;
+            text-align: center;
+
+        }
+        th,
+        td {
+            border: 1px solid red;
+        }
+        th{
+            width: 200px;
+        }
+        .line{
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th colspan="2">日期</th>
+            <th colspan="2">天气现象</th>
+            <th>气温</th>
+            <th>风向</th>
+            <th>风力</th>
+        </tr>
+        <tr>
+
+            <td rowspan="2">22日星期四</td>
+            <td>白天</td>
+            <td>多云</td>
+            <td>晴转多云</td>
+            <td>高温7</td>
+            <td>无持续风向</td>
+            <td>微风</td>
+        </tr>
+        <tr>
+            <td>夜间</td>
+            <td>月亮</td>
+            <td>晴</td>
+            <td>低温-4</td>
+            <td>无持续风向</td>
+            <td>微风</td>
+        </tr>
+        <tr class="line"></tr>
+        <tr>
+
+                <td rowspan="2">22日星期四</td>
+                <td>白天</td>
+                <td>duoyun</td><s></s>
+                <td>晴转多云</td>
+                <td>高温7</td>
+                <td>无持续风向</td>
+                <td>微风</td>
+            </tr>
+            <tr>
+                <td>夜间</td>
+                <td>月亮</td>
+                <td>晴</td>
+                <td>低温-4</td>
+                <td>无持续风向</td>
+                <td>微风</td>
+            </tr>
+    </table>
+
+</body>
+
+</html>

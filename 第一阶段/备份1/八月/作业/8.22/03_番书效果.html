@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>翻书</title>
+    <style>
+        .wrap {
+            width: 200px;
+            height: 300px;
+            margin: 30px auto;
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            text-align: center;
+            transition: 1s;
+            border: 1px solid blue;
+        }
+
+        .wrap>div,p {
+            width: 200px;
+            height: 300px;
+            font-size: 34px;
+            line-height: 250px;
+            background: blue;
+            transform-origin: left;
+
+        }
+     p{
+         margin: 0;
+         padding: 0;
+     }
+        .wrap>.box1,.wrap>p {
+            transition: 0s;
+            border: 1px solid blue;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition:  1s 1s;
+        }
+        .wrap>.box2 {
+            color: red;
+            background: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition:  1s 2s;
+        }
+
+        .wrap>.box3 {
+            color: red;
+            background: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -2;
+            transition:1s  3s ;
+        }
+
+        .wrap>.box4 {
+            color: red;
+            background: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -3;
+            transition: 1s  4s;
+        }
+
+        .wrap>.box5 {
+            color: red;
+            background: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -4;
+            transition: 1s 5s ;
+        }
+
+        .wrap>.box6 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -5;
+            transition: 1s  6s;
+        }
+
+        .wrap:hover div {
+
+            transform: rotateY(150deg);
+        }
+        .wrap>div{
+            transition: 0s;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box1">封面</div>
+        <div class="box2">第一页</div>
+        <div class="box3">第二页</div>
+        <div class="box4">第三页</div>
+        <div class="box5">第四页</div>
+        <p class="box6">谢谢观看</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>块级标签block</title>
+    <style>
+       .box1{   
+          width: 500px;
+          background: green;
+          
+       }
+       .box2{
+           width: 200px;
+           height: 300px;
+           /* border:10px solid yellow; */
+           display: inline-block;
+           margin: 100px auto;
+           padding: 0px 0px;
+           background-color: blue;
+           color:white;
+           font-size: 40px;
+  
+       }
+    </style>
+</head>
+<body>
+    <!-- 
+        块级标签特点：
+        1、标签独占一行，可以让超文本从上到下排列
+        2、支持所有的CSS样式设置
+        3、垂直方向上的margin会重叠
+        4、在不设置宽度时，width大小为自动的情况下
+           块级标签盒子在界面上默认占满父级内容宽度
+           此时在设置盒子水平方向的
+           margin，border,padding时，都会向内压缩
+           内容空间(width空间）
+           如果设置了宽度，盒子移动，符合margin,padding 
+           基本移动规律
+        5、 外边距坍塌问题，只出现在，父级和子级都是块级
+           标签的情况下
+        6、 块级标签居中问题，块级标签要在其父级的水平方向
+          上居中，是通过给标签自身设置margin:上下  auto
+          来完成。
+        7、最常见的块级标签div
+
+
+
+
+
+
+
+
+     -->
+
+
+
+    <div class="box1">
+        <div class="box2">嘿嘿</div>
+    </div>
+</body>
+</html>

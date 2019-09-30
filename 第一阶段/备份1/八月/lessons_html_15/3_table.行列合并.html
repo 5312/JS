@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th colspan="2">信息 </th>
+        </tr>
+        <tr>
+            <td>姓名</td>
+            <td>查二哥</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th rowspan="2">信息 </th>
+            <th>姓名</th>
+        </tr>
+        <tr>
+            <td>姓名</td>     
+        </tr>
+    </table>
+    <!-- 
+        列合并;
+        cosspan="数字\\"
+        判断一个盒子跨几列方法：从该单元格的左边线数起。
+        到右边线结束，包含中间其他单元格竖线一共有n根，
+        那该盒子跨n列
+
+        行合并
+        rowspan ="数字"
+        判断一个单元格跨几行方法：从该单元格的上边线数起，
+        到单元格下边线结束，包含中间其他单元格横线一共有n根
+        那该单元格跨n-1行
+
+        列合并是按照从左到右跨列
+        行合并是按照从上到下跨行。
+
+
+
+     -->
+</body>
+
+</html>

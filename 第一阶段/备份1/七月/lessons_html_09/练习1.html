@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习1</title>
+    <style>
+        html {
+            line-height: 1.5;
+            letter-spacing: 0;
+            font-size: 14px;
+        }
+        body,ul,li {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #666;
+        }
+        .red {
+            color: red;
+        }
+        .warp {
+            width: 1168px;
+            border: 1px solid #e5e5e5;
+            margin: 100px auto;
+        }
+        .navList {
+            padding-right: 47px;
+        }
+        .navList>div {
+            padding: 20px 0;
+            padding-right: 20px;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 0;
+        }
+
+        .navList>div>span,
+        .list {
+            white-space: nowrap;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .navList>div>span {
+            font-size: 14px;
+            color: #999;
+            width: 59px;
+            letter-spacing: 2em;
+            overflow: hidden;
+        }
+
+        .list {
+            width: 1025px;
+            margin-left: 14px;
+        }
+
+        .list>a {
+            font-size: 14px;
+            margin-right: 40px;
+        }
+
+        .prockLits {
+            font-size: 0;
+        }
+
+        .prockList>li {
+            width: 277px;
+            margin-top: 30px;
+            margin-right: 11px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .img {
+            width: 277px;
+            display: block;
+        }
+
+        .make {
+            height: 23px;
+            margin: 10px;
+            text-align: center;
+            width: 277px;
+        }
+
+        .make>span {
+            margin: 0 auto;
+        }
+
+        .box {
+            font-size: 14px;
+            color: #fff;
+            background: red;
+            margin: 0 auto;
+        }
+
+        .title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            display: block;
+            text-align: center;
+        }
+
+        .price {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            color: red;
+            border-bottom: 1px solid #eee;
+            width: 165px;
+            margin: 0 auto;
+        }
+
+        .des {
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin: 0 auto;
+            overflow: hidden;
+            display: block;
+            width: 224px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="warp">
+        <div class="navList">
+            <div>
+                <span>分类:</span>
+                <div class="list">
+                    <a href="">全部</a>
+                    <a href="" class="red">牛仔</a>
+                    <a href="">外衣</a>
+                    <a href="">衬衫</a>
+                    <a href="">卫衣</a>
+                    <a href="">T恤</a>
+                    <a href="">裤装</a>
+                    <a href="">内衣</a>
+                    <a href="">内裤</a>
+                    <a href="">丝袜</a>
+                    <a href="">家居装</a>
+                    <a href="">裙装</a>
+                </div>
+            </div>
+        </div>
+        <div class="navList">
+            <div>
+                <span>配送地区:</span>
+                <div class="list">
+                    <a href="" class="red">全部</a>
+                    <a href="">牛仔</a>
+                    <a href="">澳门</a>
+                    <a href="">台湾</a>
+                    <a href="">日韩</a>
+                    <a href="">云南</a>
+                    <a href="">杭州</a>
+                    <a href="">北京</a>
+                    <a href="">河南</a>
+                    <a href="">陕西</a>
+                    <a href="">内蒙古</a>
+                    <a href="">深圳</a>
+                </div>
+            </div>
+        </div>
+        <div class="navList">
+            <div>
+                <span>排序:</span>
+                <div class="list">
+                    <a href="" class="red">默认</a>
+                    <a href="">价格</a>
+                    <a href="">△</a>
+                    <a href="">上架时间</a>
+                    <a href="">↓</a>
+                </div>
+            </div>
+        </div>
+        <ul class="prockList">
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+            <li>
+                <img src="list/5.png" alt="">
+                <div class="make">
+                    <span class="box">特价</span>
+                    <span class="box"></span>
+                </div>
+                <a href="" class="title">男士复古毛领加绒牛仔外套</a>
+                <div class="price">￥199</div>
+                <a href="" class="des">牛仔拼接仿羊羔毛,经典而亮眼</a>
+
+            </li>
+        </ul>
+
+    </div>
+    </div>
+</body>
+
+</html>

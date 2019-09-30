@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>3-天猫商品展示架（横排）</title>
+		<meta name="Keywords" content="#"/>
+		<meta name="Description" content="#"/>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			.goods {
+				width: 1300px;
+				margin: 10px auto;
+			}
+			/*每一件商品信息的整体尺寸*/
+			.good {
+				width: 210px;
+				padding: 10px;
+				padding-bottom: 0;
+				display: inline-block;
+				margin: 10px 5px;
+				border: 1px solid rgb(245,245,245);
+			}
+			/*鼠标放置在商品上显示边框*/
+			.good:hover {
+				border: 1px solid rgb(171,0,3);
+			}
+			.good div {
+				margin: 5px 0;
+			}
+			/*商品图片*/
+			.img img{
+				width: 100%;
+			}
+			/*价格*/
+			.price {
+				color: red;
+				font-size: 20px;
+			}
+			/*商品描述*/
+			.des {
+				overflow: hidden;
+			}
+			.des a {
+				font-size: 12.4px;
+				text-decoration: none;
+				color: black;
+			}
+			.red {
+				color: rgb(201,118,80);
+			}
+			/*店铺*/
+			.shop a {
+				color: rgb(143,146,160);
+				font-size: 12px;
+			}
+			.shop a:hover {
+				color: red;
+			}
+			/*成交量，评价部分的div尺寸*/
+			.foot {
+				border-top: 1px solid rgb(234,234,234);
+			}
+			.foot div {
+				display: inline-block;
+				font-size: 12px;
+				color: rgb(143,146,160);
+				padding:5px 7px;
+			}
+			/*评价部分*/
+			.foot .ping {
+				border-left: 1px solid rgb(234,234,234);
+				border-right: 1px solid rgb(234,234,234);
+				width: 68px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="goods">
+			<!--商品1-->
+			<div class="good">
+				<!--显示商品图片-->
+				<div class="img"><img src="img/v_tianmao/j1.jpg" alt=""/></div>
+				<!--显示商品价格-->
+				<div class="price">¥239.00</div>
+				<!--显示商品描述-->
+				<div class="des"><a href="###"><nobr>树傲六层角钢家用轻型小货<span class="red">架</span>仓库储物置物展示架铁架超市货架陈列</nobr></a></div>
+				<!--显示店铺-->
+				<div class="shop"><a href="###">树傲旗舰店</a></div>
+				<!--显示成交量，评价量，联系卖家-->
+				<div class="foot">
+					<div class="sale">
+						月成交<span style="color: rgb(165,101,64);">2102笔</span>
+					</div>
+					<div class="ping">
+						评价<a href="###" style="text-decoration: none;rgb(31,124,189)">2192</a>
+					</div>
+					<div class="contact"><img src="img/v_tianmao/icon.png" alt=""/></div>
+				</div>
+			</div>
+			<!--商品2-->
+			<div class="good">
+				<!--显示商品图片-->
+				<div class="img"><img src="img/v_tianmao/j2.jpg" alt=""/></div>
+				<!--显示商品价格-->
+				<div class="price">¥310.00</div>
+				<!--显示商品描述-->
+				<div class="des"><a href="###"><nobr>邦威产品化妆品货柜展柜<span class="red">展示</span>柜鞋店货架陈列架展示架置物架摆放架</nobr></a></div>
+				<!--显示店铺-->
+				<div class="shop"><a href="###">邦威旗舰店</a></div>
+				<!--显示成交量，评价量，联系卖家-->
+				<div class="foot">
+					<div class="sale">
+						月成交<span style="color: rgb(165,101,64);">413笔</span>
+					</div>
+					<div class="ping">
+						评价<a href="###" style="text-decoration: none;rgb(31,124,189)">125</a>
+					</div>
+					<div class="contact"><img src="img/v_tianmao/icon.png" alt=""/></div>
+				</div>
+			</div>
+			<!--商品3-->
+			<div class="good">
+				<!--显示商品图片-->
+				<div class="img"><img src="img/v_tianmao/j3.jpg" alt=""/></div>
+				<!--显示商品价格-->
+				<div class="price">¥338.00</div>
+				<!--显示商品描述-->
+				<div class="des"><a href="###"><nobr><span class="red">展示</span>柜货柜展柜超市货<span class="red">架</span>隔断<span class="red">陈列</span>柜精品展示架化妆品置物架带门</nobr></a></div>
+				<!--显示店铺-->
+				<div class="shop"><a href="###">创怡家居旗舰店</a></div>
+				<!--显示成交量，评价量，联系卖家-->
+				<div class="foot">
+					<div class="sale">
+						月成交<span style="color: rgb(165,101,64);">451笔</span>
+					</div>
+					<div class="ping">
+						评价<a href="###" style="text-decoration: none;rgb(31,124,189)">780</a>
+					</div>
+					<div class="contact"><img src="img/v_tianmao/icon.png" alt=""/></div>
+				</div>
+			</div>
+			<!--商品4-->
+			<div class="good">
+				<!--显示商品图片-->
+				<div class="img"><img src="img/v_tianmao/j4.jpg" alt=""/></div>
+				<!--显示商品价格-->
+				<div class="price">¥358.00</div>
+				<!--显示商品描述-->
+				<div class="des"><a href="###"><nobr>货<span class="red">架</span>货柜产品简易产品<span class="red">展示架</span>美容展柜化妆品展示柜陈列柜隔断柜</nobr></a></div>
+				<!--显示店铺-->
+				<div class="shop"><a href="###">雅士邦家居旗舰店</a></div>
+				<!--显示成交量，评价量，联系卖家-->
+				<div class="foot">
+					<div class="sale">
+						月成交<span style="color: rgb(165,101,64);">2102笔</span>
+					</div>
+					<div class="ping">
+						评价<a href="###" style="text-decoration: none;rgb(31,124,189)">2192</a>
+					</div>
+					<div class="contact"><img src="img/v_tianmao/icon.png" alt=""/></div>
+				</div>
+			</div>
+			<!--商品5-->
+			<div class="good">
+				<!--显示商品图片-->
+				<div class="img"><img src="img/v_tianmao/j5.jpg" alt=""/></div>
+				<!--显示商品价格-->
+				<div class="price">¥338.00</div>
+				<!--显示商品描述-->
+				<div class="des"><a href="###"><nobr>超市货柜展柜中岛货架展架隔断陈列柜精品展示柜饰品化妆品架带门</nobr></a></div>
+				<!--显示店铺-->
+				<div class="shop"><a href="###">悠筑旗舰店</a></div>
+				<!--显示成交量，评价量，联系卖家-->
+				<div class="foot">
+					<div class="sale">
+						月成交<span style="color: rgb(165,101,64);">591笔</span>
+					</div>
+					<div class="ping">
+						评价<a href="###" style="text-decoration: none;rgb(31,124,189)">2587</a>
+					</div>
+					<div class="contact"><img src="img/v_tianmao/icon.png" alt=""/></div>
+				</div>
+			</div>
+			<!--商品6-->
+			<div class="good">
+				<!--显示商品图片-->
+				<div class="img"><img src="img/v_tianmao/j6.jpg" alt=""/></div>
+				<!--显示商品价格-->
+				<div class="price">¥341.00</div>
+				<!--显示商品描述-->
+				<div class="des"><a href="###"><nobr>创怡包邮精品展柜货<span class="red">架展示</span>柜<span class="red">陈列</span>柜化妆品架展示架带门货柜组合</a></div>
+				<!--显示店铺-->
+				<div class="shop"><a href="###">树傲旗舰店</a></div>
+				<!--显示成交量，评价量，联系卖家-->
+				<div class="foot">
+					<div class="sale">
+						月成交<span style="color: rgb(165,101,64);">215笔</span>
+					</div>
+					<div class="ping">
+						评价<a href="###" style="text-decoration: none;rgb(31,124,189)">325</a>
+					</div>
+					<div class="contact"><img src="img/v_tianmao/icon.png" alt=""/></div>
+				</div>
+			</div>
+			<!--商品7-->
+			<div class="good">
+				<!--显示商品图片-->
+				<div class="img"><img src="img/v_tianmao/j7.jpg" alt=""/></div>
+				<!--显示商品价格-->
+				<div class="price">¥239.00</div>
+				<!--显示商品描述-->
+				<div class="des"><a href="###"><nobr>货柜展柜精品<span class="red">展示架</span>仓储钢木货<span class="red">架</span>屏风隔断陈列柜饰品架置物书架</nobr></a></div>
+				<!--显示店铺-->
+				<div class="shop"><a href="###">嫣然旗舰店</a></div>
+				<!--显示成交量，评价量，联系卖家-->
+				<div class="foot">
+					<div class="sale">
+						月成交<span style="color: rgb(165,101,64);">121笔</span>
+					</div>
+					<div class="ping">
+						评价<a href="###" style="text-decoration: none;rgb(31,124,189)">796</a>
+					</div>
+					<div class="contact"><img src="img/v_tianmao/icon.png" alt=""/></div>
+				</div>
+			</div>
+			<!--商品8-->
+			<div class="good">
+				<!--显示商品图片-->
+				<div class="img"><img src="img/v_tianmao/j8.jpg" alt=""/></div>
+				<!--显示商品价格-->
+				<div class="price">¥153.00</div>
+				<!--显示商品描述-->
+				<div class="des"><a href="###"><nobr>精品珠宝手机样品化妆品<span class="red">展示</span>柜玻璃柜台产品展示架陈列货架饰品柜</nobr></a></div>
+				<!--显示店铺-->
+				<div class="shop"><a href="###">欣雪旗舰店</a></div>
+				<!--显示成交量，评价量，联系卖家-->
+				<div class="foot">
+					<div class="sale">
+						月成交<span style="color: rgb(165,101,64);">201笔</span>
+					</div>
+					<div class="ping">
+						评价<a href="###" style="text-decoration: none;rgb(31,124,189)">398</a>
+					</div>
+					<div class="contact"><img src="img/v_tianmao/icon.png" alt=""/></div>
+				</div>
+			</div>
+			<!--商品9-->
+			<div class="good">
+				<!--显示商品图片-->
+				<div class="img"><img src="img/v_tianmao/j9.jpg" alt=""/></div>
+				<!--显示商品价格-->
+				<div class="price">¥100.00</div>
+				<!--显示商品描述-->
+				<div class="des"><a href="###"><nobr>十八纸创意家具定制橱窗<span class="red">展示</span>柜展台展架陈列体验台货架创意设计架</nobr></a></div>
+				<!--显示店铺-->
+				<div class="shop"><a href="###">十八纸旗舰店</a></div>
+				<!--显示成交量，评价量，联系卖家-->
+				<div class="foot">
+					<div class="sale">
+						月成交<span style="color: rgb(165,101,64);">22笔</span>
+					</div>
+					<div class="ping">
+						评价<a href="###" style="text-decoration: none;rgb(31,124,189)">9</a>
+					</div>
+					<div class="contact"><img src="img/v_tianmao/icon.png" alt=""/></div>
+				</div>
+			</div>
+			<!--商品10-->
+			<div class="good">
+				<!--显示商品图片-->
+				<div class="img"><img src="img/v_tianmao/j10.jpg" alt=""/></div>
+				<!--显示商品价格-->
+				<div class="price">¥277.00</div>
+				<!--显示商品描述-->
+				<div class="des"><a href="###"><nobr><span class="red">展示</span>柜<span class="red">陈列</span>柜饰品展柜精品货<span class="red">架</span>仓储家用柜台钢木展示架书架陈列架</nobr></a></div>
+				<!--显示店铺-->
+				<div class="shop"><a href="###">智尚名旗舰店</a></div>
+				<!--显示成交量，评价量，联系卖家-->
+				<div class="foot">
+					<div class="sale">
+						月成交<span style="color: rgb(165,101,64);">35笔</span>
+					</div>
+					<div class="ping">
+						评价<a href="###" style="text-decoration: none;rgb(31,124,189)">306</a>
+					</div>
+					<div class="contact"><img src="img/v_tianmao/icon.png" alt=""/></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

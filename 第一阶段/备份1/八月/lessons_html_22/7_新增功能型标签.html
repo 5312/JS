@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新增功能标签</title>
+
+</head>
+
+<body>
+    <!-- 
+        视频播放几个常用属性
+            ：controls：播放控制
+            ：muted：静音控制
+            ：autoplay；自动播放（只有静音模式下才能自动播放）
+            ：loop：循环播放
+
+     -->
+    <!-- 视频播放 -->
+    <video controls autoplay muted loop>
+        <!-- mp4格式 H.264 AAC -->
+        <source src="video/video.mp4" >
+        <source src="video/video.ogg" >
+        <source src="video/video.acc" >
+        <source src="video/video.wav" >
+            <!-- 流媒体i webm .m3u8-->
+            <source src="video/video.webm" >
+                你的浏览器很low ：请升级<a href="">shengji </a>
+    </video>
+
+    <!-- audio音频 -->
+    <audio controls>
+        <source>
+    </audio>
+
+    <!--插件标签 -->
+    <embed src="" type="">
+
+
+    <a href="../lessons_html_22/8_棋盘结构.html" target="iframe">4_表单伪类选择器.html</a>
+    <!-- iframe 标签 引入外部html文件
+        iframe 引入外部html文件，可以跟a标签配合，完成页面的局部切换
+        a标签的target 属性值，与iframe的name 属性值一致
+    -->
+
+    <!-- iframe标签 引入外部html文件 -->
+    <iframe name="iframe"></iframe>
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业01</title>
+    <style>
+        body{
+            line-height: 1.5;
+        }
+        /* 从外到内，从上到下，从左到右，每个盒子设置样式 */
+        .wrap{
+            width: 600px;
+            /* border:1px solid red; */
+            margin: 50px auto;
+        }
+        .header{
+            background-color: aquamarine;
+            padding: 10px 0;
+            margin-bottom: 15px;
+        }
+
+        .title{
+            text-align: center;
+            font-size: 18px;
+            /* 字体加粗 */
+            font-weight: bold;
+        }
+        .des{
+            text-align: center;
+            margin-top: 3px;
+        }
+
+
+        .nav{
+            background-color: aquamarine;
+            padding: 10px 0;
+            margin-bottom: 15px;
+        }
+        .content{
+            font-size: 0px;
+        }
+        /* 先排列 */
+        /* 群组选择器 */
+        .article,.aside{
+            display: inline-block;
+            vertical-align: top;
+            font-size: 16px;
+        }
+        .article{
+            background-color: aquamarine;
+            width: 345px;
+            padding: 10px 0;
+        }
+        .section{
+            width: 299px;
+            background-color: yellow;
+            padding: 5px 0;
+            margin: 0 auto;
+            margin-bottom: 15px;
+        }
+        /* 子代选择器  父级选择器>子级选择器{} */
+        .des>span{
+            color: red;
+        }
+        .article>.des{
+            margin-bottom: 28px;
+        }
+        .aside{
+            background-color: aquamarine;
+            width: 240px;
+            padding: 92.5px 0;
+            margin-left: 15px;
+        }
+        .aside>.des{
+            margin: 0px 17px;
+            text-align: left;
+        }
+        .footer{
+            margin-top: 15px;
+            background-color:  aquamarine;
+            padding: 10px 0;
+        }
+    
+    
+    </style>
+</head>
+<body>
+    
+    <div class="wrap">
+        <!-- header -->
+        <div class="header">
+            <div class="title">&lt;header&gt;</div>
+            <div class="des">contains brandings like logo</div>
+        </div>
+        <!-- nav -->
+        <div class="nav">
+            <div class="title">&lt;nav&gt;</div>
+            <div class="des">contains navgitional section of the site</div>
+        </div>
+        <!--  content-->
+        <div class="content">
+            <!-- article -->
+            <div class="article">
+                <div class="title">&lt;article&gt;</div>
+                <div class="des">web page main content</div>
+
+                <div class="section">
+                    <div class="title">&lt;section&gt;</div>
+                    <div class="des">
+                        web page main <span>content</span>
+                    </div>
+                </div>
+                <div class="section">
+                        <div class="title">&lt;section&gt;</div>
+                        <div class="des">
+                            web page main <span>content</span>
+                        </div>
+                </div>
+            </div>
+            <!-- aside -->
+            <div class="aside">
+                <div class="title">&lt;aside&gt;</div>
+                <div class="des">contains extra information and related content or links</div>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div class="title">&lt;footer&gt;</div>
+            <div class="des">information about copyright, privacy policy,terms of use.ect</div>
+        </div>
+    </div>
+</body>
+</html>

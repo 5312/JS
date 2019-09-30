@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       /*.box{
+           width: 0px;
+           height: 0px;
+           border:100px solid red;
+           border-top-color: blue;
+           border-left-color: yellow;
+           border-bottom-color: green;
+       }
+
+*/     
+       .box>.box2{}   
+      .box>.box3>.box2{
+          background:green;
+       }
+       .box .box2{
+          background: yellow;
+       }
+    </style>
+</head>
+<body>
+    <div class="box">
+      <a>儿子</a>
+      <div class="box3">
+        <a class="box2">孙子</a>
+      </div>
+    </div>
+</body>
+</html>

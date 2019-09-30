@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品列表</title>
+    <style>
+        body,
+        ul,
+        a {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            letter-spacing: 0;
+            line-height: 1.5;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #666666;
+            display: inline-block;
+            margin-right: 40px;
+        }
+
+        .wrap {
+            width: 1200px;
+            border: 1px solid #e5e5e5;
+            font-size: 0;
+        }
+
+        .navList {
+            padding-right: 47px;
+            margin-bottom: 30px;
+        }
+
+        .navList>div {
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 26px;
+            padding: 20px 10px;
+        }
+
+        .navList>span,
+        .list {
+            display: inline-block;
+            vertical-align: middle;
+
+        }
+
+        .navList>div>.letter {
+            letter-spacing: 0em;
+            margin-right: 28px;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .navList>div>span {
+            letter-spacing: 2em;
+            color: #999999;
+        }
+
+        span,
+        .des {
+            display: inline-block;
+        }
+
+        .feather1 {
+            border: 5px solid transparent;
+            border-top: 5px solid #333;
+            margin-top: 2px;
+        }
+
+        .feather {
+            border: 5px solid transparent;
+            border-bottom: 5px solid #333;
+        }
+
+        .logo {
+            width: 277px;
+            height: 275px;
+            font-size: 14px;
+            color: red;
+            background-image: url(list/5.png);
+        }
+
+
+        .into>.box {
+            color: #ffffff;
+            background-color: red;
+            width: 52px;
+            height: 20px;
+            ;
+            display: inline-block;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+
+        .into {
+            width: 277px;
+            text-align: center;
+        }
+
+        .content {
+            width: 277px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .text {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 26px;
+            background-color:red;
+        }
+
+        .price {
+            width: 40px;
+            height: 17px;
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(232, 19, 19, 1);
+            line-height: 26px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="navList">
+            <div>
+                <span>分类</span>
+                <div class="list">
+                    <a href="">全部</a>
+                    <a href="" class="red">牛仔</a>
+                    <a href="">外衣</a>
+                    <a href="">衬衫</a>
+                    <a href="">卫衣</a>
+                    <a href="">T 恤</a>
+                    <a href="">裤装</a>
+                    <a href="">内衣</a>
+                    <a href="">内裤</a>
+                    <a href="">丝袜</a>
+                    <a href="">家居服</a>
+                    <a href="">裙装</a>
+                </div>
+            </div>
+            <div>
+                <span class="letter">配送地区</span>
+                <div class="list">
+                    <a href="" class="red">全部</a>
+                    <a href="">牛仔</a>
+                    <a href="">澳门</a>
+                    <a href="">台湾</a>
+                    <a href="">日韩</a>
+                    <a href="">云南</a>
+                    <a href="">杭州</a>
+                    <a href="">北京</a>
+                    <a href="">河南</a>
+                    <a href="">陕西</a>
+                    <a href="">内蒙古</a>
+                    <a href="">深圳</a>
+                </div>
+            </div>
+            <div>
+                <span>排序</span>
+                <div class="list">
+                    <a href="" class="red">默认</a>
+                    <a href="">价格
+                        <div class="des">
+                            <div class="feather"></div>
+                            <div class="feather1"></div>
+                        </div>
+                    </a>
+                    <a href="">上架时间</a>
+                </div>
+            </div>
+        </div>
+
+        <ul class="content">
+            <div class="logo">
+                <span class="text">2色可选</span>
+            </div>
+            <div class="into">
+                <div class="box ">特价</div>
+                <div class="box">特价</div>
+            </div>
+            <a href="">男士复古毛领加绒缪在外套</a>
+            <div class="price">￥199</div>
+            <div class="shop">
+                <a href="">牛仔拼接仿羊羔毛，经典而亮眼</a>
+            </div>
+        </ul>
+    </div>
+</body>
+
+</html>

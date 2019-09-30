@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表格结构</title>
+</head>
+<body>
+    <!-- 表格标签 -->
+    <table>
+        <!-- 表名 -->
+        <caption>表名</caption>
+        <!-- 表头 -->
+        <thead>
+            <!-- 行 tr: table row -->
+            <tr>
+                <!-- th:table head 标题单元格 -->
+                <th>星期一</th>
+                <th>星期二</th>
+                <th>星期三</th>
+                <th>星期四</th>
+                <th>星期五</th>
+            </tr>
+        </thead>
+        <!-- 表身 -->
+        <tbody>
+            <tr>
+                <!-- td:table data 数据单元格 -->
+                <td>语文</td>
+                <td>数学</td>
+                <td>化学</td>
+                <td>英语</td>
+                <td>物理</td>
+            </tr>
+        </tbody>
+        <!-- 表尾 -->
+        <tfoot>
+            <tr>
+                <td>制表:</td>
+                <td>汉宁辉</td>
+                <td>制茶:</td>
+                <td>张辉</td>
+                <td>噢耶</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <!-- 常见简写结构 -->
+    <table>
+        <tr>
+            <th>语文</th>
+            <th>数学</th>
+            <th>英语</th>
+        </tr>
+        <tr>
+            <td>90分</td>
+            <td>100分</td>
+            <td>80分</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>语文</th>
+            <td>90</td>
+        </tr>
+        <tr>
+            <th>数学</th>
+            <td>100</td>
+        </tr>
+        <tr>
+            <th>英语</th>
+            <td>80</td>
+        </tr>
+    </table>
+    <!-- 
+            表格标签的基本结构
+        1、完整结构
+        table ： 表格父级标签
+        caption: 表格标题
+        
+        thead : 表头
+        tbody : 表身
+        tfoot : 表尾
+        
+        thead/tbody/tfoot：只是用来做语义化区分的
+        tr : table row 表示一行
+        th : table head 表示标题单元格
+        td : table data 表示数据单元格
+
+
+        平时在使用时，通常使用简写结构
+        <table>
+            <tr>
+                <th></th>
+                <td></td>
+            <tr>
+        </table>
+        需要注意的是，浏览器对于简写结构，会添加tbody标签上去
+        因此在使用子代选择器时要注意
+
+
+
+
+     -->
+</body>
+</html>

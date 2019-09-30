@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 150px;
+            border:1px dashed red;
+        }
+        .li{
+            background: yellow;
+            /* margin: 10px 0; */
+            padding: 5px 0;
+            /* border:1px solid black; */
+        }
+        .li:hover{
+            color: #fff;
+            background: blue;
+        }
+
+
+        /* 
+              margin和padding都可以改变超文本位置
+
+              margin是通过改变盒子位置，让盒子带着超文本移动
+              padding是通过改变盒子边界到盒子内容之间的距离，
+              来推着超文本移动
+
+              使用时候要根据效果图来判断使用哪个属性进行位置改变
+              当没有明确边界渲染时，margin，padding都可以使用
+              当有明确边界渲染时，如果盒子之间有间隙，使用margin
+                               如果盒子之间没有间隙，使用padding
+        
+        
+        
+        
+         */
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="li">
+            更改桌面背景
+        </div>
+        <div class="li">
+            整理
+        </div>
+        <div class="li">
+            整理方式
+        </div>
+    </div>
+</body>
+</html>

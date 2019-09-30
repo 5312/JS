@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>兼容性测试</title>
+</head>
+
+<body>
+    <!-- 
+        结构化选择器:
+        子代选择器，后代选择器 兼容到IE5
+        兄弟相邻选择器，同级兄弟通用选择器 兼容到IE7
+     -->
+
+    <!-- 只有IE8支持 -->
+    属性选择器：[属性名~=指定词汇字符串]
+
+    <!-- 只有IE8不支持 -->
+    <embed src="video/zr.mp3" type="">
+    <embed src="video/video.mp4" type="">
+
+
+    <!-- IE7不支持 -->
+    属性选择器：[属性名*=指定词汇字符串]、[属性名~=指定词汇字符串]
+
+    <!-- IE5不支持 -->
+    1、结构化标签：兄弟相邻选择器、同级兄弟通用选择器 2、属性选择器：[属性名]、[属性名=xx] [属性名|=指定字符词组] [属性名^=指定字符串]（开头） [属性名$=指定字符串]（结尾） [属性名*=指定词汇字符串] [属性名~=指定词汇字符串] 3、伪类选择器：:empty(空选择器) :first-child
+    <iframe name="iframe"></iframe>
+
+    <!-- IE9以下不支持 -->
+    1、伪类选择器：not（）选择器、nth-last-child nth-child nth-of-type nth-last-of-type first-of-type 2、表单伪类选择器：:target 3、伪元素选择器：::after ::before ::first-letter ::first-line ::selection 4、语义化标签
+    <header>1</header>
+    <nav>2</nav>
+    <article>3</article>
+    <aside>4</aside>
+    <section>5</section>
+    <footer>6</footer>
+    5、功能标签 <video src="">
+                   <source src="">
+               </video>
+    <audio controls loop>
+                    <source src="">
+                </audio>
+    <embed src="4_exercise.html" type="text/html">
+
+    <!-- IE8以下不支持 -->
+    表单伪类选择器：:focus :checked
+
+    <!-- IE不支持 -->
+    伪类选择器：:valid :invalid 语义化标签：
+    <details></details>
+    <summary></summary>
+    <dialog open></dialog>
+    <embed src="video/_PM3-fxivsce6960746.jpg" type="">
+</body>
+
+</html>

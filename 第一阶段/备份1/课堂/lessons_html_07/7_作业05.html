@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <style>
+        .lineMiddle {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .lineTop {
+            display: inline-block;
+            vertical-align: top;
+        }
+        body {
+            line-height: 1.5;
+        }
+        .wrap {
+            width: 622px;
+            padding: 31px 13px;
+            border: 1px solid #333;
+            background-color: #eee;
+            margin: 0 auto;
+            font-size: 0;
+        }
+        .userInfo {
+            width: 296px;
+            margin-right: 16px;
+        }
+        .logo {
+            width: 123px;
+            height: 120px;
+            background-color: blue;
+            margin-right: 13px;
+        }
+        .info {
+            width: 160px;
+            padding-top: 14px;
+        }
+        .info>span {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-right: 7px;
+        }
+        .level {
+            display: inline-block;
+            width: 10px;
+            height: 7px;
+            background-color: yellow;
+        }
+
+        .growBar {
+            margin-top: 55px;
+        }
+
+        .growBar>span {
+            font-size: 12px;
+        }
+
+        .value {
+            margin-left: 56px;
+        }
+
+        .growBar>div {
+            height: 7px;
+            border: 1px solid red;
+            background-color: blue;
+        }
+
+        .list {
+            width: 309px;
+            border-left: 1px dashed #999;
+            padding: 39px 0;
+        }
+        .li {
+            width: 136px;
+            margin-left: 14px;
+        }
+        .li>div {
+            width: 50px;
+            height: 50px;
+            background-color: greenyellow;
+            margin-right: 13px;
+        }
+        .li>span {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="userInfo lineMiddle">
+            <div class="logo lineTop"></div>
+            <div class="info lineTop">
+                <span>蓝鸥</span>
+                <span class="level"></span>
+                <div class="growBar">
+                    <span>成长值>></span>
+                    <span class="value">506/999</span>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="list lineMiddle">
+            <div class="li lineMiddle">
+                <div class="lineMiddle"></div>
+                <span class="lineMiddle">生日权益</span>
+            </div>
+            <div class="li lineMiddle">
+                <div class="lineMiddle"></div>
+                <span class="lineMiddle">生日权益</span>
+            </div>
+            <div class="li lineMiddle">
+                <div class="lineMiddle"></div>
+                <span class="lineMiddle">生日权益</span>
+            </div>
+            <div class="li lineMiddle">
+                <div class="lineMiddle"></div>
+                <span class="lineMiddle">生日权益</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

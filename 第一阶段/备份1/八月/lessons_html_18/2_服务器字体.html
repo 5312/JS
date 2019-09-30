@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>服务器字体</title>
+    <style>
+        /*
+        @font-face{} 引入字体文件，并定义标识符 
+        要在所有样式之前，先定义后使用
+        */
+        @font-face{
+            /* 定义字体类型名称 */
+            font-family:"hwxk";
+            /* 引入字体文字 */
+            src: url('font/华文行楷.eot');/*ie9*/
+            src: url(font/华文行楷.ttf) format('truetype'),
+                url('font/华文行楷.woff') format('woff'),
+                url('font/华文行楷.woff2') format('woff2'),
+                url('font/华文行楷.otf')format('opentype'),
+                url('font/华文行楷.eot?#iefix')format('embedded-opentype')/*Ie6-8*/
+        }
+        h1{
+            font-family: hwxk;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>周叶凡</h1>
+      <!-- 
+        服务器字体 又称为webfont
+        不同的操作系统，不同的浏览器，同一浏览器的不同版本支持的服务器字体文件格式不同，因此在使用font-face时，
+        需要引入跨浏览器的兼容写法
+
+        常见的服务器字体文件格式
+        1，ttf ：Windows mac 都能支持的字体文件格式
+        2，otf ：ttf的一款升级文件格式
+        3，woff：web open font
+            woff 被除ie 以外的所有现代浏览器所至此
+        4，woff2 ：woff的升级版
+        5，eot：IE专用服务器字体文件格式
+        6，svg：矢量图（IE不支持)
+
+        跨浏览器兼容写法
+        src;url(路径.eot);IE9+
+        src；url(路径.eot?#iefix) format('embedded-opentype'),
+            ul(路径.ttf)format('truetype'),
+            url(路径.woff)format('woff'),
+            url(路径.woff2)format('woff2'),
+            url(路径.otf)format('opentype'),
+            url(路径.SVG)format('SVG')
+        ps:火狐浏览器需要在服务器环境下，才能看到效果
+       -->
+</body>
+
+</html>

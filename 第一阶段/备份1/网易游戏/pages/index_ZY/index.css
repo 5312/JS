@@ -1,0 +1,681 @@
+@keyframes fadeOut1{
+    0%{
+        opacity: 1;
+      }
+      20%{
+        opacity: 1;
+      }
+      25%{
+        opacity: 0;
+      }
+      95%{
+        opacity: 0;
+      }
+      100%{
+        opacity: 0;
+      }
+    }
+    @keyframes fadeOut2{
+        0%{
+            opacity: 0;
+          }
+          20%{
+            opacity: 0;
+          }
+          25%{
+            opacity: 1;
+          }
+          95%{
+            opacity: 1;
+          }
+          100%{
+            opacity: 0;
+          }
+        }
+.wrap{
+    width: 1260px;
+    min-width: 1260px;
+    padding: 10px;
+    margin: 0 auto;
+}
+.line_1{
+   width: 100%;
+    position: relative;
+    margin-bottom: 30px
+}
+.lineLeft{
+    width: 60%;
+    height: 400px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+/* 设置图片尺度 */
+.line_1 img{
+    width: 100%;
+
+}
+.lineLeft_1,.lineLeft_2{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+ 
+}
+.lineLeft_1{
+    height: 100%;
+    background: url(img/mask.png) center center no-repeat;
+    background-size: 100% 400px;
+    z-index: 9;
+    /* 动画 */
+    animation: fadeOut1 10s linear  infinite;
+}
+.lineLeft_2{
+    height: 100%;
+    background: url(img/mask.png) center center no-repeat;
+    background-size: 100% 400px;
+    z-index: 8;
+    /* 动画 */
+    animation: fadeOut2 10s linear  infinite;
+}
+/* 定位字体在图片上 */
+.lineLeft h1{
+    font-size: 40px;
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    z-index: 1;
+}
+.lineLeft img{
+    transition: 1s;
+}
+.lineLeft:hover img{
+    transform: scale(1.4);
+}
+.lineLeft:hover img{
+    transform: scale(1.4);
+}
+.lineRight{
+    width: 38%;
+    height: 400px;
+    display: inline-block;
+    vertical-align: top;
+    padding:0 10px;
+}
+.search{
+    font-size: 16px;
+    padding: 10px;
+    padding-left: 50px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+   
+}
+.searchbox{
+    width: 22px;
+    height: 26px;
+    display: inline-block;
+    vertical-align: top;
+    background: url(img/globals.png) -20px 2px no-repeat;
+}
+input{
+    width: 175px;
+    border: none;
+}
+.rightLine_2>span{
+    font-size: 16px;
+}
+.rightLine_2{
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 20px 0;
+    color: #999;
+}
+.rightLine_2>div{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    /* border: 1px solid red; */
+    vertical-align:top;
+    margin: 0 18px;
+}
+.box1{
+    background: url(img/focus1.png) 0px 0px no-repeat;
+}
+.box2{
+    background: url(img/focus1.png) -30px 1px no-repeat;
+}
+.box3{
+    background: url(img/focus1.png) -63px 1px no-repeat;
+}
+.box4{
+    background: url(img/focus1.png) -93px 1px no-repeat;
+}
+.rightLine_2>.box5{
+   
+    margin-left:5%;
+    background: url(img/focus1.png) -124px 2px no-repeat;
+}
+
+.line3Left{
+    width: 48%;
+    height: 281px;
+    display: inline-block;
+    vertical-align: top;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+.line3Left>span{
+    margin-top: 191px ;
+    display: inline-block;
+    vertical-align: top;
+  
+}
+.line3Left p{
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    left: 22px;
+    z-index:9;
+}
+.Rbor{
+    width: 15px;
+    height: 29px;
+    background: url(img/globals.png) -44px 1px no-repeat;
+    position: absolute;
+    bottom: 30px;
+    left: 165px;
+    z-index: 9;
+}
+.yellow{
+    font-size: 16px;
+    width: 127px;
+    border-radius: 3px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-left: 20px;
+    background: #ffd222;
+    line-height: 28px; 
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    z-index:9;
+}
+.back1{
+    margin-left: 4%;
+}
+.line3Left img{
+    transition: 1s;
+}
+.line3Left:hover img{
+    transform: scale(1.2);
+}
+/* 第二行样式 */
+.clear{
+    overflow: hidden;
+}
+.sift,.news{
+    float: left;
+}
+.sift{
+    width: 60%;
+   
+}
+.news{
+    width: 36%;
+    margin-left: 2%;
+}
+.topTop{
+    border-bottom: 1px solid #999;
+}
+.topTop>h1{
+    margin-top: 6px;
+    font-size: 36px;
+    display: block;
+    border-bottom: 4px solid #333;
+    float: left;
+
+}
+.more{
+    font-size: 16px;
+    color: #999;
+    float: right;
+    margin: 20px 0;
+}
+.more_1{
+    display:inline-block;
+    width:8px;
+    height: 14px; 
+    background: url(img/globals.png) -9px 0px no-repeat;
+}
+.hov_1 h1{
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    z-index:9;
+    width: 100%;
+    /* text-align: center; */
+}
+.hov_1{
+    width: 100%;
+    margin-top: 40px;
+}
+.hov_1>li{
+    width: 49%;
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 10px;
+    float: left;
+}
+.mrLe{
+    margin-left: 10px;
+}
+.hov_1 img{
+    width: 100%;
+    height: 100%;
+    transition: 1s;
+}
+li:hover img{
+    transform: scale(1.2);
+} 
+.hov_1 .a{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left:0;
+    z-index:7;
+    background: url(img/mask.png) repeat-x 0 bottom;
+}
+.mask{
+    display: none;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    color: white;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    z-index: 8;
+   
+    opacity: 1;
+    transition:opacity .5s;
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -o-transition: opacity .5s;;
+    -ms-transition:opacity .5s;
+}
+li:hover .mask{
+    display: block;
+    opacity: 1;
+    background: url(img/mask.png) repeat-x 0 bottom;
+    background: rgba(34,34,34,0.5);
+    font-size: 14px;
+}
+.tet{
+    font-size: 16px;
+    color: #fff;
+    margin: 80px auto 0;
+}
+.whiteBox{
+    height: 2px;
+    background: #fff;
+    width: 112px;
+    margin: 30px auto;
+}
+.background{
+    display: inline-block;
+    width: 20px;
+    height: 18px;
+    background: url(img/globals.png) -60px 0px no-repeat;
+    margin: auto;
+}
+.hov_2>div,.hov_3>div{
+    display: inline-block;
+    margin: 10px;
+    vertical-align:middle;
+}
+.hov_2{
+    border-bottom: 1px solid #ccc;
+}
+.backGr_1{
+    width:57px;
+    height:62px;
+    background: url(img/index.png) 0px 0px no-repeat;
+    text-align: center;
+    line-height: 66px;
+    font-size: 40px;
+    margin: 20px;
+    margin-top: 0;
+}
+.bor{
+    border: 1px solid #ccc;
+}
+.back-Ri>h3,.back-Ri>h2{
+    font-size: 14px;
+    color: #999;
+    margin: 10px;
+}
+.hov_3-1{
+    font-size: 25px;
+    color: #ccc;
+}
+.circle{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #999;
+    behavior: url(../../public/PIE/PIE.htc);
+}
+/* 文字底部边框 */
+.hov_3>.text{
+    font-size: 15px;
+    border-bottom: 1px solid #ccc;
+    line-height: 53px;
+}
+/* 消除最后一个下边框 */
+.hov_3>.bottom{
+    border: none;
+}
+.hov_4{
+    border-top:1px solid #999;
+}
+.loading{
+    width: 256px;
+    height: 40px;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    padding-top: 10px;
+    background: #ffd222;
+    border-radius: 50px;
+    margin: 20px auto;
+}
+.hov_1-img{
+    margin-top: 37px;
+}
+.hov_1-img,.hov_1-img>img{
+    width: 100%;
+}
+.hov_2:hover .hover{
+    color: #ffd222;
+    behavior: url(../../public/PIE/PIE.htc);
+}
+.hov_3:hover .hover{
+    color: #ffd222;
+    behavior: url(../../public/PIE/PIE.htc);
+}
+.hov_3:hover .hover1{
+    background: #ffd222;
+    behavior: url(../../public/PIE/PIE.htc);
+}
+.line_3{
+    width: 98%;  
+}
+.wrap>img{
+    width: 98%;
+    margin: 20px 0;
+}
+/* 第四行样式 */
+.line_4{
+    width: 100%;
+}
+.windLine{
+    width:60%;
+}
+.line_4>.topTop{
+    width: 60%;
+}
+.line_4-1{
+    margin:30px 0px;
+    width: 100%;
+
+}
+.line_left>.left{
+    width: 50%;
+    overflow: hidden;
+    /* 定位父级 */
+    position: relative;
+    z-index:7;
+    opacity: 1;
+}
+
+.s{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:8;
+    background: url(img/mask.png) repeat-x 0 bottom;
+}
+.left>.h4{
+    font-size: 20px;
+    color:white;
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    z-index:9;
+}
+.h4>span{
+    font-size: 14px;
+}
+.left>img{
+    width:100%;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition:1s;
+    -o-transition: 1s;
+}
+.left:hover img{
+    transform: scale(1.2);
+    /* 兼容 */
+    -webkit-transform: scale(1.2);
+    -moz-transform:scale(1.2);
+    -o-transform:scale(1.2);
+    -ms-transform:scale(1.2);
+}
+/* 说明样式 */
+.line_left>div{
+    display: inline-block;
+    vertical-align: top;
+}
+.line_left>.right{
+    width: 50%;
+    font-size: 14px;
+    color:#999;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.topLine{
+    border-bottom: 1px solid #999;
+    padding: 10px 0;
+    margin: 5px auto;
+}
+.hear{
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+.mark{
+    width: 17px;
+    height: 18px;
+    background: url(img/index.png) -58px 0px no-repeat;
+    float: left;
+}
+.line_left{
+    display: inline-block;
+    vertical-align: middle;
+    width:50%;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding:10px;
+    box-shadow: 0px 0px 5px #999;
+}
+/* 神都夜行录 */
+.showWind{
+    width: 24%;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 30px;
+    margin-right: 1.3%;
+    overflow: hidden;
+}
+.rinnone{
+    margin-right: 0 !important;
+}
+.showWind>img{
+    width: 100%;
+    transition: 1s;
+}
+.s1{
+    position: absolute;
+    top:0;
+    left: 0;
+}
+.s1{
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+    background: url(img/mask.png) repeat-x 0 bottom;
+}
+.conter{
+    z-index:9;
+    font-size: 12px;
+    color: white; 
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+
+}
+.conter>h4{
+    font-size: 20px;  
+}
+.showWind:hover img{
+    transform: scale(1.2);
+}
+.showWind2:hover img{
+    transform: scale(1.2);
+}
+.showWind2{
+    width: 49%;
+    position: relative;
+    display: inline-block;
+    margin-right: 1.7%;
+    margin-top: 20px;
+    overflow: hidden;
+}
+.showWind2>img{
+    width: 100%;
+    transition: 1s;
+}
+.windLine,.windLine_2{
+    display: inline-block;
+    vertical-align: top;
+}
+.windLine_2{
+    width: 36%;
+    margin-left:2%;
+}
+.beAbout,.to{
+    width: 96%;
+}
+.beAbout{
+    margin-top:30px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.to>img{
+    width: 100px;
+    height: 70px;
+    transition: 1s;
+    
+}
+.to>div{
+    display: inline-block;
+    vertical-align: top;
+}
+.sp>p1,.to>.time{
+    font-size: 18px;
+    margin-top:5px;
+}
+.to p{
+    font-size: 14px;
+    margin-top:20px;
+}
+.to>.sp{
+    margin-left: 20px;
+}
+.to>.time{
+    float: right;
+    margin-top: 40px;
+}
+.to{
+    height:70px;
+    padding: 6px 0;
+    transition: 1s;
+    border-top: 1px solid #ccc;
+}
+
+/* .to:hover{
+    height: 125px;
+}
+.to:hover img{
+    height: 125px;
+} */
+.to1{
+    height: 125px;
+}
+.windLine_2>img{
+    width: 100%;
+    height: 195px;
+    margin-top: 32px;
+}
+.linEleft{
+    width: 58%;
+}
+.linEright{
+    width: 37%;
+    margin-left: 2%;
+}
+.linEleft,.linEright{
+    display: inline-block;
+    vertical-align: top;
+}
+.anmin{
+    padding:47px 0;
+}
+.box-1{
+    width: 12.5%;
+    display: inline-block;
+    vertical-align: top;
+}
+.box-1>img{
+    margin: 0 5px;
+    width: 60px;
+}
+.hea2{
+    display: block;
+    font-size: 16px;
+    margin:0 5px;
+}
+.box-2>img{
+    margin: 0 5px;
+    width: 60px;
+}
+.box-2{
+    width: 25%;
+    display: inline-block;
+    vertical-align: top;
+}

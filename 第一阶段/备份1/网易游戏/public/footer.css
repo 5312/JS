@@ -1,0 +1,36 @@
+body{
+    width: 100%;
+    margin: 0;
+}
+.footer{
+    /* width: 100%; */
+    background: #272a2c;
+    color: white;
+    min-width: 980px;
+    padding: 30px;
+}
+.conter{
+    width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+.conter a{
+    color: white;
+    font-size: 12px;
+}
+.nav_s1{
+    font-size: 12px;
+    margin-right:45px;
+}
+.line_1>span{
+    display: inline-block;
+    width: 410px;
+    margin-left: 55px;
+}
+.line_2>p,.line_2>span{
+    display: block;
+    font-size: 12px;
+    color: white;
+    text-align: left;
+    margin: 10px 0;
+}

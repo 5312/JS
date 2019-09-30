@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 500px;
+            height: 500px;
+            border:1px solid red;
+            text-align: right
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background:red;
+            float: left;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background:blue;
+            float: left;
+            
+        }
+        .box3{
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            float: left;
+        }
+      
+        /* 默认文本流 */
+    </style>
+</head>
+<body>
+    <!-- 
+        浮动的原理：
+        所谓浮动，就是盒子在当前行浮起来，进入到新的一层（浮动层），
+    然后按照设定的水平方向移动，直到遇到父级块的边缘，或者其他浮动块
+    的边缘停止，不能设置具体浮动多远，只能设定方向
+
+
+     -->
+    <div class="wrap">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+    </div>
+</body>
+</html>

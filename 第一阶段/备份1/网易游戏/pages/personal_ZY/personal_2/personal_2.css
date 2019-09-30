@@ -1,0 +1,341 @@
+.bg_wrap{
+    width: 100%;
+    min-width: 1260px;
+    background: url(img/bg-list.png) 0px 0px ;
+    behavior: url(../../../public/PIE/PIE.htc);
+}
+.header{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+
+}
+.clear::after{
+    content: '';
+    clear: both;
+    display: block;
+    overflow: hidden;
+}
+.header>img,.head-1,.headBg{
+    display: inline-block;
+    vertical-align: middle;
+}
+.header>img{
+    float: left;
+}
+.head-1{
+    width:660px; 
+    float: right;
+    margin-top: 14px;
+}
+.headBg{
+    width: 130px;
+    height: 80px;
+    margin-left: 1px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 66px;
+}
+.Bg_line{
+    height: 5px;
+    background: #1085bb;
+    position: relative;
+}
+.Bg_cont{
+    width: 100%;
+    height: 75px;
+    background: url(img/head-nav-bg.png) 0px 0px ;
+    position: relative;
+}
+.Bg_cont>i {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index:1;
+    background: url(img/head-icon-news.png) 0px 0px no-repeat;
+    margin: -25px 0px 0px -25px;
+}
+.h_deep i{
+    transition: 1s;
+    background: url(img/icon_head_deep.png)0 0 no-repeat;
+}
+.h_blz i{
+    background: url(img/head-icon-blizzard.png)0 0 no-repeat;
+}
+.h_about i{
+    background: url(img/icon_head_about.png)0 0 no-repeat;
+}
+.headBg .Bg_line i{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    width: 0%;
+    height: 5px;
+    background: #00aeef;
+    transition: 0.5s;
+}
+.headBg .Bg_cont span{
+    /* display: none; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    width: 100%;
+    opacity: 0;
+    transition: 0.5s;
+    height: 75px;
+    behavior: url(../../../public/PIE/PIE.htc);
+}
+.headBg:hover .Bg_cont span{
+    display: block;
+    color: #fff;
+}
+
+.headBg .Bg_cont s{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    width: 0%;
+    height: 75px;
+    background: url(img/head-nav-bg_h.png) 0px 0px no-repeat;
+    transition: 0.5s;
+}
+.h_artist .Bg_cont s,
+.h_artist .Bg_cont span{
+    /* display: block; */
+    opacity: 1;
+    color: #fff;
+    width: 100%;
+}
+.h_news:hover .Bg_line i,
+.headBg:hover .Bg_cont s,
+.headBg:hover .Bg_cont span{
+    opacity: 1;
+    width: 100%;
+}
+.con_wrap{
+    background: url(img/bg.jpg) top center no-repeat;
+}
+.con_auto{
+    width: 1200px;
+    margin: auto;
+    padding: 55px 0px 0px ;
+}
+.con_auto>h1{
+    font-size: 32px;
+    color: #ccc;
+}
+.con_auto>h2{
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 40px;
+}
+.con_line1>div{
+    display: inline-block;
+    vertical-align: top;
+}
+.thir_li1{
+    width: 590px;
+    height: 440px;
+    overflow: hidden;
+    position: relative;
+}
+.thir_li2{
+    width: 305px;
+    height: 440px;
+    position: relative;
+}
+
+.thir_li3{
+    width: 285px;
+    height: 440px;
+    margin-left: 20px;
+    overflow: hidden;
+    position: relative;
+}
+.thir_line1,
+.thir_line2
+{
+    width: 285px;
+    height: 210px;
+    margin: 0 0 20px 20px;
+    overflow: hidden;
+    position: relative;
+}
+.con_line1 img{
+    transition: 1s;
+}
+.thir_li1:hover img,
+.thir_line1:hover img,
+.thir_line2:hover img,
+.thir_li3:hover img
+{
+    transform: scale(1.3);
+}
+.thir_posi{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index:4;
+    width: 60px;
+    height: 65px;
+    background: #f68e1e;
+}
+.bg{
+    width: 28px;
+    height: 30px;
+    margin:15px auto ;
+    background: url(img/hs_z.png) 0px 0px no-repeat;
+}
+.thir_li1>.span,
+.thir_line1>.span,
+.thir_line2>.span,
+.thir_li3>.span,
+.box_img>.span
+{
+    font-size: 23px;
+    height: 78px;
+    padding: 0 20px;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 9;
+    background: url(img/背景.png) repeat-x 0 bottom;
+}
+.thir_li1 span,
+.thir_line1 span,
+.thir_line2 span,
+.thir_li3 span,
+.box_img span{
+    font-size: 12px;
+    color: #00aeef;
+}
+.box_img{
+    width: 285px;
+    height: 210px;
+    /* 定位父级 */
+    position: relative;
+    overflow: hidden;
+    float: left;
+    margin: 0 20px 20px 0;
+}
+.box_img>img,
+.box_img>div{
+    position: absolute;
+    /* top: 0; */
+    left: 0;
+    z-index: 9;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition:1s;
+    -o-transition: 1s;
+ }
+.con_line2{
+    margin: 20px 0;
+}
+.marg0{
+    margin-right: 0;
+}
+.oneLine,
+.twoLine{
+    width: 305px;
+    float: left;
+}
+.lang{
+    height: 440px;
+}
+.box_img:hover img{
+    transform: scale(1.3);
+}
+.lg_wrap{height: 900px;}
+.lg_wrap>li{
+    width: 373px;
+    height: 148px;
+    float: left;
+    margin: 50px 0 0 27px;
+    position: relative;
+    padding-top: 20px;
+}
+.lg_head{
+    width: 130px;
+    height: 148px; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:9;
+    padding:24px 0 0 22px;
+    
+}
+.lg_head>img{
+    display: block;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+
+}
+.cri{
+    width: 130px;
+    height: 148px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+
+    background: url(img/avatar-dec.png) 0 0 no-repeat;
+}
+.lg_text{
+    font-size: 14px;
+    float: left;
+    background: #fff;
+    border-radius: 20px;
+    padding :10px 40px 10px 134px;
+}
+.name{
+    width: 53px;
+    font-size: 18px;
+}
+.man{
+    margin: 7px 0;
+    float: right;
+    width: 14px;
+    height: 14px;
+    background: url(img/hs_z.png) -27px 0px no-repeat;
+}
+.p{
+    background: url(img/pen.png) 0 3px no-repeat;
+    padding:0px 0px 0 20px;
+}
+.d{
+    color: #999;
+}
+.t{
+    font-size: 12px;
+    color: #999;
+    float: right;
+    margin:10px 50px 0 0;
+}
+.t_in{
+    font-size: 20px;
+    background: #00aeef;
+    padding: 20px;
+    line-height: 55px;
+    width: 358px;
+    height: 46px;
+    margin: auto;
+    text-align: center;
+    color:white;
+    border: 1px solid #333;
+}
+.t_in2{
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    line-height: 55px;
+}

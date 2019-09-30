@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>rem布局 </title>
+</head>
+
+<body>
+    <!-- 
+        em:1em=当前盒子的字体大小的1倍
+        rem ：1rem = html 标签的字体大小的1倍，与其他标签无关。
+        
+
+        vw：viewportWidth  1vw = 0.01 屏幕总宽 
+        vh：viewportWidth  1vh = 0.01 屏幕总宽
+
+        100vw：表示当前屏幕宽度
+
+        实际Font-size = 设计FONTsize * 100vw /设计屏幕宽度
+
+        习惯上为了好计算，都将设计fontsize 配置成100px
+
+        实际font-size = 100 * 100vw / 设计屏幕宽度
+                    = 1000vw /设计屏幕宽度
+          
+                    
+
+
+    CSS 的计算属性
+    calc（ 运算表达式）来进行计算  
+
+
+
+        rem 布局 :将所有的固定像素尺寸转化为rem 单位让盒子的所有尺寸都是根标签html、字体大小的倍数
+
+        实际在开发时有以下尺寸
+
+        设计font-size ;一般配置成100px ；
+        实际屏幕宽度：一般常见的375 750 （ipone 6/8 ）
+        实际屏幕宽度： 100vw （仅用在移动端
+        实际fonr-size ;计算值
+
+        由于要保证各个尺寸在不同屏幕下的占比一致，因此需要满足以下
+        公式
+        设计font-size / 设计屏幕宽度 = 实际font-size / 实际屏幕宽度
+
+        实际font-size = 设计font-size * 实际屏幕宽度/ 设计屏幕宽度
+
+        利用calc （）css计算属性将上述结果设置给html、 标签的font-size
+        calc（）仅用在移动端。因为IE9以下不支持。
+
+        html {
+            fon-size ： calc （100 * 100 vw /（375，750））
+        }
+        其他的尺寸，都按照1rem = 100px 进行修改
+        例如: width : 254px ==> width ：2.54rem
+
+     -->
+</body>
+
+</html>

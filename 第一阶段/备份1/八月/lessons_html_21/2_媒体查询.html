@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>媒体查询</title>
+    <!-- 
+        媒体查询技术：本质就是来检测当前文档运行在哪个媒介载体上，】或
+        同一媒介载体的不同状态上，然后重新给文档中的标签设置样式
+
+        引入媒体查询有三种方式
+        方式一：
+        在样式表中引入媒体查询;在样式表中的媒体查询。要写在所有的样式之后，
+        <style>
+            其他样式
+             @media 条件{
+                 样式列表
+             }
+            </style>
+            方式二：
+            在style标签中引入媒体查询
+            <style media="条件一">样式表1</style>
+            <style media="条件2">样式表2</style>
+
+            方式三;
+            在link标签中引入媒体查询
+            <link ref="stylesheet" href="样式1.css" media="条件1">
+            <link ref="stylesheet" href="样式2.css" media="条件2"
+            根据不同的媒体查询，执行不同的外部样式。
+
+            10格的栅格系统---xs---768-----sm------992-----md-----1200---lg--
+
+
+            媒体查询：
+             本质就是检测不同的屏幕宽度，在这一宽度下，设置不同的
+            盒子样式。盒子尺寸优先烤考虑流式布局。
+            比较常见的样式修改
+                a:display 盒子的出现和消失 （所有的盒子都得写）
+                b:排列方式 （盒子宽度，调整）
+                c:字体大小调整。
+     -->
+    <style media="screen">
+        .box{
+            width: 200px;
+            height: 200px;
+            background: blue;
+        }
+        h1{
+            display: none;
+        }
+        @media print {
+            h1{
+                display: block;
+            }
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <h1>翻版必究，这是我的，要除掉这行文字，请打钱</h1>
+</body>
+</html>

@@ -1,0 +1,74 @@
+.logoBox>img{
+    float: left;
+    margin: 0 30px;
+}
+.logoBox{
+    margin-bottom: 20px;
+}
+.box1{
+    width: 54px;
+    height: 39px;
+    font-size: 12px;
+    padding-top: 34px;
+    padding-left: 23px;
+    float: left;
+    /* border: 1px solid red; */
+    background: url(../IMG/2_03.png) center 0 no-repeat;
+}
+.box1:hover{
+    background: url(../IMG/3_03.png) 10px 0 no-repeat;
+}
+.logo1{
+    background: url(../IMG/2_05.png) center 0 no-repeat;
+}
+.logo1:hover{
+    background: url(../IMG/3_05.png) center 0 no-repeat;
+}
+.logo2{
+    background: url(../IMG/2_07.png) center 0 no-repeat;
+}
+.logo2:hover{
+    background: url(../IMG/3_07.png) center 0 no-repeat;
+}
+.logo3{
+    background: url(../IMG/2_09.png) center 0 no-repeat;
+}
+.logo3:hover{
+    background: url(../IMG/3_09.png) center 0 no-repeat;
+}
+.logo4{
+    background: url(../IMG/2_11.png) center 0 no-repeat;
+}
+.logo4:hover{
+    background: url(../IMG/3_11.png) center 0 no-repeat;
+}
+.logo5{
+    background: url(../IMG/2_13.png) 22px 0 no-repeat;
+}
+.logo5:hover{
+    background: url(../IMG/3_13.png) 22px 0 no-repeat;
+}
+.logo6{
+    background: url(../IMG/2_15.png) 22px 0 no-repeat;
+}
+.logo6:hover{
+    background: url(../IMG/3_15.png) 22px 0 no-repeat;
+}
+.logo7{
+    background: url(../IMG/2_17.png) 22px 0 no-repeat;
+}
+.logo7:hover{
+    background: url(../IMG/3_17.png) 22px 0 no-repeat;
+}
+.logo8{
+    background: url(../IMG/2_19.png) 22px 0 no-repeat;
+}
+.logo8:hover{
+    background: url(../IMG/3_19.png) 22px 0 no-repeat;
+}
+.logo9{
+    background: url(../IMG/2_21.png) 22px 0 no-repeat;
+}
+.logo9:hover{
+    background: url(../IMG/3_21.png) 22px 0 no-repeat;
+}

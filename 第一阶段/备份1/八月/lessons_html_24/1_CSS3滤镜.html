@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>filter</title>
+    <style>
+        img {
+            width: 300px;
+            display: block;
+        }
+        
+        img:nth-child(1) {
+            /* 滤镜属性 */
+            filter: blur(10px);
+            -webkit-filter: blur(10px);
+        }
+        
+        img:nth-child(2) {
+            /* 灰度 */
+            filter: grayscale(100%);
+            -webkit-filter: grayscale(100%);
+        }
+        /* 
+        filter 滤镜可以实现盒子的颜色转化，
+        目前不支持ie浏览器，只支持-webkit内核浏览器
+  
+        filter效果可以叠加使用，使用方法，各个属性值以空格隔开，
+        没有先后顺序要求
+        作业1;滤镜
+         */
+    </style>
+</head>
+
+<body>
+    <img src="2.png" alt="">
+    <img src="2.png" alt="">
+</body>
+
+</html>

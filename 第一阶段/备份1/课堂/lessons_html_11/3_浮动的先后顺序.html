@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 500px;
+            height: 500px;
+            border:1px solid red;
+            text-align: right
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background:red;
+            float: right;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background:blue;
+            float: right;
+            
+        }
+        .box3{
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+         设置浮动属性后，盒子浮动的先后顺序：
+         在文档中，先写的标签先发生浮动
+     -->
+    <div class="wrap">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+    </div>
+</body>
+</html>

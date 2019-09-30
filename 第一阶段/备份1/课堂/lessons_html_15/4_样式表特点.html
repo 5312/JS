@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1{
+            background: pink;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <!-- 
+          普通网页中css文件中编写的相对路径，是以CSS文件为起点 
+
+
+      样式引入的三种方式
+      1、行间样式：
+          特点：优先级最高，最可靠，但最难维护
+          应用：a、js控制样式改变时使用
+               b、快速打补丁时候
+
+      2、内部样式表：
+          特点：跟随html文档一起被下载，可靠安全，可保证
+               网页打开样式就能渲染。
+               缺点：多页面样式更改维护性差
+          应用：用在网站的首页首屏样式(根据性能需求确定)
+
+      3、外部样式表：
+          特点：便于维护，可靠性依赖于网络速度，有可能会因为
+               网络不稳定而丢失，因为浏览器在渲染界面时，
+               优先下载的是html文档，之后才开始下载其他文件
+          应用： 80-90%的项目场景，用的都是外部样式表
+
+     外部样式表会分成三大类
+
+     1、局部CSS：本页面的css文件，一般该CSS文件的名称与当前html保持一致
+        例如.  index.html  index.css
+     2、全局CSS：引入到网站中所有网页中的CSS，常见的是CSS样式初始化 
+     3、公共CSS：若干页面共同使用的CSS，常见的，公共的页眉，页脚
+                外部的CSS库 bootrap.css layui.css
+   
+    -->
+    <div class="box1" ></div>
+
+    
+</body>
+</html>

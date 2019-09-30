@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            padding: 50px;
+            border: 10px solid red;
+            box-sizing: border-box;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+    <!-- 
+        怪异盒模型：
+           设置 box-sizing：border-box后
+           盒模型变为怪异盒模型。此时width ，height
+           设置的不在是内容区域大小，而是整个盒子的尺寸
+           盒子内容区域的大小是通过计算来完成的，padding ，border
+           都会向内挤压，margin 不受影响
+
+           盒子内容区域宽度 = width - 左右border - 左右padding
+            盒子内容区域高度 = height - 上下boder - 上下 padding
+
+            应用场景：现阶段推荐只在移动端使用，因为PC端 IE 9以下不支持。
+
+     -->
+</body>
+</html>

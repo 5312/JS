@@ -1,0 +1,47 @@
+.main {
+	width: 100%;	
+}
+.main .part1 {
+	width: 950px;
+	padding: 5px 25px;
+	background-color: #fafafa;
+	border-radius: 10px;
+	overflow: hidden;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+.main .part1 .sheet1 {
+	float: left;
+}
+.main .part1 .p1 {
+	float: right;
+	height: 12px;
+	margin-top: 2px;
+}
+.main .part1 .p1 span {
+	vertical-align: top;
+}
+.in1:hover {
+	color: red;
+}
+
+.main .part1 .sheet1 .in1 {
+	width: 40px;
+	height: 17px;
+	border-radius: 3px;
+	border: 1px solid #e5e5e5;
+	background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+       div{
+           background:url(img/bg.png) 0 0 no-repeat;
+           /* border:1px solid #eee; */
+           /* float: left; */
+       }
+       .box{
+           width: 113px;
+           height: 30px;
+           background-position: 0px 0px;
+           
+       }
+       .box1{
+           width: 118px;
+           height: 30px;
+           background-position:-127px 0px;
+       }
+       .box2{
+           width: 48px;
+           height: 48px;
+           background-position: -70px -214px;
+       }
+       .box3{
+           width: 50px;
+           height: 38px;
+           border:1px solid #eee;
+           background-position:-30px -360px;
+           background-repeat: repeat;
+       }
+
+       .wrap{
+           width: 400px;
+           height: 38px;
+           border:1px solid red;
+           background: none;
+           position: relative;
+       }
+       .wrap>div{
+           float: left;
+           width: 50px;
+           height: 38px;
+           background-position: -163px  -360px;
+       }
+       .wrap>.head{
+           
+           background-position: -143px -360px;
+       }
+       .wrap>.foot{
+           background-position: -213px -360px;
+       }
+       .wrap>h1{
+           position: absolute;
+           top: 0;
+           left: 0;
+           z-index: 10;
+           font-size: 24px;
+           color: white;
+           width: 100%;
+           text-align: center;
+           line-height: 38px;
+           margin: 0;
+           font-weight: normal;
+       }
+ 
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    
+    <img src="img/1.png" alt="">
+    <img src="img/2.png" alt="">
+    <img src="img/3.png" alt="">
+
+
+    
+
+    <!-- 
+        精灵图也叫雪碧图，通过将网页中的固定不变的
+        小图标，小图片，整合到一张大图上，将多次图片
+        资源请求，降低成一次图片资源请求，以达到页面
+        加载速率优化的目的。
+
+        在本地通过背景图定位来完成精灵图使用：
+        1、设置盒子大小与要用的小图标保持一致
+        2、配置背景图属性
+        3、进行背景图定位，来让需要的小图片显示出来
+
+
+
+     -->
+
+     <div class="wrap">
+         <div class="head"></div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div class="foot"></div>
+         <h1>呱呱洗车</h1>
+     </div>
+</body>
+</html>

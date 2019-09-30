@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>static布局</title>
+    <style>
+       .box{
+           width: 100px;
+           height: 100px;
+           border:1px solid red;
+           position: static;
+       }
+    
+    
+    </style>
+</head>
+<body>
+    <!-- 
+       默认情况下：每个标签的初始位置属性值都是static
+       称为：默认文本流，或者静态文本流
+       1、浏览器上盒子将严格按照对应的文档的书写顺序进行排列
+       2、移动该类型的盒子，只能通过margin来完成
+       3、使用margin移动盒子的过程当中，盒子跟盒子之间会有联动
+          效果，一个动了会推着其他盒子动
+       4、页面中90%的布局，采用的都是静态文本流布局
+
+
+
+
+
+
+
+     -->
+
+
+
+
+    <div class="box"></div>
+    <div class="box"></div>
+</body>
+</html>

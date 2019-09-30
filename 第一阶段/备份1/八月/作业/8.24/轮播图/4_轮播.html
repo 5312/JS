@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播</title>
+    <style>
+        @keyframes move1 {
+            0% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-800px);
+            }
+
+            45% {
+                transform: translateX(-800px);
+            }
+
+            50% {
+                transform: translateX(-1600px);
+            }
+
+            70% {
+                transform: translateX(-1600px);
+            }
+
+            75% {
+                transform: translateX(-2400px);
+            }
+
+            95% {
+                transform: translateX(-2400px);
+            }
+
+            100% {
+                transform: translateX(-3200px);
+            }
+        }
+        @keyframes walkTop{
+            0%{
+                transform: translateY(0);
+            }
+            20%{
+                transform: translateY(0);
+            }
+            25%{
+                transform: translateY(-50px);
+            }
+            45%{
+                transform: translateY(-50px);
+            }
+            50%{
+                transform: translateY(-100px);
+            }
+            70%{
+                transform: translateY(-100px);
+            }
+            75%{
+                transform: translateY(-150px);
+            }
+            95%{
+                transform: translateY(-150px);
+            }
+            100%{
+                transform: translateY(-200px);
+            }
+        }
+        html {
+            line-height: 1.5;
+            letter-spacing: 0;
+            font-family: PingFang, Micorsoft YaHei;
+        }
+
+        body,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 800px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+            color: #fff;
+        }
+
+        .box {
+            width: 4000px;
+            margin: 100px auto;
+            animation: move1 10s linear infinite;
+        }
+
+        .box:hover {
+            animation-play-state: paused;
+        }
+
+        .box>img {
+            display: block;
+            width: 800px;
+            float: left;
+        }
+        .word {
+            width: 100%;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+            line-height: 50px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .info{
+            width: 100%;
+            height: 50px;
+            animation: walkTop 10s linear infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box">
+            <img src="img2/1.jpg" alt="">
+            <img src="img2/2.jpg" alt="">
+            <img src="img2/3.jpg" alt="">
+            <img src="img2/4.jpg" alt="">
+            <img src="img2/1.jpg" alt="">
+        </div>
+        <div class="word">
+            <div class="info">
+                <p>看头条</p>
+                <p>癌症大数据</p>
+                <p>今日头条</p>
+                <p>易车网</p>
+                <p>看头条</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

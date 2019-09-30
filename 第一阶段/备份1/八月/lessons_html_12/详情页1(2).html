@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>详情页1</title>
+    <style>
+        body{
+            line-height: 1.5;
+            letter-spacing: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        .clear::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .wrap{
+            width: 1320px;
+            background: #F6F6F6;
+            margin: 0 auto;
+        }
+        .header{
+            background: #333333;
+            padding: 11px 0;
+        }
+        .headerInfo{
+            width: 850px;
+            margin: 0 auto;
+        }
+        .headerInfo>a{
+            float: right;
+            border-left: 1px solid #999999;
+            padding: 0 15px;
+            font-size: 14px;
+            color: #999999;
+        }
+        .headerInfo>.h1{
+            border-left: none;
+        }
+        .nav{
+            background: #ffffff;
+            padding-top: 20px;
+            border: 1px solid #e5e5e5;
+        }
+        .navInfo{
+            width: 850px;
+            margin: 0 auto;
+        }
+        .search{
+            float: right;
+            margin-top: 13px;
+        }
+        .search>img{
+            float: right;
+            margin-left: 10px;
+        }
+        .searchBox{
+            width:239px;
+            height:30px;
+            border:1px solid #acacac;
+            border-radius:15px;
+            float: left;
+        }
+        .searchBox>span{
+            font-size: 12px;
+            color: #999999;
+            margin-left: 10px;
+            margin-right: 145px;
+            vertical-align: middle;
+        }
+        .searchBox>img{
+            vertical-align: middle;
+        }
+        .navName{
+            padding: 32px 0 20px 0;
+        }
+        .navName>a{
+            font-size: 18px;
+            color: #333333;
+            font-weight: 400;
+            margin-right: 37px;
+        }
+        .navName>.first{
+            padding: 0 16px 14px 16px;
+            border-bottom: 4px solid #e81313;
+            color: #e81313;
+        }
+        .navName>.other{
+            margin-right: 0;
+        }
+        .jeans{
+            width: 850px;
+            margin: 22px auto;
+            font-size: 0;
+        }
+        .jeansNav span{
+            font-size: 14px;
+            color: #666666;
+            margin-right: 6px;
+        }
+        .jeansImg{
+            width: 321px;
+            margin-top: 20px;
+            font-size: 0;
+        }   
+        .jeansImg>img{
+            margin-right: 12px;
+        }
+        .jeansImg>.c1{
+            margin-bottom: 24px;
+            width: 321px;
+        }
+        .jeansImg>.c2,.c3,.c4,.c5{
+            width: 71px;
+        }
+        .jeansImg>.c5{
+            margin-right: 0;
+        }
+        .jeansImg, .jeansInfo{
+            display: inline-block;
+            vertical-align: bottom;
+        }
+        .jeansInfo{
+            width: 468px;
+            margin-left: 20px;
+            font-size: 0;
+        }
+        .jeansInfo>.title{
+            font-weight: bold;
+            color: #333333;
+            font-size: 16px;
+        }
+        .jeansInfo>div{
+            color: #999999;
+            font-size: 14px;
+        }
+        .RP>.price{
+            margin-left: 20px;
+            text-decoration: line-through;
+            color: #666666;
+        }
+        .AP>.active{
+            margin-left: 0;
+        }
+        .red{
+            color: #e81313;
+            font-size: 16px;
+        }
+        .lineMiddle{
+            vertical-align: middle;
+            margin-left: 20px;
+        }
+        .jiFen>.big{
+            font-size: 16px;
+            color: #666666;
+            margin-left: 20px;
+        }
+        .guaQuan{
+            margin: 5px 0;
+        }
+        .guaQuan>.red{
+            color: #e81313;
+            font-size: 16px;
+            margin-left: 20px;
+        }
+        .pingJia>.black{
+            color: #666666;
+            margin-left: 9px;
+        }
+        .address{
+            padding: 10px 0;
+            border-top: 1px solid #d2d2d2;
+            border-bottom: 1px solid #d2d2d2;
+            margin: 10px 0;
+        }
+        .address .left{
+            margin-left: 32px;
+        }
+        .address .black{
+            color: #666666;
+        }
+        .address>.service{
+            font-size: 0;
+        }
+        .address>.service>span{
+            font-size: 14px;
+        }
+        .service{
+            margin-left: 72px;
+        }
+        .service>img{
+            margin-left: 20px;
+            margin-right: 10px;
+        }
+        .lightblue{
+            color: #666666;
+            border: 1px solid #d2d2d2;
+            padding: 5px 10px;
+            margin: 0 15px 0 30px;
+        }
+        .blackgray{
+            background: white;
+            color: #e81313;
+            border: 1px solid #d2d2d2;
+            padding: 5px 10px;
+            margin-right: 15px;
+        }
+        .blue{
+            color: #666666;
+            border: 1px solid #d2d2d2;
+            padding: 5px 10px;
+        }
+        .color{
+            padding: 15px 0;
+        }
+        .size>a>span{
+            color: #666666;
+            border: 1px solid #d2d2d2;
+            padding: 5px;
+            margin: 0 5px;
+        }
+        .size>a{
+            padding-left: 25px;
+        }
+        .size .red{
+            background: white;
+            color: #e81313;
+        }
+        .jeansInfo>a{
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: 15px;
+            margin-right: 20px;
+        }
+        .shopping,.scan{
+            border: 1px solid #e81313;
+            background: #ffffff;
+            padding: 5px 10px;
+            color: #fe230c;
+            font-size: 16px;
+            border-radius:4px;
+        }
+        .pay{
+            font-size: 16px;
+            color: white;
+            background: #e81313;
+            padding: 5px 45px;
+            border-radius:4px;
+        }
+        .colorNav{
+            width: 850px;
+            padding: 10px 0;
+            font-size: 0;
+        }
+        .colorNav{
+            margin: 10px auto;
+        }
+        .colorNav>div{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .colorNav>.border{
+            border: 1px solid #d2d2d2;
+            width: 373px;
+        }
+        .colorNav>.text{
+            font-size: 20px;
+            color: #333333;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        .c_content{
+            width: 850px;
+            font-size: 0;
+            margin: 0 auto;
+            margin-top: 10px;
+            
+        }
+        .c_content>div{
+            display: inline-block;
+            vertical-align: top;
+        }
+        .c_content img{
+            width: 273px;
+            margin-right: 15px;
+        }
+        .c_content .b3{
+            margin-right: 0;
+        }
+        .c_content>.cc>.text{
+            font-size: 16px;
+            color: #333333;
+            width: 64px;
+            margin: 10px auto;
+        }
+        .display{
+            width: 850px;
+            margin: 0 auto;
+            background: white;
+            padding-bottom: 40px;
+        }
+        .display img{
+            width: 466px;
+            margin: 40px 95px 0 40px;
+        }
+        .top1,.middle2,.bottom3{
+            font-size: 0;
+        }
+        .t_right,.t_des{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .display span{
+            font-size: 18px;
+            color: #333333;
+        }
+        .display div{
+            font-size: 14px;
+        }
+        .display .mt{
+            margin-top: 15px;
+        }
+        .m_des,.m_right{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .b_left,.b_des{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .m_des{
+            margin-left: 100px;
+        }
+        .customer{
+            width: 850px;
+            border: 1px solid #e3dfdf;
+            margin: 20px auto;
+        }
+        .customer>span{
+            padding: 5px 30px;
+            border-right: 1px solid #e3dfdf;
+        }
+        .detail{
+            width: 850px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding-top: 30px;
+        }
+        .detail>.d_top img{
+            border-radius: 100px;
+        }
+        .d_top>.d_top1,.d_evaluate{
+            display: inline-block;
+            vertical-align: middle;
+            margin-bottom: 25px;
+        }
+        .d_top1{
+            margin: 0 30px;
+            text-align: center;
+        }
+        .d_evaluate>span,.d_color{
+            font-size: 14px;
+            color: #c6c6c6;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        .dm{
+            margin-bottom: 40px;
+        }
+        .dt>span{
+            color: #999999;
+            padding: 5px 10px;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+        .d_evaluate>.special>img{
+            width: 144px;
+            height: 128px;
+            border-radius: 0;
+            margin-top: 30px;
+            margin-right: 15px;
+        }
+        .f_content>img,span{
+            vertical-align: middle;
+        }
+        .f_content>img{
+            margin-left: 75px;
+        }
+        .f_content>span{
+            color: #ffffff;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+        .footer{
+            background: #333333;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        .f_content{
+            width: 850px;
+            margin: 0 auto;
+            border-bottom: 1px solid #666666;
+            padding-bottom: 20px;
+        }
+        .about{
+            width: 850px;
+            margin: 10px auto;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .about>span{
+            color: #999999;
+            font-size: 14px;
+            border-right: 1px solid #666666;
+            padding: 0 10px ;
+        }
+        .about>.a_last{
+            border-right: none;
+        }
+        .f_last{
+            font-size: 12px;
+            color: #999999;
+            width: 850px;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="headerInfo clear">
+                <a href="">我的收藏</a>
+                <a href="">联系客服</a>
+                <a href="">购物车</a>
+                <a href="">个人中心</a>
+                <a class="h1" href="">登录/注册</a>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="navInfo">
+                    <img src="psd/h1.png" alt="">
+                    <div class="search clear">
+                        <div class="searchBox">
+                            <span>音乐耳机</span>
+                            <img src="psd/h2.png" alt="">
+                        </div>
+                        <img src="psd/h3.png" alt="">
+                    </div>
+                    <div class="navName">
+                        <a class="first" href="">首页</a>
+                        <a href="">优惠活动</a>
+                        <a href="">服饰</a>
+                        <a href="">家电</a>
+                        <a href="">鞋包</a>
+                        <a href="">护肤/彩妆</a>
+                        <a href="">母婴</a>
+                        <a href="">饮食</a>
+                        <a href="">家居</a>
+                        <a class="other" href="">其它</a>
+                    </div>
+            </div>
+        </div>
+        <div class="jeans">
+            <div class="jeansNav">
+                <span>首页</span>
+                <span>></span>
+                <span>服饰</span>
+                <span>></span>
+                <span>牛仔裤</span>
+            </div>
+            <div class="jeansImg">
+                <img class="c1" src="psd/c1.png" alt="">
+                <img class="c2" src="psd/c2.png" alt="">
+                <img class="c3" src="psd/c3.png" alt="">
+                <img class="c4" src="psd/c4.png" alt="">
+                <img class="c5" src="psd/c5.png" alt="">
+            </div>
+            <div class="jeansInfo">
+                <div class="title">
+                    2018春季新款牛仔裤女士显瘦小腿裤韩版高腰弹力铅笔裤女长裤子新品
+                </div>
+                <div class="RP">
+                    <span>参考价:</span>
+                    <span class="price">￥298</span>
+                </div>
+                <div class="AP">
+                    <span class="active lineMiddle">活动价:</span>
+                    <span class="red lineMiddle">￥108</span>
+                    <img  class="lineMiddle" src="psd/限时销售.png" alt="">
+                </div>
+                <div class="jiFen">
+                    <span>积&nbsp;&nbsp;&nbsp;&nbsp;分:</span>
+                    <span class="big">购买最高得10积分</span>
+                </div>
+                <div class="guaQuan">
+                    <span>刮&nbsp;&nbsp;&nbsp;&nbsp;券:</span>
+                    <span class="red">100%刮中奖,最高50元无敌券</span>
+                </div>
+                <div class="pingJia">
+                    <span>累计评价:</span>
+                    <span class="black">300+</span>
+                </div>
+                <div class="address">
+                    <div class="send">
+                        <span>送&nbsp;&nbsp;至</span>
+                        <span class="left black">陕西</span>
+                        <span class="black">西安</span>
+                        <span class="black">新城区</span>
+                        <img src="psd/r2.png" alt="">
+                    </div>
+                    <div class="service">
+                        <span>由</span>
+                        <span  class="black">班晓服务店</span>
+                        <span>销售和发货,并提供售后服务</span>
+                        <img src="psd/r3.png" alt="">
+                        <span class="blac k">联系客服</span>
+                    </div>
+                </div>
+                <div class="color">
+                    <span>颜&nbsp;&nbsp;色:</span>
+                    <a href="">
+                        <span class="lightblue">浅蓝色</span>
+                        <span class="blackgray">黑灰色</span>
+                        <span class="blue">深蓝色</span>
+                    </a>
+                </div>
+                <div class="size">
+                    <span>尺&nbsp;&nbsp;码:</span>
+                    <a href="">
+                        <span>25</span>
+                        <span>26</span>
+                        <span>27</span>
+                        <span class="red">28</span>
+                        <span>29</span>
+                        <span>30</span>
+                        <span>31</span>
+                        <span>32</span>
+                    </a>
+                </div>
+                <a href="" class="shopping">
+                    <img src="psd/r4.png" alt="">
+                    <span>加入购物车</span>
+                </a>
+                <a href="" class="scan">
+                    <img src="psd/r5.png" alt="">
+                    <span>扫一扫购买</span>
+                </a>
+                <a href="" class="pay">立即购买</a>
+            </div>
+        </div>
+        <div class="colorNav">
+            <div class="border"></div>
+            <div class="text">颜色展示</div>
+            <div class="border"></div>
+        </div>
+        <div class="c_content">
+            <div class="cc">
+                <img src="psd/浅蓝1.png" alt="">
+                <div class="text">浅蓝</div>
+            </div>
+            <div class="cc">
+                <img src="psd/浅蓝2.png" alt="">
+                <div class="text">中蓝</div>
+            </div>
+            <div class="cc">
+                <img class="b3"src="psd/浅蓝3.png" alt="">
+                <div class="text">深蓝</div>
+            </div>
+        </div>
+        <div class="colorNav">
+            <div class="border"></div>
+            <div class="text">加工展示</div>
+            <div class="border"></div>
+        </div>
+        <div class="c_content">
+            <div class="cc">
+                <img src="psd/手工1.jpg" alt="">
+                <div class="text">手工磨破</div>
+            </div>
+            <div class="cc">
+                <img src="psd/手工2.jpg" alt="">
+                <div class="text">手擦砂位</div>
+            </div>
+            <div class="cc">
+                <img class="b3" src="psd/手工3.jpg" alt="">
+                <div class="text">手工磨边</div>
+            </div>
+        </div>
+        <div class="colorNav">
+            <div class="border"></div>
+            <div class="text">细节展示</div>
+            <div class="border"></div>
+        </div>
+        <div class="display">
+            <div class="top1">
+                <img src="psd/面料1.png" alt="" class="t_right">
+                <div class="t_des">
+                    <span>高士缝纫线</span>
+                    <div class="mt">英国高士缝纫线</div>
+                    <div>10倍牢靠</div>
+                    <div>任性光泽</div>
+                </div>
+            </div>
+            <div class="middle2">
+                <div class="m_des">
+                    <span>YKK拉链</span>
+                    <div class="mt">选用一流YKK拉链辅料</div>
+                    <div>耐用保证,力求极致体验</div>
+                </div>
+                <img src="psd/面料2.png" alt="" class="m_right">
+            </div>
+            <div class="bottom3">
+                <img src="psd/面料3.png" alt="" class="b_left">
+                <div class="b_des">
+                    <span>磨毛处理</span>
+                    <div class="mt">袋口磨毛处理</div>
+                    <div>小细节不落个性雅致</div>
+                </div>
+            </div>
+        </div>
+        <div class="colorNav">
+            <div class="border"></div>
+            <div class="text">顾客评价</div>
+            <div class="border"></div>
+        </div>
+        <div class="customer">
+            <span class="red">全部(370)</span>
+            <span>有图评价(27)</span>
+            <span>好评(364)</span>
+            <span>中评(4)</span>
+            <span>差评(2)</span>
+        </div>
+        <div class="detail">
+            <div class="d_top">
+                <div class="d_top1">
+                    <img class="d_touxiang"src="psd/头像女1.png" alt="">
+                    <div>139******97</div>
+                    <div>SURPE</div>
+                </div>
+                <div class="d_evaluate">
+                    <img src="psd/星星.png" alt="">
+                    <span>2018-03-07</span>
+                    <span>14:35:28</span>
+                    <div class="d_color">颜色：深蓝色</div>
+                    <div class="dm">很好的一次购物,很好的卖家,很惊喜也很漂亮,物超所值,很满意的一次网购</div>
+                    <div class="dt">
+                        <span>穿上很舒服</span>
+                        <span>面料不错</span>
+                        <span>大小合适</span>
+                        <span>图案不错</span>
+                    </div>
+                </div>
+            </div>
+            <div class="d_top">
+                <div class="d_top1">
+                    <img class="d_touxiang"src="psd/头像女2.png" alt="">
+                    <div>139******97</div>
+                    <div>SURPE</div>
+                </div>
+                <div class="d_evaluate">
+                    <img src="psd/星星.png" alt="">
+                    <span>2018-03-07</span>
+                    <span>14:35:28</span>
+                    <div class="d_color">颜色：深蓝色</div>
+                    <div class="dm">很好的一次购物,很好的卖家,很惊喜也很漂亮,物超所值,很满意的一次网购</div>
+                    <div class="dt">
+                        <span>穿上很舒服</span>
+                        <span>面料不错</span>
+                        <span>大小合适</span>
+                        <span>图案不错</span>
+                    </div>
+                    <div class="special">
+                        <img src="psd/jeans1.png" alt="">
+                        <img src="psd/jeans2.png" alt="">
+                        <img src="psd/jeans3.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="d_top">
+                <div class="d_top1">
+                    <img class="d_touxiang"src="img/头像女1.png" alt="">
+                    <div>139******97</div>
+                    <div>SURPE</div>
+                </div>
+                <div class="d_evaluate">
+                    <img src="img/星星.png" alt="">
+                    <span>2018-03-07</span>
+                    <span>14:35:28</span>
+                    <div class="d_color">颜色：深蓝色</div>
+                    <div class="dm">很好的一次购物,很好的卖家,很惊喜也很漂亮,物超所值,很满意的一次网购</div>
+                    <div class="dt">
+                        <span>穿上很舒服</span>
+                        <span>面料不错</span>
+                        <span>大小合适</span>
+                        <span>图案不错</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="f_content">
+                <img src="img/f1.png" alt="">
+                <span>品质保证</span>
+                <img src="img/f2.png" alt="">
+                <span>满88免费包邮</span>
+                <img src="img/f3.png" alt="">
+                <span>30天无忧退换货</span>
+            </div>
+            <div class="about">
+                <span>关于我们</span>
+                <span>帮助中心</span>
+                <span>售后服务</span>
+                <span>配送与验收</span>
+                <span>商务合作</span>
+                <span>企业采购</span>
+                <span>开放平台</span>
+                <span>推荐搜索</span>
+                <span class="a_last">友情链接</span>
+            </div>
+            <div class="f_last">
+                网易公司版权所有@1997－2018 食品经营许可证JY：13301080111719出版经营许可证：新出发滨字0123号
+            </div>
+        </div>
+    </div>
+</body>
+</html>

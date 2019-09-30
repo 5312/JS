@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            border: 50px solid;
+            /* 引入边框图片 */
+            border-image-source: url(img/border.png);
+            /* 对原始图片进行切割 */
+            border-image-slice: 27 27 27 27;
+            /* 对边框图进行缩放 */
+            border-image-width: 50px;
+            /* 四个边的显示控制 */
+            border-image-repeat: round;
+            /* 简写属性 */
+            border-image: url() 27 round;
+            /* 
+                边框图使用方法：
+                1.引入图片
+                2，按原图尺寸切割
+                3，对切割后的边框图进行缩放 border-image-width
+                4，设置边框图的显示区域 border-width
+                5.设置四个边的图片显示方式
+                stretch；默认拉伸
+                repeat：平铺
+                round：平均平铺
+
+                一般为了让边框图刚好包裹盒子的内容区域
+                将border-image-width，与border-width设置成一致
+
+                边框图是以边框外边为起点，进行显示的。
+            
+             */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">我是内容</div>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>百度一下</title>
+    <style>
+        body{
+            line-height: 1.5;
+        }
+        .lineMiddle{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .lineTop{
+            display: inline-block;
+            vertical-align: top;
+        }
+        .wrap{
+            width: 798px;
+            border:1px solid #ccc;
+            margin: 100px auto;
+            background-color: #f0f2f5;
+        }
+        .header{
+            border-bottom: 1px solid #ccc;
+            /*利用继承特性:跟字体相关的样式一般都可以继承 */
+            color: #333;
+            font-weight: bold;
+            font-size: 0;
+            padding-right: 26px;
+        }
+        .header>div{
+            font-size: 14px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+        .myFocus{
+            width: 124px;
+        }
+        .hcell{
+            width: 82px;
+        }
+        .nav{
+            color: white;
+            background-color: #979797;
+        }
+        .header>.set{
+            width: 28px;
+            height: 27px;
+            border:1px solid #ccc;
+            background-color: #979797;
+            margin-left: 454px;
+        }
+        .content{
+            padding: 26px;
+            font-size: 0;
+        }
+        .article{
+            width: 492px;
+            margin-right: 8px;
+        }
+        .hotNews{
+            padding-bottom:26px; 
+        }
+        .newImage{
+            width: 158px;
+            height: 138px;
+            background:#d8d8d8;
+            border:1px solid #979797;
+        }
+        .info{
+            border-top: 1px solid #979797;
+            padding: 15px 0;
+        }
+        .info>.title{
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .info>.time{
+            font-size: 13px;
+            color: #999;
+            margin-top: 10px;
+        }
+        .hotNews>.info{
+            width: 310px;
+            /* 去掉上边框 */
+            border-top: none;
+            margin-left: 17px;
+        }
+        .content{
+            padding-bottom: 11px;
+        }
+        .aside{
+            width: 246px;
+        }
+        .head>span{
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        .list{
+           padding-top: 10px;
+        }
+        .list>div{
+            width: 123px;
+            font-size: 12px;
+            color:#333;
+            line-height: 17px;
+            text-align: right;
+            margin-bottom: 10px;
+            /* 细体 */
+            font-weight: lighter;
+            /* 设置字体类型 */
+            font-family: PingFangSC-Light;
+        }
+        .head>.title{
+            margin-left: 28px;
+            margin-right: 93px;
+        }
+    
+    
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="myFocus lineMiddle">我的关注</div>
+            <div class="hcell nav lineMiddle">推荐</div>
+            <div class="hcell lineMiddle">导航</div>
+            <div class="set lineMiddle"></div>
+        </div>
+        <div class="content">
+            <div class="article lineTop">
+                <div class="hotNews">
+                    <div class="newImage lineMiddle"></div>
+                    <div class="info lineMiddle">
+                        <div class="title">中国民营运载火箭零的突破星际荣耀的一箭多星成功入轨</div>
+                        <div class="time">环球网 07-25 13:49</div>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="title">中国民营运载火箭零的突破星际荣耀的一箭多星成功入轨</div>
+                    <div class="time">环球网 07-25 13:49</div>
+                </div>
+                <div class="info">
+                    <div class="title">中国民营运载火箭零的突破星际荣耀的一箭多星成功入轨</div>
+                    <div class="time">环球网 07-25 13:49</div>
+                </div>
+            </div>
+            <div class="aside lineTop">
+                <div class="head">
+                    <span class="title">实时热点</span>
+                    <span>换一换</span>
+                </div>
+                <div class="list">
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                    <div class="lineMiddle">孙杨获得800米第六</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

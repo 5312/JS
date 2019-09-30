@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本选择器</title>
+    <!-- 内部样式表，一般写在head标签中，要在body中标签加载之前书写 -->
+    <style>
+        /* 标签选择器： 在样式表中，用标签的名称作为选择器设置样式
+           标签名{样式}
+           特点：能够为一群具有相同名称的标签，同时设置相同的样式。
+        */
+
+        /* 
+            * 星号选择器，称为通配符，作用是选中所有的标签
+            一般用在样式初始化，给所有标签设置margin: 0 
+            padding :0 
+            之所以要给所有标签设置margin ：0 padding 0 
+            是因为语义化标签在不同浏览器上默认的初始margin
+            初始padding 不一定一致 ，为了保持一致性，必须子代码编写
+            时进行统一设置，称为CSS 样式初始化
+
+            一般不推荐使用*号选择器来做设置，因为这样会造成性能损失
+            不是所有的标签都拥有初始的margin和padding
+
+            在实际初始化，我们只将项目中用到的语义化标签，进行样式统一
+            设置，设置的样式包含两种类型
+           
+         */
+
+
+       div{
+            width:100px;
+            height:100px;
+            background-color:red;
+       }
+       /* 类型选择器：在标签内部通过class 属性给标签设置类型名 
+          在样式表中通过，类型名{样式}的方式给标签盒子设置样式
+          特点： 相当于给标签起了一个别名可重名，也可以有多个
+          可重名： 类型选择器可以钻中一堆具有相同类型名的标签
+          给他们同时设置相同的样式
+          可以有多个表示; 
+          类型名命名规范;
+           1.不能以数字开头
+           2。见名知意
+           3.驼峰命名法
+               ：当名称需要多个英文字母描述时
+               从第二个英文单词开始首字母大写
+
+        */
+       .box{
+    
+           background-color: blue;
+       }
+       /* id选择器，是通过给标签设置id属性在样式中通过 \#id{样式}对标签设置样式，有且只有一个，不能重名，不能有多个
+       一般不用来设置样式
+        */
+       #box
+       {
+
+       }
+    </style>
+
+</head>    
+<body>
+      <div></div>
+      <div class="box" id="box2"></div>
+
+
+</body>
+</html>

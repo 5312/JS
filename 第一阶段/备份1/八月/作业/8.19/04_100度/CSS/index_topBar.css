@@ -1,0 +1,54 @@
+/*
+	            <div class="topBar"><span>HOT SHOP</span>
+                    红店铺
+                    <div class="nabla"></div>
+                </div>
+                <div class="topBar mar"><span>EW SHOP</span>
+                    新开张
+                    <div class="nabla"></div>
+                </div>
+*/
+.topBar{
+    width: 194px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 33px;
+    color:#666666;
+    background-color: #f6f6f6;
+    float: left;
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px 8px 0 0 ;
+}
+.conter>.mar{
+    /* margin-left: 5px; */
+    width: 5px;
+    height: 33px;
+    float: left;
+    border-bottom: 1px solid #e5e5e5;
+}
+.topBar .nabla{
+    width: 0;
+    height :0;
+    border: 4px solid #333;
+    border-right-color:#f6f6f6; 
+    border-left-color:#f6f6f6;
+    border-bottom-color:#f6f6f6;
+    display:inline-block;
+    margin-left: 10px;
+}
+.topBar:hover{
+    background-color: white;
+    /* border-right-color:white; 
+    border-left-color:white;
+    border-bottom-color:white; */
+    border-bottom: none;
+}
+.topBar:hover>span,
+.topBar:hover>div{
+    color: red;
+    border-top-color: red;
+    border-right-color:white; 
+    border-left-color:white;
+    border-bottom-color:white
+}

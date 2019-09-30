@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>盒模型基本构成</title>
+    <style>
+        .box {
+            /* 盒子内容区域大小 */
+            width: 100px;
+            height: 100px;
+            /* 盒子边框 */
+            border: 1px solid red;
+            /* 内边距：内容到边框之间的距离
+                padding: 10px; (上下左右10)
+                         10px 20px; （上下10 左右20）
+                         10px 20px 30px; (上10 左右20 下30)
+                         10px 20px 30px 40px; (上10 右20 下30 左40)
+                pading-top/right/bottom/left: 设置上/右/下/左内边距
+            */
+            padding: 10px 20px 30px 40px;
+            margin: 10px;
+            /* 盒模型基本结构：
+               内容区域：width height 所有的写在标签中的内容，只出现在这个区域
+               内边距区域：padding  设置的是一个盒子的边框到内容区域之间的距离 可以扩大盒子
+               边界区域：border 边框
+               外边距区域：margin  设置的是两个盒子之间的距离
+               盒子在界面上的实际渲染大小：
+               宽度 = width + 左右padding + 左右border
+               高度 = height + 上下padding + 上下border
+            */
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box">内容</div>
+    <div class="box"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

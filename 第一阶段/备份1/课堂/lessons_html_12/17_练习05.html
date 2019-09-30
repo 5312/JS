@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            line-height: 1.5;
+            letter-spacing: 0;
+        }
+
+        ul {
+            list-style: none
+        }
+
+        .wrap {
+            width: 100px;
+            border: 1px solid blue;
+            text-align: center;
+            position: relative;
+        }
+
+        .wrap>.menu{
+            background: lightblue;
+            position: absolute;
+            top: 25px;
+            left: 0px;
+            width: 100%;
+            text-align: left;
+            /* background: lavender; */
+            padding-top: 10px;
+            /* border: 1px solid #ccc; */
+            display: none;
+            /* opacity: 0; */
+        }
+
+        .wrap ul{
+            border:1px solid #ccc;
+        }
+        .wrap li {
+            padding: 0 17px;
+        }
+
+        .wrap:hover   .menu{
+            /* opacity: 1; */
+            display: block;
+        }
+
+        .wrap li:hover {
+            background: blue;
+            color: white;
+        }
+
+        /* 
+        
+                display:none 
+                盒子消失，并且盒子不存在
+                opacity:0
+                盒子消失，但是盒子依然存在
+        
+         */
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <span>balooalex</span>
+        <div class="menu">
+            <ul>
+                <li>个人中心</li>
+                <li>账号设置</li>
+                <li>意见反馈</li>
+                <li>退出</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>相对定位</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .box1{
+            background: blue;
+            position: relative;
+            /* top,right,bottom,left */
+            margin-top: 100px;
+            top: 100px;
+            left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+         相对定位：positon:relative
+         1、盒子特性与默认文本流特性保持一致
+         2、改变盒子位置，可以通过
+            top：盒子上边到默认文本流盒子位置上边之间的距离
+            right:盒子右边到默认文本流盒子位置右边之间的距离
+            bottom:盒子下边到默认文本流盒子位置下边之间的距离
+            left:盒子左边到默认文本流盒子位置左边之间的距离
+         3、盒子在位置改变过程中，对默认文本流的布局没有任何影响，
+            盖在默认文本流之上，比默认文本流高半层
+         4、应用场景：
+            a:在默认文本流布局以后，需要对某些盒子进行位置的微调
+              并且这种微调不希望对其他默认文本流盒子产生影响的情况
+              下，使用相对定位来完成
+            b:作为绝对定位盒子的定位父级标志
+     -->
+
+
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+</body>
+</html>

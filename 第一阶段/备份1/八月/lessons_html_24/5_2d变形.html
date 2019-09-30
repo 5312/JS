@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2d</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            color: white;
+            background: red;
+            transition: 1s;
+            margin: 0 auto;
+            transition: 1s;
+        }
+        
+        .box:hover {
+            /* 变形属性 */
+            /* x轴移动 */
+            /* transform: translateX(100px)*/
+            /*y轴移动 */
+            /* transform: translateY(100px); */
+            /* xy 两个方向移动 */
+            transform: translate( 100px, 100px);
+            /* 
+            transform；translate移动。都是相对于盒子的原始位置，
+            并且移动过程中。不影响其他文本流的盒子，比其他盒子高半层
+             */
+        }
+        
+        .box:nth-child(2):hover {
+            transform: rotate(360deg);
+        }
+        
+        .box:nth-child(3):hover {
+            transform: translate(100px, 100px) rotate(45deg);
+        }
+        
+        .box:nth-child(3) {
+            transform: rotate(45deg);
+        }
+        
+        .box:nth-child(4) {
+            transform: rotate(45deg);
+        }
+        
+        .box:nth-child(4):hover {
+            transform: translate(100px) rotate(45deg);
+        }
+        
+        .box:nth-child(5):hover {
+            transform: translate(100px, 100px) rotate(3600deg);
+        }
+        
+        .box:nth-child(6) {
+            /* 设置旋转中心 不要写在hover里面 */
+            transform-origin: right 0 0;
+        }
+        
+        .box:nth-child(6):hover {
+            transform: rotate(180deg);
+        }
+        
+        .box:nth-child(7):hover {
+            transform: scale(-3, 3);
+        }
+        
+        .box:nth-child(8):hover {
+            transform: skew(30deg, 5deg)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        移动x轴
+    </div>
+    <div class="box">
+        旋转
+    </div>
+    <div class="box">
+        旋转加移动
+    </div>
+    <div class="box">
+        旋转加移动
+    </div>
+    <div class="box">
+        旋转加移动
+    </div>
+    <div class="box">
+        旋转中心设置
+    </div>
+    <div class="box">
+        缩放
+    </div>
+    <div class="box">
+        倾斜
+    </div>
+</body>
+
+</html>

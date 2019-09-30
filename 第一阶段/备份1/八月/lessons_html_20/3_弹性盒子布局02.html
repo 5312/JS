@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 300px;
+            height: 300px;
+            border: 2px solid red;
+            display: flex;
+            flex-flow: wrap row;
+            justify-content: space-between;
+        }
+        .box{
+            width: 120px;
+            height: 120px;
+            background: blue;
+            flex: 1;
+        }
+        .box:nth-child(2){
+            background: red;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <!-- 
+        弹性盒子布局的思想
+        子级盒子只考虑，自身样式（尺寸，背景色，等等）
+        通过父级来改变子级的
+            1 排列方式flex-direction :row /column
+            2水平分布方式： justfy-content;
+            3 垂直对齐方式;align-items
+
+        作为弹性盒子的子级，可以通过样式来进行个性化设置
+        1 自身对齐方式 align-self
+        2 自身渲染先后顺序 order
+        3 自身的尺寸比例 flex
+          子级从上到下排列。flex 设置的是高度比例关系
+          子级从左到右排列 flex 设置的是宽度的比例关系
+          一般应用在整屏布局的场景下
+     -->
+</body>
+</html>

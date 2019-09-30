@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>产品信息展示</title>
+    <style>
+        
+        .wrap{
+            width: 1100px;
+            margin: 200px auto;
+            text-align: center;
+            transform-style: preserve-3d;
+            transition: 0.5s linear;
+            /* background: #dadada; */
+        }
+        .content{
+            display: flex;
+            flex-flow: wrap row;
+            justify-content: space-around;
+            transform-style: preserve-3d;
+        }
+        h1{
+            margin-bottom: 50px;
+        }
+        .pro{
+            position: relative;
+            width: 310px;
+            height: 100px;
+            transition: 0.5s linear;
+            transform-style: preserve-3d;
+            margin-bottom: 40px;
+        }
+        .pro>img{
+            display: block;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 20;
+            transform: translateZ(50px);
+        }
+        .pro>.hidden{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            box-sizing: border-box;
+            padding: 10px 10px 20px 10px;
+            text-align: left;
+            transform: rotateX(-90deg) translateZ(50px);
+            background: #eee;
+        }
+        .hidden>.text{
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .pro:hover{
+            transform: rotateX(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h3>CSS3 3D变形制作产品信息展示</h3>
+        <div class="content">
+            <div class="pro">
+                <img src="img/contact.png" alt="">
+                <div class="hidden">
+                    <div class="title">Contact Form</div>
+                    <div class="text">The easiest way to add a contact form to your shop.</div>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="img/jilt.png"  alt="">
+                <div class="hidden">
+                    <div class="title">Contact Form</div>
+                    <div class="text">The easiest way to add a contact form to your shop.</div>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="img/olark.png"  alt="">
+                <div class="hidden">
+                    <div class="title">Contact Form</div>
+                    <div class="text">The easiest way to add a contact form to your shop.</div>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="img/ordoro.png"  alt="">
+                <div class="hidden">
+                    <div class="title">Contact Form</div>
+                    <div class="text">The easiest way to add a contact form to your shop.</div>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="img/yotpo.jpeg"  alt="">
+                <div class="hidden">
+                    <div class="title">Contact Form</div>
+                    <div class="text">The easiest way to add a contact form to your shop.</div>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="img/chimpified.jpeg"  alt="">
+                <div class="hidden">
+                    <div class="title">Contact Form</div>
+                    <div class="text">The easiest way to add a contact form to your shop.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

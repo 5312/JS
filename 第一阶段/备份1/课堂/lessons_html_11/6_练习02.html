@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 500px;
+            /* height: 800px; */
+            border:10px solid blue;
+            margin: 0 auto;
+        }
+        .wrap div{
+            float: left;
+        }
+        .left{
+            width: 320px;
+        }
+        .right{
+            width: 180px;
+        }
+        .box1,
+        .box2,
+        .box3,
+        .box4,
+        .box5{
+            width: 100px;
+            height: 100px;
+            background: red;
+            
+        }
+        .box2{background: orange}
+        .box3{background:green}
+        .box4{background: blue}
+        .box5{background: purple}
+        .box6{
+            width: 320px;
+            height: 200px;
+            background: pink;
+    
+        }
+        .box7{
+            width: 180px;
+            height: 240px;
+            background:brown;
+     
+        }
+        .box8{
+            width: 160px;
+            height: 200px;
+            background: yellow;
+    
+        }
+        .box9{
+            width: 160px;
+            height: 200px;
+            background: lightgreen;
+      
+        }
+        .box10{
+     
+            width: 180px;
+            height: 240px;
+            background: lightgray;
+        }
+        .box11{
+            width: 320px;
+            height: 80px;
+            background: lightblue;
+  
+        }
+        .box12{
+            width: 500px;
+            height: 100px;
+            background: #333;
+      
+        }
+        .wrap>.clear{
+            clear: both;
+            float:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+        <div class="box5">5</div>
+        <div class="left">
+                <div class="box6">6</div>
+                <div class="box8">8</div>
+                <div class="box9">9</div>
+                <div class="box11">11</div>
+        </div>
+        
+        <div class="right">
+                <div class="box7">7</div>
+                <div class="box10">10</div>
+        </div>
+       
+      
+        <div class="box12">12</div>
+        <div class="clear"></div>
+
+    </div>
+</body>
+</html>

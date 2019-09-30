@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>渐变</title>
+    <style>
+        [class|=linear],
+        [class|=radial] {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+        
+        .linear-1 {
+            background: linear-gradient(red, blue)
+        }
+        /* 渐变方向控制 */
+        
+        .linear-2 {
+            background: linear-gradient(to right, red, yellow);
+        }
+        /* 
+         方向 。颜色1；颜色2
+         方向。带前缀，方向写的是开始方向
+                不带前缀。to 结束方向
+         */
+        /* 渐变方向角度控制 */
+        
+        .linear-3 {
+            background: -webkit-linear-gradient(-45deg, red, yellow);
+        }
+        /* 控制渐变区域位置
+        渐变色位置控制
+        red 10% ，blue 30% ，yellow 80%
+        以上的百分比，表示颜色在线性轴上的出现位置
+        不是它所占的区域大小。以上的代码表示
+        红色出现在10%的位置
+        蓝色出现在30%位置
+        黄色出现在80%的位置
+        0%-10% 纯红色
+        10%-30% 红蓝渐变
+        305-80% 蓝黄渐变
+        80%-100% 纯黄色
+         */
+        
+        .linear-4 {
+            background: -webkit-linear-gradient(left, red 10%, yellow 30%, blue 80%);
+        }
+        /* 径向渐变 */
+        
+        .radial-1 {
+            background: -webkit-radial-gradient(red, blue);
+        }
+        /* 径向渐变起点控制 */
+        
+        .radial-2 {
+            background: -webkit-radial-gradient(0 0, red, blue)
+        }
+        /* 径向渐变颜色控制 */
+        
+        .radial-3 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: -webkit-radial-gradient(right top, white 26%, black 49%);
+            box-shadow: 10px 10px 10px black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>线性渐变</h1>
+    <div class="linear-1"></div>
+    <div class="linear-2"></div>
+    <div class="linear-3"></div>
+    <div class="linear-4"></div>
+    <h2>径向渐变</h2>
+    <div class="radial-1"></div>
+    <div class="radial-2"></div>
+    <div class="radial-3"></div>
+</body>
+
+</html>

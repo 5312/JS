@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设计癖</title>
+    <style>
+        .wrap{
+            margin: 20px auto;
+            display: flex;
+            /* border: 1px solid red; */
+        }
+        .wrap>div{
+            width: 50px;
+            height: 50px;
+            /* border: 1px solid red; */
+            margin: 0 5px;
+            border-radius: 50%;
+            text-align: center;
+            color: white;
+            font-size: 23px;
+            background: red;
+            line-height: 2;
+            box-shadow: 9px 5px 5px 0px #999;
+            transform: rotate(-30deg);
+            transition: 1s;
+        }
+        .wrap>div:hover{
+            transform: rotate(360deg);
+            background: #333;
+            position: relative;
+            top: -4px;
+            left: 0;
+            z-index: 9;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div>赞</div>
+        <div>萌</div>
+        <div>哈</div>
+        <div>艹</div>
+        <div>买</div>
+    </div>
+</body>
+</html>

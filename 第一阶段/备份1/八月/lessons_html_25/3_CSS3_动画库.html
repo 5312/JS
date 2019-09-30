@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画库</title>
+    <link rel="stylesheet" href="CSS/animate.css">
+    <style>
+        .box {
+            font-size: 50px;
+            font-weight: bolder;
+            display: inline-block;
+            animation-duration: 5s;
+        }
+        @media (prefers-reduced-motion:reduce) {
+            /* 
+                媒体查询，监测当前系统的优化方案，
+                prefers-reduced-motion；reduce
+                代表：特效降低，时生效
+            */
+            .animated{
+                /* 清楚掉所有的动画 */
+                animation :none
+            }
+        }
+        .box1{
+            display: inline-block;
+            font-size:50px;
+            animation: fadeIn 1s forwards linear,
+                        bounce 1s forwards ease-in;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box  bounce animated infinite">bounce(跳动)</div>
+    <div class="box animated fadeIn delay-1s infinite">fadeIn(淡入)</div>
+    <div class="box1">淡入，在跳动</div>
+</body>
+
+</html>

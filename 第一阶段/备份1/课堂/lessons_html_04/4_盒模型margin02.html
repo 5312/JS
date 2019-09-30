@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>盒子嵌套</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .box1{
+            width: 300px;
+            background: red;
+            /* border-top:10px solid black; */
+            /* padding-top: 1px; */
+            
+
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+        .box3{
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+        .box4{
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        嵌套情况下子级盒子的margin特点
+        1、移动方式与平级盒子一样
+        2、移动的起点是从父级内容区域开始的，与
+           父级的padding，border没有关系
+        3、外边距坍塌问题
+          在垂直方向上，当父级没有明确的边界时
+         （ border-top,
+           padding-top,
+           border-bottom,
+           padding-bottom
+          ）
+          父级中的第一个子级的margin-top会传递
+          给父级，导致父级跟子级一起向下移动
+          父级中的最后一个子级的margin-bottom会
+          传递给父级，导致无法撑开父级高度
+
+          外边界坍塌问题出现在 
+          chrome firefox opera safari IE9以上浏览器中
+          解决办法：给父级添加边界（border padding）
+     -->
+
+
+
+    <div class="box1">
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+    </div>
+</body>
+</html>

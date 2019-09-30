@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3选择器02</title>
+    <style>
+        /* 属性选择器
+            [属性名]:选中包含属性名1的标签
+            【属性2=属性值】：选中包含‘属性2=属性值’内容的标签
+        */
+        
+        div[data] {
+            background: blue;
+        }
+        
+        div[data=xx] {
+            background: yellowgreen;
+        }
+        
+        div[gg] {
+            background: red;
+        }
+        /* 
+        [属性名] |='指定词组字符'
+        表示选中，相同属性名中具有相同词组字符’前缀属性值的标签,
+        必须以指定词组字符‘开头，后面跟"-"
+        例如：<div class="ss-1"></div>
+             <div class="ss-2"></div>
+        */
+        
+        div[class|=ss] {
+            background: yellow;
+        }
+        /* [属性 ^='指定字符串'] 
+            选中属性值以指定串开头的标签
+        */
+        
+        div[class^=t] {
+            background: green;
+        }
+        /* 属性 $='指定字符串'
+            选中属性值以指定字符串结尾的标签
+             */
+        
+        div[class$=Bar] {
+            background: pink;
+        }
+        
+        div[style*=red] {
+            background: brown;
+        }
+        /* 
+            [属性名 ~= 指定词汇字符串]
+            选中属性值中，包含指定词汇字符串的标签
+            其中:指定词汇前后必须要有空格符号
+        */
+        
+        div[style~=green] {
+            background: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 属性选择器 1-->
+    <div data="">嘿嘿2</div>
+
+    <!-- 属性选择器02 -->
+    <div class="ss-1">嘿嘿-1</div>
+    <div class="ss-1">嘿嘿-2</div>
+
+    <!-- 属性选择器 03 -->
+    <div class="tNav">头部导航</div>
+    <div class="tlogo">头部logo</div>
+
+    <!-- 属性选择器05 -->
+    <div class="titleBar">标题工具栏</div>
+    <div class="searchBar">搜索工具栏</div>
+
+    <!-- 属性选择器 06 -->
+    <div style="color: red;font-size:12px;">111</div>
+    <div style="color: red;font-size:14px;">111</div>
+
+    <!-- 属性选择器07 -->
+    <div style="color:  green ; font: size 12px;">ff</div>
+    <div style="color:  green ; font: size 14px;">ggg</div>
+</body>
+
+</html>

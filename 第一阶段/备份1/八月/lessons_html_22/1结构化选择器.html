@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3选择器</title>
+    <style>
+        /* 子代选择器 */
+        
+        .wrap>h1 {
+            background: red;
+        }
+        /* 后代选择器 */
+        
+        .wrap h1 {
+            background: pink;
+        }
+        /* 兄弟相邻选择器 */
+        
+        h2+p {
+            background: yellow;
+        }
+        /* 同级兄弟通用选择器 */
+        
+        h2~b {
+            background: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>子代选择器</h1>
+        <div>
+            <h1>后代选择器</h1>
+        </div>
+    </div>
+    <h2>wt tw</h2>
+    <p>兄弟相邻选择器</p>
+    <b>同级兄弟通用选择器</b>
+    <b>同级兄弟通用选择器</b>
+    <b>同级兄弟通用选择器</b>
+    <b>同级兄弟通用选择器</b>
+    <b>同级兄弟通用选择器</b>
+</body>
+
+</html>

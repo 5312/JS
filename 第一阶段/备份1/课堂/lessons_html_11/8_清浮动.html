@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        .wrap{
+            width: 200px;
+            border:1px solid red;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background: blue;
+            float: right;
+        }
+        .clear{
+            /* clear: both; */
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="wrap">
+            
+        <div class="box"></div>
+        <div class="clear"></div>
+    </div>
+    <!-- 
+        清浮动方式
+        1、给父级设置固定高
+           不灵活，主要用在布局完成后的微调场景，或者
+           浏览器兼容配置场景。
+        2、让父级也浮动起来
+           不主动设置，只做被动判断clear，看父级是否需要清浮动
+           实际应用时，当需要给子级浮动时，看看父级是否已
+           经浮动了，如果父级已经浮动，便不用再清浮动。
+        3、给父级设置 overflow:hidden
+        4、给父级设置 display:inline-block
+          3、4是在父级区域形成一个BFC（块级格式化上下文）环境。
+          这种环境可以保证子级浮动后依然能够撑开父级高度。
+          应用方法：不主动设置，只做被动判断
+
+          
+        5、利用clear：both 主动为父级清浮动
+           原理：在父级盒子内部的最后一个子级位置上
+                添加一个block（div）标签,给该标签
+                设置clear:both完成清浮动
+           clear：left;属性的意思是，在设置了该属性的盒子3
+           维空间上方，不能够有设置了float：left的盒子出现
+           由于浮动块不能自己向下移动，只能靠设置了clear属性
+           的盒子，自己向下移动，躲开浮动块，移动过程当中，将
+           父级高度拉开，实现父级高度的恢复
+           缺点：代码编写结构复杂，不容易维护
+        6、利用after伪元素选择器清浮动
+           高度坍塌的父级选择器::after{
+               content:"";
+               display:block;
+               clear:both;
+           }
+           实际应用是，会在样式初始化时，定一个清浮动的
+           选择器 .clear::after{
+                content : "";
+                display:block;
+                clear : both;
+           }哪里需要清浮动，就给其添加class clear
+       
+           1,2,3,4:方法仅用于判断是否需要清浮动  
+           当父级设置了
+           固定高,
+           浮动，
+           display:inline-block,
+           overflow :hidden
+           中的任意一种时，其所有子级浮动，都不会造成
+           父级高度坍塌，不需要清浮动
+        
+           
+
+
+
+     -->
+</body>
+</html>

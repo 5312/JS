@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单</title>
+
+</head>
+<body>
+    <!-- 表单容器 -->
+    <form action="">  //input 只能放在表单<form action="">里面且只有一个</form>
+        <!-- 提交按钮 -->
+        <input type="submit" value="提交">
+        <!-- 输入类表单标签 -->
+        <input type="text" placeholder="用户名：比如baloo" name="username" value=""  >
+        <!-- 密码输入 -->
+        <input type="password" name="pass">
+        <!--文本域 -->
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+
+        <!-- 选择类 -->
+        <!-- 单选-->
+        <br>
+         男<input type="radio" name="sex" value="1"> 
+        女 <input type="radio" name="sex" value="2">
+        <br>
+        <!-- 复选框 -->
+         爱好<input type="checkbox" name="hobby[]" value="smoking">
+         喝酒<input type="checkbox" name="hobby[]" value="drinking">
+         烫头<input type="checkbox" name="hobby[]" value="tangtou">
+
+         <!-- 列表选择 -->
+         <select name="city" id="">
+             <option value="">请选择</option>
+             <option value="">北京</option>
+             <option value="">阿坝</option>
+             <option value="">暴击</option>
+
+         </select>
+         <!-- label标签 -->
+         <label>
+             男<input type="radio" name="sex">
+
+         </label>
+         <label for="sex1">女</label>
+         <input id="sex1" type="radio" name="sex" value="2">
+
+         <!-- 文件上传 -->
+         <input type="file" name="headImg" multiple accept="application/msexcel"  >
+
+    </form>
+</body>
+</html>

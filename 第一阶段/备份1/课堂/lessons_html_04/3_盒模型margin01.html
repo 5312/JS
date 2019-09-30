@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>margin用来移动盒子</title>
+    <style>
+        body{
+            font-size: 0;
+            margin: 0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            border:1px solid red;
+            margin-left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        margin用来移动盒子
+        默认布局情况下，页面的盒子排列是按照从左到右，从上到下的
+        所以
+        水平方向:
+        margin-left:将盒子自身向右推
+        margin-right:盒子自身不动，将水平方向上的相邻盒子向右推
+        垂直方向：
+        margin-top:将盒子自身向下推
+        margin-bottom:盒子自身不动，将垂直方向上的相邻盒子向下推
+     -->
+    <div class="box"></div>
+    <div class="box"></div>
+</body>
+</html>

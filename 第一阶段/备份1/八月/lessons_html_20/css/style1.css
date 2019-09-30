@@ -1,0 +1,187 @@
+body{
+    margin: 0;
+    padding:0;
+    font-size: 0.16rem;
+}
+input{
+    border: none;
+    outline: none;
+    padding: 0;
+
+}
+html{
+    font-size: calc(100 * 100vw /375);
+    line-height: 1.5;
+    letter-spacing: 0;
+    font-family: PingFang,微软雅黑;
+}
+.container{
+        /* 弹性盒子 */
+        display: flex;
+        /* 怪异盒模型 */
+        box-sizing: border-box;
+        /* 子级同行排列 */
+        flex-flow: wrap row;
+        /* 水平平均分布 */
+        justify-content: space-between;
+        /* 子级垂直方向居中对齐 */
+        align-items: center;
+}
+.toolBar{
+
+    padding: 0.08rem 0.17rem;
+    background: #26a69a;
+}
+.city{
+    font-size: 0.14rem;
+    letter-spacing: -0.0016rem;
+    color: #fff;
+
+}
+.searchBar{
+    width: 2.54rem;
+    padding :0.06rem;
+    background: #fff;
+    border-radius: 0.05rem;
+}
+.searchBar>.iconfont{
+    font-size: 0.14rem;
+    
+}
+.searchBar>input{
+    width: 2.06rem;
+    font-size: 0.14rem;
+}
+.icon-saoyisao{
+    font-size: 0.27rem;
+    color: #fff;
+}
+img{
+    width: 3.75rem;
+    display: block;
+}
+.activity{
+    /* 弹性盒子 */
+    display: flex;
+    /* 怪异盒模型 */
+    box-sizing: border-box;
+    /* 子级同行排列 */
+    flex-flow: wrap row;
+    /* 子级水平平均分配 */
+    justify-content: space-between;
+    /* 子级垂直方向居中对齐 */
+    align-items: center;
+    padding :0.12rem 0.24rem;
+    font-size: 0.12rem;
+}
+.nav{
+    text-align: center;
+}
+.activity img{
+    display: block;
+    width: 0.6rem;
+    margin-bottom: 0.08rem;
+}
+.greenCar{
+    display: flex;
+    flex-flow: wrap row;
+    align-items: center;
+    font-size: 0.09rem;
+    background-color: #cfeeeb;
+    border: 1px solid #26a69a;
+    line-height: 0.14rem;
+
+}
+.greenCar>img{
+    width: 0.43rem;
+    height: 0.34rem;
+    margin-right: 0.07rem;
+}
+.text span{
+    color: red;
+}
+.icon-gengduo{
+    font-size: 0.07rem;
+}
+.topTop{
+    /* 弹性盒子 */
+    display: flex;
+    /* 怪异盒模型 */
+    box-sizing: border-box;
+    /* 子级同行排列 */
+    flex-flow: wrap row;
+    padding: 0.13rem 0.12rem;
+    justify-content: space-between;
+}
+.top_1{
+    padding-left: 0.08rem;
+    border-left: 0.03rem solid #26a69a;
+    margin-bottom: 0.08rem;
+    margin-right: 0.3rem;
+}
+.topTop_2 >img{
+    width: 1.23rem;
+    /* height: 0.62rem; */
+    float: right;
+    padding: 0 0 0.12rem 0;
+
+}
+.topTop_2 img:nth-child(1){
+    width: 2.16rem;
+    float: left;
+    padding-right: 0.12rem;
+}
+.windows>img{
+    width: 1.68rem;
+}
+.bold{
+    color: #26a69a;
+    font-weight: bold;
+    font-size: 0.09rem;
+}
+.tesla{
+    width: 1.34rem;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #999999;
+    margin-bottom: 0.09rem;
+    border-bottom: 0.01rem dashed #999999;
+}
+.price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.18rem;
+}
+.shop{
+    border-radius: 0.03rem;
+    background-color: #26a69a;
+    color: #fff;
+    padding: 0.08rem;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    z-index: 0;
+    background: #26a69a;
+    /* 弹性盒子 */
+    display: flex;
+    flex-flow: wrap row;
+    justify-content:space-between;
+    text-align: center;
+}
+.home{
+    margin-right: 0.4rem;
+}
+.home>span{
+    display: block;
+    font-size: 0.3rem;
+}
+.width
+{
+    width: 1.08rem;
+    background: #fff;
+}

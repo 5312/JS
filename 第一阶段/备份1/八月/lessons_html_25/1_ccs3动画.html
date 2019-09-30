@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画</title>
+    <style>
+        /* 定义动画关键帧 */
+        @keyframes move{
+            0%{
+                transform: translateX(0px);
+            }
+            50%{
+                transform: translate(400px,300px);
+            }
+            
+            100%{
+                transform: translateX(800px);
+            }
+        }
+        .wrap{
+            width: 100px;
+            height: 100px;
+            border-radius:50%;
+            background: red;
+            /* 设置动画关键帧 */
+            animation-name: move;
+            /* 设置动画时间 */
+            animation-duration: 2s;
+            /*设置动画时间曲线 */
+            animation-timing-function: linear;
+            /* 设置动画播放完成后的停止 
+               默认值：backwards：回到初始关键帧
+                      forwards；停止结束关键帧
+            */
+            animation-fill-mode: forwards;
+            /* 设置动画的关键帧执行顺序
+                默认从0-100% 
+                  normal ；0%-100%
+                  reverse:100%-0%;
+                  alternate；0%--100%；
+                  reverse-alternate：100%--0%--100%；
+                  当时交替播放时，动画关键帧次数要》1
+             */
+             animation-direction:alternate;
+             /* 设置执行关键帧的次数 
+                infinite :无限次
+             */
+             animation-iteration-count: infinite;
+
+             /* 动画延迟
+             animation: delay 1s; */
+        }
+        .wrap:hover{
+            /* 动画播放控制 */
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+    </div>
+</body>
+</html>

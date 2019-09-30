@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业01</title>
+    <style>
+       body{
+           line-height: 1.5;
+       }
+       .wrap{
+           width: 600px;
+           margin: 100px auto;
+           text-align: center;
+       }
+       .header,.nav,.article,.aside,.footer{
+           /* 0-255
+              1字节： 8位进制数  11111111 = 0 -255 
+                rgb(0,255,0);
+            */
+           background-color:#00ff00;
+           padding: 10px 0;
+           margin-bottom: 15px;
+       }
+       .title{
+           font-weight: bold;
+           font-size: 18px;
+           margin-bottom: 3px;
+       }
+       .content{
+           font-size: 0px;
+       }
+       .article,.aside{
+           display: inline-block;
+           vertical-align: top;
+           font-size: 16px;
+       }
+       .article{
+           width: 345px;
+           margin-right: 15px;
+       }
+       .aside{
+           width: 240px;
+           padding: 92.5px 0;
+       }
+       .article>.des{
+           margin-bottom:28px;
+       }
+       .section{
+           margin: 15px 23px;
+           background: yellow;
+           padding: 5px 0;
+       }
+       .aside>.des{
+           margin: 0 17px;
+       }
+
+    </style>
+</head>
+<body>
+    
+    <div class="wrap">
+        <!-- header -->
+        <div class="header">
+            <div class="title">&lt;header&gt;</div>
+            <div class="des">contains brandings like logo</div>
+        </div>
+        <!-- nav -->
+        <div class="nav">
+            <div class="title">&lt;nav&gt;</div>
+            <div class="des">contains navgitional section of the site</div>
+        </div>
+        <!--  content-->
+        <div class="content">
+            <!-- article -->
+            <div class="article">
+                <div class="title">&lt;article&gt;</div>
+                <div class="des">web page main content</div>
+
+                <div class="section">
+                    <div class="title">&lt;section&gt;</div>
+                    <div class="des">
+                        web page main <span>content</span>
+                    </div>
+                </div>
+                <div class="section">
+                        <div class="title">&lt;section&gt;</div>
+                        <div class="des">
+                            web page main <span>content</span>
+                        </div>
+                </div>
+            </div>
+            <!-- aside -->
+            <div class="aside">
+                <div class="title">&lt;aside&gt;</div>
+                <div class="des">contains extra information and related content or links</div>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div class="title">&lt;footer&gt;</div>
+            <div class="des">information about copyright, privacy policy,terms of use.ect</div>
+        </div>
+    </div>
+</body>
+</html>

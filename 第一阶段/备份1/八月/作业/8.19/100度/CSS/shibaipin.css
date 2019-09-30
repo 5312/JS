@@ -1,0 +1,83 @@
+.main {
+	width: 100%;	
+}
+.main .part1 {
+	width: 950px;
+	padding: 5px 25px;
+	background-color: #f1f1f1;
+	border-radius: 10px;
+	overflow: hidden;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+.main .part1 .sheet1 {
+	float: left;
+}
+.main .part1 .p1 {
+	float: right;
+}
+.in1:hover {
+	color: red;
+}
+
+
+.main .part2 {
+	width: 1000px;
+	padding: 10px 0px;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;	
+}
+.main .part2 .top {
+	width: 66px;	
+	position: absolute;	
+	top: 10px;
+}
+.main .part2 .left1 {	
+	left: 0px;
+}
+.main .part2 .left2 {
+	left: 66px;
+}
+.main .part2 .left3 {
+	left: 132px;
+}
+.main .part2 .left4 {
+	left: 198px;
+}
+.main .part2 .left5 {
+	left: 264px;
+}
+.main .part2 .right5 {
+	right: 0px;
+}
+.main .part2 .right4 {
+	right: 66px;
+}
+.main .part2 .right3 {
+	right: 132px;
+}
+.main .part2 .right2 {
+	right: 198px;
+}
+.main .part2 .right1 {
+	right: 264px;
+}
+.main .part2 .top .pic2 {
+	position: absolute;
+	z-index: 20;
+}
+.main .part2 .bottom .pic3_1 {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 13px;	
+	left: 13px;
+	z-index: 10;
+}
+.top:hover .left1{
+	width: 46px;
+	height: 46px;
+	z-index: 1;
+}
+

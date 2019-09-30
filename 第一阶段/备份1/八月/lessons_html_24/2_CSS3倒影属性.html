@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒影属性</title>
+    <style>
+        img {
+            width: 300px;
+            display: block;
+            margin: 100px auto;
+            -webkit-box-reflect: below 10px -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+            /* -webkit-box-reflect:方向 距离 渐变蒙版图
+                IE不支持 ，仅支持-weblit内核浏览器
+                方向：above below left right
+                倒影不会占用默认文本流位置，比默认文本流高半层
+             */
+        }
+        
+        .box {}
+    </style>
+</head>
+
+<body>
+    <img src="2.png" alt="">
+    <div class="box"></div>
+</body>
+
+</html>

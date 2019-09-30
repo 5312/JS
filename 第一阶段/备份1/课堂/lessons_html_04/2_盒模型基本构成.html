@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>盒模型基本构成</title>
+    <style>
+        .box{
+            /* 内容区域大小 */
+            width: 100px;
+            height: 100px;
+            /* 盒子边界／边框 */
+            border:1px solid red  ;
+            /* 内边距 : 
+               内容到边界之间到距离
+               内容：width height(写在文档中标签中的部分)
+               边  : border设置的区域
+               padding: 1值=>代表四个方向设置相同的内边距
+                        2值=> 上下  左右
+                        3值=> 上  左右  下
+                        4值=> 上  右  下  左（顺时针）
+                              top  right bottom left
+               padding-top:单独设置上内边距
+               padding-right:单独设置右内边距
+               padding-bottom:单独设置下内边距
+               padding-left:单独设置左内边距
+             */
+            padding: 10px 20px 30px 40px;
+            /* padding-top: 10px; */
+            margin:10px 20px 30px 40px;
+            /* 
+            
+                盒模型基本结构：
+                内容区域： （content） width height
+                      所有的写在标签中的内容，只出现在这个区域
+                内边距区域： padding设置
+                      设置的是一个盒子的边框到内容区域之间的距离
+                      可以扩大盒子
+                边界区域： border所设置都区域，边框
+                外边距区域： margin设置
+                      设置的是两个盒子之间的距离。
+n               盒子在界面上的渲染大小
+                宽度  =  width + 左右的padding + 左右border
+                高度  =  height + 上下的padding + 上下的border
+                      
+            
+            
+            
+            
+            
+             */
+
+
+
+
+
+        }
+      /* 内边距 */
+    </style>
+</head>
+<body>
+     <div class="box">内容</div>
+     <div class="box"></div>
+</body>
+</html>

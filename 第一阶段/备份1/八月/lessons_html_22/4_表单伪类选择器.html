@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input {
+            outline: none;
+        }
+        /* target伪类选择器 
+            锚点的目标标签被选中，并设置样式
+        */
+        
+         :target {
+            background: red;
+        }
+        
+        p {
+            display: none;
+        }
+        /* focus伪类 */
+        
+        input[type=text]:focus {
+            border: 1px solid blue;
+        }
+        /* checked伪类 */
+        
+        input[type=radio]:checked+span {
+            background: red;
+        }
+        
+        input[type=email]:valid+span {
+            display: none;
+        }
+        /* :invalid伪类，表示输入的内容不符合input标签要求时，
+        该input标签被选中
+         */
+        
+        input[type=email]:invalid+span {
+            color: red;
+            font-size: bolder;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#p1">p1</a>
+    <a href="#p2">p2</a>
+    <p id="p1">标签1的目标p1</p>
+    <p id="p2">标签2的目标p2</p>
+    <input type="text">
+
+    <!-- 表单2 ：checked伪类 -->
+    <input type="radio" checked name="gender" id="">
+    <span>男</span>
+    <input type="radio" name="gender">
+    <span>女</span>
+
+    <!-- 表单03：valid伪类 -->
+    <input type="email">
+    <span>输入非法，正确输入</span>
+</body>
+
+</html>

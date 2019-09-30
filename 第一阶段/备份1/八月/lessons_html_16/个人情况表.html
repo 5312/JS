@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人简历</title>
+    <style>
+        table {
+            /* width: 800px; */
+            border-collapse: collapse;
+        }
+
+        input {
+            width: 90px;
+            outline: none;
+            border: none;
+            padding: 0;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <!-- 姓名 -->
+        <tr>
+            <th rowspan="10" style="width: 10px;">个人情况</th>
+            <td>姓名</td>
+            <td colspan="3"><input type="text"></td>
+            <td>性别</td>
+            <td><input type="text"></td>
+            <td>出生年月</td>
+            <td><input type="text"></td>
+            <td colspan="3">民族</td>
+            <td colspan="3"><input type="text"> </td>
+            <td colspan="3">政治面貌</td>
+            <!-- uan4 -->
+            <td colspan="4"><input type="text"></td>
+            <td colspan="2" rowspan="6"><input type="file"></td>
+        </tr>
+        <!-- 毕业院校 -->
+        <tr>
+            <td colspan="2">毕业院校</td>
+            <td colspan="4"><input type="text"></td>
+            <td>学历</td>
+            <td><input type="text"></td>
+            <td colspan="3">专业</td>
+            <td colspan="3"><input type="text"></td>
+            <td colspan="3">学位</td>
+            <!-- wej4 -->
+            <td colspan="4"><input type="text"></td>
+        </tr>
+        <!-- 普通话 -->
+        <tr>
+            <td colspan="2">普通话</td>
+            <td colspan="4"><input type="text"></td>
+            <td>婚姻状况</td>
+            <td><input type="text"></td>
+            <td colspan="4">结婚时间</td>
+            <td colspan="4"><input type=""></td>
+            <td colspan="3">子女个数</td>
+            <!-- wefe2 -->
+            <td colspan="2"><input type="text"></td>
+        </tr>
+        <!-- 籍贯 -->
+        <tr>
+            <td>籍贯</td>
+            <td colspan="5"><input type="text">省<input type="text">市<input type="text">县 </td>
+            <td>户籍地址</td>
+            <td colspan="14"><input type="text"> </td>
+        </tr>
+        <!-- 近一年 -->
+        <tr>
+            <td colspan="6">近一年是否有过住院史</td>
+            <td colspan="2">
+                <label for="">
+                    <input type="radio" name="judge">有 （ 月/天）
+                    <input type="radio" name="judge">无
+                </label>
+            </td>
+            <td colspan="5">有无家族病史</td>
+            <td colspan="8">
+                <label>
+                    <input type="radio" name="judge">有（<input type="text"> 病）
+                    <input type="radio" name="judge">无
+                </label>
+            </td>
+        </tr>
+        <!-- 健康 -->
+        <tr>
+            <td colspan="6">健康状况（曾患何种疾病</td>
+            <td colspan="2">
+                <label>
+                    <input type="radio" name="judge">有（）
+                    <input type="radio" name="judge">良
+                </label>
+            </td>
+            <td colspan="5">身份证号码</td>
+            <td colspan="8"><input type="text"></td>
+        </tr>
+        <!-- 家庭住址 -->
+        <tr>
+            <td colspan="2">家庭地址</td>
+            <td colspan="11"><input type=""></td>
+            <td colspan="2">邮编</td>
+            <td colspan="5"><input type="text"></td>
+            <td colspan="2">电话</td>
+            <td><input type="text"></td>
+        </tr>
+        <!-- 现住址 -->
+        <tr>
+            <td colspan="2">现住址</td>
+            <td colspan="11"><input type="text">
+                <label>
+                    （自购<input type="radio" name="1">
+                    借住<input type="radio" name="1">
+                    租用<input type="radio" name="1">）
+                </label>
+            </td>
+            <td colspan="2">邮编</td>
+            <td colspan="5"><input type="text"></td>
+            <td colspan="2">电话</td>
+            <td><input type="text"></td>
+        </tr>
+        <!-- 招聘渠道 -->
+        <tr>
+            <td colspan="2">招聘渠道</td>
+            <td colspan="7">
+                <label for="">
+                    <input type="radio">报纸
+                    <input type="radio">网络
+                    <input type="radio">推荐
+                    <input type="radio">校园招聘
+                    <input type="radio">其他
+                </label>
+            </td>
+            <td colspan="3">E-MALL</td>
+            <td colspan="6"><input type="text"></td>          
+            <td colspan="4">手机</td>
+            <td><input type="text"></td>
+        </tr>
+        <!-- 紧急联系人 -->
+        <tr>
+            <td colspan="3">紧急联系人</td>
+            <td colspan="4"><input type="text"></td>
+            <td colspan="3">关系</td>
+            <td colspan="8"><input type="text"></td>
+            <td colspan="4">电话</td>
+            <td><input type="text"></td>
+        </tr>
+    </table>
+</body>
+
+</html>

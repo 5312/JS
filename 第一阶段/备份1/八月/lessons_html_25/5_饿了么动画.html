@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业饿了么</title>
+    <style>
+        .box{
+            width: 800px;
+            height: 500px;
+            border: 1px solid blue;
+            background: url(img/background.png)0 0  no-repeat;
+            position: relative;
+        }
+        img{
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 9;
+            transition: 4s;
+            animation: car 9s  forwards  infinite;
+        }
+        @keyframes car{
+            0%{
+                transform: translateX(0px);
+            }
+            45%{
+                transform: translateX(730px) ;
+            }
+            50%
+            {
+                transform: translateX(730px) rotateY(180deg);
+            }
+            95%{
+                transform: translateX(0px) rotateY(180deg);
+            }
+            100%{
+                transform: translateX(0px) rotateY(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="img/car.png" alt="">
+    </div>
+</body>
+</html>

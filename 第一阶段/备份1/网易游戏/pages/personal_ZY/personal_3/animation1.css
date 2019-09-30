@@ -1,0 +1,133 @@
+@keyframes runing{
+    0%{
+        transform: translateX(0px)
+    }
+    25%{
+        transform: translateX(-50%);
+    }
+    50%{
+        transform: translateX(-50%)
+    }
+    75%{
+        transform: translateX(0px)
+    }
+    100%{
+        transform: translateX(0px)
+    }
+}
+/* 轮播目录 */
+@keyframes fadeInDown1{
+    0%{
+        transform: translateY(0px);
+    }
+    16%{
+        transform: translateY(0px);
+    }
+    32%{
+        transform: translateY(-50px)
+    }
+    50%{
+        transform: translateY(-100px);
+    }
+    66%{
+        transform: translateY(-100px)
+    }
+    82%{
+        transform: translateY(-50px)
+    }
+    100%{
+        transform: translateY(0px)
+    }
+}
+/* 淡出 */
+@keyframes apear1{
+    0%{
+        opacity: 1;
+    }
+    20%{
+        opacity: 1;
+    }
+    25%{
+        opacity: 0;
+    }
+    95%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes apear2{
+    0%{
+        opacity: 0;
+    }
+    20%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 1;
+    }
+    45%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes apear3{
+    0%{
+        opacity: 0;
+    }
+    45%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    70%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes apear4{
+    0%{
+        opacity: 0;
+    }
+    70%{
+        opacity: 0;
+    }
+    75%{
+        opacity: 1;
+    }
+    95%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1  ;
+    }
+}
+@keyframes run{
+    0%{
+        transform: translateY(0px);
+    }
+    25%{
+        transform: translateY(-10px);
+    }
+    50%{
+        transform: translateY(0px)
+    }
+    75%{
+        transform: translateY(10px)
+    }
+    100%{
+        transform: translateY(0px)
+    }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绝对居中</title>
+    <style>
+        .wrap{
+            width: 500px;
+            height: 500px;
+            padding: 20px;
+            border:1px solid red;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background: blue;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box"></div>
+    </div>
+    <!-- 
+        绝对居中，如果需要让一个子级盒子，在指定的
+        父级区域内绝对居中，实现方法
+        1、让该子级先按照指定的父级区域绝对定位
+        2、设置四个方向的定位为0
+        3、设置margin：auto
+        4、子级盒子必须有明确的宽高尺寸设置
+        5、当子级盒子不设置宽高时，盒子的四个边将按照
+        定位父级边界定位，将盒子尺寸拉开
+     -->
+</body>
+</html>

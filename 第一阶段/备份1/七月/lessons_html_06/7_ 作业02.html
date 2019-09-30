@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测速</title>
+    <style>
+        body{
+           line-height:1.5;
+          
+        }
+        .wrap{
+            width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+        .header{
+            background-color:green;
+            padding:10px 0;
+            margin:15px auto; 
+        }
+        .title{
+            /* 字体加粗 */
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .nav{
+            background-color:green;
+            margin-bottom: 15px;
+            padding: 10px;
+        }
+        .content{
+            font-size: 0;
+            margin-bottom: 15px;
+        }
+        /* 群组选择器 */
+        .article,.aside{
+            display: inline-block;
+            vertical-align: top;
+            font-size: 16px;
+        }
+        .article{
+            width: 345px;
+            background-color:green;
+        }
+        .article>.des{
+            margin-bottom: 28px;
+        }
+        .section{
+            background-color:yellow;
+            padding:5px 0;
+            margin: 10px 23px;
+            margin-bottom: 15px;
+        }
+        /* 子代选择器 */
+        .des>span{
+            color: red;
+        }
+        .aside{
+            width: 240px;
+            background-color: green;
+            padding: 81px 0;
+            margin-left: 15px;
+        }
+        .aside>.des{
+            text-align: left; 
+            margin:0 14px;
+         }
+        .footer{
+            background-color:green;
+            padding: 10px 0;
+        }
+     </style>
+</head>
+<body>
+    <div class="wrap">
+        <!-- wrap -->
+        <div class="header">
+            <!-- haeder -->
+            <div class="title">&lt;header&gt;</div>
+            <div class="des">contains brandings like logo</div>
+        </div>
+        <div class="nav">
+            <!-- nav -->
+            <div class="title">&lt;nav &gt;</div>
+            <div class="des">contains navigational sectoin of the site</div>
+        </div>
+        <div class="content">
+            <!-- content -->
+            <div class="article">
+                <!-- article -->
+                <div class="title">&lt; article &gt;</div>
+                <div class="des">web page main content </div>
+                <div class="section">
+                    <div class="title">&lt;section &gt;</div>
+                    <div class="des">
+                        web page main <span>content</span> 
+                    </div>
+                </div>
+                <div class="section">
+                    <!-- section -->
+                    <div class="title">&lt;section &gt;</div>
+                    <div class="des">
+                        web page main <span>content</span> 
+                    </div>
+                </div>
+            </div>
+            <div class="aside">
+                <!-- aside -->
+                <div class="title">&lt;aside&gt;</div>
+                <div class="des">contians extra information and related  content or links</div>
+            </div>
+        </div>
+        <div class="footer">
+            <!-- footer -->
+            <div class="title">&lt;footer&gt;</div>
+            <div class="des">information about copyright,privacy policy,terms of use.ect</div>
+        </div>
+    </div>
+</body>
+</html>
