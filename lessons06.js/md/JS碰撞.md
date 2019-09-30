@@ -22,3 +22,12 @@
 
 >     注意上面三队属性是只读属性,只可以获取值不可以赋值.
 
+```javascript
+//暴力关闭定时器
+    var timer = setInterval(function(){
+        for(var i = 1; i<= timer;i++){
+            clearInterval(timer);
+        }
+        },1)
+```
+g
