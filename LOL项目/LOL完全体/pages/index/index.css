@@ -87,6 +87,7 @@ body{
 }
 .promo-img-list{
     overflow: hidden;
+    height: 340px;
     position: relative;
 }
 .promo-img-list > li{
@@ -94,7 +95,10 @@ body{
     width: 4920px;
     height: 340px;
     overflow: hidden;
-    animation: mov1 20s linear infinite;
+    /*animation: mov1 20s linear infinite;*/
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 .promo-img-list li img{
     float: left;
@@ -102,6 +106,7 @@ body{
 }
 .promo-title-list{
   width: 820px;
+  position: relative;
 }
 .promo-title-list span{
   width: 164px;
@@ -114,10 +119,20 @@ body{
   color: #424242;
   letter-spacing: 1px;
 }
-.promo-title-list span:hover{
+/*.promo-title-list span:hover{
   color: #ab8e66;
   border-bottom: 2px solid #cea861;
   background-color: #f7f6f6;
+}*/
+.promo-title-list div{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 38px;
+  width: 164px;
+  /*box-sizing: border-box;*/
+  border-bottom: 2px solid #cea861;
+  background-color: rgba(255,255,255,0.5);
 }
 .m-news {
   width: 496px;
