@@ -28,6 +28,9 @@ function next() {
     carousel.style.left = s + 'px';
     //选中状态切换
     shadow.style.left = sshaw + 'px';
+     if (carousel.offsetLeft == -max) {
+        shadow.style.left = 0 + 'px';
+     }
     setTimeout(function() {
         if (carousel.offsetLeft == -max) {
             carousel.style.transition = 'none';
