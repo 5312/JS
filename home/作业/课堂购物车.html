@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+        *{
+    		user-select: none;
+    	}
+        #wrap{
+    		width: 900px;
+    		margin:0 auto;
+    	}
+    	header{
+			border:3px solid;
+    	}
+    	.item{
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			border:3px solid;
+			margin-top: 10px;
+    	}
+    	img{
+    		width: 100px;
+    		height: 100px;
+    	}
+    	.add{
+			width: 40px;
+			height: 40px;
+			background: red;
+			color: white;
+			text-align: center;
+			font-size: 30px;
+    	}
+    	.sub{
+			width: 40px;
+			height: 40px;
+			background: red;
+			color: white;
+			text-align: center;
+			font-size: 30px;
+    	}
+		#del{
+			color: #D295C6;
+		}
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header>
+            <input type="checkbox" name="" id="all">全选
+            <a  id="del">删除</a>
+            <span>已选中商品 <b>0</b> 件 , 总价格为 : <b></b>¥</span>
+        </header>
+        <section>
+            <!-- <div class="item">
+                <input class="sel" type="checkbox" name="" id="">
+                <img class="img" src="img1.png" alt="">
+                <p class="vname">绿色有机</p>
+                <p class="price">20</p>
+                <p class="num">1</p>
+                <div class="add">+</div>
+                <div class="sub">-</div>
+            </div> -->
+        </section>
+    </div>
+</body>
+<script>
+//获取要操作的元素
+var all = document.getElementById('all'),
+    del = document.getElementById('del'),
+    bs = document.getElementsByTagName('b'),
+    sec = document.querySelector('section'); //商品容器
+
+//初始化数据
+var date = [
+    ['有机菜花', '30'],
+    ['无农药包菜', '5'],
+    ['爱尔兰牛肉', '78'],
+    ['西蓝花', '9'],
+    ['中式泡菜', '11'],
+    ['生菜', '2'],
+    ['黄瓜', '8'],
+    ['灯笼椒', '5'],
+    ['香菜', '10'],
+    ['菠菜', '2']
+];
+//初始化商品
+for (var i = 0; i < date.length; i++) {
+    var di = date[i];
+    sec.innerHTML += '<div class="item"><input class="sel" type="checkbox" name="" id=""><img class="img" src="img' + (i + 1) + '.png" alt=""><p class="vname">' + di[0] + '</p><p class="pri">' + di[1] + '</p><p class="num">1</p><div class="add">+</div><div class="sub">-</div></div>';
+}
+var items = document.getElementsByClassName('item');
+//声明需要使用的全局变量
+
+
+//全选
+all.onclick = function() {
+    //全选按钮的状态
+    var allType = this.checked;
+
+    for (var i = 0; i < items.length; i++) {
+
+        // var selType = allType?true:false;
+
+        var selType = items[i].querySelector('.sel').checked;
+
+        var allAttr = items[i].getAttribute('all'); //获取你上次单独选中的状态
+        if (allType && !selType) {
+
+            items[i].querySelector('.sel').checked = true;
+            //给你上次单独选中的添加自有属性,标记
+            items[i].setAttribute('all', true);
+        } else if (!allType && allAttr) {
+            items[i].querySelector('.sel').checked = false;
+            //删除 标记
+            items[i].removeAttribute('all');
+        }
+
+    }
+    //计算
+    computeSum();
+}
+//循环为所有商品绑定事件
+for (var i = 0; i < items.length; i++) {
+    items[i].firstElementChild.onclick = function() {
+        //处理全选
+        if (!this.checked) {
+            all.checked = false;
+        }
+        for (var i = 0; i < items.length; i++) {
+            if (!items[i].firstElementChild.checked) {
+                break;
+            }
+
+        }
+        if (i == items.length) {
+            all.checked = true;
+        }
+        //处理单选后的价格
+        computeSum();
+    }
+    //每个商品的数量加减事件
+    //加
+    items[i].children[items[i].children.length - 2].onclick = function() {
+        //在自身数量基础上 +1 
+        this.previousElementSibling.innerHTML = ++
+        this.previousElementSibling.innerHTML;
+        //计算
+        computeSum();
+    }
+    //减
+    items[i].children[items[i].children.length - 1].onclick = function() {
+        //在自身数量基础上-1 ,并且最小为 0 ;
+        var n = --this.previousElementSibling.previousElementSibling.innerHTML < 1 ? 1 : this.previousElementSibling.previousElementSibling.innerHTML;
+
+        this.previousElementSibling.previousElementSibling.innerHTML = n;
+        //计算
+        computeSum();
+    }
+
+}
+//删除事件
+del.onclick = function() {
+    for (var i = 0; i < items.length; i++) {
+        if (items[i].firstElementChild.checked) {
+            items[i].remove();
+            i--;
+        }
+    }
+    //处理全选
+    if (items.length == 0) {
+        all.checked = false;
+        all.disabled = true;
+    }
+    //计算
+    computeSum();
+}
+
+
+//计算 总价钱还有数量
+function computeSum() {
+    var sumNum = 0, //总数量
+        sumPri = 0; //总价格
+    for (var i = 0; i < items.length; i++) {
+        if (items[i].querySelector('.sel').checked) {
+            //选中商品的数量
+            var n = items[i].querySelector('.num').innerHTML * 1;
+            //计算价格
+            sumPri += n * items[i].querySelector('.pri').innerHTML;
+            //计算数量
+            sumNum += n;
+        }
+    }
+    //显示
+    bs[0].innerHTML = sumNum;
+    bs[1].innerHTML = sumPri;
+
+}
+</script>
+
+</html>
