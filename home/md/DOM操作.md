@@ -145,11 +145,13 @@ var l1 = ul.firstElementChild;
 var l6 = document.createElement('li');
 ul.appenChild(l6);
 l6.innerHTML = 6;
+ 
 ul.replaceWith(l1,16);
-l1.replaceWith(l6)
+ l1.replaceWith(l6)
 ```
 
->6. cloneNode:对节点进行克隆,存在1个参数boolean,如果true表示深克隆,会将指定节点以及节点的子节点都进行克隆:如果false表示
+**6. cloneNode:对节点进行克隆**   
+>存在1个参数boolean,如果true表示深克隆,会将指定节点以及节点的子节点都进行克隆:如果false表示
 //浅克隆,只会克隆指定节点,节点的子节点不会被克隆.
 
 ```
@@ -157,4 +159,43 @@ var newUl1 = document.body.firstElementChild.cloneNode(false);
 console.log(newUl1);
 document.body.appenChild(newUl1);
 ```
+
+**DOM的属性操作**   
+ 1. id  
+ 2. className  
+ 3. offsetWidth , offawtHeight  
+ 4. offsetLeft  , offsetTop    
+ 5. clientWidth , clientHeight    
+ 6. innerHTML   , innerText  ,  outerHTML   
+ 7. getAttribute / setAttribute / hasAttribute / removeAttribute
+> style,id , class ,title,src , alt ,name ,type 等等都是元素的自有属性
+
+#####我们会在一些情况下为元素添加自定义属性    
+    1. getAttribute():用来读取元素的属性值,包含自有属性和自定义属性  
+    console.log(wrap.love);
+    console.log(wrap.getAttribute('love'));
+
+    2. setAttribute():用来设置元素的属性值,包含自有属性和自定义属性   
+     wrap.setAttribute('like','box');
+     console.log(wrap.like);
+     console.log(wrap.getAttribute('like'));
+
+    3. hasAttribute():用来判断元素的某个属性是否有值,如果有返回true,没有则返回flase;
+     console.log(wrap.hasAttribute('love'));
+
+    4. removeAttribute():用来删除为元素添加的自定义属性或自由属性的值
+     wrap.removeAttribute('love');
+     console.log(wrap.love);
+     console.log(wrap.getAttribute('love'));
+
+    5. getComputedStyle():获取计算后样式(在元素上最终体现的样式)
+     var styleObj = window.getComputedStyle(wrap);
+     console.log(styleObj);
+
+>IE上没有getComputeStyle,但是IE提供了currenStyle  
+ 
+    wrap.currentStyle.dispaly;
+
+
+
 
