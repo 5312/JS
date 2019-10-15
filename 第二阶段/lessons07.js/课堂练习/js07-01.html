@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <p id="p"></p>
+    <span>span1</span>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <span>span2</span>
+    <input type="text" name="username">
+</body>
+<script>
+/**
+##
+    DOM: document object model 文档对象模型
+
+    
+    作用在浏览器加载文档时, 将文档内容转换成js对象, 实现js代码对文档内容的操作(增删改查),
+    DOM 其实就是浏览器提供的对文档内容操作的接口.
+
+    
+    DOM树: 文档内容转化后的对象结构像是一个树形结构, 根对象就是document, document对象在文档加载到浏览器中
+    就已经存在, 可以直接使用.
+
+    
+    document根对象下有两个子对象, 分别是: DOCTYPE 以及HTML
+    DOM中的最小组成部分称为节点(Node), 节点类型有很多, 我们常见的有element元素节点以及text文本节点.
+    html就是整个文档的根元素节点.*/
+//节点类型
+//nodeTYPE : 所有的节点都拥有的属性,返回值number,表示节点类型,1为元素节点,3为文本节点,
+var p = document.getElementById('p')
+
+//节点名称:   
+//nodeName: 所有节点都拥有的属性,返回值string,表示节点名称,如果节点是元素节点,那么返回大写的标签名 
+
+
+console.log(document.documentElement);
+
+//自定义节点的获取(父节点,子节点,同胞节点)
+//子节点的获取:childNodes
+
+var cs = document.body.childNodes;
+console.log(cs);
+console.log(cs[0]);
+//大多数主流浏览器会将body中的换行,空格,缩进处理为文本节点,所以通过childNode获取指定节点的所有子节点是要注意包含文本节点的
+//获取第一个子节点
+//firstChild
+
+//获取最后一个子节点
+//lastChild
+console.log(cs[1].lastChild);
+
+//父节点获取.一个元素节点的父节点不可能是一个文本节点,只能是元素节点.  
+//parentNode
+console.log(document.body.parentNode)
+
+p.parentNode.childNodes[5].childNodes[5].innerHTML = '找到你了';  
+
+//同胞关系
+//nextSibling:获取指定节点的后一个同胞节点
+//perviousSibling:获取指定节点的前一个同胞节点 
+
+//元素节点的获取
+//子元素节点:children,只会获取指定节点的所有元素子节点,没有任何兼容问题,推荐指数5颗星
+console.log(document.body.children)  
+
+//父元素节点 : parentElement  存在兼容问题,IE678不支持
+console.log(p.parentElement);
+
+//同胞元素节点:
+//nextElementSibling: 获取指定节点的下一个元素同胞节点
+//previousElementSibling:获取指定节点的上一个元素同胞节点 
+console.log(p.nextElementSibling);
+
+//存在兼容问题
+//firstElementChild:获取指定节点的第一个元素子节点.
+//lastElementChild:获取指定节点的最后一个元素子节点. 
+
+//document.getElementsByName();//获取带有指定name属性值的元素集合.更多用于获取表单元素.
+var us = document.getElementsByName('username')
+
+//document.querySelector , document.querSelectorAll: 需要参数是css选择器字符串,大多数css选择器都支持,但是不支持伪元素和伪类的查找.
+
+</script> 
+
+</html>

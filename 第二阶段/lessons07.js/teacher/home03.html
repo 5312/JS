@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width: 500px;
+            margin: 50px auto;
+        }
+        nav{
+            display: flex;
+            justify-content: space-around;
+            background-color: #666666;
+            padding: 20px 10px;
+        }
+        nav>div{
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 24px;
+            background-color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .num{
+            width: 90%;
+            margin: 20px auto;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            font-size: 60px;
+            background-color: #666;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id='wrap'>
+        <nav>
+            <div>添加</div>
+            <div>删除</div>
+            <div>大于0</div>
+            <div>小于0</div>
+            <div>全部</div>
+        </nav>
+    </div>
+</body>
+<script>
+    var wrap = document.querySelector('#wrap');
+    var btns = document.querySelectorAll('nav>div');
+    var type = '';//表示过滤状态： ''表示未选择或全部，'1'表示大于0，'0'表示小于0
+
+
+
+    // 1.添加
+    btns[0].onclick = function(){
+        // 判断是随正100还是负100
+        var n = rn(0,1)>0?rn(1,100):rn(-100,-1);
+        // 创建元素并添加
+        var num = document.createElement('div');
+        num.className = 'num';
+        num.innerText = n;
+        switch(type){
+            case '1':
+                if(n<0){
+                    num.style.display = 'none';
+                }
+                break;
+            case '0':
+                if(n>0){
+                    num.style.display = 'none';
+                }    
+                break;
+        }
+
+        // 添加到文档
+        wrap.appendChild(num);
+    }
+
+    // 2.删除
+    btns[1].onclick = function(){
+        var ns = document.getElementsByClassName('num');
+        // 安全判断
+        if(ns.length == 0){
+            return;
+        }
+        for(var i=0;i<ns.length;i++){
+            var s = window.getComputedStyle(ns[i]);
+            if(s.display == 'block'){
+                ns[i].remove();
+                break;
+            }
+        }
+    }
+
+    // 3.大于0
+    btns[2].onclick = function(){
+        
+        type = '1';
+
+        // 思路1，遍历所有num元素，使内容大于0的正常显示，小于0的隐藏
+        var ns = document.querySelectorAll('.num');
+        for(var i=0;i<ns.length;i++){
+            if(ns[i].innerHTML < 0){
+                ns[i].style.display = 'none';
+            }else{
+                ns[i].style.display = 'block';
+            }
+        }
+    }
+
+     // 4.小于0
+     btns[3].onclick = function(){
+
+        type = '0';
+
+        // 思路1，遍历所有num元素，使内容大于0的正常显示，小于0的隐藏
+        var ns = document.querySelectorAll('.num');
+        for(var i=0;i<ns.length;i++){
+            if(ns[i].innerHTML > 0){
+                ns[i].style.display = 'none';
+            }else{
+                ns[i].style.display = 'block';
+            }
+        }
+    }
+
+    // 5.全部
+    btns[4].onclick = function(){
+
+        type = '';
+
+        var ns = document.querySelectorAll('.num');
+        for(var i=0;i<ns.length;i++){
+            ns[i].style.display = 'block';
+        }
+    }
+
+    function rn(x,y){
+        return parseInt(Math.random()*(y-x+1)+x);
+    }
+
+
+</script>
+</html>

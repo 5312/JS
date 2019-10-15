@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    #wrap {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+
+    .col {
+        width: 18%;
+
+    }
+
+    .item {
+        width: 100%;
+        text-align: center;
+        font-size: 50px;
+        margin: 10px 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+</body>
+<script>
+//当页面滚动偏移到，当前所加载图片最矮的一列底部400px时，再次加载图片40张。
+var cols = document.getElementsByClassName('col');
+//加载图片
+con();
+
+function con() {
+    for (var i = 0; i < 40; i++) {
+        var item = document.createElement('div');
+        item.className = 'item';
+        item.innerHTML = i + 1;
+        var h = rn(200, 400);
+        item.style.height = h + 'px';
+        item.style.lineHeight = h + 'px';
+        item.style.backgroundColor =
+            'rgb(' + rn(50, 255) + ',' + rn(50, 255) + ',' + rn(50, 255) + ')';
+        cols[min()].appendChild(item);
+    }
+}
+
+window.onscroll = function() {
+ 
+    var viewH = document.documentElement.clientHeight,   //获取可视窗口高度
+        nowH = cols[min()].scrollHeight, // 获取最矮一列文档高度
+        srcoll = document.body.scrollTop || window.pageYOffset || document.documentElement.scrollTop; //滚动偏移量
+        if( (viewH + srcoll) >= (nowH -400)){
+        	con();
+        }
+}
+
+//补位
+function min() {
+    var hArr = [],
+        minH = cols[0].offsetHeight,
+        minIndex = 0;
+
+    for (var i = 0; i < cols.length; i++) {
+        hArr.push(cols[i].offsetHeight)
+        if (minH > hArr[i]) {
+            minH = hArr[i];
+            minIndex = i;
+        }
+    }
+    return minIndex;
+
+}
+
+function rn(x, y) {
+    return Math.floor(Math.random() * (y - x + 1) + x);
+}
+</script>
+
+</html>

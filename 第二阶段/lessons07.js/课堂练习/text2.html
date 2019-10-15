@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+    </title>
+    <link rel="stylesheet" href="">
+    <style>
+    div {
+        width: 800px;
+        height: 500px;
+        border: 5px solid black;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    #ba {
+        width: 50px;
+        height: 50px;
+        border: 1px solid black;
+        border-radius: 50%;
+		position: absolute;
+		top: 250px;
+		left: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script>
+var box = document.getElementById('box');
+
+
+box.onclick = function() {
+
+    var ball = document.createElement('div'); 
+    ball.style.backgroundColor = 'rgb(' + rN() + ',' + rN() + ',' + rN() + ')';
+    ball.id = 'ba'
+    box.appendChild(ball);
+
+    var timer = setInterval(function(){
+    	var s = ball.offsetLeft + 5;
+    	ball.style.left = s+'px';
+    	var w = box.clientWidth - ball.clientWidth;
+    	if(s >= w){
+    		clearInterval(timer);
+    		ball.remove();
+
+    	}
+    },20)
+}
+
+
+
+function rN() {
+    return Math.round(Math.random() * 255);
+}
+</script>
+
+</html>

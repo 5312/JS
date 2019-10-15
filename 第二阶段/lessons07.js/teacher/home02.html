@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width: 500px;
+            margin: 50px auto;
+            border: 5px solid #000;
+            padding: 50px;
+        }
+        #text{
+            width: 100%;
+            height: 200px;
+            resize: none;
+            font-size: 20px;
+        }
+        #btn{
+            width: 50px;
+            height: 20px;
+            font-size: 18px;
+            line-height: 20px;
+            text-align: center;
+            color: #fff;
+            background-color: orange;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 50px;
+        }
+
+        .text{
+            background-color: #e5e5e5;
+            position: relative;
+            padding-top: 30px;
+            padding-bottom: 20px;
+            margin: 10px 0;
+            transition: 1s all;
+        }
+        .close{
+            width: 20px;
+            height: 20px;
+            font-size: 20px;
+            line-height: 20px;
+            text-align: center;
+            background: red;
+            color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+        .content{
+            padding: 5px 10px;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <textarea id="text"></textarea>
+        <div id="btn">发布</div>
+
+        <!-- <div class="text">
+            <div class="close">×</div>
+            <div class="content">的娇娃京东和叫和王建东和就哇哦和基督教哇哦ID就爱我和京东和就哇哦if解耦和的娇娃京东和叫和王建东和就哇哦和基督教哇哦ID就爱我和京东和就哇哦if解耦和案的娇娃京东和叫和王建东和就哇哦和基督教哇哦ID就爱我和京东和就哇哦if解耦和案的娇娃京东和叫和王建东和就哇哦和基督教哇哦ID就爱我和京东和就哇哦if解耦和案的娇娃京东和叫和王建东和就哇哦和基督教哇哦ID就爱我和京东和就哇哦if解耦和案的娇娃京东和叫和王建东和就哇哦和基督教哇哦ID就爱我和京东和就哇哦if解耦和案案件佛挖掘</div>
+        </div> -->
+    </div>
+</body>
+<script>
+// 1.获取需要操作的元素
+var wrap = document.body.firstElementChild;
+var text = wrap.firstElementChild,
+    btn = text.nextElementSibling;
+
+text.focus();
+
+btn.onclick = function(){
+    if(!text.value){
+        return;
+    }
+
+    var value = text.value;
+    text.value = '';
+
+    var t = document.createElement('div'),
+        cl = document.createElement('div'),
+        ct = document.createElement('div');
+    t.className = 'text';
+    cl.className = 'close';
+    ct.className = 'content';
+
+    ct.innerHTML = value;
+    cl.innerHTML = '×';
+    cl.onclick = function(){
+        t.style.opacity = 0;
+        var _this = this;
+        setTimeout(function(){
+            _this.parentNode.remove();
+        },1000)
+    }
+
+    t.appendChild(cl);
+    t.appendChild(ct);
+    wrap.appendChild(t);
+}
+
+
+
+setInterval(function(){
+    if(text.value){
+        btn.style.opacity = '1';
+    }else{
+        btn.style.opacity = '.7';
+    }
+},100)
+
+
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    body {
+        height: 3000px;
+    }
+
+    #backTop {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        color: #fff;
+        font-size: 20px;
+        line-height: 100px;
+        text-align: center;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 200px;
+        right: 10px;
+        cursor: pointer;
+    }
+    </style>
+    <script src="../lessons06动画.js/my/tween.js"></script>
+</head>
+
+<body>
+    <div id="backTop">Top</div>
+</body>
+<script>
+var bt = document.querySelector('#backTop');
+var show = false;
+//1. 控制按钮隐藏显示
+
+window.onscroll = function() {
+    var th = window.pageYOffset;
+
+    if (th > 500) {
+         bt.style.display = 'block';
+         show = true;
+
+    } else if(th <= 500 && show){
+        bt.style.display = 'none';
+        show = false;
+    }
+}
+
+
+//2. 回到顶部
+bt.onclick = function(){
+	var t = 0, d = 20, b = documentElement.scrollTop, c =  -b;
+	var timer = setInterval(function(){
+		t ++ ;
+		document.documentElement.scrollTop = 
+		Tween.Bounce.easeOut(t,b,c,d);
+	})
+	document.documentElement.scrollTop = 0;
+}
+</script>
+
+</html>

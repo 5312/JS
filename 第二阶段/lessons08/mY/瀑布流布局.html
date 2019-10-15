@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    #wrap {
+        width: 90%;
+        margin: 0 auto;
+        /*border: 1px solid #000;*/
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+
+    .col {
+        width: 18%;
+        /*  height: 200px;
+        background-color: red;*/
+
+    }
+
+    .item {
+        width: 100%;
+        text-align: center;
+        font-size: 50px;
+        margin: 10px 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+</body>
+<script>
+
+//1. 获取要操作的元素
+var cols = document.getElementsByClassName('col');
+//2. 创建图片并按顺序向每一列中添加 40 
+for (var i = 0; i < 40; i++) {
+    var item = document.createElement('div');
+    item.className = 'item';
+    item.innerHTML = i + 1;
+    var h = rn(200, 400);
+    item.style.height = h + 'px';
+
+    item.style.lineHeight = h + 'px';
+    item.style.backgroundColor = 'rgb(' + rn(50, 255) + ',' + rn(50, 255) + ',' + rn(50, 255) + ')';
+    //i=1；
+    // var n = i -1 -(Math.floor((i-1)/5))*5;
+
+    cols[min()].appendChild(item);
+}
+
+
+//获取浏览器可视窗口高度
+console.log(document.documentElement.clientWidth);
+//获取整个文档的完整高度
+console.log(document.documentElement.scrollHeight);
+
+
+//从指定元素集合中找到高度最矮的下标
+function min() {
+    var hArr = [],
+        minH = cols[0].offsetHeight,
+        minIndex = 0;
+
+
+    for (var i = 0; i < cols.length; i++) {
+        hArr.push(cols[i].offsetHeight);
+        if(minH > hArr[i]){
+        	minH = hArr[i];
+        	minIndex = i;
+        }
+    }
+
+    return minIndex;
+}
+
+
+function rn(x, y) {
+    return Math.floor(Math.random() * (y - x + 1) + x);
+}
+</script>
+
+</html>

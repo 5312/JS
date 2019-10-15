@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+ Remove this if you use the .htaccess -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>颜色翻转</title>
+    <meta name="description" content="">
+    <meta name="author" content="jiamengkai">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: "Microsoft yahei";
+        color: #000;
+    }
+
+    h1 {
+        margin: 10px 0;
+        font-size: 300%;
+        font-weight: bolder;
+    }
+
+    span {
+        display: block;
+        text-indent: 32px;
+    }
+
+    .title {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 300px;
+        height: 600px;
+        margin: -300px 0 0 -500px;
+    }
+
+    .main {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        height: 600px;
+        margin: -300px 0 0 -150px;
+        background: #555;
+        border-radius: 8px;
+        1border: 5px solid #555;
+    }
+
+    .blue,
+    .orange {
+        margin: 5px;
+    }
+
+    .blue {
+        background: #099;
+        border-radius: 8px;
+        float: left;
+    }
+
+    .orange {
+        background: #D69C49;
+        border-radius: 8px;
+        float: left;
+    }
+
+    .button {
+        1display: inline-block;
+        zoom: 1;
+        /* zoom and *display = ie7 hack for display:inline-block */
+        display: block;
+        vertical-align: baseline;
+        margin: 8px 5px;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        font: 14px/100% Arial, Helvetica, sans-serif;
+        padding: .5em 2em .55em;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+        -webkit-border-radius: .5em;
+        -moz-border-radius: .5em;
+        border-radius: .5em;
+        -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+        -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    }
+
+    .button:hover {
+        text-decoration: none;
+    }
+
+    .button:active {
+        position: relative;
+        top: 1px;
+    }
+
+    .btn {
+        color: #fef4e9;
+        border: solid 1px #da7c0c;
+        background: #f78d1d;
+        background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+        background: -moz-linear-gradient(top, #faa51a, #f47a20);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+    }
+
+    .btn:hover {
+        background: #f47c20;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+        background: -moz-linear-gradient(top, #f88e11, #f06015);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+    }
+
+    .btn:active {
+        color: #fcd3a5;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+        background: -moz-linear-gradient(top, #f47a20, #faa51a);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+    }
+
+    .operBtn {
+        margin-top: 10px;
+        width: 200px;
+        text-align: center;
+    }
+
+    .tipSpan {
+        display: inline-block;
+        margin: 5px 2px;
+        width: 200px;
+        text-align: right;
+        font-size: 18px;
+    }
+
+    .tipNum {
+        display: inline-block;
+        margin-right: 10px;
+        text-align: right;
+        width: 60px;
+        font-size: 18px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="title">
+        <h1>颜色翻转</h1>
+        <h2>游戏规则：</h2>
+        <span>
+            单击方块，被单击的方块及相邻方块变色，当所有蓝色方块变为橙色时，完成任务，进入下一级。
+        </span>
+        <div class="operBtn">
+            <input type="button" class="button btn" id="reset" value="重新开始" />
+            <input type="button" class="button btn" id="resetLevel" value="重置本级" />
+        </div>
+        <div class="tipInfo">
+            <span class="tipSpan">级别：</span>
+            <div class="tipNum" id="level">0</div>
+            <span class="tipSpan">本级点击次数：</span>
+            <div class="tipNum" id="clickNum">0</div>
+            <span class="tipSpan">总点击次数：</span>
+            <div class="tipNum" id="clickSumNum">0</div>
+        </div>
+    </div>
+    <div class="main" id="main">
+    </div>
+</body>
+<script type="text/javascript" src="common.js"></script>
+<script type="text/javascript">
+var level = 1;
+var margin = 10;
+var clickNum = 0;
+var clickSumNum = 0;
+window.onload = function() {
+
+    var mainNode = document.getElementById("main");
+
+    var mainWidth = mainNode.offsetWidth;
+    var mainHeight = mainNode.offsetHeight;
+
+    //重新开始
+    var reset = document.getElementById("reset");
+    reset.onclick = function() {
+        level = 1;
+        createNewDiv();
+    };
+
+    //重置本级
+    var resetLevel = document.getElementById("resetLevel");
+    resetLevel.onclick = function() {
+        createNewDiv();
+    };
+
+    //换颜色
+    function changeColor(obj) {
+        if (obj.getAttribute("class")) {
+            if (obj.getAttribute("class") == "blue") {
+                obj.setAttribute("class", "orange");
+            } else {
+                obj.setAttribute("class", "blue");
+            }
+        }
+    }
+
+    //换颜色
+    function nodesChangeColor(obj) {
+        clickNum += 1;
+        clickSumNum += 1;
+        var clickNumNode = document.getElementById("clickNum");
+        clickNumNode.innerHTML = clickNum;
+        var clickSumNumNode = document.getElementById("clickSumNum");
+        clickSumNumNode.innerHTML = clickSumNum;
+
+        changeColor(obj);
+
+        var obj_r = parseInt(obj.getAttribute("r"));
+        var obj_c = parseInt(obj.getAttribute("c"));
+
+
+        if (obj_r - 1 > 0) {
+            var topObj = document.getElementById("r" + (obj_r - 1) + "_c" + obj_c);
+            changeColor(topObj);
+        }
+        if (obj_c + 1 <= level) {
+            var rightObj = document.getElementById("r" + obj_r + "_c" + (obj_c + 1));
+            changeColor(rightObj);
+        }
+        if (obj_r + 1 <= level) {
+            var bottomObj = document.getElementById("r" + (obj_r + 1) + "_c" + obj_c);
+            changeColor(bottomObj);
+        }
+        if (obj_c - 1 > 0) {
+            var leftObj = document.getElementById("r" + obj_r + "_c" + (obj_c - 1));
+            changeColor(leftObj);
+        }
+        setTimeout(function() {
+            //计算orange块 的数量
+            orangeDivNum();
+        }, 500);
+    }
+
+    //计算orange块 的数量
+    function orangeDivNum() {
+        var o_nodes = document.getElementsByClassName("orange");
+        if (o_nodes.length == level * level) { //完成全部翻转
+            //进入下一级
+            level += 1;
+            createNewDiv();
+            myAlert();
+        } else {}
+    }
+
+    //进入下一级
+    function createNewDiv() {
+        var divWidth = mainWidth / level - margin;
+        var divHeight = mainHeight / level - margin;
+        mainNode.innerHTML = "";
+        for (var i = 1; i <= level; i++) {
+            for (var j = 1; j <= level; j++) {
+                var colorNodes = document.createElement("div");
+                colorNodes.style.cssText = "width: " + divWidth + "px;height: " + divHeight + "px;";
+                colorNodes.setAttribute("class", "blue");
+                colorNodes.setAttribute("id", "r" + i + "_c" + j);
+                colorNodes.setAttribute("r", i);
+                colorNodes.setAttribute("c", j);
+                colorNodes.onclick = function() {
+                    nodesChangeColor(this);
+                };
+                mainNode.appendChild(colorNodes);
+                mainNode.style.cssText = "border: 5px solid #555;";
+            }
+        }
+
+        var levelSpan = document.getElementById("level");
+        levelSpan.innerHTML = level;
+        clickNum = 0;
+        var clickNumNode = document.getElementById("clickNum");
+        clickNumNode.innerHTML = clickNum;
+    }
+};
+</script>
+
+</html>

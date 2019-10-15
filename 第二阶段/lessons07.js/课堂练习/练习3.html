@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    .head {
+        width: 600pxw;
+        height: 100px;
+        background: #808080;
+        color: black;
+        font-size: 0;
+        text-align: center;
+    }
+
+    .box {
+        width: 110px;
+        display: inline-block;
+        font-size: 30px;
+        margin: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background: #FEFEFE;
+        line-height: 70px;
+    }
+
+    .wraps {
+
+        font-size: 90px;
+        color: white;
+        background: #808080;
+        text-align: center;
+        margin-top: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="head">
+        <div class="box">添加</div>
+        <div class="box">删除</div>
+        <div class="box">大于0</div>
+        <div class="box">小于0</div>
+        <div class="box">刷新</div>
+    </div>
+    <div id="wrap">
+    </div>
+</body>
+<script>
+var btns = document.getElementsByClassName('box'),
+    wrap = document.getElementById('wrap');
+var arr = [],
+    arrNew = [];
+for (var i = 0; i < btns.length; i++) {
+    (function(i) {
+        btns[i].onclick = function() {
+            //添加
+            if (i == 0) {
+                var rShow = document.createElement('div');
+                rShow.className = 'wraps';
+                var n = rN(-100, 100);
+                n == 0 ? rN(-100, 100) : n;
+                rShow.innerText = n;
+                arr.push(n);
+                wrap.appendChild(rShow)
+                console.log(arr);
+            }
+            //删除
+            if (i == 1) {
+
+                if (wrap.children.length > 0) {
+                    wrap.lastElementChild.remove();
+                }
+            }
+            //大于零
+            if (i == 2) {
+                var sc = document.getElementsByClassName('wraps');
+                for (var j = sc.length - 1; j >= 0; j--) {
+                    if (sc[j].innerText < 1) {
+                        sc[j].remove();
+                    }
+                }
+            }
+            //小于零
+            if (i == 3) {
+                var sf = document.getElementsByClassName('wraps');
+                for (var j = sf.length - 1; j >= 0; j--) {
+
+                    sf[j].remove();
+
+                }
+                for (var j = 0; j < arr.length; j++) {
+                    var cx = document.createElement('div');
+                    cx.className = 'wraps';
+                    if (arr[j] < 0) {
+                        cx.innerText = arr[j];
+                        wrap.appendChild(cx);
+                    }
+
+                }
+            }
+            //刷新
+            if (i == 4) {
+                var st = document.getElementsByClassName('wraps');
+                for (var j = st.length - 1; j >= 0; j--) {
+                    st[j].remove();
+                }
+                for (var j = 0; j < arr.length; j++) {
+                    var cx = document.createElement('div');
+                    cx.className = 'wraps';
+                    cx.innerText = arr[j];
+                    wrap.appendChild(cx);
+
+                }
+            }
+        }
+    })(i)
+}
+
+/**
+ * [rN description]
+ * @param  {[type]} min [description]
+ * @param  {[type]} max [description]
+ * @return {[type]}     [description]
+ */
+function rN(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+}
+</script>
+
+</html>

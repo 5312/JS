@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    div {
+        width: 200px;
+        height: 200px;
+        background: red;
+        margin-top: 1000px;
+    }
+    </style>
+    <script>
+    //加载事件
+    window.onload = function() {
+        //当页面资源加载完毕会自动触发（DOM)结构以及DOM所使用的对媒体资源）
+    }
+    window.onressize = function(){
+    	//当浏览器窗口大小发生改变时自动触发
+
+    }
+    </script>
+</head>
+
+<body>
+    <div class="body"></div>
+</body>
+<script>
+// 滚动偏移：scrollTop/scrollLeft
+//1.  页面的滚动偏移
+//  a. document.body.scrollTop
+//googlechome不支持 .FF , opera ,IE 不支持，SaFari支持，虽然在其他浏览器中无法正确读取页面的滚动偏移，但是不会得到异常数据，得到number类型的0
+
+// console.log(document.body.scrollTop);
+
+//  b. document.documentElement.scrollTop;
+//chrome ,FF , Opera 支持 Safari ,ie 不支持
+// console.log(document.documentElement.scrollTop);
+
+//  c. window.pageYOffset/pageXOffset
+// Chrome , Opera ,Safari      FF,IE8 及以下为undefin ，以上为 0 ;
+// console.log(window.pageYOffset);
+
+//针对于各个浏览器页面滚动偏移量读取的兼容，写法。
+// var t = document.body.scrollTop || window.pageYOffset || document.documentElement.scrollTop;
+
+//window.pageYOffset  一定不能出现在兼容写法的最后面，原因是因为它在低版本IE上会得到undefined ，如果让undefined参与运算，会得出NaN
+
+
+
+
+
+// onscroll事件
+window.onscroll = function(){
+	//当窗口内容发生滚动偏移时自动触发
+	console.log('页面滚动')
+
+}
+
+</script>
+
+</html>
