@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="gbk">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="robots" content="all">
+  <meta name="author" content="Tencent-CP">
+  <meta name="Copyright" content="Tencent">
+  <meta name="baidu-site-verification" content="j7L1Dn5ZGa"/>
+  <meta name="Description" content="英雄联盟官方网站，海量风格各异的英雄，丰富、便捷的物品合成系统，游戏内置的匹配、排行和竞技系统，独创的“召唤师”系统及技能、符文、天赋等系统组合，必将带你进入一个崭新而又丰富多彩的游戏世界。">
+  <meta name="Keywords" content="英雄联盟,lol,lol新手礼包,lol攻略,lol视频,lol视频攻略,英雄资料,英雄联盟战争学院,明星解说视频,101战争学院,英雄,攻略,WCG,点亮图标,赛事">
+  <title>英雄联盟全新官方网站-腾讯游戏</title>
+  <!-- 页面设计：cp | 页面制作：cp | 创建：2018-08-21 -->
+  <!--<link rel="stylesheet" href="//lol.qq.com/c/=/v3/css/topfoot.css,/v3/css/comm.css,/v3/css/index.css,/v3/css/swiper2.7.6-with-scrollbar.css">-->
+  <link rel="stylesheet" href="/v3/css/topfoot.css">
+  <link rel="stylesheet" href="/v3/css/comm.css">
+  <link rel="stylesheet" href="/v3/css/index.css">
+  <link rel="stylesheet" href="/v3/css/swiper2.7.6-with-scrollbar.css">
+</head>
+<body>
+<!--[if lt IE 9]>
+<style>.comm-head{top:40px}</style>
+<p class="chromeframe">
+  <span>您使用的IE浏览器版本过低，本站不再支持，</span>
+  <a href="//windows.microsoft.com/">升级您的IE浏览器</a>
+  <span>，或使用</span>
+  <a href="//www.google.cn/chrome/">Google Chrome</a><a>、</a><a href="//www.firefox.com.cn/download/">Firefox</a>
+  <span>等高级浏览器，将会得到更好的体验！</span>
+</p>
+<![endif]-->
+<!--官网通用页头 start-->
+<div class="comm-head">
+  <div class="head-normal">
+    <!--logo-->
+    <a class="logo" href="/" title="英雄联盟官网">
+      <img src="//ossweb-img.qq.com/images/lol/v3/logo.png" width="132" height="49" alt="英雄联盟">
+    </a>
+    <!--官网导航-->
+    <ul class="head-nav" id="J_headNav">
+    </ul>
+    <script type="text/html" id="J_headNavTemplate">
+      {{each list}}
+      <li>
+        <a {{if $value.url.length > 0}}href="{{$value.url}}" target="_blank" onclick="pgvSendClick({hottag:'v3.topnav.nav{{$index+1}}'})" title="{{$value.name}}"{{/if}}>
+          <span class="head-nav-title">{{$value.name}}</span>
+          <span class="head-nav-subtitle">{{$value.enname}}</span>
+        </a>
+      </li>
+      {{/each}}
+    </script>
+    <!--玩家信息-->
+    <div class="head-userinfo-normal">
+      <div class="head-userinfo-avatar">
+        <img src="//ossweb-img.qq.com/images/lol/v2/personal/avatar/default.png" width="36" height="auto" alt="玩家头像">
+        <span></span>
+        <a href="//lol.qq.com/space/index.shtml" target="_blank" class="herf-mask" title="个人中心"></a>
+      </div>
+      <div class="head-userinfo-brief">
+        <p class="unlogin">亲爱的召唤师，欢迎<a href="javascript:T_Login.login()">登录</a></p>
+        <p class="login-unbindarea" style="display: none">请<a href="javascript:T_Login.changeArea()">绑定大区</a>或<a href="javascript:T_Login.logout()">注销</a></p>
+        <p class="logined" style="display: none"><a class="logined-name"></a><a class="logined-logout" href="javascript:T_Login.logout()">[注销]</a></p>
+      </div>
+    </div>
+    <!--掌盟图标-->
+    <span class="head-app-normal">
+      <a target="_blank" href="//lol.qq.com/app/index.html" onclick="pgvSendClick({hottag:'v3.top.top.zmpc'})" class="comm-icon-phone"></a>
+    </span>
+    <!--搜索按钮-->
+    <a class="head-search-btn" id="J_headSearchBtn" href="javascript:" title="搜索">
+      <i class="comm-icon-search"></i>
+    </a>
+    <!--hover:掌盟二维码-->
+    <div class="head-app-hover">
+      <i class="head-zm-qrcode">
+        <img src="//ossweb-img.qq.com/images/lol/v3/zm-qrcode.jpg" width="119" height="119" alt="掌盟App二维码">
+      </i>
+      <p class="p1">扫码下载掌上英雄联盟</p>
+      <img class="polo" src="//ossweb-img.qq.com/images/lol/v3/polo.gif" alt="魄罗" width="50" height="50">
+    </div>
+    <!--登录hover-->
+    <div class="head-login-hover">
+      <div class="unlogin">
+        <p class="p1">
+          登录并且绑定大区后才可以查看您的具体信息哦<br>
+          (包括战绩、资产、声望）
+        </p>
+        <p class="p2">
+          官网个人信息显示略有延迟，请以游戏数据为准
+        </p>
+      </div>
+      <div class="logined" style="display: none;">
+        <div class="logined-top">
+          <a class="select-area" href="javascript:T_Login.changeArea()"></a>
+          <a class="user-name"></a>
+        </div>
+        <ul class="logined-ul">
+          <li class="user-rank">
+            <div class="img-wrap">
+              <img src="//ossweb-img.qq.com/images/lol/space/rank/2019pre/default.png" alt="段位" id="commHeadTierImg">
+            </div>
+            <a class="a1" id="commHeadTier">暂无段位</a><br>
+            <a class="a2" id="commHeadQueue"></a>
+          </li>
+          <li class="user-datalist">
+            <a class="a1" id="commHeadWinRate">--</a><br><a class="a2">胜率</a>
+          </li>
+          <li class="user-datalist">
+            <a class="a1" id="commHeadMatchCount">--</a><br><a class="a2">总场次</a>
+          </li>
+          <li class="user-datalist">
+            <a class="a1" id="commHeadJingCui">--</a><br><a class="a2">蓝色精粹</a>
+          </li>
+          <li class="user-datalist">
+            <a class="a1" id="commHeadDianQuan">--</a><br><a class="a2">点券</a>
+          </li>
+        </ul>
+        <p class="p2">
+          官网个人信息显示略有延迟，请以游戏数据为准
+        </p>
+      </div>
+      <a href="//lol.qq.com/space/index.shtml" class="href-gouserhome">进入个人中心<i class="more-arrow"></i></a>
+    </div>
+  </div>
+  <!--hover:官网导航子菜单-->
+  <div class="head-nav-sub">
+    <div class="head-nav-sub-inner">
+      <ul id="J_headNavSub">
+      </ul>
+      <script type="text/html" id="J_headNavSubTemplate">
+        {{each list as topItem topIndex}}
+        <li>
+          {{each topItem.urls as subItem subIndex}}
+          <a class="head-nav-sub-a" onclick="pgvSendClick({hottag:'v3.topnav.nav{{topIndex+1}}.nav{{subIndex+1}}'})" href="{{subItem.url}}" target="_blank">
+            {{if subItem.icon.length > 0}}<i class="icon-{{subItem.icon}}"></i>{{/if}}
+            {{subItem.name}}
+          </a>
+          {{/each}}
+        </li>
+        {{/each}}
+      </script>
+    </div>
+  </div>
+  <!--hover:搜索-->
+  <div class="search-hover-wrap">
+    <div class="search-hover-inner">
+      <a href="javascript:" class="btn-search" id="J_hoverSearchBtn" title="点击搜索">
+        <i class="comm-icon-search"></i>
+      </a>
+      <input type="text" id="J_hoverSearchInput" class="input-search" placeholder="搜索 lol.qq.com" autocomplete="off">
+      <a class="btn-close-search" id="J_btnCloseSearch" href="javascript:" title="关闭搜索">
+        <i class="icon-xx-1"></i>
+      </a>
+      <div class="search-hover-bottom">
+        <span class="hover-bottom-s1">搜索记录</span>
+        <ul class="search-direct-href"></ul>
+        <a class="hover-bottom-s2" href="javascript:" id="J_hoverClearRecord">清除记录</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--官网通用页头 end-->
+<!--头部广告 start-->
+<div class="comm-topact big">
+  <img class="topact-big-img">
+  <img class="topact-small-img">
+  <div class="act-fullscreen-mask"></div>
+  <div class="dark-mask"></div>
+  <div class="comm-topact-inner">
+    <a class="top-act-link" href="javascript:" onclick="pgvSendClick({hottag:'v3.topact.act.link'})" target="_blank">查看详情</a>
+    <div id="J_topActVersion" class="top-version">当前游戏版本：<em>Ver ***</em> <a class="top-version-link" href="javascript:" onclick="pgvSendClick({hottag:'v3.topact.version.link'})" target="_blank">版本详情</a></div>
+  </div>
+</div>
+<!--头部广告 end-->
+
+<!--首页内容-->
+<div class="g-zoombox">
+  <!--part 1-->
+  <div class="g-index-wrap1">
+    <!--首页滚动图-->
+    <div class="m-promo" id="J_promo">
+      <ul class="promo-img-list" id="promoImgList">
+        <li class="loading-tip"><img src="//ossweb-img.qq.com/images/lol/v3/polo.gif"><a>正在加载</a></li>
+        <script type="text/html" t-foreach="mydata" data-channels="15282:22029|15282:22128|15282:22129|15282:22130|15282:22131">
+          <li class="promo-item">
+            <a href="<%_mydata.adUrl%>" target="_blank"
+               onclick="pgvSendClick({hottag:'v3.index.promo.<%_mydata.bannerId%>'});">
+              <img t-watch="1" src="<%_mydata.imgUrl%>" width="820" height="340" alt="<%_mydata.Fname%>">
+            </a>
+            <span class="title" data-bannerid="<%_mydata.bannerId%>"><%_mydata.Fname%></span>
+          </li>
+          <% window.Promo.init() %>
+        </script>
+      </ul>
+      <div class="promo-title-list" id="promoTitleList"></div>
+    </div>
+    <!--新闻公告-->
+    <div class="m-news">
+      <!--新闻公告tab-title-->
+      <div class="part-top-tab">
+        <ul class="part-tab-title">
+          <li data-newsId="23" class="selected">综合</li>
+          <li data-newsId="24">公告</li>
+          <li data-newsId="25">赛事</li>
+          <li data-newsId="27">攻略</li>
+          <li data-newsId="28">社区</li>
+        </ul>
+      </div>
+      <!--新闻公告tab-content-->
+      <div class="new-tab-content">
+        <ul class="new-tab-content-ul" id="J_newsListContainer"></ul>
+        <script type="text/html" id="J_newsItemTemplate">
+          {{each result}}
+          {{if $index===0}}
+          <li class="first">
+            <a class="item-href" target="_blank" href="{{$value.sRedirectURL}}"
+               onclick="pgvSendClick({hottag:'v3.index.news.{{newsId}}'});SendEAS.sendNewsPV('index','{{$value.sRedirectURL}}','{{$value.iDocID}}')">
+              {{$value.sTitle}}
+            </a>
+          </li>
+          {{else}}
+          <li class="newsitem {{$value.tagData.n_class}}">
+            <span class="item-type">{{$value.tagData.c_tag}}</span>
+            <a class="item-href" target="_blank" href="{{$value.sRedirectURL}}"
+               onclick="pgvSendClick({hottag:'v3.index.news.{{newsId}}'});SendEAS.sendNewsPV('index','{{$value.sRedirectURL}}','{{$value.iDocID}}')">
+              {{$value.sTitle}}
+            </a>
+            <span class="item-time">{{$value.l_time}}</span>
+          </li>
+          {{/if}}
+          {{/each}}
+        </script>
+        <a target="_blank" class="btn-morenews" href="/news/index.shtml" onclick="pgvSendClick({hottag:'v3.index.news.more'})">
+          <span class="c1">阅读更多</span><span class="c2">最新资讯</span><i class="more-arrow"></i>
+        </a>
+      </div>
+    </div>
+    <!--热门活动-->
+    <div class="m-act">
+      <div class="part-top-tab">
+        <h2 class="part-h2-title">热门活动</h2>
+        <ul class="part-tab-title">
+          <li data-actname="ZZJX" class="selected">正在进行</li>
+          <li data-actname="SCTH">商城特惠</li>
+          <li data-actname="CQHD">长期活动</li>
+        </ul>
+        <a target="_blank" href="/activity/index.shtml" onclick="pgvSendClick({hottag:'v3.index.action.more'})" class="herf-more">更多<i class="more-arrow"></i></a>
+      </div>
+      <div class="m-act-list">
+        <ul id="J_actListContainer">
+        </ul>
+        <script type="text/html" id="J_actItemTemplate">
+          {{each list}}
+          <li class="act-item">
+            <img src="{{$value.sSmallnewImgUrl || $value.sSmallImgUrl}}" alt="{{$value.sName}}" width="193" height="207">
+            <p>{{$value.sName}}</p>
+            {{if $value.remainTip}}
+            <a class="overtime">{{$value.remainTip}}</a>
+            {{/if}}
+            {{if $value.remainTip === '已结束'}}
+            {{else if +$value.iHotActFlag}}
+            <i class="icon-hot-1"></i>
+            {{else if $value.isNew}}
+            <i class="icon-new-1"></i>
+            {{/if}}
+            <div class="innerhover-border">
+              <i class="hover-border-1"></i>
+              <div class="innerhover-border-inner">
+                <h4 class="p1">{{$value.sName}}</h4>
+                <p class="p2">{{#$value.sDescripion}}</p>
+                {{if $value.isLong || $value.isUnknown}}
+                <p class="p2">开启时间: {{$value.dtBegin}}</p>
+                {{else}}
+                <p class="p2">{{$value.dtBegin}} - {{$value.dtEnd}}</p>
+                {{/if}}
+              </div>
+            </div>
+            <a class="herf-mask" href="{{$value.sActDetailUrl}}" target="_blank" title="{{$value.sName}}"
+               onclick="pgvSendClick({hottag:'v3.index.action.{{$value.iActId}}'})"></a>
+          </li>
+          {{/each}}
+        </script>
+      </div>
+    </div>
+    <!--游戏功能导航-->
+    <div class="m-gamefunc-nav">
+      <ul class="slide-nav-ul">
+        <li class="herf-download" title="下载游戏">
+          <video class="side-down-video" autoplay loop muted width="366" height="168">
+            <source src="//ossweb-img.qq.com/images/lol/v3/btn-download.mp4" type="video/mp4">
+          </video>
+          <a href="download.shtml?ADTAG=lolweb.v3" class="herf-mask" target="_blank" onclick="pgvSendClick({hottag:'v3.index.sidenav.down'})">下载游戏</a>
+        </li>
+        <li class="btn-flashmen p1" title="新手必备">
+          新手必备
+          <div class="inner-hover">
+            <a href="/data/newbie-what.shtml" target="_blank" title="新手指引" onclick="pgvSendClick({hottag:'v3.index.sidenav.guide'})">
+              <i class="icon-zhiyin"></i>
+              指引
+            </a>
+            <a href="//lol.qq.com/act/djc_qt_rookie/web/a20141205rookie/index.htm" target="_blank" title="新手礼包" onclick="pgvSendClick({hottag:'v3.index.sidenav.xinshoulibao'})">
+              <i class="icon-gift"></i>
+              礼包
+            </a>
+          </div>
+        </li>
+        <li class="p2" title="领取中心">
+          <a class="herf-type-0" href="//lol.qq.com/act/a20180929awards/index.html?ADTAG=lolweb.v3#box2" target="_blank" onclick="pgvSendClick({hottag:'v3.index.sidenav.reward'})">领取中心</a>
+        </li>
+        <li class="p3" title="在线客服">
+          <a class="herf-type-1" href="//kf.qq.com/product/lol.html?pc_scene=web" target="_blank" onclick="pgvSendClick({hottag:'v3.index.sidenav.onlinehelp'})">
+            <i class="icon-kh"></i>在线客服
+          </a>
+        </li>
+        <li class="p3" title="秩序殿堂">
+          <a class="herf-type-1" href="//lol.qq.com/act/a20171108ambient/index.html" target="_blank" onclick="pgvSendClick({hottag:'v3.index.sidenav.zhixudiantang'})">
+            <i class="icon-fhcx"></i>秩序殿堂
+          </a>
+        </li>
+        <li class="p3" title="游戏资料">
+          <a class="herf-type-1" href="/data/info-heros.shtml" target="_blank" onclick="pgvSendClick({hottag:'v3.index.sidenav.gamedata'})">
+            <i class="icon-yxzl"></i>游戏资料
+          </a>
+        </li>
+        <li class="p4" title="峡谷之巅">
+          <a class="herf-type-1" href="//lol.qq.com/act/a20170704super/index.shtml" target="_blank" onclick="pgvSendClick({hottag:'v3.index.sidenav.xiaguzhidian'})">
+            <i class="icon-xgzd"></i>峡谷之巅
+          </a>
+        </li>
+		<li class="p3" title="微信绑定">
+          <a class="herf-type-1" href="//lol.qq.com/act/a20180607wechatbinding/index.html?primary=qq" target="_blank" onclick="pgvSendClick({hottag:'v3.index.sidenav.bindwx'})">
+            <i class="icon-wxbd"></i>微信绑定
+          </a>
+        </li>
+		<li class="p3" title="攻略中心">
+          <a class="herf-type-1" href="//101.qq.com/" target="_blank" onclick="pgvSendClick({hottag:'v3.index.sidenav.101'})">
+            <i class="icon-101"></i>攻略中心<b class="icon-new-1"></b>
+          </a>
+		  </li>
+        <li class="p3" title="LOL宇宙">
+          <a class="herf-type-1" href="//yz.lol.qq.com/zh_CN/" target="_blank" onclick="pgvSendClick({hottag:'v3.index.sidenav.yz'})">
+            <i class="icon-yz"></i>LOL宇宙
+          </a>
+        </li>
+        <li class="p4" title="玩家社区" id="J_gamebss">
+          <a class="herf-type-1" href="javascript:"><i class="icon-wjsq"></i>玩家社区</a>
+        </li>
+      </ul>
+      <!--hover圆盘-->
+      <div id="slideNavHover" class="circle-hover">
+        <i class="icon-xx"></i>
+        <a class="a1" href="//lol.qq.com/v/v2/index.shtml" target="_blank" title="视频" onclick="pgvSendClick({hottag:'v3.index.sidenav.video'})">
+          <i class="icon-spzx-1"></i>
+          视频
+        </a>
+        <a class="a2" href="//lpl.qq.com/" target="_blank" title="赛事" onclick="pgvSendClick({hottag:'v3.index.sidenav.event'})">
+          <i class="icon-ss-1"></i>
+          赛事
+        </a>
+        <a class="a3" href="//101.qq.com/" target="_blank" title="攻略" onclick="pgvSendClick({hottag:'v3.index.sidenav.gonglue'})">
+          <i class="icon-gl-1"></i>
+          攻略
+        </a>
+        <a class="a4" href="http://bbs.lol.qq.com/forum.php" target="_blank" title="论坛" onclick="pgvSendClick({hottag:'v3.index.sidenav.bbs'})">
+          <i class="icon-bbs-1"></i>
+          论坛
+        </a>
+        <a class="a5" href="//tr.lol.qq.com/" target="_blank" title="创作馆" onclick="pgvSendClick({hottag:'v3.index.sidenav.fanart'})">
+          <i class="icon-fanart-1"></i>
+          创作馆
+        </a>
+      </div>
+    </div>
+    <!--新英雄新皮肤-->
+    <div class="m-new-championskin">
+      <!--新英雄-->
+      <div class="m-new-champion-one" id="J_newChampionContainer">
+      </div>
+      <script id="J_newChampionTemplate" type="text/html">
+        <img src="{{pic}}" alt="{{title}}" width="402" height="254">
+        <i class="pic-mask-0"></i>
+        <a class="tip-championskin">{{tag}}</a>
+        <p class="intro-championskin">{{subtitle}}</p>
+        <p class="name-championskin"><a>{{title}}</a></p>
+        <!--英雄详情hover-->
+        <div class="inner-hover" id="J_championAbility" data-championId="{{champion}}">
+          <i class="border"></i>
+          <p class="p1">{{title}}</p>
+          <ul class="champion-ability">
+            <li>难度 ：<span class="champion-hard-bar" id="J_hardBar"><i class="i1"></i><i class="i2"></i><i
+                class="i3"></i></span>
+            </li>
+            <li>物理攻击 ：<span class="champion-power-bar"><i id="J_attackBar" style="width: 10%"></i></span></li>
+            <li>防御能力 ：<span class="champion-power-bar"><i id="J_defenseBar"></i></span></li>
+            <li>魔法攻击 ：<span class="champion-power-bar"><i id="J_magicBar"></i></span></li>
+          </ul>
+          <a class="inner-hover-href" target="_blank" href="{{url}}" onclick="pgvSendClick({hottag:'v3.index.newchampion.detail'})">查看详情<i class="more-arrow-2"></i></a>
+        </div>
+      </script>
+      <!--新皮肤-->
+      <div class="m-new-skin-one" id="J_newSkinContainer">
+      </div>
+      <script id="J_newSkinTemplate" type="text/html">
+        <img src="{{pic}}" alt="{{title}}" width="402" height="254">
+        <i class="pic-mask-0"></i>
+        <a class="tip-championskin">{{tag}}</a>
+        <p class="intro-championskin">{{subtitle}}</p>
+        <p class="name-championskin"><a href="javascript:" target="_blank">{{title}}</a></p>
+        <!--焦点皮肤hover-->
+        <div class="innerhover-out">
+          <img src="{{pic}}" width="435" height="244" alt="{{title}}">
+          <div class="hover-video" width="435" height="244" id="J_newSkinHoverVideo" data-vid="{{vid}}"></div>
+          <p class="p1">{{subtitle}}</p>
+          <p class="p2">{{title}}</p>
+          <a href="{{url}}" target="_blank" class="a1" title="{{title}}" onclick="pgvSendClick({hottag:'v3.index.newskill.detail'})">查看详情</a>
+        </div>
+      </script>
+    </div>
+    <!--版本导航-->
+    <div class="m-version-nav">
+      <!--版本更新详情-->
+      <div class="new-version" id="J_newVersionContainer">
+      </div>
+      <script id="J_newVersionTemplate" type="text/html">
+        <img src="{{pic}}" width="240" height="120" alt="{{title}}">
+        <div class="innerhover-out">
+          <img src="{{pic}}" width="270" height="186" alt="{{title}}">
+          <div class="hover-video" width="270" height="186" id="J_newVersionHoverVideo"
+               data-vid="{{vid}}"></div>
+          <p class="p1">{{title}}</p>
+          <p class="p2">{{version}}</p>
+          <a href="{{url}}" target="_blank" class="a1" title="{{title}}" onclick="pgvSendClick({hottag:'v3.index.versionupdate.detail'})">查看详情</a>
+        </div>
+      </script>
+      <!--开发者基地-->
+      <div class="club-developer" id="J_clubDeveloperContainer">
+      </div>
+      <script type="text/html" id="J_clubDeveloperTemplate">
+        <img src="{{pic}}" width="242" height="180" alt="{{title}}">
+        <div class="innerhover-border">
+          <i class="hover-border-2"></i>
+          <div class="innerhover-border-inner">
+            <h4 class="p1">{{title}}</h4>
+            <p class="p2">{{hover}}</p>
+          </div>
+        </div>
+        <a class="herf-mask" href="{{url}}" target="_blank" title="{{title}}" onclick="pgvSendClick({hottag:'v3.index.developer.detail'})"></a>
+      </script>
+      <!--新周边-->
+      <div class="new-model" id="J_newModelContainer">
+      </div>
+      <script type="text/html" id="J_newModelTemplate">
+        <img src="{{pic}}" width="240" height="120" alt="{{title}}">
+        <img src="{{hover}}" class="hover-img" width="270" height="186" alt="{{title}}">
+        <a href="{{url}}" target="_blank" class="herf-mask" title="{{title}}" onclick="pgvSendClick({hottag:'v3.index.newmodel.detail'})"></a>
+      </script>
+      <!--周免-->
+      <div class="week-free-champion">
+        <a class="week-free-a" href="javascript:">
+          <i class="inline-icon-0-left"></i>周免<i class="more-arrow-1"></i><i class="inline-icon-0-right"></i>
+        </a>
+      </div>
+      <!--周免hover-->
+      <div class="week-free-hover">
+        <i class="arrow"></i>
+        <ul id="J_freeChampionContainer">
+          <script id="J_freeChampionTemplate" type="text/html">
+            {{each data}}
+            <li class="week-free-item">
+              <img src="//ossweb-img.qq.com/images/lol/img/champion/{{$index}}.png" alt="{{data[$index].title}}"
+                   width="46" height="46">
+              <a href="/data/info-defail.shtml?id={{$index}}" class="herf-mask" target="_blank"
+                 title="{{data[$index].title}}"></a>
+            </li>
+            {{/each}}
+          </script>
+        </ul>
+      </div>
+    </div>
+    <!--更多新皮肤-->
+    <div class="m-more-skin">
+      <div class="content">
+        <ul id="J_moreNewSkinContainer">
+          <script type="text/html" id="J_moreNewSkinTemplate">
+            {{each}}
+            {{if $index===0 }}
+            <li class="more-skin-item" style="margin-right:12px">
+              {{else}}
+            <li class="more-skin-item">
+              {{/if}}
+              <img src="{{$value.pic}}" width="185" height="117" alt="{{$value.title">
+              <p class="skinname">
+                <a class="a2">{{$value.title}}</a>
+              </p>
+              <a class="herf-mask" target="_blank" href="{{$value.url || 'javascript:'}}"
+                 title="{{$value.title}}" onclick="pgvSendClick({hottag:'v3.index.morenewskill.{{$value.url}}'})"></a>
+            </li>
+            {{/each}}
+          </script>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--part 2 视频专辑-->
+  <div class="g-wrap-vp">
+    <div class="g-wrap">
+      <!--最新视频-->
+      <div class="m-fresh-video">
+        <!--模块标题-->
+        <div class="part-top-tab">
+          <h2 class="part-h2-title">最新视频</h2>
+          <ul class="part-tab-title">
+
+          </ul>
+          <a href="//lol.qq.com/v/v2/index.shtml" target="_blank" class="herf-more" onclick="pgvSendClick({hottag:'v3.index.video.more'})">更多<i class="more-arrow"></i></a>
+        </div>
+        <!--模块内容-->
+        <ul class="fresh-video-content" id="J_flashVideoContainer">
+        </ul>
+        <script type="text/html" id="J_flashVideoTemplate">
+          {{each result}}
+          <li class="video-item" data-vid="{{$value.sVID}}">
+            <!--视频图片-->
+            <div class="mask-img">
+              <img src="{{$value.sIMG}}" class="video-cover" width="198" height="110" alt="{{$value.sTitle}}">
+              <span class="btn-play-1"><i></i><a></a></span>
+              <div class="video-pre-wrap" style="display:none">
+                <img class="video-pre-img" width="198" height="110">
+                <span class="video-pre-bg"></span>
+                <span class="video-pre-bar"><i></i></span>
+              </div>
+              <a href="//lol.qq.com/v/v2/detail.shtml?docid={{$value.iDocID}}" target="_blank" class="herf-mask"
+                 onclick="pgvSendClick({hottag:'v3.index.video.{{$value.iDocID}}'});SendEAS.sendVideoPV('index','//lol.qq.com/v/v2/detail.shtml?docid={{$value.iDocID}}','{{$value.iDocID}}')"></a>
+            </div>
+            <a class="video-length">{{$value.iTime}}</a>
+            <p class="name-video"><a href="//lol.qq.com/v/v2/detail.shtml?docid={{$value.iDocID}}" target="_blank"
+                                     onclick="pgvSendClick({hottag:'v3.index.videocenter.{{$value.iDocID}}'});SendEAS.sendVideoPV('index','//lol.qq.com/v/v2/detail.shtml?docid={{$value.iDocID}}','{{$value.iDocID}}')">
+              {{$value.sTitle}}</a>
+            </p>
+            <a class="play-times">{{$value.iTotalPlay}}次播放</a>
+            <a class="update-time">{{$value.sIdxTime}}</a>
+          </li>
+          {{/each}}
+        </script>
+      </div>
+      <!--热门专辑-->
+      <div class="m-hotprogram">
+        <!--模块标题-->
+        <div class="part-top-tab">
+          <h2 class="part-h2-title">热门专辑</h2>
+          <ul class="part-tab-title">
+            <li data-programDay="monday">周一</li>
+            <li data-programDay="tuesday">周二</li>
+            <li data-programDay="wednesday">周三</li>
+            <li data-programDay="thursday">周四</li>
+            <li data-programDay="friday">周五</li>
+            <li data-programDay="saturday">周六</li>
+            <li data-programDay="sunday" class="end">周日</li>
+          </ul>
+        </div>
+        <!--模块内容-->
+        <div class="hotprogram-content">
+          <div class="hotprogram-list-wrap">
+            <div class="hotprogram-list swiper-container" id="J_HotprogramList">
+              <ul class="swiper-wrapper" id="J_programContainer">
+              </ul>
+            </div>
+            <a class="hotprogram-list-left" href="javascript:" title="向左滚动"></a>
+            <a class="hotprogram-list-right" href="javascript:" title="向右滚动"></a>
+            <!--专辑模板-->
+            <script type="text/html" id="J_programTemplate">
+              {{each result}}
+              <li class="hotprogram-item swiper-slide">
+                <img class="program-pic" src="{{$value.sIMG}}" width="156" height="212" alt="sTitle">
+                <h4 class="name-program">{{$value.sTitle}}</h4>
+                {{if +$value.iCurPos}}
+                <p class="progress-program">{{$value.dtUpdateShow}}更新至{{$value.iCurPos}}期</p>
+                {{else}}
+                <p class="progress-program">{{$value.dtUpdateShow}}更新</p>
+                {{/if}}
+                <a target="_blank" href="//lol.qq.com/v/v2/detail.shtml?docid={{$value.sLatestItem.docid}}"
+                   class="herf-mask" title="{{$value.sTitle}}"
+                   onclick="pgvSendClick({hottag:'v3.index.video.{{$value.sLatestItem.docid}}'});SendEAS.sendVideoPV('index','//lol.qq.com/v/v2/detail.shtml?docid={{$value.sLatestItem.docid}}','{{$value.sLatestItem.docid}}')"></a>
+                <a class="name-progress" href="//lol.qq.com/v/v2/detail.shtml?docid={{$value.sLatestItem.docid}}" target="_blank"
+                   onclick="pgvSendClick({hottag:'v3.index.video.{{$value.sLatestItem.docid}}'});SendEAS.sendVideoPV('index','//lol.qq.com/v/v2/detail.shtml?docid={{$value.sLatestItem.docid}}','{{$value.sLatestItem.docid}}')">{{$value.sDesc}}</a>
+                <a target="_blank" class="author-program" href="//lol.qq.com/space/news.shtml?initGrid=1&id={{$value.uuid}}"
+                   title="{{$value.sAuthor}}"
+                   onclick="pgvSendClick({hottag:'v3.index.video.{{$value.authorID}}'});SendEAS.sendVideoPV('index','//lol.qq.com/space/news.shtml?initGrid=1&id={{$value.uuid}}','{{$value.sLatestItem.docid}}')">
+                  <img src="{{$value.avatar}}" width="30" height="30" alt="{{$value.sAuthor}}">
+                  {{$value.sAuthor}}
+                </a>
+              </li>
+              {{/each}}
+            </script>
+          </div>
+          <!--浏览更多-->
+          <a class="more-hotprogram" href="//lol.qq.com/v/v2/index.shtml" target="_blank" title="前往视频中心" onclick="pgvSendClick({hottag:'v3.index.video.more'})">
+            前往视频中心<i class="more-arrow-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--part 3 赛事中心-->
+  <div class="g-wrap-match">
+    <div class="part-top-tab">
+      <h2 class="part-h2-title">赛事中心</h2>
+      <ul class="part-tab-title"></ul>
+      <a href="javascript:" class="toptip-event" style="display: none" target="_blank" id="J_eventTopNews">
+        <!--<img src="//ossweb-img.qq.com/images/lol/v3/logo-lpl-small.png" width="25" height="25" alt="lpl">
+        2018LPL夏季赛季后赛将于9月5日开启-->
+      </a>
+      <a href="//lpl.qq.com" target="_blank" class="herf-more" onclick="pgvSendClick({hottag:'v3.index.event.more'})">更多<i class="more-arrow"></i></a>
+    </div>
+    <!--赛事中心内容容器-->
+    <div class="m-events-container"></div>
+  </div>
+  <!--part 4 英雄资料-->
+  <div class="g-wrap-championlist">
+    <div class="g-wrap">
+      <!--模块标题-->
+      <div class="part-top-tab">
+        <h2 class="part-h2-title">英雄资料</h2>
+        <ul class="part-tab-title" id="J_championSortType">
+          <li class="selected" data-sort="All">所有英雄</li>
+          <li data-sort="Fighter">战士</li>
+          <li data-sort="Mage">法师</li>
+          <li data-sort="Assassin">刺客</li>
+          <li data-sort="Tank">坦克</li>
+          <li data-sort="Marksman">射手</li>
+          <li data-sort="Support">辅助</li>
+        </ul>
+        <a target="_blank" href="/data/info-heros.shtml" onclick="pgvSendClick({hottag:'v3.index.champion.more'})" class="herf-more">资料库<i class="more-arrow"></i></a>
+      </div>
+      <!--英雄列表-->
+      <div class="m-champion-list-container swiper-container" id="J_ChampionListContainer">
+        <div class="m-champion-list-wrapper swiper-wrapper">
+          <ul class="swiper-slide" id="J_championItemContainer">
+
+          </ul>
+          <!--英雄填充模板,虽然使用了懒加载,但是屏幕外的滚动milo监听有误,所以监听放在容器上-->
+          <script id="championItem" type="text/html">
+            {{each data}}
+            <li class="champion-item" data-tags="{{$value.tags.toString()}}">
+              <img src="//ossweb-img.qq.com/images/lol/img/champion/{{$value.id}}.png" width="66" height="66" alt="{{$value.name}}">
+              <i class="hover-icon"></i>
+              <p>{{$value.name}}</p>
+              <a target="_blank" href="/data/info-defail.shtml?id={{$value.id}}" class="herf-mask" onclick="pgvSendClick({hottag:'v3.index.champion.{{$value.id}}'})" title="{{$value.name}}"></a>
+            </li>
+            {{/each}}
+          </script>
+        </div>
+        <!--滚动条-->
+        <div class="scrollbar"></div>
+      </div>
+    </div>
+  </div>
+  <!--part 5 fanart-->
+  <div class="g-wrap-fanart" id="J_fanart">
+    <!--fanart创作馆-->
+    <div class="fanart-left">
+      <!--模块标题-->
+      <div class="part-top-tab">
+        <h2 class="part-h2-title">FANART创作馆</h2>
+        <a target="_blank" href="//tr.lol.qq.com/index.html" onclick="pgvSendClick({hottag:'v3.index.fanart.more'})" class="herf-more">更多<i class="more-arrow"></i></a>
+      </div>
+      <!--模块内容-->
+      <ul class="fanart-left-content" id="J_fanartContainer">
+      </ul>
+      <script type="text/html" id="J_fanartTemplate">
+        {{each list}}
+        <li>
+          <a href="//tr.lol.qq.com/fanart/detail.html?contentId={{$value.iContentId}}" target="_blank"
+             title="{{$value.sTitle}}"
+             onclick="pgvSendClick({hottag:'v3.index.fanart.{{$value.iContentId}}'});">
+            <img class="fanart-img" id="fanart{{$index}}" src="{{$value.sCoverUrl}}258" alt="{{$value.sTitle}}">
+          </a>
+          <!--hover-->
+          <div class="innerhover-bottom">
+            <h4 class="p1">
+              <a href="//tr.lol.qq.com/fanart/detail.html?contentId={{$value.iContentId}}" target="_blank"
+                 onclick="pgvSendClick({hottag:'v3.index.fanart.{{$value.iContentId}}'});">
+                {{$value.sTitle}}
+              </a>
+            </h4>
+            <p class="p2">
+              <a class="a1" href="//tr.lol.qq.com/fanart/space.html?openId={{$value.sOpenId}}" target="_blank" onclick="pgvSendClick({hottag:'v3.index.fanart.{{$value.sOpenId}}'})">
+                <img src="{{$value.sUrl}}" width="22" height="22" alt="{{$value.sNickName}}">{{$value.sNickName}}
+              </a>
+              <a class="a2" href="javascript:" data-zan="{{$value.iContentId}}" onclick="pgvSendClick({hottag:'v3.index.fanart.zan.{{$value.sOpenId}}'})">
+                <i class="icon-666"></i><span class="number">{{$value.iZanCount}}</span><span class="tip">+1</span>
+              </a>
+            </p>
+          </div>
+        </li>
+        {{/each}}
+      </script>
+    </div>
+    <div class="fanart-right">
+      <!--左边专栏-->
+      <div class="main-column" id="J_mainColumn">
+        <script type="text/html" id="J_mainColumnTemplate">
+          <img src="{{pic}}" width="241" height="411" alt="{{content}}">
+          <span class="p1"><i class="inline-icon-1"></i>精品专栏<i class="inline-icon-1"></i></span>
+          <h4 class="p2">{{content}}</h4>
+          <!--<p class="p3">我是摘要我是摘要我是摘我是摘要我是摘要我是摘</p>-->
+          <a class="herf-mask" href="{{url}}" target="_blank" title="{{content}}" onclick="pgvSendClick({hottag:'v3.index.maincolumn.link'})"></a>
+        </script>
+      </div>
+      <!--右边列表-->
+      <ul class="fanart-right-right">
+        <li class="herf-right-1">
+          <img data-imgsrc="//ossweb-img.qq.com/images/lol/v3/href-bg-2.jpg">
+          <a class="href-mask" href="//lol.qq.com/act/a20160407ymy/index.htm?iSurveyId=1" target="_blank" onclick="pgvSendClick({hottag:'v3.index.other-link1'})">
+            <i class="inline-icon-1"></i>英雄联盟用户调查
+          </a>
+        </li>
+        <li class="herf-right-1">
+          <img data-imgsrc="//ossweb-img.qq.com/images/lol/v3/href-bg-3.jpg">
+          <a class="href-mask" href="//lol.qq.com/gicp/news/423/2/1334/1.html" target="_blank" onclick="pgvSendClick({hottag:'v3.index.other-link2'})">
+            <i class="inline-icon-1"></i>见证版本历史
+          </a>
+        </li>
+        <li class="herf-right-1">
+          <img data-imgsrc="//ossweb-img.qq.com/images/lol/v3/href-bg-4.jpg">
+          <a class="href-mask" href="javascript:alert('敬请期待')" target="_blank" onclick="pgvSendClick({hottag:'v3.index.other-link3'})">
+            <i class="inline-icon-1"></i>年度品牌展示
+          </a>
+        </li>
+        <li class="href-partner">
+          <a href="javascript:" target="_blank">
+            <i class="inline-icon-0-left"></i>合作媒体<i class="more-arrow-1"></i><i class="inline-icon-0-right"></i>
+          </a>
+          <div class="partner-list-container swiper-container" id="J_partnerList">
+            <div class="partner-list-wrapper swiper-wrapper">
+              <ul class="partner-list-slide swiper-slide" id="J_partnerContainer">
+              </ul>
+            </div>
+            <script type="text/html" id="J_partnerTemplate">
+              {{each}}
+              {{if $value.href}}
+              <li>
+                <a href="{{$value.href}}" target="_blank" onclick="pgvSendClick({hottag:'v3.index.partner.link.{{$value.href}}'})">{{$value.name}}</a>
+              </li>
+              {{/if}}
+              {{/each}}
+            </script>
+            <div class="scrollbar"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--侧边栏-->
+<div class="rightnav-bar">
+  <ul>
+    <li data-scrollto=".btn-morenews" onclick="pgvSendClick({hottag:'v3.index.rightbar.act'})" class="rightnav-bar-li rn-rmhd" title="热门活动">
+      <span>
+        <i></i>
+      </span>
+      <a>热门活动</a>
+    </li>
+    <li data-scrollto=".m-fresh-video" onclick="pgvSendClick({hottag:'v3.index.rightbar.video'})" class="rightnav-bar-li rn-spzx" title="视频中心">
+      <span>
+        <i></i>
+      </span>
+      <a>视频中心</a>
+    </li>
+    <li data-scrollto=".g-wrap-match" onclick="pgvSendClick({hottag:'v3.index.rightbar.event'})" class="rightnav-bar-li rn-sszx" title="赛事中心">
+      <span>
+        <i></i>
+      </span>
+      <a>赛事中心</a>
+    </li>
+    <li data-scrollto=".g-wrap-championlist" onclick="pgvSendClick({hottag:'v3.index.rightbar.championrecommend'})" class="rightnav-bar-li rn-yxtj" title="英雄推荐">
+      <span>
+        <i></i>
+      </span>
+      <a>英雄资料</a>
+    </li>
+    <li data-scrollto=".fanart-left" onclick="pgvSendClick({hottag:'v3.index.rightbar.fanart'})" class="rightnav-bar-li rn-fanart" title="fanart">
+      <span>
+        <i></i>
+      </span>
+      <a>FANART</a>
+    </li>
+    <li class="rightnav-bar-li rn-polo" onclick="pgvSendClick({hottag:'v3.index.rightbar.backtop'})" title="回到顶部">
+      <span>
+        <i></i>
+        <img src="//ossweb-img.qq.com/images/lol/v3/polo.gif" alt="魄罗">
+      </span>
+      <a>顶部</a>
+    </li>
+  </ul>
+</div>
+<script src="//ossweb-img.qq.com/images/clientpop/js/tgadshow.min.js" charset=“utf-8”></script>
+<!--官网通用底部,仅供官网使用,其他站请用pureFoot start-->
+<div class="foot-wrap" id="footWrap">
+  <div class="foot_inner" id="gfooter" ams="152/35206/m131" age="18" dark="1" ieg-logo="1">
+    <!-- <div class="foot_top"> any HTML code </div> -->
+    <a onclick="pgvSendClick({hottag:'v3.foot.ieg.link'})" target="_blank" href="//ieg.tencent.com/" title="腾讯互动娱乐" class="foot_ieg_logo">腾讯互动娱乐</a>
+    <a onclick="pgvSendClick({hottag:'v3.foot.riot.link'})" target="_blank" href="javascript:" title="RIOT" class="foot_left logo-riot">riot</a>
+    <p class="copyright_txt">COPYRIGHT &copy; 2012 Riot Games,Inc. ALL RIGHTS RESERVED.</p>
+    <p>全国文化市场统一举报电话：12318</p>
+    <!-- <p class="copyright_txt">COPYRIGHT &?Smilegate Entertainment. All rights reserved.</p>-->
+    <!-- <div  class="foot_bottom"> any HTML code </div> -->
+  </div>
+</div>
+<!--底部版权js-->
+<script src="//game.gtimg.cn/images/js/2018foot/foot.js"></script>
+<!--官网通用js start-->
+<script src="//ossweb-img.qq.com/images/js/jquery/jquery-1.9.1.min.js"></script>
+<script src="/v3/js/lib.js?v=927"></script>
+<script src="/v3/js/v3comm.js"></script>
+<script src="//js.aq.qq.com/js/aq_common.js"></script>
+<!--官网通用js end-->
+<!--登录部分js start-->
+<script src="//ossweb-img.qq.com/images/js/milo_bundle/milo.js"></script>
+<script src="//lol.qq.com/comm-htdocs/js/game_area/lol_server_select.js"></script>
+<script src="/v3/js/LOL_Login.js"></script>
+<!--登录部分js end-->
+<!--顶部模块js start-->
+<script src="//lol.qq.com/act/AutoCMS/publish/LOLWeb/HeadCfg/headcfg.js"></script>
+<script src="/v3/js/TopModule.js"></script>
+<script src="//ossweb-img.qq.com/images/js/ArtTemplate.js" charset="utf-8"></script>
+<!--顶部模块js end-->
+<!--官网通用底部 end-->
+<!--<script src="//ossweb-img.qq.com/images/js/ArtTemplate.js" charset="utf-8"></script>-->
+<script src='//vm.gtimg.cn/tencentvideo/txp/js/txplayer.js'></script>
+<script src="/v3/js/swiper2.7.6-with-scrollbar.min.js"></script>
+<script src="/v3/js/index.js?v=20181228"></script>
+<!--数据采集及上报 start-->
+<script src="//tajs.qq.com/stats?sId=22024406"></script>
+<script src="//ossweb-img.qq.com/images/js/eas/eas.js"></script>
+<script src="//pingjs.qq.com/tcss.ping.https.js"></script>
+<script>
+    if (typeof(pgvMain) == 'function') pgvMain();
+    if (window['SendEAS']) SendEAS.init();
+</script>
+<!--数据采集及上报 end-->
+</body>
+</html>

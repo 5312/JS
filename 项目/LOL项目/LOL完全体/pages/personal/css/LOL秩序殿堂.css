@@ -1,0 +1,155 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background: url(../img/秩序殿堂/bg.jpg);
+    background-position: 50% 0;
+}
+
+ .clear::after {
+    content: "";
+    display: block;
+    clear: both;
+} 
+
+.clear{
+    /* overflow: hidden; */
+}
+html {
+    line-height: 1.5;
+    letter-spacing: 0;
+    font-family: PingFang, 微软雅黑
+}
+.lt9 .clear{
+    overflow: hidden;
+}
+a {
+    text-decoration: none;
+}
+
+.content {
+    width: 1054px;
+    margin: 0 auto;
+}
+
+.header {
+    height: 693px;
+    background: url(../img/秩序殿堂/header.jpg);
+    border: 1px solid transparent;
+    text-align: center;
+}
+
+.header p {
+    margin: 530px auto 0;
+    width: 848px;
+    color: #eee;
+    font-size: 16px;
+}
+
+.knight {
+    height: 787px;
+    background: url(../img/秩序殿堂/s1.jpg);
+    padding: 30px 0 103px 0;
+}
+
+.knight>div {
+    height: 319px;
+    margin-top: 100px;
+}
+
+.knight>div:nth-child(1) {
+    float: left;
+}
+
+.knight>div:nth-child(2) {
+    float: right;
+}
+
+.knight>div:nth-child(3) {
+    float: left;
+}
+
+.knight>div:nth-child(4) {
+    float: right;
+}
+
+
+.knight>img {
+    width: 100%;
+    transition: 1s;
+    height: 319px;
+}
+
+.knight>div:hover img {
+    transform: scale(1.1, 1.1);
+transition: 3s;
+}
+
+.guard {
+    background: url(../img/秩序殿堂/s2.jpg);
+    height: 1281px;
+    padding-bottom: 100px;
+}
+
+.guard>img {
+    width: 100%;
+    
+}
+
+.guard>div:hover img {
+    transform: scale(1.1, 1.1);
+transition: 3s;
+}
+
+.guard>div:nth-child(1){
+    float: right;
+    margin-top: 135px;
+}
+
+.guard>div:nth-child(2){
+    float: left;
+    margin-top: 136px;
+}
+.guard>div:nth-child(3){
+    float: left;
+    margin-top: 59px;
+}
+
+.guard>div:nth-child(4){
+    float: left;
+    margin-top: 35px;
+}
+
+.guard>div:nth-child(5){
+    float:right;
+    margin-top: 35px;
+}
+
+.guard>.bottom a{
+    width: 200px;
+    height: 80px;
+    border: 2px solid #c2a657;
+    text-align: center;
+    font-size: 30px;
+    margin: 30px auto;
+    color: #C2A657;
+    margin-top: 160px;
+}
+
+.trouble{
+    background: url(../img/秩序殿堂/s3.jpg);
+    height: 730px;
+    border: 1px solid transparent;
+}
+.trouble>div:nth-child(1){
+    margin-top: 90px;  
+}
+.trouble>div{
+    list-style: none;
+}
+.trouble>div p{
+    font-size: 16px;
+    color: orange;
+}
+.trouble>div>.p1{
+    color: #ffff00;
+}

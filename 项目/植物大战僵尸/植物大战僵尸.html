@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+    </title>
+    <link rel="stylesheet" href="">
+    <style>
+    	body{
+    		user-select: none;
+    	}
+    #box {
+        width: 800px;
+        height: 500px;
+        /*border: 5px solid black;*/
+        margin: 0 auto;
+        position: relative;
+    }
+
+    #ba {
+        width: 50px;
+        height: 50px;
+        border: 1px solid black;
+        border-radius: 50%;
+		position: absolute;
+		top: 200px;
+		left: 0;
+		z-index: 3;
+    }
+    .wall{
+    	width: 20px;
+    	height: 200px;
+    	/*background: red;*/
+    	/*border:1px solid;*/
+    	position: absolute;
+		top: 130px;
+		right: 50px;
+    }
+     .strip{
+    	width: 10px;
+    	height: 200px;
+    	/*background: red;*/
+    	border:1px solid;
+    	position: absolute;
+		top: 130px;
+		right: 10px; 
+		overflow: hidden;
+    }
+    .strip1{
+    	width: 10px;
+    	height: 200px;
+    	background: red;
+    	border:0px solid;
+    	position: absolute;
+		top: 0px;
+		right: 0px; 
+		z-index: 1;
+    }
+    .wan{
+    	width: 100px;
+    	height: 100px;
+    	position: absolute;
+    	top: 180px;
+    	left: -60px;
+    	z-index: 2;
+    }
+    .jiang{
+    	width: 200px;
+    	height: 200px;
+    	position: absolute;
+    	top: 0px;
+    	left: -124px;
+    	z-index: 2;
+    }
+    .cao{
+    	position: absolute;
+    	top:99px;
+    	left: 13px;
+    	z-index: 1;
+    }
+    .water{
+    	position: absolute;
+    	top:-15px;
+    	left: -220px;
+    }
+    </style>
+</head>
+
+<body>
+	
+    <div id="box">
+    	<img class="cao" src="sod3row.png" alt="">
+    	<img class="water" src="background1unsodded.jpg" alt="">
+    	<img class="wan" src="Peashooter.gif" alt="">
+    	<div class="wall"><img class="jiang" src="1.gif" alt=""></div>
+    	<div class="strip">
+    		<div class="strip1"></div>
+    	</div>
+    </div>
+</body>
+<script>
+var box = document.getElementById('box');
+var wall = document.getElementsByClassName('wall')[0];
+var strip = document.getElementsByClassName('strip')[0];
+var heightS1 = document.getElementsByClassName('strip1')[0];
+var t = 0;
+
+box.onclick = function() {
+
+    var ball = document.createElement('div'); 
+    ball.style.backgroundColor = 'rgb(' + rN() + ',' + rN() + ',' + rN() + ')';
+    ball.id = 'ba'
+    box.appendChild(ball);
+
+    var timer = setInterval(function(){
+    	var s = ball.offsetLeft + 5;
+    	ball.style.left = s+'px';
+    	var w = box.clientWidth - ball.clientWidth - 60;
+    	if(s >= w){
+    		
+    		clearInterval(timer);
+    		ball.remove();
+    		t += 10
+    		heightS1.style.top = t+'px'
+    		if(heightS1.offsetTop == 200 ){
+    			wall.remove();
+    			strip.remove();
+    		}
+    	}
+    },20)
+}
+
+
+
+function rN() {
+    return Math.round(Math.random() * 255);
+}
+</script>
+
+</html>

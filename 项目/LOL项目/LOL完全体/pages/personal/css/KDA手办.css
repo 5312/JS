@@ -1,0 +1,578 @@
+@keyframes lunbo{
+    0%{
+        transform: translate(0px);
+    }
+    18%{
+        transform: translate(0px);
+    }
+    20%{
+        transform: translate(-350px);
+    }
+    38%{
+        transform: translate(-350px);
+    }
+    40%{
+        transform: translate(-700px);
+    }
+    58%{
+        transform: translate(-700px);
+    }
+    60%{
+        transform: translate(-1050px);
+    }
+    78%{
+        transform: translate(-1050px);
+    }
+    80%{
+        transform: translate(-1400px);
+    }
+    98%{
+        transform: translate(-1400px);
+    }
+    100%{
+        transform: translate(-1750px);
+    }
+}
+@keyframes  move{
+    0%{
+        transform: translate(0px)
+    }
+    15%{
+        transform: translate(0px)
+    }
+    16%{
+        transform: translate(-1000px)
+    }
+    31%{
+        transform: translate(-1000px)
+    }
+    32%{
+        transform: translate(-2000px)
+    }
+    48%{
+        transform: translate(-2000px)
+    }
+    49%{
+        transform: translate(-3000px)
+    }
+    65%{
+        transform: translate(-3000px)
+    }
+    66%{
+        transform: translate(-4000px)
+    }
+    82%{
+        transform: translate(-4000px)
+    }
+    83%{
+        transform: translate(-5000px)
+    }
+    99%{
+        transform: translate(-5000px)
+    }
+    100%{
+        transform: translate(-6000px)
+    }
+
+  
+}
+a:hover{
+    filter: brightness(1.3);
+}
+.flow-L{
+    float: left;
+}
+.flow-R{
+    float: right;
+}
+.header{
+    width: 100%;
+    height: 96px;
+    margin:  0  auto;
+    background: #161D27;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: block;
+}
+.wrap{
+    width: 100%;
+    background: url(../img/kda/bg.jpg) 50% 0 no-repeat;
+    min-width: 1200px;
+}
+.nav{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    font-size: 0;
+    white-space: nowrap;
+}
+.logo,.acctop{
+    height: 100%;
+}
+.lol,.lol2,.lol3{
+    float: left;
+    height: 100%;
+    margin-right: 35px;
+}
+.lol{
+    width: 146px;
+    background: url(../img/kda/bnav-box.png)  0 0 no-repeat ;
+}
+.lol2{
+    width: 79px;
+    background: url(../img/kda/bnav-box.png) -190px 0 no-repeat ;
+}
+.lol3{
+    width: 152px;
+    background: url(../img/kda/bnav-box.png)  -305px 0 no-repeat ;
+}
+.box{
+    color: #333;
+    display: block;
+    padding: 19px  16px;
+    border-right: #202a39 solid 1px;
+}
+.number,.date{
+    display: inline-block;
+    vertical-align: middle;
+}
+.number{
+    font-size: 24px;
+    text-align: center;
+    line-height: 40px;
+    width: 40px;
+    margin-right: 2px;
+    height: 40px;
+    background: url(../img/kda/bnav-box.png) -525px -27px  no-repeat ;
+}
+.date{
+    line-height: 1;
+    margin-left: 2px;
+    height: 58px;
+    font-size: 18px;
+    color: #5c8ca6;
+}
+.date>div{
+    font-size: 16px;
+}
+.content{
+    width: 1200px;  
+    margin:0 auto;
+    margin-top: 96px ;
+    position: relative;
+}
+.shop{
+    position: absolute;
+    z-index: 90;
+    top: 50px;
+    left: 70px;
+}
+.shop>a{
+    display: inline-block;
+    vertical-align: middle;
+    width: 146px;
+    height: 96px;
+    margin-left: 20px;
+    background: url(../img/kda/bnav-box.png)  0 0 no-repeat ;
+}
+.shop>a.a1{
+    background: none;
+    font-size: 35px;
+    color: white;
+    line-height: 96px; 
+}
+.aug,.info{
+    position: absolute;
+    top: 430px;
+    right: 50px;
+    z-index: 90;
+}
+.info{
+    top: 700px;
+    left: 100px;
+    z-index: 90;
+}
+
+.info>.p1{
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+}
+.info>.p2{
+    font-size: 60px;
+    font-weight: bold;
+    color: #fff;
+}
+.info>.p3,
+.info>.p5,
+.info>.p6{
+    font-size: 40px;
+    color: #fff;
+}
+.info>.p6{
+    color: #FE44FF;
+    font-weight: bold;
+}
+.info>.p4,
+.info>.p7{
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    color: #fff;
+    line-height: 75px;
+    width: 264px;
+    height: 75px;
+    background: url(../img/kda/btn-cherk.png) 0 0 no-repeat;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+.content1{
+    position: relative;
+    width: 1200px;
+    height: 714px;
+    margin: 0 auto;
+    background: url(../img/kda/bg2.jpg) 0 0 no-repeat;
+}
+.lun{
+    width: 350px;
+     margin-top:50px;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 0;
+    margin-left: 40px;
+}
+.tupian{
+    height: 500px;
+    width: 30000px;
+    animation: lunbo  15s forwards linear infinite;
+}
+.tupian>img{
+    display: inline-block;
+    vertical-align: middle;
+}
+.content1 .button,.content2 .button{
+    display: block;
+   
+    width: 87px;
+    height: 87px;
+    background: url(../img/kda/spr.png) 0px 0px no-repeat;
+}
+.content1 .button{
+    position: absolute;
+    top: 100px;
+    right: 230px;
+}
+.right{
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 50px;
+    margin-bottom: 5px;
+}
+.right>.p1{
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+}
+.right>.p2{
+    font-size: 14px;
+    color: #999;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.picture>img{
+    float: left;
+    display: block;
+    margin-right: 20px;
+}
+.buy{
+    text-align: center;
+}
+.jiage{
+    display: inline-block;
+    vertical-align: middle;
+    width: 278px;
+    height: 48px;
+    background: url(../img/kda/spr.png)  0px  -283px no-repeat;
+}
+.buy>a{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 40px 0;
+    margin-left: 30px;
+}
+.content2{
+    position: relative;
+    width: 1200px;
+    
+    text-align: center;
+    margin: auto;
+    background: url(../img/kda/bg3.png) no-repeat;
+}
+.content2 .button{
+     position: absolute;
+     top: 40px;
+     right: 250px;
+     
+}
+.content2>p{
+    display: inline-block;
+    font-size: 16px;
+    color: white;
+    margin-top: 220px;
+}
+.zhanshi{
+    width: 1200px;
+    height: 630px;
+    background: url(../img/kda/kda-list.png) 0 0 no-repeat;
+}
+.zhanshi>img{
+    position: absolute;
+    top: 700px;
+    left: 84px;
+}
+.zhanshi>img:hover{
+    filter: brightness(1.2);
+    color: red;
+}
+.zhanshi>img:first-child+img{
+    left: 400px;
+}
+.zhanshi>img:first-child+img+img{
+    left: 700px;
+}
+.zhanshi>img:first-child+img+img+img{
+    left: 1020px;
+}
+.content2>.buy>.jiage{
+    background: url(../img/kda/spr.png)  0px  -420px no-repeat;
+}
+.content3{
+    position: relative;
+    width: 1101px;
+    margin: auto;
+    background: url(../img/kda/bg4.jpg) no-repeat;
+}
+.content3>p{
+    padding: 171px 0 0 44px;
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 20px;
+    height: 52px;
+}
+.talk{
+    position: absolute;
+    top: 77px;
+    z-index: 100;
+    left: 561px;
+    width: 362px;
+    height: 156px;
+    background: url(../img/kda/float-qp.png)0 0 no-repeat;
+}
+.talk>p{
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+.shangdian{
+    width: 367px;
+    float: left;
+    position: relative;
+}
+.name{
+    position: absolute;
+    top: 20px;
+    left: 10px;
+}
+.name>.p1{
+    font-size: 26px;
+    color: #e3b58b;
+}
+.name>.p2{
+    font-size: 26px;
+    color: #ffffff;
+}
+.name>span{
+    font-size: 12px;
+}
+.cost{
+    position: absolute;;
+    bottom:15px;
+    right: 15px;
+    width: 106px;
+    height: 31px;
+    background: url(../img/kda/btn-sljbuy.png) no-repeat;
+}
+.shangdian:hover{
+    filter: brightness(1.2);
+}
+
+.mouse{
+    margin-top: 40px;
+    height: 355px;
+    background: url(../img/kda/rim-bg.png) no-repeat;
+    position: relative;
+}
+.bg{
+    position: absolute;
+    width: 1150px;
+    height: 389px;
+    top: -20px;
+    background: url(../img/kda/rim-bg1.png) no-repeat;
+}
+.bg>p{
+    color: #DE8EFF;
+    font-size: 14px;
+    margin-left:45px;
+}
+.bg>.p1{
+    margin-top: 170px;
+}
+.bg>.p2{
+    margin-top: 12px;
+}
+.price{
+    position: absolute;
+    top:250px;
+    left: 30px;
+    width: 90px;
+    height: 30px;
+    background: url(../img/kda/spr.png) -182px -10px no-repeat;
+}
+.mouse img{
+    position: absolute;
+    top: 300px;
+    left: 50px;
+}
+.b1{
+    top: -50px;
+    height: 400px;
+    background: url(../img/kda/rim-bg2.png) no-repeat;
+}
+.b1>.p1{
+    margin-top: 190px;
+}
+.b2{
+    left: 50px;
+    background: url(../img/kda/spr.png) -204px -88px no-repeat;
+}
+.content4{
+    width: 1200px;
+    margin: auto;
+    background: url(../img/kda/bg5.png) no-repeat;
+}
+.fensi{
+    width: 908px;
+    margin: 0px auto;
+
+}
+.zuo,.you{
+    width: 453px;
+    height: 692px;
+    margin-top: 270px;
+}
+.zuo{
+    float: left;
+    background: url(../img/kda/welfare1.png) no-repeat;
+}
+.you{
+    float: right;
+    background: url(../img/kda/welfare2.png) no-repeat;
+}
+.c1{
+    margin-top: 360px;
+    margin-left: 300px;
+    width: 132px;
+    height: 60px;
+    background: url(../img/kda/spr.png) 0px -545px no-repeat;
+}
+.dazhe img{
+    margin-left: 315px;
+    margin-top: 15px;
+}
+.zuo>p,.you>p{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    margin-top: 100px;
+    margin-left: 40px;
+}
+.you .c1{
+    background: url(../img/kda/spr.png) -210px -545px no-repeat;
+}
+.content5{
+    width: 1200px;
+    margin: auto;
+    padding-bottom: 30px;
+}
+.Btitle{
+    width: 534px;
+    height: 70px;
+    background: url(../img/kda/banner-title.png) no-repeat;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+.tu{
+    overflow: hidden;
+    width: 1000px;
+    font-size: 0;
+    height: 170px;
+    height: 170px;
+    margin: 50px auto;
+    
+}
+.ku{
+    width: 10000px;
+    animation: move 20s forwards linear infinite;
+}
+.ku>img{
+    display: inline-block;
+    vertical-align: middle;
+}
+.content6{
+    width: 1200px;
+    margin: auto;
+    background: black;
+    height: 430px;
+    text-align: center;
+}
+.content6>img{
+    margin-top: 30px;
+}
+.content6>p{
+    color: purple;
+    font-size: 14px;
+    width: 962px;
+    text-align: left;
+    margin-left: 160px;
+    margin-top: 40px;
+}
+.content6>p>span{
+    letter-spacing: 2em;
+}
+.footer{
+    text-align: center;
+    width: 100%;
+    background: #1c1c1c;
+    min-width: 1200px;
+    padding: 20px;
+}
+.footer>p{
+    font-size: 12px;
+    color: #6e6e6e;
+    margin-bottom: 5px;
+}
+.footer>p>a{
+    font-size: 12px;
+    color: #6e6e6e;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0px 4px;
+    border-left: 1px solid #6e6e6e;
+}
+.footer>p>a:hover{
+    color: #6e6e6e;
+}
+
+
