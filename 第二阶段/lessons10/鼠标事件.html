@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    html,
+    body {
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    body>div {
+        width: 40%;
+    }
+
+    body>div>div {
+        padding: 100px;
+        background-color: yellow;
+    }
+
+    body>div>div>div {
+        width: 200px;
+        height: 100px;
+        background-color: orange;
+        color: #fff;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="left">
+            <div>mouseover</div>
+        </div>
+        <h1>0</h1>
+    </div>
+    <div>
+        <div id="right">
+            <div>mouseenter</div>
+        </div>
+        <h1>0</h1>
+    </div>
+</body>
+<script>
+var body = document.body;
+//鼠标事件:当用户通过鼠标功能键与页面元素进行交互触发的事件
+//1. click点击事件  
+/*  body.onclick = function(){
+        console.log('click');
+    }
+
+    //2. 双击事件
+    body.ondblclick = function(){
+        console.log('dblclick');
+    }
+    //3. 鼠标按键按下
+    body.onmousedown = function(){
+        console.log('mousedown')
+    }
+    //4. 鼠标按键释放
+    body.onmouseup = function(){
+        console.log('mouseup')
+    }
+    5. 鼠标移入
+    body.onmouseover = function(){
+        console.log('mouseover')
+    }
+    body.onmouseenter = function(){
+        console.log('mouseenter')
+    }
+    >>over 要优先于enter 触发  
+    >>over 事件支持事件冒泡 enter 不支持事件冒泡
+    
+var l = 0,
+    r = 0;
+left.onmouseover = function() {
+    l++;
+    this.nextElementSibling.innerHTML = l;
+    console.log('mouseover')
+}
+right.onmouseenter = function() {
+    r++;
+    this.nextElementSibling.innerHTML = r;
+    console.log('mouseenter')
+}
+6. 鼠标移出事件  
+mouseout/mouseleave
+7. 鼠标移动事件 ; 持续触发
+body.onmousemove = function(){
+    console.log('mousemove')
+}
+8. 鼠标右键事件
+body.oncontextmenu = function(){
+    console.log('contextmenu')
+}*/
+</script>
+
+</html>

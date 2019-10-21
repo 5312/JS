@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		img{
+
+		}
+	</style>
+</head>
+<body>                                                                                                                                                                                                                     
+	
+</body>
+<script>
+	//图片的懒加载 又叫图片的延时加载，也是一种页面用户体验的优化手段，提升页面首次加载速度。减少不必要的资源消耗
+
+	//当图片即将在页面上显示的时候，再去进行资源的加载
+	var imgs = document.querySelectorAll('img');
+	window.onscroll = function(){
+		var ch = document.documentElement.clientHeight,
+			sh = document.documentElement.scrollTop;
+
+		//视窗高度+ 页面的滚动【偏移 = 元素位置
+		for (var i = 0; i < imgs.length; i++) {
+			var th = imgs[i].offsetTop;
+			if(ch + sh >= th){
+				imgs[i].src = imgs[i].getAttribute('msrc');
+			}
+		}
+	}
+</script>
+</html>

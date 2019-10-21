@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+
+    #move {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="move"></div>
+</body>
+<script>
+var move = document.querySelector('#move'),
+    body = document.body;
+var mouseY,
+    mouseX,
+    mousesY,
+    mousesX;
+var lock = false;
+move.onmousedown = function(ev) {
+	lock = true;
+    var q = window.event || ev;
+    mousesX = q.clientX- move.offsetLeft;
+    mousesY = q.clientY - move.offsetTop;
+
+}
+body.onmousemove = function(event) {
+    if (lock) {
+        var e = window.event || event;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        move.style.left = mouseX - mousesX + 'px';
+        move.style.top = mouseY - mousesY + 'px';
+        // console.log(mouseX, mouseY)
+    }
+}
+move.onmouseup = function() {
+	lock = false;
+    var bw = body.offsetWidth / 2,
+
+        mL = move.offsetLeft;
+        console.log(bw)
+    if(mL > bw ){
+        move.style.left = body.offsetWidth-move.offsetWidth + 'px';
+
+    }else{
+         move.style.left = 0 + 'px';
+    }
+}
+</script>
+
+</html>

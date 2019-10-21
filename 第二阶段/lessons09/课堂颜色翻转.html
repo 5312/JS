@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+    </title>
+    <link rel="stylesheet" href="">
+    <style>
+    #wrap {
+        width: 600px;
+        height: 600px;
+        border: 2px solid;
+        background-color: #000;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+    }
+
+    .items {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .item {
+        border-radius: 10px;
+
+    }
+
+    .pink {
+        background: pink;
+        border-radius: 10px;
+        /*margin: 6px 0;*/
+    }
+
+    .purple {
+        background-color: purple;
+        border-radius: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+    </div>
+</body>
+<script>
+var wrap = document.getElementById('wrap');
+var level = 1;
+
+createItem();
+//判断是否进入下一关
+function promoteLevel() {
+    var its = document.querySelectorAll('.item'),
+        purples = document.querySelectorAll('.purple');
+
+    if (its.length == purples.length) {
+        wrap.innerHTML = '';
+        level++;
+        createItem();
+    }
+
+}
+//下一关
+function createItem() {
+    var h = Math.floor(wrap.clientWidth / level - 10);
+    for (var i = 0; i < level; i++) {
+        var items = document.createElement('div');
+        items.className = 'items';
+        items.style.hieght = h + 'px';
+        wrap.appendChild(items);
+
+        for (var j = 0; j < level; j++) {
+            var item = document.createElement('div');
+            item.className = 'pink';
+            item.style.width = h + 'px';
+            item.style.height = h + 'px';
+            item.index = j;
+            items.appendChild(item);
+            item.onclick = function() {
+                changeBG(this);
+                //左边
+                var leftEl = this.previousElementSibling;
+                leftEl ? changeBG(leftEl) : 1;
+                //右边
+                var rightEl = this.nextElementSibling;
+                rightEl ? changeBG(rightEl) : 1;
+                //上边
+                var upEl = this.parentNode.previousElementSibling;
+                upEl ? changeBG(upEl.children[this.index]) : 1;
+                //下边
+                var downEl = this.parentNode.nextElementSibling;
+                downEl ? changeBG(downEl.children[this.index]) : 1;
+                //升级判断
+                promoteLevel()
+            }
+        }
+    }
+}
+
+//改变指定元素背景色
+function changeBG(el) {
+    if (el.className.indexOf('pink') >= 0) {
+        //变紫色
+        el.className = el.className.replace('pink', 'purple')
+    } else {
+        //变粉色
+        el.className = el.className.replace('purple', 'pink')
+    }
+}
+</script>
+
+</html>

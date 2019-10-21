@@ -2,89 +2,95 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <link rel="stylesheet" href="">
-    <style>
-        #wrap {
-        width: 700px;
-  
-        border: 1px solid;
-        margin: 0 auto;
-    }
-    .content{
-		    width: 90%;
-			margin:50px auto;			
-			display: flex;
-			flex-flow: row wrap;
-			justify-content: space-around;
-			align-items: center;
-    }
-    .content>img{
-    	width: 85%;
-    	height: 85%;
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+  <style>
+    #wrap {
+      width: 700px;
+
+      border: 1px solid;
+      margin: 0 auto;
     }
 
-    input{
-    	    display: block;
-			background-color: #FDBAEC;
-			height: 40px;
-			width: 80px;
-			margin:0 auto;
-			border-radius: 5px;
-			outline: none;
+    .content {
+      width: 80%;
+      margin: 50px auto;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
 
     }
-    </style>
+
+    .content>img {
+      width: 85%;
+      height: 85%;
+      margin: 5px
+    }
+
+    input {
+      display: block;
+      background-color: #FDBAEC;
+      height: 40px;
+      width: 80px;
+      margin: 0 auto;
+      border-radius: 5px;
+      outline: none;
+
+    }
+  </style>
 </head>
 
 <body>
-    <div id="wrap">
-        <input id="btn" type="button" value='开始'>
-        <div class="content">
-            <img src="1.png" alt="">
-        </div>
+  <div id="wrap">
+    <input id="btn" type="button" value='开始'>
+    <div class="content">
+      <img src="1.png" alt="">
     </div>
+  </div>
 </body>
 <script>
-var wrap = document.getElementById('wrap');
-var content = document.getElementsByClassName('content')[0];
+  var wrap = document.getElementById('wrap');
+  var content = document.getElementsByClassName('content')[0];
 
 
 
-var btn = document.getElementById('btn');
-//初始行
-var d = 2;
-//不同图片的下标
-var index = 0;
-//开始
-var lock = true;
-btn.onclick = function() {
+  var btn = document.getElementById('btn');
+  //初始行
+  var d = 2;
+  //不同图片的下标
+  var index = 0;
+  //开始
+  var lock = true;
+  btn.onclick = function() {
 
     if (lock) {
-        find();
-        lock = false;
+      find();
+      lock = false;
     }
 
 
-}
+  }
 
 
 
-function find() {
+  function find() {
     content.innerHTML = '';
     //随机颜色
     var r = parseInt(Math.random() * 256);
     var g = parseInt(Math.random() * 256);
     var b = parseInt(Math.random() * 256);
     for (var i = 0; i < (d * d); i++) {
-        var img1 = document.createElement("img");
-        img1.src = '1.png';
-        img1.style.width = (600 / d) + 'px';
-        img1.style.height = (600 / d) + 'px';
-        img1.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')'
-        content.appendChild(img1);
+      var img1 =
+        document.createElement("img");
+      img1.src = '1.png';
+      //content 的宽
+      var w = content.offsetWidth / d - 20;
+      img1.style.width = w + 'px';
+      img1.style.height = w + 'px';
+      img1.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+      content.appendChild(img1);
 
     }
     //随机下标替换图片
@@ -96,25 +102,25 @@ function find() {
     content.appendChild(img2);
     imgS[index].replaceWith(img2);
     img2.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')'
-    img2.style.width = 600 / (d) + 'px'
+    img2.style.width = w + 'px'
 
     //找到替换后的图片集合
     var imgNow = document.getElementsByTagName('img');
     //点击不一样的图片
     imgNow[index].onclick = function() {
-    	//当第10关时图片不在变小
-        d<10?d++:d;
-        find();
+      //当第10关时图片不在变小
+      d < 10 ? d++ : d;
+      find();
 
 
     }
 
-}
+  }
 
 
-function rn(x, y) {
+  function rn(x, y) {
     return Math.round(Math.random() * (y - x) + x);
-}
+  }
 </script>
 
 </html>

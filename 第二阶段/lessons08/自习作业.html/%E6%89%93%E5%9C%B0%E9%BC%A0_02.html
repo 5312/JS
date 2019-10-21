@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            user-select: none;
+        }
+
+        #bg {
+            width: 320px;
+            height: 480px;
+            background-image: url(./img/game_bg.jpg);
+            position: relative;
+            margin: 50px auto;
+        }
+
+        #scoreEl {
+            position: absolute;
+            font-size: 30px;
+            color: #fff;
+            text-shadow: 0 0 10px #fff;
+            top: 0;
+            left: 60px;
+        }
+
+        #timeEl {
+            position: absolute;
+            /* width: 180px; */
+            height: 16px;
+            top: 66px;
+            left: 63px;
+            border-radius: 8px;
+        }
+
+        #start {
+            width: 100%;
+            position: absolute;
+            color: red;
+            top: 40%;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .wolf {
+            width: 108px;
+            height: 101px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg">
+        <h1 id="start">Start</h1>
+        <div id="scoreEl">0</div>
+        <img id="timeEl" src="./img/progress.png" alt="">
+    </div>
+</body>
+<script src="../../js_06/tween.js"></script>
+<script>
+    var bg = document.getElementById('bg'),
+        scoreEl = document.querySelector('#scoreEl'),
+        timeEl = document.querySelector('#timeEl'),
+        start = document.querySelector('#start');
+
+    // 狼出生的位置
+    var points = [['117px', '96px'], ['161px', '19px'], ['143px', '191px'],
+    ['193px', '102px'], ['222px', '17px'], ['213px', '200px'], ['295px', '30px']
+        , ['276px', '119px'], ['297px', '209px']];
+
+    // 用来存储出现的狼的坐标位置，防止多个狼出现在同一个位置
+    var wolfs = [];
+    
+    // 用于创建狼的定时器
+    var createTimer;
+
+
+    start.onclick = function () {
+        // 自身消失
+        this.style.display = 'none';
+        var t = 0,
+            b = 180,
+            c = -b,
+            d = 1200;
+        var timer = setInterval(function () {
+            t++;
+            timeEl.width = Tween.Linear(t, b, c, d);
+            if (t == d) {
+                clearInterval(timer);
+                clearInterval(createTimer);
+                setTimeout(function () {
+                    alert('GAME OVER!');
+                })
+            }
+        }, 50)
+        createWolf();
+    }
+    // 创建狼
+    function createWolf() {
+        createTimer = setInterval(function () {
+            var wolf = new Image();
+            wolf.className = 'wolf';
+            // 确定类型
+            var type = wolfType();
+            wolf.src = './img/' + type + '0.png';
+            // 确定位置
+            var index = wolfIndex();
+            wolf.style.left = points[index][1];
+            wolf.style.top = points[index][0];
+            bg.appendChild(wolf);
+            wolf.show = function () {
+                var i = 0;
+                var upTimer = setInterval(function () {
+                    i++;
+                    wolf.src = './img/' + type + i + '.png';
+                    if (i == 5) {
+                        clearInterval(upTimer);
+                        var downTimer = setInterval(function () {
+                            i--;
+                            wolf.src = './img/' + type + i + '.png';
+                            if (i == 0) {
+                                clearInterval(downTimer);
+                                wolf.remove();
+                                wolfs.shift();
+                            }
+                        }, 300)
+                    }
+                }, 300)
+            }
+            wolf.show();
+        }, 2000)
+    }
+
+    // 确定位置
+    function wolfIndex () {
+        var index = rn(0,8);
+        if(wolfs.indexOf(index) > -1){
+            return wolfIndex();
+        }
+        wolfs.push(index);
+        return index;
+    }
+
+    // 确定类型
+    function wolfType() {
+        if (rn(1, 100) > 20) {
+            return 'h';
+        } else {
+            return 'x';
+        }
+    }
+
+    function rn(x, y) {
+        return Math.floor(Math.random() * (y - x + 1) + x);
+    }
+
+
+</script>
+
+</html>

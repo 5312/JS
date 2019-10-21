@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    * {
+        width: 80%;
+        height: 80%;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    #r {
+        background-color: red;
+    }
+
+    #g {
+        background-color: blue;
+    }
+
+    #b {
+        background-color: green;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="r">
+        <div id="g">
+            <div id="b"></div>
+        </div>
+    </div>
+</body>
+<script>
+//为元素添加事件处理程序方式：
+//1. 元素行间绑定 ： 通过元素的onclick 属性
+//局限性
+// a. 不适合代码量较大的事件处理程序。
+// b. 如果要赋值函数，必须写函数的调用，导致函数中的this不在指向当前元素，而是window.
+//2. DOM0级绑定事件处理程序，el.onclick = function(){}
+//不管行间绑定还是DOM0级绑定，在各个浏览器上都不存在兼容问题
+//当我们为同一个元素多次绑定同一类型的事件，那么事件的处理程序会发生覆盖现象，以最后一次为准
+//DOM0级只支持事件冒泡，不支持事件捕获
+
+//事件流：页面中事件发生后，元素对事件触发顺序。
+//事件冒泡： 事件触发的顺序，从最确定的元素，向最不确定的元素传播。
+//事件捕获: 事件触发的顺序，从最不确定的元素，向最确定的元素传播
+// var ds = document.querySelectorAll('div')
+// ds[0].onclick = function(){alert('red')};
+// ds[1].onclick = function(){alert('red')};
+// ds[2].onclick = function(){alert('red')};
+/*
+3. DOM2级事件处理程序绑定（事件监听）     
+    - addEventListener(type,fn,bool)
+   >参数1：string。表示事件类型，例如点击事件 -> ‘click’,必须参数    
+   >参数2：function.表示事件触发时要执行的操作，必须参数    
+   >参数3：boolean.表示事件被添加到那个事件流中，可选参数，默认值为false事件冒泡，true事件捕获  
+   */
+// [1].事件捕获的发生要优先于事件冒泡
+//   
+// [2].当为同一个元素多次绑定同一类型事件，不会发生覆盖，会按照绑定顺序依次执行。
+// [3].事件的处理程序的移除，removeEventListener()
+// 参数和添加时一样.注意：如果绑定的事件将来需要移除，那么绑定时处理程序就不能使用匿名函数。
+// addEventListener存在兼容问题,IE8及以下不支持,IE低版本使用DOM2级为
+//   :attachEvent(),detachEvent() .不支持事件捕获   
+//   >>attachEvent('onclick',fn);   
+//   >>detachEvent('onclick',fn);
+</script>
+
+</html>

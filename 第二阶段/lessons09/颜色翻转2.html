@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>颜色翻转</title>
+    <link rel="stylesheet" href="">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            color: #000;
+        }
+        #wrap{
+            width: 900px;
+            margin: 0 auto;
+            height: 600px;
+            margin-top: 10px;
+
+        }
+        .rigText{
+            width: 290px;
+            float: left;
+
+        }
+        input{
+            display: inline-block;
+        zoom: 1;
+        /* zoom and *display = ie7 hack for display:inline-block */
+        display: block;
+        vertical-align: baseline;
+        margin: 8px 5px;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        font: 14px/100% Arial, Helvetica, sans-serif;
+        padding: .5em 2em .55em;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+       
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+           color: #fef4e9;
+        border: solid 1px #da7c0c;
+        background: #f78d1d;
+        }
+        #main{
+            width: 580px;
+            border: 5px solid #555;
+            float: right;
+            height: 580px;
+            border-radius: 5px;
+            background:#555;
+            text-align: center;
+
+        }
+        
+        .pink{
+            border-radius: 45px;
+            margin: 7px;
+            float: left;
+            background:pink;
+
+        }
+        .purple{
+            border-radius: 45px;
+            margin: 7px;
+            float: left;
+            background:purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="rigText">
+            <h1>颜色翻转</h1>
+            <h2>游戏规则</h2>
+            <p>单击方块，被单击的方块及相邻方块变色，当所有蓝色方块变为橙色时，完成任务，进入下一级。</p>
+            <input type="button" value="开始游戏">
+            <input type="button" value="重置本级">
+            <div>级别 <span id="level">0</span> </div>
+            <div>本关点击次数<span id="clickNum">0</span></div>
+            <div>总点击次数 <span id="clickSum">0</span></div>
+        </div>
+        <div id="main">
+        </div>
+    </div>
+</body>
+<script>
+var main = document.getElementById('main');
+var splevel = document.getElementById('level')
+var margin = 20
+//级别
+var level = 1;
+
+
+//每次创建一个div
+var newDiv;
+//获取main的子元素
+var conDiv;
+
+//第一次调用第一关
+createNewDiv(); 
+
+conDiv[0].onclick = function() {
+    //第二关
+    level++;
+    splevel.innerHTML = level;
+    createNewDiv();
+}
+
+function click(clickDiv) {
+    //改变点击的盒子颜色
+    changeColor(clickDiv);
+
+    //获取坐标
+    var click_x = clickDiv.getAttribute('x') * 1;
+    var click_y = clickDiv.getAttribute('y') * 1;
+
+    if (click_x - 1 >= 0) {
+        var left = document.getElementById('x' + (click_x - 1) + '_y' + (click_y))
+        changeColor(left)
+    }
+    if (click_x + 1 < level) {
+        var right = document.getElementById('x' + (click_x + 1) + '_y' + (click_y))
+        changeColor(right)
+    }
+    if (click_y - 1 >= 0) {
+        var top = document.getElementById('x' + (click_x) + '_y' + (click_y - 1));
+        changeColor(top);
+    }
+    if (click_y + 1 < level) {
+        var botton = document.getElementById('x' + (click_x) + '_y' + (click_y + 1))
+        console.log('x' + (click_x) + 'y' + (click_y + 1))
+        changeColor(botton)
+    }
+    setTimeout(function(){
+        purpleNum();
+    },500)
+
+}
+
+//当purple的数量等于总数量的时候进入下一关
+function purpleNum(){
+    var nums = document.getElementsByClassName('purple');
+    if(nums.length == level*level){
+        level+=1;
+        splevel.innerHTML = level;
+        createNewDiv();
+    }
+}
+//换颜色
+function changeColor(attri) {
+
+    if (attri.getAttribute('class')) {
+        if (attri.getAttribute('class') == 'pink') {
+            attri.setAttribute('class', 'purple')
+        } else {
+            attri.setAttribute('class', 'pink')
+        }
+    }
+
+}
+
+//创建新盒子
+function createNewDiv() {
+    //清空现有div
+    main.innerHTML = '';
+    //新建元素的宽
+    var w = main.offsetWidth / level - margin;
+    for (var i = 0; i < level; i++) {
+        for (var j = 0; j < level; j++) {
+
+            newDiv = document.createElement('div');
+            //创建单独的id坐标
+            newDiv.setAttribute('id', 'x' + j + '_y' + i)
+            newDiv.setAttribute('class', 'pink');
+            //设置 x ，y
+            newDiv.setAttribute('x', j);
+            newDiv.setAttribute('y', i);
+            newDiv.style.width = w + 'px';
+            newDiv.style.height = w + 'px';
+            newDiv.onclick = function() {
+                click(this);
+            }
+            main.appendChild(newDiv);
+        }
+
+    }
+    //获取main的子元素
+    conDiv = main.children
+}
+</script>
+
+</html>

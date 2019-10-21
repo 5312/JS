@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    * {
+        user-select: none;
+    }
+
+    #bg {
+        width: 320px;
+        height: 480px;
+
+        background-image: url(game_bg.jpg);
+        position: relative;
+        margin: 50px auto;
+
+    }
+
+    #scoreEl {
+        position: absolute;
+        font-size: 30px;
+        color: #fff;
+        text-shadow: 0px 0px 10px #fff;
+        left: 70px;
+        top: 2px;
+
+    }
+
+    #timeEl {
+        width: 180px;
+        height: 16px;
+
+        left: 63px;
+        top: 66px;
+    }
+
+    img {
+        position: absolute;
+    }
+
+    #start {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        color: red;
+        top: 40%;
+        text-align: center;
+        font-size: 40px;
+        line-height: 40px;
+        background: #rgba(0, 0, 0, .5)；
+    }
+    </style>
+</head>
+
+<body>
+    <div id="bg">
+        <div id="scoreEl">0</div>
+        <img src="progress.png" id="timeEl">
+        <h1 id="start">Start</h1>
+    </div>
+</body>
+<script src="../../lessons06动画.js/my/tween.js"></script>
+<script>
+var bg = document.getElementById('bg'),
+    scoreEl = document.querySelector('#scoreEl'),
+    timerEl = document.querySelector('timeEl'),
+    start = document.querySelector('#start');
+
+
+start.onclick = function() {
+
+    this.remove();
+    //开始计时
+    var t = 0,
+        b = 180,
+        c = -180,
+        d = 1200;
+    var timer = setInterval(function() {
+        t++;
+        timeEl.width = Tween.Linear(t, b, c, d)
+        if (t >= d) {
+            clearInterval(timer);
+            clearInterval(createTimer)
+            setTimeout(function() {
+                alert('GAME OVER')
+            }, 1000)
+        }
+    }, 50)
+}
+
+//随机出现两只狼
+function wolfRun() {
+    //创建图片
+    createTimer = setInterval(function() {
+        var wolf = new Image();
+        wolf.className = 'wolf';
+        //确定类型
+        var type = wolfType();
+        wolf.src = type + '0.png'
+        //确定位置
+        var index = rN(0, 8);
+        wolf.style.left = points[index][1];
+        wolf.style.top = posints[index][0];
+        wolfs.appendChild(wolf)
+    })
+}
+
+
+function wolfType() {
+
+    if (rN(1, 100) > 20) {
+        return 'h'；
+    } else {
+        return 'x';
+    }
+}
+//随机函数
+function rN(x, y) {
+    return Math.floor(Math.random() * (y - x + 1) + x);
+}
+</script>
+
+</html>

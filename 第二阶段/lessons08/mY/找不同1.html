@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap {
+            width: 400px;
+            height: 600px;
+            position: relative;
+            background-color: lightgray;
+            margin: 0 auto;
+        }
+
+        #wrap>div:nth-child(1) {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        #wrap>div:nth-child(2) {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        #startBtn {
+            width: 80px;
+            height: 40px;
+            font-size: 20px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            background-color: orange;
+            cursor: pointer;
+            position: absolute;
+            left: 170px;
+            top: 70px;
+        }
+
+        #box {
+            width: 380px;
+            height: 380px;
+            /* background-color: red; */
+            position: absolute;
+            left: 10px;
+            top: 140px;
+            display: flex;
+            justify-content: space-around;
+            flex-flow: row wrap;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div>剩余时间：<span id="timeEl">60</span>s</div>
+        <div>得分：<span id="scoreEl">00</span></div>
+        <div id="startBtn">开始</div>
+        <div id="box">
+            <img src="1.png">
+        </div>
+    </div>
+</body>
+<script>
+    // 获取需要操作的元素
+    var timeEl = document.querySelector('#timeEl'),
+        scoreEl = document.querySelector('#scoreEl'),
+        btn = document.querySelector('#startBtn'),
+        box = document.querySelector('#box');
+
+    var score = 0;
+    var level = 1;
+    var imgSrc = ['./1.png', './2.png'];
+    var index;
+    // 开始
+    btn.onclick = function () {
+        // 1.按钮消失
+        this.remove();
+        // 2.计时开始
+        var t = 60;
+        var timer = setInterval(function () {
+            t--;
+            if (t == 0) {
+                clearInterval(timer);
+                setTimeout(function () {
+                    alert('得分：' + score);
+                })
+                // 关闭事件，防止在游戏结束后继续得分
+                box.children[index].onclick = null;
+            }
+            timeEl.innerHTML = format(t);
+        }, 1000)
+        // 3.更换图片
+        promote();
+    }
+
+    function promote() {
+        // 关卡升级(最高10级)
+        level < 10 ? level++ : level;
+        // 创建新图片之前将上一关的图片先清除
+        box.innerHTML = '';
+        // 新关卡图片总数量
+        var n = level * level;
+        // 确定图片背景色
+        bg = rc();
+        // 创建新图片
+        index = rn(0, n - 1);//确定房祖名的下标
+        for (var i = 0; i < n; i++) {
+            // 确定图片路径
+            var src = i == index ? imgSrc[1] : imgSrc[0];
+            // 创建图片
+            var img = document.createElement('img');
+            // 确定图片宽高
+            var w = parseInt(box.offsetWidth / level) - 6;
+            // 设置图片样式及内容
+            img.style.width = w + 'px';
+            img.style.height = w + 'px';
+            img.style.backgroundColor = bg;
+            img.style.margin = '3px 3px';
+            img.src = src;
+            // 添加
+            box.appendChild(img);
+            if (index == i) {
+                img.onclick = function () {
+                    score++;
+                    scoreEl.innerHTML = '得分：' + format(score);
+                    promote();
+                }
+            }
+        }
+    }
+
+
+
+
+
+    function format(value) {
+        return value < 10 ? '0' + value : value;
+    }
+
+
+
+    function rn(x, y) {
+        return Math.floor(Math.random() * (y - x + 1) + x);
+    }
+
+    function rc() {
+        return 'rgb(' + rn(0, 255) + ',' + rn(0, 255) + ',' + rn(0, 255) + ')';
+    }
+
+</script>
+
+</html>

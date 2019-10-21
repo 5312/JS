@@ -1,0 +1,205 @@
+s<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>颜色翻转</title>
+    <link rel="stylesheet" href="">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            color: #000;
+        }
+        #wrap{
+            width: 900px;
+            margin: 0 auto;
+            height: 600px;
+            margin-top: 10px;
+
+        }
+        .rigText{
+            width: 290px;
+            float: left;
+
+        }
+        input{
+            display: inline-block;
+        zoom: 1;
+        /* zoom and *display = ie7 hack for display:inline-block */
+        display: block;
+        vertical-align: baseline;
+        margin: 8px 5px;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        font: 14px/100% Arial, Helvetica, sans-serif;
+        padding: .5em 2em .55em;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+       
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+           color: #fef4e9;
+        border: solid 1px #da7c0c;
+        background: #f78d1d;
+        }
+        #main{
+            width: 580px;
+            border: 5px solid #555;
+            float: right;
+            height: 580px;
+            border-radius: 5px;
+            background:#555;
+            text-align: center;
+
+        }
+        #active{
+            border-radius: 8px;
+            margin: 7px;
+            float: left;
+        }
+        
+        .pink{
+            border-radius: 8px;
+            margin: 7px;
+            float: left;
+            background:pink;
+
+        }
+        .purple{
+            border-radius: 8px;
+            margin: 7px;
+            float: left;
+            background:purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="rigText">
+            <h1>颜色翻转</h1>
+            <h2>游戏规则</h2>
+            <p>单击方块，被单击的方块及相邻方块变色，当所有蓝色方块变为橙色时，完成任务，进入下一级。</p>
+            <input type="button" value="开始游戏">
+            <input type="button" value="重置本级">
+            <div>级别 <span id="level">0</span> </div>
+            <div>本关点击次数<span id="clickNum">0</span></div>
+            <div>总点击次数 <span id="clickSum">0</span></div>
+        </div>
+        <div id="main">
+        </div>
+    </div>
+</body>
+<script>
+var main = document.getElementById('main');
+//级别
+var level = 1;
+var conDiv;
+var newDiv;
+createNewDiv();
+conDiv[0].onclick = function() {
+    level++;
+    createNewDiv();
+}
+
+
+
+//创建新盒子
+function createNewDiv() {
+    main.innerHTML = '';
+    var w = main.offsetWidth / level - 20;
+    for (var i = 0; i < level * level; i++) {
+        newDiv = document.createElement('div');
+
+        newDiv.setAttribute('class', 'pink');
+
+        newDiv.style.width = w + 'px';
+        newDiv.style.height = w + 'px';
+        newDiv.n = i + 1;
+        main.appendChild(newDiv);
+        newDiv.onclick = function() {
+            click(this)
+
+        }
+    }
+    conDiv = main.children;
+}
+//颜色翻转
+function click(clickDiv) {
+    //改变点击的盒子颜色
+    changeColor(clickDiv);
+    //第一关只有自己
+    if (level == 1) {
+        purpleNum()
+    }
+    //自身编号
+    var sn = clickDiv.n * 1;
+    //根据自身编号找到四个方向相邻的元素
+    var leftEl = main.children[sn - 2],
+        rightEl = main.children[sn],
+        upEl = main.children[sn - level - 1],
+        downEl = main.children[sn + level - 1];
+    //位置判断,来确定当前被点击元素有几个相邻元素以及方向；
+    if (sn % level == 1 && sn <= level) {
+        // 左上
+       changeColor(rightEl, downEl);
+    } else if (sn % level == 0 && sn <= level) {
+        // 右上
+        changeColor(leftEl, downEl);
+    } else if (sn % level == 1 && sn > level * (level - 1)) {
+        // 左下
+        changeColor(rightEl, upEl);
+    } else if (sn % level == 0 && sn > level * (level - 1)) {
+        // 右下
+        changeColor(upEl, leftEl);
+    } else if (sn % level == 1) {
+        // 左边
+        changeColor(upEl, downEl, rightEl);
+    } else if (sn <= level) {
+        // 上边
+        changeColor(downEl, leftEl, rightEl);
+    } else if (sn % level == 0) {
+        // 右边
+        changeColor(upEl, downEl, leftEl);
+    } else if (sn > level * (level - 1)) {
+        // 下边
+        changeColor(upEl, leftEl, rightEl);
+    } else {
+        // 中间
+        changeColor(upEl, downEl, leftEl, rightEl);
+    }
+
+    //升级
+    setTimeout(function() {
+        purpleNum();
+    }, 500)
+
+}
+//当purple的数量等于总数量的时候进入下一关
+function purpleNum() {
+    var nums = document.getElementsByClassName('purple');
+    if (nums.length == level * level) {
+        level += 1;
+        createNewDiv();
+    }
+}
+//换颜色
+function changeColor() {
+    for (var i = 0; i < arguments.length; i++) {
+        var attri = arguments[i]
+        if (attri.getAttribute('class')) {
+            if (attri.getAttribute('class') == 'pink') {
+                attri.setAttribute('class', 'purple')
+            } else {
+                attri.setAttribute('class', 'pink')
+            }
+        }
+    }
+
+
+}
+</script>
+
+</html>

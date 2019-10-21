@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	
+</body>
+<script>
+	//new Image()
+	var img1 = new Image();//创建图片元素
+	document.body.appendChild(img1);
+	img1.src = 'mY/1.png';
+
+	//一下三种方法只能读取img标签样式上的宽高
+	console.log(img2.style,width);
+	console.log(img2,width);
+	console.log(window.getComputedStyle(img2).width);
+
+	//图片的默认宽高，必须要等图片加载完毕才能读取。而图片资源的加载是需要时间的，并且时间长短是不确定的
+	//onload 事件，当图片资源加载完毕后自动触发
+	img2.onload = function(){
+		console.log(img2,width);
+	}
+	//关于图片的src属性，只要为src 赋值了 ，不管是否将img添加到页面，都已经开始资源的加载了
+</script>
+</html>
