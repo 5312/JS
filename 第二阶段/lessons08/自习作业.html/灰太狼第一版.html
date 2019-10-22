@@ -2,98 +2,98 @@
 <html lang="zh-cn">
 
 <head>
-    <meta charset="UTF-8">
-    <title>灰太狼</title>
-    <style>
+  <meta charset="UTF-8">
+  <title>灰太狼</title>
+  <style>
     * {
-        margin: 0;
-        padding: 0;
-        font-family: "微软雅黑";
+      margin: 0;
+      padding: 0;
+      font-family: "微软雅黑";
     }
 
     #outer {
-        background: url(game_bg.jpg) 0 0 no-repeat;
-        position: relative;
-        width: 320px;
-        height: 480px;
-        margin: 0 auto;
+      background: url(game_bg.jpg) 0 0 no-repeat;
+      position: relative;
+      width: 320px;
+      height: 480px;
+      margin: 0 auto;
     }
 
     #fraction {
-        position: absolute;
-        left: 65px;
-        top: 13px;
-        color: white;
+      position: absolute;
+      left: 65px;
+      top: 13px;
+      color: white;
     }
 
     #time {
-        position: absolute;
-        width: 180px;
-        height: 16px;
-        left: 63px;
-        top: 66px;
-        background: url(progress.png) 0 0 no-repeat;
+      position: absolute;
+      width: 180px;
+      height: 16px;
+      left: 63px;
+      top: 66px;
+      background: url(progress.png) 0 0 no-repeat;
     }
 
     #wolfs {
-        position: absolute;
+      position: absolute;
     }
 
     #wolfs img {
-        position: absolute;
+      position: absolute;
     }
 
     #startMenu {
-        position: absolute;
-        width: 320px;
-        text-align: center;
-        left: 0;
-        top: 200px;
+      position: absolute;
+      width: 320px;
+      text-align: center;
+      left: 0;
+      top: 200px;
     }
 
     #start,
     #endMenu,
     #reload {
-        line-height: 50px;
-        font-size: 30px;
-        font-weight: bold;
-        color: #F00;
-        display: block;
-        text-decoration: none;
+      line-height: 50px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #F00;
+      display: block;
+      text-decoration: none;
     }
 
     #endMenu {
-        position: absolute;
-        width: 320px;
-        text-align: center;
-        top: 200px;
-        left: 0;
-        display: none;
+      position: absolute;
+      width: 320px;
+      text-align: center;
+      top: 200px;
+      left: 0;
+      display: none;
     }
 
     #reload {
-        position: absolute;
-        bottom: 0px;
-        left: 0px;
-        display: none;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      display: none;
     }
-    </style>
+  </style>
 </head>
 
 <body>
-    <div id="outer">
-        <div id="fraction">0</div>
-        <div id="time"></div>
-        <div id="wolfs"></div>
-        <div id="startMenu">
-            <div id="start">Start</a>
-            </div>
-            <div id="endMenu"></div>
-        </div>
+  <div id="outer">
+    <div id="fraction">0</div>
+    <div id="time"></div>
+    <div id="wolfs"></div>
+    <div id="startMenu">
+        <div id="start">Start</a>
+      </div>
+      <div id="endMenu"></div>
+    </div>
 </body>
 <script>
-//开始按钮
-var startbtn = document.getElementById('start'),
+  //开始按钮
+  var startbtn = document.getElementById('start'),
     //开始菜单
     startMenu = document.getElementById('startMenu'),
     //分数
@@ -106,75 +106,76 @@ var startbtn = document.getElementById('start'),
     liftCircle = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0],
     //洞穴坐标
     points = [
-        ["98px", "115px"],
-        ["17px", "160px"],
-        ["15px", "221px"],
-        ["30px", "294px"],
-        ["122px", "274px"],
-        ["207px", "296px"],
-        ["200px", "212px"],
-        ["187px", "142px"],
-        ["100px", "192px"]
+      ["98px", "115px"],
+      ["17px", "160px"],
+      ["15px", "221px"],
+      ["30px", "294px"],
+      ["122px", "274px"],
+      ["207px", "296px"],
+      ["200px", "212px"],
+      ["187px", "142px"],
+      ["100px", "192px"]
     ];
 
-var timer = null;
-startbtn.onclick = function() {
+  var timer = null;
+  startbtn.onclick = function() {
     startMenu.style.display = 'none';
     //进度条开始动
     timeLineRun();
 
-}
-//进度条
-function timeLineRun() {
+  }
+  //进度条
+  function timeLineRun() {
 
     var timeLineTimer = setInterval(function() {
 
-        if (timeLine.offsetWidth > 0) {
-            timeLine.style.width = timeLine.offsetWidth - 1 + 'px';
-        } else {
-            //关闭定时器
-            clearInterval(timeLineTimer)
-        }
-        console.log(1)
+      if (timeLine.offsetWidth > 0) {
+        timeLine.style.width = timeLine.offsetWidth - 1 + 'px';
+      } else {
+        //关闭定时器
+        clearInterval(timeLineTimer)
+      }
+      console.log(1)
     }, 200)
-}
-//随机出现两只狼
-function wolfRun() {
-	//创建图片
-    createTimer = setInterval(function(){
-    	var wolf = new Image();
-    	wolf.className = 'wolf'; 
-    	//确定类型
-    	var type = wolfType();
-    	wolf.src = type+'0.png'
-    	//确定位置
-    	var index = rN(0,8);
-    	wolf.style.left = points[index][0];
-    	wolf.style.top = posints[index][1];
-    	wolfs.appendChild(wolf)
+  }
+  //随机出现两只狼
+  function wolfRun() {
+    //创建图片
+    createTimer = setInterval(function() {
+      var wolf = new Image();
+      wolf.className = 'wolf';
+      //确定类型
+      var type = wolfType();
+      wolf.src = type + '0.png'
+      //确定位置
+      var index = rN(0, 8);
+      wolf.style.left = points[index][0];
+      wolf.style.top = posints[index][1];
+      wolfs.appendChild(wolf)
     })
-}
-//确定位置
-function wolfIndex(){
-	var index = rN(0,8)；
-	if(wolf.indexOf(index) > -1){
-		
-	}
-}
-//随机狼
-function wolfType() {
+  }
+  //确定位置
+  function wolfIndex() {
+    var index = rN(0, 8)；
+    if (wolf.indexOf(index) > -1) {
 
-	if(rN(1,100) >20){
-		return 'h'；
-	}else{
-		return 'x';
-	}
-}
+    }
+  }
+  //随机狼
 
-//随机函数
-function rN(x, y) {
+  function wolfType() {
+
+    if (rN(1, 100) > 20) {
+      return 'h'；
+    } else {
+      return 'x';
+    }
+  }
+
+  //随机函数
+  function rN(x, y) {
     return Math.floor(Math.random() * (y - x + 1) + x);
-}
+  }
 </script>
 
 </html>
