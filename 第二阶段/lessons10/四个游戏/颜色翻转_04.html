@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap {
+            width: 600px;
+            height: 600px;
+            border: 4px sold #000;
+            display: flex;
+            justify-content: space-around;
+            align-content: space-around;
+            flex-flow: row wrap;
+            background-color: #eee;
+            margin: 0 auto;
+        }
+
+        .item {
+            border-radius: 5px;
+            margin: 2px;
+        }
+
+        .pink {
+            background-color: pink;
+        }
+
+        .purple {
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap"></div>
+</body>
+<script>
+    var wrap = document.querySelector('#wrap');
+
+    var level = 1;
+
+    createItem();
+
+    function createItem() {
+        var w = Math.floor(wrap.clientWidth / level) - 4;
+        for (var i = 0; i < level; i++) {
+            for (var j = 0; j < level; j++) {
+                var item = document.createElement('div');
+                item.className = 'item pink';
+                item.style.width = w + 'px';
+                item.style.height = w + 'px';
+                item.x = j;
+                item.y = i;
+                wrap.appendChild(item);
+                item.onclick = function () {
+                    cbg(this);
+                    // 当前自身的位置坐标
+                    var sx = this.x, sy = this.y;
+                    for (var i = 0; i < wrap.children.length; i++) {
+                        var other = wrap.children[i];
+                        var ox = other.x;
+                        var oy = other.y;
+                        // 上下
+                        if (sx == ox && (sy - 1 == oy || sy + 1 == oy)) {
+                            cbg(other);
+                        }
+                        // 左右
+                        if (sy == oy && (sx - 1 == ox || sx + 1 == ox)) {
+                            cbg(other);
+                        }
+                    }
+                    // 升级
+                    promoteLevel();
+                }
+            }
+        }
+    }
+
+    function promoteLevel() {
+        var items = document.querySelectorAll('.item');
+        var purples = document.querySelectorAll('.purple');
+        if (items.length == purples.length) {
+            setTimeout(function () {
+                wrap.innerHTML = '';
+                level++;
+                createItem();
+            }, 500)
+        }
+    }
+
+    function cbg(el) {
+        if (el.className.indexOf('pink') != -1) {
+            el.className = el.className.replace('pink', 'purple');
+        } else {
+            el.className = el.className.replace('purple', 'pink');
+        }
+    }
+
+
+
+</script>
+
+</html>

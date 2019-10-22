@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+    .main {
+        width: 500px;
+        height: 500px;
+        border: 4px solid;
+        border-radius: 8px;
+        margin: 0 auto;
+    }
+
+    .items {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .pink {
+        background: pink;
+    }
+
+    .purple {
+        background-color: purple;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="btn">开始</div>
+    <div class="main">
+    </div>
+</body>
+<script>
+var main = document.querySelector('.main'),
+    btn = document.getElementById('btn');
+//关数
+var level = 1;
+
+btn.onclick = function() {
+
+    creatDiv();
+
+}
+//下一关
+function creatDiv() {
+    var w = main.clientWidth / level;
+    for (var i = 0; i < level; i++) {
+        var items = document.createElement('div');
+        items.className = 'items pink'
+        items.style.height = w + 'px';
+        main.appendChild(items);
+        for (var j = 0; j < level; j++) {
+            var item = document.createElement('div');
+            items.className = 'pink'
+            item.style.width = w + 'px';
+            item.style.height = w + 'px';
+            items.appendChild(item);
+            item.onclick = function() {
+            	color(this);
+
+            }
+        }
+    }
+}
+function color(el){
+	if(el.className.indexOf('pink') > -1){
+		//变紫色
+		el.className = el.className.replace('pink','purple');
+	}else{
+		//变粉色
+		el.className = el.className.replace('purple','pink')
+	}
+}
+</script>
+
+</html>

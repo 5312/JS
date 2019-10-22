@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #wrap {
+        width: 400px;
+        height: 600px;
+        position: relative;
+        background-color: lightgray;
+        margin: 0 auto;
+    }
+
+    #wrap>div:nth-child(1) {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+
+    #wrap>div:nth-child(2) {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    #startBtn {
+        width: 80px;
+        height: 40px;
+        font-size: 20px;
+        line-height: 40px;
+        text-align: center;
+        color: #fff;
+        background-color: orange;
+        cursor: pointer;
+        position: absolute;
+        left: 170px;
+        top: 70px;
+    }
+
+    #box {
+        width: 380px;
+        height: 380px;
+        /* background-color: red; */
+        position: absolute;
+        left: 10px;
+        top: 140px;
+        display: flex;
+        justify-content: space-around;
+        flex-flow: row wrap;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div>剩余时间：<span id="timeEl">60</span>s</div>
+        <div>得分：<span id="scoreEl">00</span></div>
+        <div id="startBtn">开始</div>
+        <div id="box">
+            <img src="images/1.png">
+        </div>
+    </div>
+</body>
+<script>
+var startBtn = document.getElementById('startBtn'),
+    box = document.getElementById('box'),
+    score = document.getElementById('scoreEl'),
+    time = document.getElementById('timeEl');
+var level = 1,
+lock = true;
+var imgSrc = ['images/1.png', 'images/2.png']
+startBtn.onclick = function() {
+	if(lock){
+
+    main()
+    lock = false;
+	}
+}
+
+function main() {
+	 level>10?level:level++; 
+    //清空
+    box.innerHTML = '';
+    //创建
+    var n = level * level;
+    //房祖名下表
+    var index = rn(0, n-1);
+    console.log(index +1);
+    console.log(level+'关');
+    for (var i = 0; i < n; i++) {
+        var src = i == index ? imgSrc[1] : imgSrc[0];
+        var w = parseInt(box.clientWidth / level) -6
+        var img = document.createElement('img');
+        img.src = src;
+        img.style.width = w + 'px';
+        img.style.height = w + 'px';
+        box.appendChild(img);
+     	img.style.margin = 3+'px';
+        if (i == index) {
+            img.onclick = function() {
+                level++;
+                
+                main();
+            } 
+        }
+
+    }
+
+}
+
+function rn(x, y) {
+    return Math.floor(Math.random() * (y - x + 1) + x);
+}
+</script>
+
+</html>
