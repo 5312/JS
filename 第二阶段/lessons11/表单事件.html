@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    用户名：<input type="text" class="inps">
+</body>
+<script>
+    //onfocus : 当表单元素获得焦点时触发；
+    //onblur:当表单元素获得焦点时触发；
+    //onchange:当表单元素的value值发生变化后触发；
+    //oninput；当表单元素的value值发生变化时触发；
+    //要求：
+    //1. 用户名只能包含数字。字母和_
+    //2. 只包含一类，安全等级低；
+    //3. 只包含组合，安全等级：中；
+    //4. 包含三类。安全等级：高；
+    //5. 如果包含了1中允许的其他字符。用户名不合法；
+    var inps = document.querySelector('.inps');
+    var msg = document.querySelector('h1');
+    var s1 = '0123456789',
+        s2 = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+    var numArr = [],charArr = [];
+    for (var i = 0; i < sl.length; i++) {
+        numArr[i]= s1[i];
+    }
+    for (var i = 0; i < s2.length; i++) {
+        charArr[i] = s2[i];
+    }
+    inps.oninput = function(){
+        var val = this.value;
+        for (var i = 0; i < val.length; i++) {
+            var char = val[i];
+            if(numArr.indexOfw(char) == -1)
+        }
+    }
+
+
+</script>
+</html>

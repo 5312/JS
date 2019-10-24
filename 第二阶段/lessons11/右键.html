@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #menu{
+            width: 80px;
+            height: 100px;
+            border:1px solid;
+            font-size: 20px;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align:center;
+        }
+        a{
+            display: block;
+            width: 100%;
+            height: calc(100px/3);
+            text-decoration: none;
+            color: black;
+            padding:0;
+
+        }
+        a:hover{
+            background:blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <a href="https://www.baidu.com">百度</a>
+        <a href="https://www.jd.com">京东</a>
+        <a href="https://www.taobao.com">淘宝</a>
+    </div>
+</body>
+<script>
+var menu = document.querySelector('#menu')
+    document.documentElement.oncontextmenu = function(e){
+        var e = e || window.event;
+        e.preventDefault();
+        var x = e.clientX,
+            y = e.clientY;
+        menu.style.left = x +'px';
+        menu.style.top = y+'px';
+        menu.style.display = 'block'
+    }
+    document.onmousedown = function(){
+        menu.style.display = 'none';
+    }
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+        <img src="p1tankU.gif" alt="" id = "main">
+
+</body>
+<script>
+    var main = document.getElementById('main');
+
+    document.onkeydown = function(e){
+        var e = e||windiw.event;
+        var dir = e.keyCode;
+        //上
+        if(dir == 38 ){
+            main.src = "p1tankU.gif";
+            main.style.top = main.offsetTop -10 +'px';
+        }
+        //下
+        if(dir == 40){
+
+            main.src = "p1tankD.gif";
+            main.style.top =main.offsetTop +10 +'px';
+        }
+        //左
+        if(dir == 37){
+            main.src = "p1tankL.gif";
+            main.style.left =main.offsetLeft -10 +'px';
+        }
+        //右
+        if(dir == 39){
+            main.src = "p1tankR.gif";
+            main.style.left =main.offsetLeft +10 +'px';
+        }
+    }
+</script>
+</html>

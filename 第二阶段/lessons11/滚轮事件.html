@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+
+    </div>
+</body>
+<script>
+    // var wrap = document.querySelector('#wrap');
+//onmousewheel: 当鼠标滚轮在元素上滚动时触发。
+
+//  wrap.onmousewheel = function(e){
+//      var e = window.event||e;
+//     console.log('gun')
+//     //对滚轮事件的应用主要是通过判断滚轮滚动的方向，来做对应的逻辑操作。
+//     //滚轮的滚动方向信息存储在滚轮事件的事件对象中。
+//     //通过事件对象的wheelDelta来判断滚轮滚动的方向。
+//     console.log(e.wheelDelta)
+//     //当滚轮向上滚动为正值，当滚轮向下滚动为负值；
+// }
+//滚轮事件在FF浏览器上存在兼容问题，FF 上的DOM并没有onmousewheel属性
+// FF浏览器滚轮事件的事件类型时DOMMouseScroll .这个事件需要通过DOM2级来绑定。
+// wrap.addEventListener('DOMMouseScroll',function(e){
+//     var e = e||window.event;
+//     //FF浏览器上滚轮事件的事件对象中并没有wheelDelta属性，读取滚动方向需要的属性是：detail
+//     //当滚轮向上滚动。为负值。当滚轮向下滚动为正值，和非FF浏览器中刚好相反。
+//     console.log(e.detail);
+// },false);
+
+  //滚轮事件的兼容
+  var wrap = document.querySelector('#wrap');
+  wheelEvent(wrap,function(dir){
+      if(dir){
+          console.log('向上滚动')
+      }else{
+          console.log('向下滚动')
+      }
+
+  })
+
+  function wheelEvent(el,callback){
+    //1.判断浏览器
+
+    if(el.onmousewheel ===null){
+        //非FF
+        el.onmousewheel = function(e){
+            var e = e|| window.event;
+            var dir ;
+            if(e.wheelDelta > 0){
+                //向上
+                dir = true;
+            }else{
+                //向下
+                dir = false;
+            }
+            callback(dir);
+        };
+    }else{
+        //FF
+        el.addEventListener("DOMMouseScroll",function(e){
+            var dir;
+            if(e.detail > 0){
+                //向下
+                dir =false ;
+            }else{
+                //向上
+                dir = true;
+            }
+            callback(dir);
+        },false);
+    }
+  }
+</script>
+</html>

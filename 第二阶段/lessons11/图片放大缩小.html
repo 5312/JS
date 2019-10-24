@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{width: 100%;height: 100%;}
+        img{
+            display: block;
+            width: 100px;
+            height: 100px;
+            margin:100px auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 双击图片，图片放大为原来的2倍，再次双击缩回原来尺寸
+        滚轮向上，图片放大，最大放大为原来的3倍
+        滚轮向下，图片缩小，最小为原来的一半
+ -->
+ <img src="1.jpg" alt="">
+</body>
+<script>
+    var main = document.querySelector('img');
+    var isdbl = true;
+    main.ondblclick = function(){
+        if(isdbl){
+            main.style.transform = 'scale(2,2)';
+            isdbl = false;
+        }else{
+            main.style.transform = 'scale(1,1)';
+            isdbl = true;
+        }
+    }
+        var w = 1;
+wheelEvent(main,function(dir){
+
+        if(dir){
+            if(w<=2){
+                w+=1;
+            }
+            main.style.transform = 'scale('+w+')';
+            console.log(main.style.transform )
+        }else{
+            if(w>=1){
+                w-=.5;
+            }
+                main.style.transform = 'scale('+w+')';
+            console.log(main.style.transform )
+        }
+
+    })
+
+    function wheelEvent(el,callback){
+      //1.判断浏览器
+
+      if(el.onmousewheel ===null){
+          //非FF
+          el.onmousewheel = function(e){
+              var e = e|| window.event;
+              var dir ;
+              if(e.wheelDelta > 0){
+                  //向上
+                  dir = true;
+              }else{
+                  //向下
+                  dir = false;
+              }
+              callback(dir);
+          };
+      }else{
+          //FF
+          el.addEventListener("DOMMouseScroll",function(e){
+              var dir;
+              if(e.detail > 0){
+                  //向下
+                  dir =false ;
+              }else{
+                  //向上
+                  dir = true;
+              }
+              callback(dir);
+          },false);
+      }
+    }
+</script>
+</html>

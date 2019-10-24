@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap {
+            width: 410px;
+            height: 410px;
+            border: 1px solid #000;
+        }
+        
+        #imgWrap {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            /* border: 1px solid #000; */
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        
+        #pro {
+            width: 100%;
+            height: 50px;
+            background-color: #eee;
+            border-radius: 25px;
+            position: relative;
+        }
+        
+        #drag {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            line-height: 50px;
+            text-align: center;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .mask {
+            width: 350px;
+            height: 350px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 180px;
+            line-height: 350px;
+            text-align: center;
+            color: #fff;
+            background-color: rgba(0, 0, 0, .7);
+            border-radius: 50%;
+        }
+        
+        .green {
+            width: 0;
+            background-color: green;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="imgWrap">
+
+            <img src="1.jpg" alt="" class="img1">
+        </div>
+        <div id="pro">
+            <div class="green"></div>
+            <div id="drag">--></div>
+        </div>
+    </div>
+
+</body>
+<script src="tween.js"></script>
+<script>
+    var drag = document.getElementById('drag'),
+        green = document.querySelector('.green'),
+        img1 = document.querySelector('.img1');
+    var i = rn(0, 360);
+    var ondownX = 0,
+        onmoveX = 0,
+        lt = 0;
+
+    img1.style.transform = 'rotate(' + i + 'deg)'
+    drag.onmousedown = function(event) {
+        green.style.backgroundColor = 'green';
+        drag.style.backgroundColor = 'purple'
+        var ev = window.event || event;
+        ondownX = ev.clientX - drag.offsetLeft;
+        document.onmousemove = function() {
+            var em = window.event || event;
+            onmoveX = em.clientX;
+            lt = onmoveX - ondownX;
+            lt = lt <= 0 ? 0 : lt;
+            lt = lt >= 360 ? 360 : lt;
+            drag.style.left = lt + 'px';
+            img1.style.transform = 'rotate(' + (lt + i) + 'deg)';
+            green.style.height = 50 + 'px';
+            green.style.width = lt + 50 + 'px';
+        }
+
+    }
+    document.onmouseup = function() {
+        document.onmousemove = null;
+        var mask = document.createElement('div');
+        mask.className = 'mask';
+        imgWrap.appendChild(mask);
+        if (lt + i > 350 && lt + i < 370) {
+            mask.innerHTML = '√';
+
+        } else {
+            mask.innerHTML = '×';
+            green.style.backgroundColor = 'red';
+            var t = 0,
+                b = lt + 50,
+                c = -b,
+                d = 40;
+            var timer = setInterval(function() {
+                t++;
+                drag.style.left = Tween.Linear(t, b, c, d) + 'px';
+                green.style.width = Tween.Linear(t, b, c, d) + 50 + 'px';
+                // i = rn(0, 360);
+                // img1.style.transform = 'rotate(' + i + 'deg)';
+                if (t == d) {
+                    mask.remove();
+                    clearInterval(timer);
+
+                }
+            }, 20)
+        }
+    }
+
+    function rn(x, y) {
+        return Math.floor(Math.random() * (y - x + 1) + x);
+    }
+</script>
+
+</html>

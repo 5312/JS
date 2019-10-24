@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单事件</title>
+    <style>
+        input {
+            outline: none;
+        }
+
+        .focus {
+            background-color: lightsteelblue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1></h1>
+    用户名:<input type="text">
+</body>
+<script>
+    // 表单事件:大多用于表单验证
+    // onfocus:当表单元素获得焦点时触发
+    var inps = document.querySelector('input');
+    var msg = document.querySelector('h1');
+    // inps[0].onfocus = function(){
+    //     this.className = 'focus';
+    // }
+
+    // onblur:当表单元素失去焦点时触发
+    // inps[0].onblur = function(){
+    //     this.className = '';
+    // }
+
+    // onchange:当表单元素的value值发生改变后触发
+    // inps[0].onchange = function(){
+    //     var uname = this.value;
+    //     if(uname.length>=6 && uname.length <=10){
+    //         this.style.backgroundColor = 'lightgreen';
+    //     }else{
+    //         this.style.backgroundColor = 'red';
+    //     }
+    // }
+
+    // oninput:当表单元素的value值发生变化时触发
+    // inps[0].oninput = function(){
+    //     console.log(this.value);
+    // }
+
+    // 要求:
+    // 1.用户名只能包含数字 字母 _ 
+    // 2.只有数字或字母或符号,安全等级 低
+    // 3.包含数字和字母组合,安全等级 中
+    // 4.包含数字,字母和符号,安全等级 高
+    // 5.如果包含除了1中允许的其他字符,用户名不合法
+
+    var s1 = '0123456789';
+    var s2 = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+    var numArr = [];
+    var charArr = [];
+    for(var i=0;i<s1.length;i++){
+        numArr[i] = s1[i];
+    }
+    for(var i=0;i<s2.length;i++){
+        charArr[i] = s2[i];
+    }
+
+    inps.oninput = function(){
+        var val = this.value;
+        for(var i=0;i<val.length;i++){
+            var char = val[i];
+            if(numArr.indexOf(char) == -1){
+                
+            }
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+    <a href="https://www.baidu.com">百度一下</a>
+</body>
+<script>
+    // 在一些情况下我们不希望事件冒泡的发生,需要手动阻止
+    // 非IE下
+    // 通过事件对象的方法: stopPropagation()
+    // IE下
+    // 通过事件对象的属性: cancelBubble赋值为true
+    var wrap = document.querySelector('#wrap');
+    var body = document.body;
+    wrap.onclick = function(e){
+        var e = e || window.event;
+        // 非IE阻止事件冒泡
+        e.stopPropagation();
+        // IE阻止事件冒泡
+        e.cancelBubble = true;
+        // 兼容写法
+        if(e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            e.cancelBubble = true;
+        }
+        console.log('wrap');
+    }
+    body.onclick = function(){
+        console.log('body');
+    }
+
+    // 阻止默认事件的发生
+    document.querySelector('a').onclick = function(e){
+        var e = e || window.event;
+        // confirm提示窗,用户可以做出选择,而用户选择的结果会作为confirm的返回值,确定就是true,取消就是false
+        var res = confirm('确定要跳转到百度吗?');
+        if(!res){
+            // 阻止默认事件的发生
+            // 非IE下,通过事件对象的方法: preventDefault();
+            e.preventDefault();
+            confirm('要不然试一下谷歌?');
+            // Ie下,通过事件对象的属性: returnValue赋值为false
+            e.returnValue = false;
+
+            // 兼容写法
+            if(e.preventDefault){
+                e.preventDefault();
+            }else{
+                e.returnValue = false;
+            }
+
+            // 通过return false;也可以实现对默认事件的阻止,但是return后的所有代码都不会再执行了
+            return false;
+        }
+        
+    }
+</script>
+</html>

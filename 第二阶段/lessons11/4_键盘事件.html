@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 键盘事件通常需要直接绑定给文档document
+    // 键盘事件: onkeydown(按键按下), onkeyup(按键释放), onkeypress(字符按键按下)
+    // onkeydown onkeypress 如果持续按下并未释放,但是存在较短的触发间隔
+    // document.onkeydown = function(e){
+        // var e = e || window.event;
+        // 按键信息都存在事件对象中,通过keyCode属性读取,读取到的是number,表示键值编码
+        // 注意:在keydown事件中,无法读取小写字母的键值编码
+        // console.log('按下:'+ e.keyCode);
+        // 空格32 回车13 左37 上38 右39 下40
+    // }
+    // document.onkeyup = function(){
+    //     var e = e || window.event;
+    //     console.log('释放');
+    // }
+
+    document.onkeypress = function(e){
+        var e = e || window.event;
+        console.log(e.keyCode);
+        // 通过方法: String.fromCharCode
+        var char = String.fromCharCode(e.keyCode);
+        console.log(char);
+    }
+</script>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #jin{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+
+        }
+        #pen{
+            width: 150px;
+            height: 30px;
+            position: absolute;
+        }
+        body,html{
+            height: 100%;
+        }
+        .start{
+            width: 100%;
+            height: 100%;
+            font-size: 40px;
+            background-color: rgba(0,0,0,.3);
+            position: absolute;
+            z-index: 9;
+            text-align: center;
+            line-height: 400px;
+            color: red;
+
+        }
+        #score{
+            font-size: 30px;
+            margin: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="score"></div>
+    <div class="start">Start</div>
+    <img src="pen.png" alt="" id="pen">
+</body>
+<script src="tween.js"></script>
+<script>
+    var jin = document.getElementById('jin'),
+        pen = document.getElementById('pen'),
+        scores = document.querySelector('#score'),
+        start = document.querySelector('.start');
+var penTop = document.documentElement.clientHeight - pen.clientHeight -20;
+var jinLeft = 0;
+var score = 0;
+
+pen.style.top = penTop +'px';
+document.onkeydown = function(e){
+    var e = e || window.event;
+    var dir = e.keyCode;
+    //左
+    if(dir ==  37){
+        var m = pen.offsetLeft - 10
+        m =m<=0?0:m
+        pen.style.left = m+ 'px';
+    }
+    if(dir == 39){
+        var n = pen.offsetLeft + 10 ;
+        n = n>= document.documentElement.clientWidth - pen.clientWidth?document.documentElement.clientWidth - pen.clientWidth:n;
+        pen.style.left = n+ 'px';
+    }
+}
+start.onclick =function(){
+    start.remove();
+
+    main( rn(20,500));
+}
+
+function main(time){
+
+    var timer = setInterval(function(){
+        down();
+    },time)
+}
+//金币掉落
+function down(){
+    //创建金币
+    var jin = new Image();
+    jin.src = "jin.png";
+    jin.id = 'jin';
+    //创建在视窗范围内
+    document.documentElement.appendChild(jin);
+    //随机位置
+    var x = 0 ,y = document.documentElement.clientWidth - jin.clientWidth;
+    jinLeft =  rn(x,y);
+    jin.style.left =  jinLeft+ 'px';
+    var t = 0,
+        b =  0,
+        c= document.documentElement.clientHeight,
+        d = 200;
+    var timer = setInterval(function(){
+        t++;
+        if(t == d ){
+            clearInterval(timer);
+            var penLeft = pen.offsetLeft ;
+            var jinLefts = jin.offsetLeft;
+
+            if(jinLefts >= penLeft && jinLefts <= penLeft+150){
+                score++;
+                scores.innerHTML = score ;
+                jin.remove();
+            }
+            setTimeout(function(){
+                jin.remove();
+            },200)
+        }
+        jin.style.top = Tween.Linear(t,b,c,d)+'px';
+
+
+    },20)
+
+}
+
+function rn(x,y){
+    return Math.floor(Math.random()*(y-x+1)+x);
+}
+</script>
+</html>
