@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{user-select: none;}
+        html,body{
+            height: 100%;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: red;
+            color: #fff;
+            font-size: 50px;
+            line-height: 100px;
+            text-align: center;
+        }
+        #b1{
+            left: 40px;
+            top: 40px;
+        }
+        #b2{
+            left: 400px;
+            top: 200px;
+        }
+        #b3{
+            left: 700px;
+            top: 400px;
+        }
+        #b4{
+            left: 50px;
+            top: 400px;
+        }
+        .line1{
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            left: 0;
+            top: 200px;
+        }
+        .line2{
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            left: 0;
+            top: 300px;
+        }
+        .line3{
+            width: 1px;
+            height: 100%;
+            position: absolute;
+            left: 400px;
+            top: 0;
+        }
+        .line4{
+            width: 1px;
+            height: 100%;
+            position: absolute;
+            left: 500px;
+            top: 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="b1">1</div>
+    <div id="b2">2</div>
+    <!-- <div id="b3">3</div>
+    <div id="b4">4</div> -->
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+    <div class="line4"></div>
+</body>
+<script>
+var bs = document.getElementsByTagName('div');
+
+for(var i=0;i<bs.length;i++){
+    bs[i].index = i;
+    bs[i].onmousedown = function(e){
+        var e = e || window.event;
+        var dx = e.clientX - this.offsetLeft,
+            dy = e.clientY - this.offsetTop;
+        this.style.zIndex = 1000;
+        var _this = this;
+        var text = this.innerHTML;
+        document.onmousemove = function(e){
+            var e = e || window.event;
+            var x = e.clientX - dx,
+                y = e.clientY - dy;
+            _this.style.left = x + 'px';
+            _this.style.top = y + 'px';
+
+            // 检测碰撞
+            for(var i=0;i<bs.length;i++){
+                if(_this.index == i){
+                    continue;
+                }
+                if(crash(_this,bs[i])){
+                    bs[i].innerHTML = '碰';
+                }else{
+                    bs[i].innerHTML = bs[i].index+1;
+                }
+                // if(crash(_this,bs[i])){
+                //     //碰撞
+                //     _this.innerHTML = '碰';
+                //     break;
+                // }
+            }
+            // if(i == bs.length){
+            //     _this.innerHTML = text;
+            // }
+        }
+    }
+    bs[i].onmouseup = function(){
+        document.onmousemove = null;
+        this.style.zIndex = 1;
+    }
+}
+
+// 用来检测指定元素是否存在重叠部分（碰撞检测）
+function crash(el1,el2){
+    // 获取元素的位置信息
+    var l1 = el1.offsetLeft,
+        r1 = l1 + el1.offsetWidth,
+        t1 = el1.offsetTop,
+        b1 = t1 + el1.offsetHeight,
+
+        l2 = el2.offsetLeft,
+        r2 = l2 + el2.offsetWidth,
+        t2 = el2.offsetTop,
+        b2 = t2 + el2.offsetHeight;
+    
+    // 条件判断
+    // if(b1 > t2 && t1 < b2 && r1 > l2 && l1 < r2){
+    //     //一定碰撞
+    //     return true;
+    // }
+    // //一定不碰撞
+    // return true;
+
+    if(l1 > r2 || t1 > b2 || b1 < t2 || r1 < l2){
+        // 一定不碰撞
+        return false;
+    }
+    return true;
+}
+</script>
+</html>
