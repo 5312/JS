@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>矩形</title>
+    <style>
+        #b1,#b2{
+            width: 200px;
+            height: 200px;
+            background:red;
+            display:inline-block;
+            position:absolute;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+            user-select: none;
+            font-size: 50px;
+        }
+        #b2{
+            left: 210px;
+        }
+    </style>
+</head>
+<body>
+    <div id="b1">1</div>
+    <div id="b2">2</div>
+</body>
+<script>
+    var b1 = document.getElementById('b1'),
+        b2 = document.getElementById('b2');
+
+    main(b1,b2)
+    main(b2,b1)
+
+//鼠标点击移动
+function main(m,b2){
+    m.onmousedown = function(e){
+        var e = e||window.event;
+        var bx = e.clientX -m.offsetLeft,
+            by = e.clientY - m.offsetTop;
+        var _this = this;
+            document.onmousemove = function(q){
+                var q = q||window.event;
+                var mousex = q.clientX,
+                    mousey = q.clientY;
+                var lt = mousex -bx;
+                var ly = mousey -by;
+                    m.style.left = lt + 'px';
+                    m.style.top = ly + 'px';
+
+                    //检测碰撞
+                    for (var i = 0; i < 2; i++) {
+                        if(_this.index == i){
+                            continue;
+                        }
+                        if(crash(_this,b2)){
+                            //碰撞
+                            m.innerHTML = '碰';
+
+                        }else{
+                            m.innerHTML = i+1;
+                        }
+                    }
+
+                }
+
+        }
+    m.onmouseup = function(){
+        document.onmousemove = null;
+    }
+    // document.onmouseout = function(){
+    //     document.onmousemove = null;
+    // }
+}
+
+//用来检测指定元素是否存在重叠部分（碰撞检测）
+function crash(el1,el2){
+    //获取元素的位置信息
+    var l1 = el1.offsetLeft,
+        r1 = l1 + el1.offsetWidth,
+        t1 = el1.offsetTop,
+        b1 = t1 + el1.offsetHeight,
+
+        l2 = el2.offsetLeft,
+        r2 = l2 + el2.offsetWidth,
+        t2 = el2.offsetTop,
+        b2 = t2 + el2.offsetHeight;
+    //条件判断
+    if(b1 < t2 || r1 < l2 || t1 > b2 || l1 > r2){
+        //一定不会发生碰撞：
+        return false;
+    }
+    //一定发生了碰撞
+    return true;
+}
+</script>
+</html>

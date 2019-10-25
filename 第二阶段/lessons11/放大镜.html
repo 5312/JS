@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap{
+            display:inline-block;
+            width: 350px;
+            height: 449px;
+            position: relative;
+            cursor: move;
+        }
+        #bag{
+            display: none;/
+            position: absolute;
+            border:1px solid;
+        }
+        #small{
+            position: absolute;
+        }
+        .mask{
+            width: 250px;
+            height: 250px;
+            /* display: none; */
+            background-color: rgba(225, 225,0, 0.5);
+            position: absolute;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="mask"></div>
+        <img src="samll.jpg" id='small'>
+    </div>
+    <div id="bag"><img src="bag1.jpg" ></div>
+</body>
+<script>
+    var bag=  document.getElementById('bag'),
+        wrap= document.getElementById('wrap'),
+        small = document.getElementById('small');
+//黄色阴影
+var mask;
+//移入
+wrap.onmouseover = function(q){
+    bag.style.display = 'inline-block';
+    var q = q ||window.event;
+    var mX = q.clientX - mask.offsetLeft,
+        mY = q.clientY - mask.offsetTop;
+    wrap.onmousemove = function(e){
+                var e = e || window.event;
+                //鼠标在small里的移动坐标
+                var maskX = e.clientX ,
+                    maskY = e.clientY ,
+                    lx = maskX - mX;
+                    ly = maskY - mY;
+                    if(lx > wrap.offsetWidth){
+                        lx = wrap.offsetWidth;
+                    }
+                    if(lx <= 0){
+                        lx = 0;
+                    }
+                    if(ly<=0){
+                        ly =0;
+                    }
+                    if(ly >= wrap.offsetHeight){
+                        ly = wrap.offsetHeight;
+                    }
+                mask.style.left =lx+'px';
+                mask.style.top =ly+ 'px';
+            }
+}
+
+
+
+
+
+wrap.onmouseout = function(){
+    bag.style.display = 'none';
+    mask.remove();
+}
+</script>
+</html>

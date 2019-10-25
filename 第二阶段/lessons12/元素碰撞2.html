@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圆形</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            border-radius:50%;
+            background:red;
+            text-align: center;
+            line-height: 50px;
+            font-size:30px;
+        }
+        #b1{
+            left:200px;
+            top:20px;
+            background-color: blue;
+        }
+        #b2{
+            left:calC(50% - 100px);
+            top: calC(50% - 100px);
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="b1"></div>
+    <div id="b2"></div>
+</body>
+<script>
+    var bs = document.getElementsByTagName('div');
+    for (var i = 0; i < bs.length; i++) {
+        bs[i].onmousedown = function(e){
+            this.style.zIndex = 900;
+            var e = e|| window.event;
+            var dx = e.clientX - this.offsetLeft,
+                dy = e.clientY - this.offsetTop;
+            var _this = this;
+            document.onmousemove = function(q){
+                    var q = q||window.event;
+                    var x = q.clientX - dx ,
+                        y = q.clientY - dy;
+                        _this.style.left = x +'px';
+                        _this.style.top = y + 'px';
+
+                        if(crash(bs[0],bs[1])){
+                            _this.style.background = 'purple';
+                        }else{
+                            _this.style.background = 'greenyellow'
+                        }
+            }
+        }
+        bs[i].onmouseup = function(){
+            this.style.zIndex = 1;
+            document.onmousemove = null;
+        }
+    }
+
+    function crash(el1,el2){
+        //获取元素的位置信息
+        var x1 = el1.offsetLeft + el1.offsetWidth/2,
+            y1 = el1.offsetTop + el1.offsetHeight/2,
+            r1 =el1.offsetWidth/2,
+            x2 = el2.offsetLeft + el2.offsetWidth/2,
+            y2 = el2.offsetTop + el2.offsetHeight/2,
+            r2 =el2.offsetWidth/2;
+
+            //2. 计算两颗圆心间的距离
+            var s =Math.pow((x1-x2),2) + Math.pow((y1-y2),2);
+            if(s > Math.pow((r1+ r2),2)){
+                //一定不碰撞
+                return false;
+            }
+            return true;
+
+    }
+</script>
+</html>
