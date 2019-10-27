@@ -22,10 +22,10 @@
 
 
   //target属性：返回真正出触发当前事件的元素。
-  //存在兼容问题：IE9一下不支持，需要使用srcElement
+  //存在兼容问题：IE9以下不支持，需要使用srcElement
   wrap.onclick = function(e){
     console.log('wrap');
-    console.log('e.target ';)
+    console.log('e.target ')
   }
 
   //在一些请况下我们不希望事件冒泡的发生，需要手动阻止
@@ -47,10 +47,10 @@
 
   //阻止默认事件的发生
   document.querySelector('a').onclick = function(e){
-      vr e = e||window.event;
+      var e = e||window.event;
       //提示窗：confirm，用户可以做出选择，而用户选择的结果会作为confirm的返回值，确定就是true，取消就是false;
 
-      vr res = confirm('确定要跳转到百度嘛')
+      var res = confirm('确定要跳转到百度嘛')
       if(!res){
           //阻止默认事件的发生；
           //非IE下
@@ -60,7 +60,7 @@
           //IE下
           //通过事件对象的属性，returnValue赋值为false
           if(e.preventDefault){
-                
+
           }
     //通过return false ：也可以阻止默认事件。但是要注意return 后的左右代码都不会在执行了；
       }

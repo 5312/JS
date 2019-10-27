@@ -1,86 +1,125 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        #wrap{
-            display:inline-block;
+        #lbox{
             width: 350px;
-            height: 449px;
+            height: 450px;
+            border: 5px solid #000;
             position: relative;
+        }
+        #lbox:hover{
             cursor: move;
         }
-        #bag{
-            display: none;/
-            position: absolute;
-            border:1px solid;
+        #limg{
+            width: 100%;
+            height: 100%;
         }
-        #small{
+        #list{
+            width: 350px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: absolute;
+            left: 8px;
+            top: 490px;
+        }
+        #list>img{
+            width: 50px;
+            height: 64px;
+        }
+        #slider{
+            width: 240px;
+            height: 240px;
+            background-color: rgba(255, 255, 0, 0.3);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+        #rbox{
+            width: 548.5px;
+            height: 547px;
+            border: 5px solid #000;
+            position: absolute;
+            left: 400px;
+            top: 8px;
+            overflow: hidden;
+            display: none;
+        }
+        #rimg{
+            width: 800px;
+            height: 1026px;
             position: absolute;
         }
-        .mask{
-            width: 250px;
-            height: 250px;
-            /* display: none; */
-            background-color: rgba(225, 225,0, 0.5);
-            position: absolute;
-            z-index: 2;
+        .select{
+            border: 2px solid red;
         }
     </style>
 </head>
 <body>
-    <div id="wrap">
-        <div class="mask"></div>
-        <img src="samll.jpg" id='small'>
+    <div id="lbox">
+        <img src="min1.jpg" id="limg">
+        <div id="slider"></div>5
     </div>
-    <div id="bag"><img src="bag1.jpg" ></div>
+    <div id="list">
+        <img src="icon1.jpg" class="select">
+        <img src="icon2.jpg">
+        <img src="icon3.jpg">
+        <img src="icon4.jpg">
+        <img src="icon5.jpg">
+    </div>
+    <div id="rbox">
+        <img src="max1.jpg" id="rimg">
+    </div>
 </body>
 <script>
-    var bag=  document.getElementById('bag'),
-        wrap= document.getElementById('wrap'),
-        small = document.getElementById('small');
-//黄色阴影
-var mask;
-//移入
-wrap.onmouseover = function(q){
-    bag.style.display = 'inline-block';
-    var q = q ||window.event;
-    var mX = q.clientX - mask.offsetLeft,
-        mY = q.clientY - mask.offsetTop;
-    wrap.onmousemove = function(e){
-                var e = e || window.event;
-                //鼠标在small里的移动坐标
-                var maskX = e.clientX ,
-                    maskY = e.clientY ,
-                    lx = maskX - mX;
-                    ly = maskY - mY;
-                    if(lx > wrap.offsetWidth){
-                        lx = wrap.offsetWidth;
-                    }
-                    if(lx <= 0){
-                        lx = 0;
-                    }
-                    if(ly<=0){
-                        ly =0;
-                    }
-                    if(ly >= wrap.offsetHeight){
-                        ly = wrap.offsetHeight;
-                    }
-                mask.style.left =lx+'px';
-                mask.style.top =ly+ 'px';
-            }
+var lbox = document.querySelector('#lbox'),
+    slider = document.querySelector('#slider'),
+    rbox = document.querySelector('#rbox'),
+    rimg = document.querySelector('#rimg');
+
+
+// 鼠标移入左侧，显示放大镜和右边大图，移出消失
+lbox.onmouseover = function(){
+    slider.style.display = 'block';
+    rbox.style.display = 'block';
+}
+lbox.onmouseout = function(){
+    slider.style.display = 'none';
+    rbox.style.display = 'none';
 }
 
+// 滑块跟随鼠标移动
+lbox.onmousemove = function(e){
+    var e = e || window.event;
+    var x = e.clientX - lbox.offsetLeft - 5,
+        y = e.clientY - lbox.offsetTop - 5;
+    x -= slider.offsetWidth/2;
+    y -= slider.offsetHeight/2;
+    // 左侧最大移动距离
+    var maxlw = lbox.clientWidth - slider.offsetWidth,
+    maxlh = lbox.clientHeight - slider.offsetHeight;
+    if(x < 0){x = 0;}//左边界
+    if(x > maxlw){x = maxlw;}//右边界
+    if(y < 0){y = 0;}//上边界
+    if(y > maxlh){y = maxlh;}//下边界
+    slider.style.left = x + 'px';
+    slider.style.top = y + 'px';
 
+    // 右侧最大移动距离
+    var maxrw = rimg.offsetWidth - rbox.clientWidth,
+        maxrh = rimg.offsetHeight - rbox.clientHeight;
+    // 计算比例，左边移动1px，右边应该移动的距离
+    var scaleX = maxrw / maxlw,
+        scaleY = maxrh / maxlh;
+    rimg.style.left = - slider.offsetLeft * scaleX + 'px';
+    rimg.style.top = - slider.offsetTop * scaleY + 'px';
 
-
-
-wrap.onmouseout = function(){
-    bag.style.display = 'none';
-    mask.remove();
 }
 </script>
 </html>
