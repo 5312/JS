@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        #bg {
+            width: 343px;
+            height: 480px;
+            background: url(./img/bg.jpg);
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #sEl {
+            text-align: center;
+            margin: 50px 0 0 0;
+            font-size: 0;
+            position: relative;
+            z-index: 1000;
+        }
+
+        #startBtn {
+            position: absolute;
+            left: calc(50% - 42.5px);
+            top: 300px;
+        }
+
+        /* 开场动画 */
+        #head {
+            width: 236px;
+            height: 77px;
+            position: absolute;
+            top: 140px;
+            left: calc(50% - 118px);
+            animation: head 1s infinite alternate
+        }
+
+        #headBird {
+            width: 40px;
+            height: 26px;
+            position: absolute;
+            right: 0;
+            top: calc(50% - 13px);
+            background: url(./img/bird0.png);
+            animation: fly 1s infinite;
+        }
+
+        @keyframes head {
+            0% {
+                top: 140px;
+            }
+
+            80% {
+                top: 180px;
+            }
+
+            100% {
+                top: 185px;
+            }
+        }
+
+        #banner {
+            width: 200%;
+            height: 14px;
+            position: absolute;
+            font-size: 0;
+            bottom: 43px;
+            animation: banner 2s linear infinite;
+        }
+
+        @keyframes banner {
+            from {
+                left: 0;
+            }
+
+            to {
+                left: -100%;
+            }
+        }
+
+        @keyframes fly {
+            from {
+                background: url(./img/bird0.png);
+            }
+
+            to {
+                background: url(./img/bird1.png);
+            }
+        }
+
+        .bird {
+            width: 40px;
+            height: 30px;
+            position: absolute;
+            left: 40px;
+            top: 0;
+        }
+        /* 管道相关 */
+        .pipe{
+            width: 62px;
+            height: 423px;
+            position: absolute;
+            left: 350px;
+            top: 0;
+        }
+        .up{
+            width: 100%;
+            font-size: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+        .down{
+            width: 100%;
+            font-size: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .up_mod,.down_mod{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg">
+        <div id="sEl">
+            <img src="./img/0.jpg">
+            <img src="./img/0.jpg">
+        </div>
+        <img src="./img/start.jpg" id="startBtn">
+        <div id="head">
+            <img src="./img/head.jpg">
+            <div id="headBird"></div>
+        </div>
+        <div id="banner">
+            <img src="./img/banner.jpg">
+            <img src="./img/banner.jpg">
+        </div>
+
+        <!-- <div class="pipe">
+
+            <div class = 'up'>
+                <img src="./img/up_mod.png" class="up_mod">
+                <img src="./img/up_pipe.png" >
+
+            </div>
+
+            <div class="down">
+                <img src="./img/down_pipe.png" alt="">
+                <img src="./img/down_mod.png" class="down_mod">
+            </div>
+        </div> -->
+    </div>
+</body>
+<script>
+    // 获取需要操作的元素
+    // 得分元素
+    var ss = document.querySelectorAll('#sEl>img');
+    // 开场动画的获取
+    var head = document.querySelector('#head');
+    // 开场按钮
+    var sbtn = document.querySelector('#startBtn');
+    // 背景容器
+    var bg = document.querySelector('#bg');
+    // 路
+    var banner = document.querySelector('#banner');
+    //相关变量
+    var pipeTime = null;//用于持续创建管道的定时器
+    var uphead = 49;//小鸟上升一次的高度
+    var blank = 60 ; //管道间的间隙
+
+
+    // 游戏逻辑都从点击开始按钮开始
+    sbtn.onclick = function () {
+        // 关闭动画
+        head.remove();
+        // 开始按钮消失
+        this.remove();
+        // 小鸟出现
+        showbird();
+        showpipes()
+    }
+
+    // 小鸟相关
+    function showbird() {
+        // 创建小鸟
+        var bird = new Image();
+        //添加
+        bg.appendChild(bird);
+        //添加路径
+        bird.src = './img/down_bird0.png';
+        //添加class
+        bird.className = 'bird';
+        // 小鸟下落速度
+        bird.speed = 0.5;
+        //持续下落的定时器
+        bird.down = setInterval(function () {
+
+            var t = bird.offsetTop + bird.speed;
+            //下落的最大高度
+            var max = banner.offsetTop - bird.offsetHeight;
+
+            t = t<=0?0:t;
+            //碰撞检测
+            var pipes = document.querySelectorAll('.up,.down');
+            for (var i = 0; i < pipes.length; i++) {
+                if(crash(bird,pipes[i])){
+                    //游戏结束，关闭动画
+
+                    clearInterval(bird.down);
+                    //关闭动画
+                    banner.style.animation = 'none';
+                    clearInterval(pipeTimer);
+                }
+            }
+
+
+
+            if (t >= max) {
+                t = max;
+                // 游戏结束
+                clearInterval(bird.down);
+                //关闭动画
+                banner.style.animation = 'none';
+                clearInterval(pipeTimer);
+            }
+            //top赋值
+            bird.style.top = t + 'px';
+            //速度增加
+            bird.speed += 0.5;
+            //鸟头上下判断
+            if(bird.speed >= 0){
+                bird.src = './img/down_bird0.png';
+            }else{
+                bird.src = './img/up_bird0.png';
+            }
+            //限制最大速度
+            if (bird.speed > 10) {
+                bird.speed = 10;
+            }
+        }, 20)
+
+        // 点击上升
+        setTimeout(function () {
+            bg.onclick = function () {
+                bird.speed = -7;
+            }
+        }, 20)
+        // 按空格上升
+        setTimeout(function () {
+            document.onkeydown = function (e) {
+                var e = e || window.event;
+                if (e.keyCode == 32) {
+                    bird.speed = -7;
+                }
+            }
+        }, 20)
+    }
+
+    //管道相关
+    function showpipes(){
+        pipeTimer = setInterval(function(){
+            //创建管道
+            //管道容器
+            var pipewrap = document.createElement('div');
+            pipewrap.className = 'pipe';
+            bg.appendChild(pipewrap);
+            //管道
+            pipewrap.move = setInterval(function(){
+                var l = pipewrap.offsetLeft - 5;
+                pipewrap.style.left = l + 'px'
+                if(l <= -70){
+                    clearInterval(pipewrap.move);
+                    pipewrap.remove();
+                }
+            },20)
+            //上管道部分
+            var upwrap = document.createElement('div');
+            upwrap.className = 'up';
+            pipewrap.appendChild(upwrap);
+            var upmod = new Image();
+            upmod.className = 'up_mod';
+            upmod.src = './img/up_mod.png';
+            //上管道随机高度
+            var h = rn(0,153);
+            upmod.height = h;
+            upwrap.appendChild(upmod);
+            var uppipe = new Image();
+            uppipe.src =' ./img/up_pipe.png';
+            upwrap.appendChild(uppipe);
+            //下
+            var downwrap = document.createElement('div');
+            downwrap.className =  'down';
+            pipewrap.appendChild(downwrap);
+            var downpipe = new Image();
+            downpipe.src = './img/down_pipe.png';
+            downwrap.appendChild(downpipe);
+            var downmod = new Image();
+            downmod.className = 'down_mod';
+            downmod.src = './img/down_mod.png';
+            downmod.height = 423 -150 -60 - 60 -h;
+            downwrap.appendChild(downmod)
+
+        },2000)
+    }
+
+    function rn(x,y){
+        return Math.round(Math.random()*(y-x)+x);
+    }
+
+    function crash(el1,el2){
+        var l1 = el1.offsetLeft ,
+            r1 = l1 + el1.offsetWidth,
+            t1 = el1.offsetTop,
+            b1 = t1 + el1.offsetHeight,
+
+            l2 = el2.offsetLeft ,
+            r2 = l2 + el2.offsetWidth,
+            t2 = el2.offsetTop,
+            b2 = t2 + el2.offsetHeight;
+            console.log(l1,r1,t1,b1)
+        if(l1 > r2 || r1< l2 || t1 > b2 || b1 < t2){
+            return false;
+        }
+        return true;
+
+    }
+
+    //暴力关闭定时器
+    function clearTimer(){
+        var timer = setInterval();
+        for (var i = 0; i <=timer ; i++) {
+            clearTimer(i)
+        }
+    }
+</script>
+
+</html>

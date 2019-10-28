@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0;user-select: none;}
+        #bg{width: 343px;height: 480px;background:url(./img/bg.jpg);margin:0 auto;overflow: hidden;position: relative;}
+        #sEl{text-align: center;margin-top:50px;}
+        #startBtn{position: absolute;left: calc(50% - 42.5px);top: 300px}
+        /* 开闯 */
+        #head{position :absolute;top:140px;left:calce(50% - 128px)};
+        #headBird{width: 40px;}
+
+        #banner{
+
+            width: 200%;
+            height: 14px;
+            position: absolute;
+            font-size: 0;
+            bottom: 42px;
+            animation: banner 3s liner infinte;
+        }
+        @@keyframes banner {
+            from{
+                left :0;
+            }to{
+                left :-100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="bg">
+        <div id="sEl">
+            <img src="./img/0.jpg" id="decade">
+            <img src="./img/0.jpg" id="unit">
+        </div>
+        <img src="./img/start.jpg" id="startBtn">
+        <div id="head">
+            <img src="./img/head.jpg" id="">
+            <div id="headBird"></div>
+        </div>
+        <div id="banner">
+            <img src="./img/" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    var ss = document.querySelectorAll('#wsEl>img');
+
+
+//路
+var banner = document.querySelector('#banner');
+
+
+
+//游戏逻辑都从点击开始按钮开始
+sbtn.onclick = function(){
+    //关闭动画
+    head.remove();
+    this.remove();
+    this.remove();
+}
+
+//小鸟相关
+function showbird(){
+    var bird = new Image();
+    bg.appendChild(bird);
+    bird.src = './img/down_bird0.png';
+    bird.className = 'bird';
+    //下落
+    bird.speed = 0.5;
+    bird.down = setInterval(function(){
+        var t = bird.offsetTop + bird.speed;
+        var max = banner.offsetTop - bird.height;
+        if(t >= max){
+            t = max ;
+            //游戏结束
+            clearInterval(bird.down)
+            banner.style.animation = '';
+        }
+        bird.style.top =  t + 'px';
+        bird.speen += 0.5s;
+        if(bird.speed >= 0){
+            bird.src = './img/down_bird1.png';
+
+        }else{
+            bird.src = './img/down_bird0.png';
+        }
+        if(bird.speed > 7){
+            bird.speed  = 7;
+        }
+
+    },20)
+    bg.onclick = function(){
+        //up
+        bird.speed = -7;
+
+    }
+
+}
+</script>
+</html>
