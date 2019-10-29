@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id='prev'>下一页</button>
+    <button id='jump'>跳转</button>
+    <button id='go'>GO</button>
+</body>
+<script>
+    //window.history 属性主要包含了浏览器历史记录相关信息，通常同于移动端页面的切换与返回。
+    //lenght
+    //back(); 历史记录的前一个
+    //forwrak();前往历史记录的下一个
+    //go();number;正数往后跳，负数往前条，
+
+
+    var bs = document.querySelectorAll('button');
+    bs[0].onclick = function(){
+        //前往历史记录的下一个
+        window.history.forward();
+    }
+</script>
+</html>

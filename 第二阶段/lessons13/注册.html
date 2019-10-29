@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+</head>
+<body>
+    账号：<input type="text">
+    密码：<input type="text">
+    <input type="button" value="注册">
+</body>
+<script>
+    var inps = document.querySelectorAll('input');
+
+    inps[2].onclick =function(){
+        var keyss = inps[0].value;
+        var pass = inps[1].value;
+
+        localStorage.setItem('keys',keyss)
+        localStorage.setItem('passs',pass)
+        location.replace('file:///D:/JS/%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/lessons13/%E7%99%BB%E5%BD%95.html')
+    }
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    //window.location 属性主要存储了当前页面地址栏相关的信息
+    //location 对象将地址栏信息进行了切片截取，方便我们操作
+
+    //location.href:返回当前地址栏完整的url ;
+    console.log(location.href)
+
+    //location .host:返回完整的主机地址信息（域名以及端口号）
+
+    //location.hostname:返回主机名
+    //location.port:返回端口号
+
+    //location.protocol:返回当前url对应的协议名称
+
+    //location.path:返回当前文件在主机上的地址信息
+
+    //location.herf是一个读写属性，可以为其赋予其他url来实现页面的跳转，也是js最常用的一种页面跳转方式,跳转方式打开当前窗口加载url
+    location.herf = ''
+
+    //location.assign()方法也可以实现页面的跳转。
+    location.assign('http://www.baidu.com')
+
+    //上面两种跳转功能相同，没什么区别
+
+    //location.replace()将当前url替换成指定url。与上面两种方法的区别在与不会产生新的历史记录。
+
+    //重载当前url
+    //可以传入可选参数，如果添加参数true，那么url重载将必定从服务器重新加载。如果没有填写参数，那么url重载可能从浏览器缓存中重载。
+    location.reload();
+</script>
+</html>

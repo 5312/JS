@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    //window.navigator属性包含了当前浏览器的相关信息
+    //通常使用此属性进行浏览器类型及版本的辨别，成为浏览器嗅探
+    //主要通过navigator对象的userAgent属性包含浏览器名称的相关信息去判断浏览器类型
+
+    var msg = navigator.userAgent;
+    if(msg.indexOf('Firefox') > -1){
+        alert('火狐')
+    }else if(msg.indexOf('OPR') > -1){
+        alert('欧鹏')
+    }else if(msg.indexOf('MSIE') > -1){
+        alert('IE');
+    }else if(msg.indexOf('Chrome') > -1){
+        alert('chrome')
+    }
+}
+</script>
+</html>

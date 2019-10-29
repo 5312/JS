@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+</head>
+<body>
+    账号：<input type="text">
+    密码：<input type="text">
+    <input type="button" value="登录">
+</body>
+<script>
+    var inps = document.querySelectorAll('input');
+
+    inps[2].onclick = function(){
+        var keyss = inps[0].value;
+        var passes = inps[1].value;
+        console.log(localStorage.keys)
+        console.log(localStorage.passs)
+        //读取
+        if(localStorage.keys == keyss && localStorage.passs == passes){
+            alert('登录成功')
+        }
+    }
+
+</script>
+</html>
