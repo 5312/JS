@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>窗口</title>
+    <style>
+        span{
+            color:blue;
+            text-decoration:underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a href="http://www.baidu.com" target="_blank">百度</a>
+    <span herf="http://www.baidu.com" target='_blank' >百度</span>
+    <span>关闭</span>
+</body>
+<script>
+    //通过BOM提供的属性方法来操作浏览器
+    //BOM操作的核心是window对象
+    //window.open()方法：用于打开窗口加载指定URL;
+    //参数可以有三个；都是可选参数
+    //参数一：string类型，表示要加载的url,可以是本地路径，也可以是网络地址。
+    //参数二：string类型，表示打开窗口的方式。'_self'表示在当前窗口加载url; '_blank' 表示在新窗口加载url；默认值 '_blank';
+    //参数三：string类型：表示打开新窗口的大小以及位置信息 （以key=value的形式去设置。多个属性间用‘，’隔开，不允许出现空格）
+    /**
+    window.open('http://www.baidu.com','_blank','width=800,height=500px,top=100px,left=400px');
+    **/
+    //window.close():用于关闭开启的窗口
+    var spana = document.querySelectorAll('span');
+
+    spana[0].onclick = function(){
+        //获取行间herf的值
+        spana[0].herf = spana[0].getAttribute('herf');
+        //获取行间target属性的值
+        var type = spana[0].getAttribute('target');
+        type = type?type:'_self';
+
+        //进行跳转
+        window.open(spana[0].herf,type)
+    }
+</script>
+</html>

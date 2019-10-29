@@ -35,6 +35,16 @@
                 left: -100%;
             }
         }
+        .pipe{
+            width: 62px;
+            height: 423px;
+            position: absolute;
+            top: 0;
+            /* left: 350px; */
+        }
+        .up{
+            
+        }
     </style>
 </head>
 <body>
@@ -47,6 +57,16 @@
         <div id="banner">
             <img src="./img/banner.jpg" >
             <img src="./img/banner.jpg" >
+        </div>
+        <div class="pipe">
+            <div class="up">
+                <img src="./img/up_mod.png" class="up_mod">
+                <img src="./img/up_pipe.png" alt="">
+            </div>
+            <div class="dowm">
+                <img src="./img/down_pipe.png" alt="">
+                <img src="./img/down_mod.png" class="down_mod">
+            </div>
         </div>
     </div>
 </body>
@@ -107,7 +127,11 @@
 
     //管道
     function showpipes(){
+        pipesTime = setInterval(function(){
+            var pipewrpa = document.createElement('div');
+            pipewrap;
 
+        },2000)
     }
 
 </script>
