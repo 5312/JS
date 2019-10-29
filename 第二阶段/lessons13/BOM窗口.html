@@ -16,7 +16,7 @@
 <body>
     <a href="http://www.baidu.com" target="_blank">百度</a>
     <span herf="http://www.baidu.com" target='_blank' >百度</span>
-    <span>关闭</span>
+    <button id="btn">关闭新窗口</button>
 </body>
 <script>
     //通过BOM提供的属性方法来操作浏览器
@@ -30,6 +30,15 @@
     window.open('http://www.baidu.com','_blank','width=800,height=500px,top=100px,left=400px');
     **/
     //window.close():用于关闭开启的窗口
+    var mywindow;
+    var btn = document.querySelector('#btn');
+    btn.onclick = function(){
+        mywindow.close();
+    }
+
+
+
+
     var spana = document.querySelectorAll('span');
 
     spana[0].onclick = function(){
@@ -40,7 +49,7 @@
         type = type?type:'_self';
 
         //进行跳转
-        window.open(spana[0].herf,type)
+        myWindow = window.open(spana[0].herf,type,'width=800,height=500px,top=100px,left=400px');
     }
 </script>
 </html>
