@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>像素鸟</title>
+    <style>
+        *{user-select: none;margin: 0;padding:0;}
+        #bg{width: 320px;height: 480px;background:url(./img/bg.jpg);margin:0 auto;position: relative;overflow: hidden}
+        #start{position: absolute;top: 320px;left: 116px;}
+        #heads{position: absolute;top: 170px;left: 50px;animation: head 1s infinite alternate}
+        #bird0{position: absolute;top: 10px;right: 0;}
+        #banner{width: 216%; font-size: 0;position: absolute;bottom: 43px;left: 0;animation: banner 2s linear infinite;}
+        .bird{position: absolute;left: 40px;}
+        @keyframes head {
+            0% {
+                top: 140px;
+            }
+
+            80% {
+                top: 170px;
+            }
+
+            100% {
+                top: 180px;
+            }
+        }
+        @keyframes banner {
+            from {
+                left: 0;
+            }
+
+            to {
+                left: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="bg">
+        <div id="heads">
+            <img src="./img/head.jpg" id="head">
+            <img src="./img/bird0.png" id="bird0">
+        </div>
+        <img src="./img/start.jpg" id="start">
+        <div id="banner">
+            <img src="./img/banner.jpg" >
+            <img src="./img/banner.jpg" >
+        </div>
+    </div>
+</body>
+<script>
+    var start = document.getElementById('start'),
+        heads = document.getElementById('heads')
+
+    var bird;
+
+    start.onclick = function(){
+        //开始按钮和flash消失
+        start.remove();
+        heads.remove();
+        birdCreate();
+    }
+
+    function birdCreate(){
+        //创建鸟
+        bird = new Image();
+        bird.src = './img/down_bird0.png';
+        bird.className = 'bird'
+        bg.appendChild(bird);
+        //下落速度
+        bird.speen = 0.5;
+
+        bird.down = setInterval(function(){
+
+            var t = bird.offsetTop + bird.speen;
+            var max = banner.offsetTop - bird.offsetHeight ;
+            t = t>=max ? max :t;
+
+            if(t >= max ){
+                t = max ;
+                clearInterval(bird.down);
+                banner.style.animation = 'none'
+            }
+            bird.style.top = t +'px';
+            bird.speen+=0.5;
+            clickup();
+
+            if(bird.speen >=0){
+                bird.src = './img/down_bird0.png';
+            }else{
+                bird.src = './img/up_bird0.png'
+            }
+
+        },20)
+
+    }
+
+    //点击上升
+    function clickup() {
+        document.onclick = function(){
+            bird.speen = -7 ;
+
+        }
+    }
+
+    //管道
+    function showpipes(){
+
+    }
+
+</script>
+</html>

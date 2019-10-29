@@ -227,9 +227,6 @@
                     clearInterval(pipeTimer);
                 }
             }
-
-
-
             if (t >= max) {
                 t = max;
                 // 游戏结束
@@ -252,6 +249,8 @@
             if (bird.speed > 10) {
                 bird.speed = 10;
             }
+            //得分
+            getScore()
         }, 20)
 
         // 点击上升
@@ -277,6 +276,9 @@
             //创建管道
             //管道容器
             var pipewrap = document.createElement('div');
+            //防止同一管道多次加分
+            pipewrap.lock = false;
+
             pipewrap.className = 'pipe';
             bg.appendChild(pipewrap);
             //管道
@@ -328,7 +330,7 @@
             t1 = el1.offsetTop,
             b1 = t1 + el1.offsetHeight,
 
-            l2 = el2.offsetLeft ,
+            l2 = el2.parentNode.offsetLeft ,
             r2 = l2 + el2.offsetWidth,
             t2 = el2.offsetTop,
             b2 = t2 + el2.offsetHeight;
@@ -346,6 +348,40 @@
         for (var i = 0; i <=timer ; i++) {
             clearTimer(i)
         }
+    }
+
+    //得分相关
+    function getScore(){
+        //判断得分
+        //小鸟的最左边的位置
+        var birdLeft = this.offsetLeft;
+        //获取管道的 右边位置
+        var pipes = document.querySelectorAll('.pipe');
+        //用每一根管道的最右边位置与小鸟的左边位置
+        for(var i = 0 ; i < pipes.lenght;i++){
+            //获取管道的右边位置
+        var p = pipes[i];
+            var pipeRight = p.offsetLeft = p.offsetWidth;
+            //表示当前管道已经加过分了
+            if(p.lock){
+                continue;
+            }
+            if(birdLeft > pipeRight ){
+                //得分
+                score++;
+                console.log(score);
+                p.lock= true;
+            }
+        }
+    }
+
+    function showScore(s){
+        //=获取得分的十位数字
+        var one  = parseInt(s/10);
+        //个位
+        var two = s%10;
+        ss[0].src = './img/'+one+'.jpg';
+        ss[1].src = './img/'+two+'.jpg';
     }
 </script>
 
