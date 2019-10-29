@@ -43,7 +43,7 @@
             position: absolute;
             top: 140px;
             left: calc(50% - 118px);
-            animation: head 1s infinite alternate
+            animation: head 1s infinite alternate;
         }
 
         #headBird {
@@ -132,6 +132,12 @@
         .up_mod,.down_mod{
             width: 100%;
         }
+        .over{
+            position: absolute;
+            top :calc(50% -20px);
+            left: calc(50% - 110.5px);
+            animation: head 1s infinite alternate;
+        }
     </style>
 </head>
 
@@ -182,7 +188,7 @@
     var pipeTime = null;//用于持续创建管道的定时器
     var uphead = 49;//小鸟上升一次的高度
     var blank = 60 ; //管道间的间隙
-
+    var score = 0;
 
     // 游戏逻辑都从点击开始按钮开始
     sbtn.onclick = function () {
@@ -225,6 +231,7 @@
                     //关闭动画
                     banner.style.animation = 'none';
                     clearInterval(pipeTimer);
+                    over();
                 }
             }
             if (t >= max) {
@@ -234,6 +241,7 @@
                 //关闭动画
                 banner.style.animation = 'none';
                 clearInterval(pipeTimer);
+                over();
             }
             //top赋值
             bird.style.top = t + 'px';
@@ -334,7 +342,7 @@
             r2 = l2 + el2.offsetWidth,
             t2 = el2.offsetTop,
             b2 = t2 + el2.offsetHeight;
-            console.log(l1,r1,t1,b1)
+
         if(l1 > r2 || r1< l2 || t1 > b2 || b1 < t2){
             return false;
         }
@@ -369,7 +377,8 @@
             if(birdLeft > pipeRight ){
                 //得分
                 score++;
-                console.log(score);
+                showScore(score)
+
                 p.lock= true;
             }
         }
@@ -383,6 +392,13 @@
         ss[0].src = './img/'+one+'.jpg';
         ss[1].src = './img/'+two+'.jpg';
     }
+
+    function over(){
+        var over = new Image();
+        bg.appendChild(over);
+        over.src = './img/game_over.jpg';
+        over.className  = 'over'
+        }
 </script>
 
 </html>
