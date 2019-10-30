@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <style>
+        .wrap{
+            width: 250px;
+            height: 240px;
+            margin:0 auto;
+            line-height: 40px;
+
+            font-size: 20px;
+            border:1px solid;
+            border-radius: 4px;
+        }
+        input{
+            width: 90%;
+            display:block;
+            margin:0 auto;
+        }
+        .btn{
+            background:green;
+            margin-top: 30px;
+            font-size: 22px;
+        }
+        span{
+            margin-left: 10px;
+        }
+        p{
+            color: blue;
+            font-size: 18px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <span>账号：</span><input type="text">
+        <span>密码：</span><input type="password">
+        <input type="button" value="登录" class='btn'>
+        <p>创建一个新的账户</p>
+    </div>
+
+</body>
+<script>
+    var inps = document.querySelectorAll('input');
+    var ap = document.querySelector('p');
+
+    //登录按钮
+    inps[2].onclick = function(){
+        //登录输入的账号密码
+        var n = inps[0].value;
+        var p= inps[1].value;
+
+        //获取以注册的账号密码
+        var loca = localStorage.getItem(n)
+        console.log(loca)
+        if(loca == p){
+            alert('登录成功')
+            window.close();
+        }else{
+            alert('密码错误')
+        }
+    }
+        
+    //注册按钮
+    ap.onclick = function(){
+        window.open('file:///D:/JS/%E9%A1%B9%E7%9B%AE/%E5%83%8F%E7%B4%A0%E9%B8%9F/img/signOut.html','_self');
+    }
+</script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+    <style>
+        .wrap{
+            width: 250px;
+            height: 240px;
+            margin:0 auto;
+            line-height: 40px;
+
+            font-size: 20px;
+            border:1px solid;
+            border-radius: 4px;
+        }
+        input{
+            width: 90%;
+            display:block;
+            margin:0 auto;
+        }
+        .btn{
+            background:green;
+            margin-top: 30px;
+            font-size: 22px;
+        }
+        span{
+            margin-left: 10px;
+        }
+        p{
+            color: blue;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <span>账号：</span><input type="text">
+        <span>密码：</span><input type="text">
+        <input type="button" value="注册" class='btn'>
+    </div>
+
+</body>
+<script>
+    var inps = document.querySelectorAll('input');
+
+
+    inps[2].onclick = function(){
+        var name =  inps[0].value;
+        for (var i = 0; i < localStorage.length; i++) {
+            if(name == localStorage.key(i)){
+                alert('该账户以存在')
+                return;
+            }
+        }
+        var pass = inps[1].value;
+        localStorage.setItem(name,pass);
+
+        // console.log(localStorage.name)
+        alert('恭喜你，注册成功')
+        location.replace('file:///D:/JS/%E9%A1%B9%E7%9B%AE/%E5%83%8F%E7%B4%A0%E9%B8%9F/img/signIn.html');
+    }
+</script>
+</html>

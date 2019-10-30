@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -125,6 +125,20 @@
             animation: head 1s infinite alternate;
             /* infinite无限循环    alternate来回 */
         }
+        .messag{
+            position: absolute;
+            z-index: 999;
+            top: 215px;
+            left: 40px;
+        }
+        .msa{
+            position: absolute;
+            z-index: 9999;
+            top: 296px;
+            left: 254px;
+            font-size: 30px;
+            text-align:center;
+        }
     </style>
 </head>
 <body>
@@ -177,7 +191,8 @@
     var bird = new Image();
     var sEls = document.querySelectorAll('#sEl>img');
     var num = 0;
-
+    var mywindow;
+    var s= 0;
     // 游戏开始从点击开始按钮开始
     sbtn.onclick = function(){
         // 关闭动画
@@ -189,10 +204,17 @@
         // 管道出现
         showpipes();
     }
+    signIn();
+    //登录
+    function signIn(){
+        mywindow = window.open('file:///D:/JS/%E9%A1%B9%E7%9B%AE/%E5%83%8F%E7%B4%A0%E9%B8%9F/img/signIn.html','_blank','width=800,height=500px,top=100px,left=400px');
+    }
+
+
     // 小鸟出现函数
     function showbird(){
         // 创建小鸟
-
+        var bird = new Image();
         bg.appendChild(bird);
         bird.src = 'down_bird0.png';
         bird.className = 'bird';
@@ -218,6 +240,7 @@
                     banner.style.animation = 'none';
                     clearTimer();
                     gameOver();
+
                 }
             }
 
@@ -230,7 +253,7 @@
                 banner.style.animationPlayState = 'paused';
                 gameOver();
                 clearTimer();
-
+                message();
             }
             // 小鸟的下落速度累加
             bird.speed += 0.5;
@@ -373,6 +396,7 @@
             if(p.lock){continue}//当前管道已经加过分了,不再执行以下代码
             if(bird.offsetLeft>pipeRight){
                 score++;
+
                 showScore(score);
                 // console.log(score);
                 p.lock = true;
@@ -394,5 +418,32 @@
         over.src = 'game_over.jpg';
         over.className = 'over';
     }
+
+    //积分
+    function message(){
+        var message = new Image();
+        message.src = 'message.jpg';
+        message.className = 'messag';
+        bg.appendChild(message);
+        var msa = document.createElement('div');
+        msa.className = 'msa';
+
+        for (var i = 0; i < localStorage.length; i++) {
+               var keys = localStorage.key(i);
+
+            if(!localStorage.getItem('max')) {
+                 localStorage.setItem('max',0);
+            }
+               var max= localStorage.getItem(keys);
+
+               if(max < score){
+                   localStorage.setItem('max',score);
+               }
+        }
+        var t = localStorage.getItem('max');
+        msa.innerHTML =  t;
+        bg.appendChild(msa);
+    }
+
 </script>
 </html>
