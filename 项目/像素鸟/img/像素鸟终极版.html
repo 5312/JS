@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+        #bg{
+            width: 343px;
+            height: 480px;
+            background: url(bg.jpg);
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        #sEl{
+            text-align: center;
+            margin-top:50px ;
+            font-size: 0;
+            position: relative;
+            z-index: 99;
+        }
+        #startBtn{
+            position: absolute;
+            left: calc(50% - 42.5px);
+            top: 300px;
+        }
+        #head{
+            width: 236px;
+            height: 77px;
+            position: absolute;
+            top: 140px;
+            left: calc(50% - 118px);
+            animation: head 1s infinite alternate;
+
+        }
+        #head>img:nth-child(2){
+            position: absolute;
+            right: 0;
+            top: calc(50% -13px);
+        }
+        #headBird{
+            width: 40px;
+            height: 26px;
+            background: url(bird0.png);
+            position: absolute;
+            top: calc(50% - 13px);
+            right: 0;
+            animation: fly 1s infinite;
+        }
+        @keyframes head{
+            0%{
+                top: 140px;
+            }
+            /* 80%{
+                top: 180px;
+            } */
+            100%{
+                top: 180px;
+            }
+        }
+        #banner{
+            width: 200%;
+            height: 14px;
+            position: absolute;
+            bottom: 43px;
+            font-size: 0;
+            animation: banner 2s linear infinite;
+        }
+        @keyframes banner{
+            from{
+                left: 0;
+            }to{
+                left: -100%;
+            }
+        }
+        @keyframes fly{
+            from{
+                background: url(bird0.png);
+            }to{
+                background: url(bird1.png);
+            }
+        }
+        .bird{
+            width: 40px;
+            height: 30px;
+            position: absolute;
+            left: 40px;
+            top: 0;
+            z-index: 10000;
+        }
+        .pipe{
+            width: 62px;
+            height: 423px;
+            position: absolute;
+            left: 350px;
+            top: 0;
+        }
+        .up{
+            width: 100%;
+            font-size: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .down{
+            width: 100%;
+            font-size: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .up_mod,.down_mod{
+            width: 100%;
+        }
+        .over{
+            position: absolute;
+            top: calc(50% - 20px);
+            left: 60px;
+            animation: head 1s infinite alternate;
+            /* infinite无限循环    alternate来回 */
+        }
+        .messag{
+            position: absolute;
+            z-index: 999;
+            top: 215px;
+            left: 40px;
+        }
+        .msa{
+            position: absolute;
+            z-index: 9999;
+            top: 296px;
+            left: 254px;
+            font-size: 30px;
+            text-align:center;
+        }
+        /* 注册 */
+        .signOut{
+            width: 250px;
+            height: 290px;
+            margin:0 auto;
+            line-height: 40px;
+            color:white;
+            background:rgba(0,0,0,.9);
+            font-size: 20px;
+            border:1px solid;
+            border-radius: 4px;
+            position:absolute;
+            left:calc(50% - 130px);
+            z-index:99999
+        }
+        .signOut>input{
+            width: 90%;
+            display:block;
+            margin:0 auto;
+        }
+        .signOut>.btn{
+            background:green;
+            margin-top: 30px;
+            font-size: 22px;
+        }
+        .signOut>span{
+            margin-left: 10px;
+        }
+        .signOut>p{
+            color: blue;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+
+        /* 登录 */
+        .signIn{
+            width: 250px;
+            height: 290px;
+            margin:0 auto;
+            line-height: 40px;
+            color:white;
+            background:rgba(0,0,0,.9);
+            font-size: 20px;
+            border:1px solid;
+            border-radius: 4px;
+            position:absolute;
+            left:calc(50% - 130px);
+            z-index:99999
+        }
+        .signIn>input{
+            width: 90%;
+            display:block;
+            margin:0 auto;
+
+        }
+        .signIn>.btn{
+            background:green;
+            margin-top: 30px;
+            font-size: 22px;
+            color:white;
+        }
+        .signIn>span{
+            margin-left: 10px;
+        }
+        .signIn>p{
+            color: blue;
+            font-size: 18px;
+            margin-left: 10px;
+            margin-top:30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="bg">
+        <div id="sEl">
+            <img src="0.jpg" alt="">
+            <img src="0.jpg" alt="">
+        </div>
+        <img id="startBtn" src="start.jpg" alt="">
+        <div id="head">
+            <img  src="head.jpg" alt="">
+            <div id="headBird"></div>
+        </div>
+        <div id="banner">
+            <img src="banner.jpg" alt="">
+            <img src="banner.jpg" alt="">
+        </div>
+        <!-- <div class="pipe">
+
+            <div id="up">
+                <img class="up_mod" src="up_mod.png" alt="">
+                <img src="up_pipe.png" alt="">
+            </div>
+
+            <div id="down">
+
+                <img src="down_pipe.png" alt="">
+                <img class="down_mod" src="down_mod.png" alt="">
+            </div>
+        </div> -->
+        <div class="signOut">
+            <span>账号：</span><input type="text">
+            <span>密码：</span><input type="text">
+            <input type="button" value="注册" class='btn'>
+        </div>
+        <div class="signIn">
+            <span>账号：</span><input type="text">
+            <span>密码：</span><input type="password">
+            <input type="button" value="登录" class='btn'>
+            <p>创建一个新的账户</p>
+        </div>
+    </div>
+</body>
+<script>
+    // 获取要操作的元素
+    // 得分
+    var ss = document.querySelectorAll('#sEl>img');
+    // 开场动画
+    var head = document.getElementById('head');
+    var sbtn = document.querySelector('#startBtn');
+    // 背景容器
+    var bg = document.querySelector('#bg');
+    // 路
+    var banner = document.querySelector('#banner');
+    // 创建管道的定时器
+    var pipeTimer = null;
+    // 小鸟上升一次的高度
+    var upheight = 49;
+    // 管道间的间隙
+    var blank = 60;
+    var bird = new Image();
+    var sEls = document.querySelectorAll('#sEl>img');
+    var num = 0;
+    var mywindow;
+    var s= 0;
+    //本次登录账号
+    var thisUser;
+    //signIn
+    var inps = document.querySelectorAll('input');
+    var ap = document.querySelector('p');
+    var signIn = document.querySelector('.signIn');
+    var signOut = document.querySelector('.signOut');
+    //登录按钮
+    inps[5].onclick = function(){
+        //登录输入的账号密码
+        var n = inps[3].value;
+        var p= inps[4].value;
+
+        //获取以注册的账号密码
+        var loca = localStorage.getItem(n)
+
+        if(!loca){
+            alert("该账号不存在")
+            inps[3].value = '';
+            inps[4].value = '';
+            return;
+        }
+
+        loca = loca.split(',')
+        if(loca[0] == p){
+            thisUser = n
+            alert('登录成功')
+            signIn.style.display = 'none';
+            signOut.style.display = 'none';
+        }else{
+            inps[3].value = '';
+            inps[4].value = '';
+            alert('账号或密码错误')
+        }
+    }
+    //注册按钮
+    ap.onclick = function(){
+        signIn.style.display = 'none';
+        signOut.style.display = 'block';
+    }
+//signOut
+    inps[2].onclick = function(){
+        var name =  inps[0].value;
+        for (var i = 0; i < localStorage.length; i++) {
+            if(name == localStorage.key(i)){
+                alert('该账户以存在')
+                return;
+            }
+        }
+        var pass = inps[1].value;
+        localStorage.setItem(name,pass);
+
+        // console.log(localStorage.name)
+        alert('恭喜你，注册成功')
+        signIn.style.display = 'block';
+        signOut.style.display = 'none';
+    }
+
+    // 游戏开始从点击开始按钮开始
+    sbtn.onclick = function(){
+        // 关闭动画
+        head.remove();
+        // 按钮消失
+        this.remove();
+        // 小鸟出现
+        showbird();
+        // 管道出现
+        showpipes();
+    }
+
+
+    // 小鸟出现函数
+    function showbird(){
+        // 创建小鸟
+        var bird = new Image();
+        bg.appendChild(bird);
+        bird.src = 'down_bird0.png';
+        bird.className = 'bird';
+        // 小鸟下落过程
+        bird.speed = 0.5;//小鸟初始速度
+        bird.down = setInterval(function(){
+            var t = bird.offsetTop+bird.speed;
+            var max = banner.offsetTop - bird.offsetHeight;//小鸟最大垂直偏移量
+            // 限定小鸟移动范围
+            if(t<=0){
+                t=0;
+            }
+            // 碰撞检测
+            var pipes = document.querySelectorAll('.up,.down');
+            for(var i=0;i<pipes.length;i++){
+                if(crash(bird,pipes[i])){
+                    // clearInterval(bird.down);
+                    // clearInterval(pipeTimer);
+                    t=max;
+                    bird.speed = 0;
+                    bird.style.top = t+'px';
+                    bird.style.transition = 'all 1s'
+                    banner.style.animation = 'none';
+                    clearTimer();
+                    gameOver();
+
+                }
+            }
+
+            if(t>=max){
+                t = max;
+                // 游戏结束
+                // clearInterval(bird.down);
+                // 关闭路的动画
+                // banner.style.animation = 'none';
+                banner.style.animationPlayState = 'paused';
+                gameOver();
+                clearTimer();
+                message();
+            }
+            // 小鸟的下落速度累加
+            bird.speed += 0.5;
+            if(bird.speed>=0){
+                bird.src = 'down_bird0.png';//小鸟向下移动
+            }else{
+                bird.src = 'up_bird0.png';//小鸟向上移动
+            }
+            // 限定小鸟下落最大速度
+            if(bird.speed>10){
+                bird.speed = 10;
+            }
+            bird.style.top = t + 'px';
+            bird.getScore=getScore();
+        },20)
+
+        // 小鸟上升
+        setTimeout(function(){//延迟点击，避免开始按钮点击小鸟上升
+            bg.onclick = function(){
+            bird.speed = -7;//点击使小鸟速度方向向上
+            }
+        })
+
+    }
+    function showpipes(){
+        pipeTimer = setInterval(function(){
+
+            // 创建管道
+            // 管道容器
+            var pipewrap = document.createElement('div');
+            pipewrap.lock = false;
+            pipewrap.className = 'pipe';
+            bg.appendChild(pipewrap);
+            // 上管道部分
+            var upwrap = document.createElement('div');
+            upwrap.className = 'up';
+            pipewrap.appendChild(upwrap);
+            var upmod = new Image();
+            upmod.className = 'up_mod';
+            upmod.src = 'up_mod.png';
+            var h = rn(0,153);
+            upmod.height = h;
+            upwrap.appendChild(upmod);
+            var uppipe = new Image();
+            uppipe.src = 'up_pipe.png';
+            upwrap.appendChild(uppipe);
+            // 下管道
+            var downwrap = document.createElement('div');
+            downwrap.className = 'down';
+            pipewrap.appendChild(downwrap);
+            var downpipe = new Image();
+            downpipe.src = 'down_pipe.png';
+            downwrap.appendChild(downpipe);
+            var downmod = new Image();
+            downmod.className = 'down_mod';
+            downmod.src = 'down_mod.png';
+            downmod.height = 423-150-60-60-h;
+            downwrap.appendChild(downmod);
+
+            // 管道动画
+            pipewrap.move = setInterval(function(){
+                var l = pipewrap.offsetLeft - 3;
+                var pipes = document.querySelectorAll('.pipe');
+                // console.log(pipes);
+
+                //     if (lock) {
+                //     if (bird.offsetLeft > pipewrap.offsetLeft + pipewrap.offsetWidth) {
+                //         console.log(pipewrap.offsetLeft)
+                //         score();
+                //         lock = false
+                //     }
+
+                // }
+
+
+                pipewrap.style.left = l + 'px';
+                if(l<= -70){
+                    pipewrap.remove();
+                    clearInterval(pipewrap.move);
+                }
+            },20)
+
+
+        },2000)
+
+    }
+
+    function rn(x,y){
+        return Math.round(Math.random()*(y-x)+x);
+    }
+    function crash(el1,el2){
+        var l1 = el1.offsetLeft,
+            r1 = l1 + el1.offsetWidth,
+            t1 = el1.offsetTop,
+            b1 = t1 + el1.offsetHeight,
+
+            l2 = el2.parentElement.offsetLeft,
+            r2 = l2 + el2.offsetWidth,
+            t2 = el2.offsetTop,
+            b2 = t2 + el2.offsetHeight;
+            // console.log(l2)
+            // console.log(r2)
+        if(l1 > r2 || r1 < l2 || t1 > b2 || b1 < t2){
+            return false;
+        }
+        return true;
+    }
+    // 关闭所有定时器
+    function clearTimer(){
+        var timer = setInterval(function(){});
+        for(var i=1;i<=timer;i++){
+            clearInterval(i);
+        }
+    }
+    // function score(){
+    //     num++;
+    //     if(num<10){
+    //         // console.log(num)
+    //         sEls[1].src = num+'.jpg';
+
+    //     }else{
+    //         sEls[0].src = parseInt(num/10)+'.jpg';
+    //         sEls[1].src = num%10+'.jpg';
+    //         // console.log(num)
+    //     }
+
+    // }
+    var score = 0;
+    function getScore(){
+        // 判断得分
+        // 小鸟的左边
+        var birdLeft = this.offsetLeft;
+
+        var pipes = document.querySelectorAll('.pipe');
+        // 用每一根管道的最右边位置与小鸟的最左边位置比较
+        for(var i=0;i<pipes.length;i++){
+            var p = pipes[i];
+            // 获取管道的右边
+            var pipeRight = p.offsetLeft+p.offsetWidth;
+            if(p.lock){continue}//当前管道已经加过分了,不再执行以下代码
+            if(bird.offsetLeft>pipeRight){
+                score++;
+
+                showScore(score);
+                // console.log(score);
+                p.lock = true;
+            }
+        }
+    }
+
+    function showScore(s){
+        // 获取得分的十位数字
+        var one = parseInt(s/10);
+        // 获取得分的个位数字
+        var two = s%10;
+        ss[0].src = one+'.jpg';
+        ss[1].src= two+'.jpg';
+    }
+    function gameOver(){
+        var over = new Image();
+        bg.appendChild(over);
+        over.src = 'game_over.jpg';
+        over.className = 'over';
+    }
+
+    //积分
+    function message(){
+        var message = new Image();
+        message.src = 'message.jpg';
+        message.className = 'messag';
+        bg.appendChild(message);
+        var msa = document.createElement('div');
+        msa.className = 'msa';
+        var  user = localStorage.getItem(thisUser)
+        user = user.split(',')
+        if(!user[1]){
+            user.push(score);
+            user.join('-');
+            localStorage.setItem(thisUser,user)
+        }else if( user[1] < score){
+            user.splice(1,1,score);
+            user.join(',');
+            console.log(user)
+            localStorage.setItem(thisUser,user)
+        }
+        var t = localStorage.getItem(thisUser)
+        t = t.split(',')
+        msa.innerHTML = t[1];
+        bg.appendChild(msa);
+    }
+
+</script>
+</html>

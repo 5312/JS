@@ -59,14 +59,22 @@
         //获取以注册的账号密码
         var loca = localStorage.getItem(n)
         console.log(loca)
+        if(!loca){
+            alert("该账号不存在")
+            inps[0].value = '';
+            inps[1].value = '';
+            return;
+        }
         if(loca == p){
             alert('登录成功')
             window.close();
         }else{
-            alert('密码错误')
+            inps[0].value = '';
+            inps[1].value = '';
+            alert('账号或密码错误')    
         }
     }
-        
+
     //注册按钮
     ap.onclick = function(){
         window.open('file:///D:/JS/%E9%A1%B9%E7%9B%AE/%E5%83%8F%E7%B4%A0%E9%B8%9F/img/signOut.html','_self');
