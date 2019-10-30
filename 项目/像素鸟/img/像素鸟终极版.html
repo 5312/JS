@@ -131,6 +131,7 @@
             z-index: 999;
             top: 215px;
             left: 40px;
+            display:none;
         }
         .msa{
             position: absolute;
@@ -146,6 +147,7 @@
             height: 290px;
             margin:0 auto;
             line-height: 40px;
+            display:none;
             color:white;
             background:rgba(0,0,0,.9);
             font-size: 20px;
@@ -180,6 +182,7 @@
             height: 290px;
             margin:0 auto;
             line-height: 40px;
+
             color:white;
             background:rgba(0,0,0,.9);
             font-size: 20px;
@@ -210,6 +213,21 @@
             margin-left: 10px;
             margin-top:30px;
             cursor: pointer;
+        }
+        #n{
+            position:absolute;
+            top:60px;
+            left:52px;
+        }
+        #sm{
+            position:absolute;
+            top:39px;
+            left:207px;
+        }
+        #m{
+            position:absolute;
+            top:90px;
+            left:207px;
         }
     </style>
 </head>
@@ -251,6 +269,12 @@
             <span>密码：</span><input type="password">
             <input type="button" value="登录" class='btn'>
             <p>创建一个新的账户</p>
+        </div>
+        <div class="messag">
+            <img src="message.jpg" alt="">
+            <div id='n'>name</div>
+            <div id="sm">score</div>
+            <div id="m">max</div>
         </div>
     </div>
 </body>
@@ -302,7 +326,7 @@
         loca = loca.split(',')
         if(loca[0] == p){
             thisUser = n
-            alert('登录成功')
+            // alert('登录成功')
             signIn.style.display = 'none';
             signOut.style.display = 'none';
         }else{
@@ -554,15 +578,13 @@
         over.src = 'game_over.jpg';
         over.className = 'over';
     }
-
+var mes = document.querySelector('.messag'),
+ns  = document.querySelector('#n'),
+sco = document.querySelector('#sm'),
+max = document.querySelector('#m')
     //积分
     function message(){
-        var message = new Image();
-        message.src = 'message.jpg';
-        message.className = 'messag';
-        bg.appendChild(message);
-        var msa = document.createElement('div');
-        msa.className = 'msa';
+        mes.style.display = 'block';
         var  user = localStorage.getItem(thisUser)
         user = user.split(',')
         if(!user[1]){
@@ -577,8 +599,11 @@
         }
         var t = localStorage.getItem(thisUser)
         t = t.split(',')
-        msa.innerHTML = t[1];
-        bg.appendChild(msa);
+        max.innerHTML = t[1];
+        var b = thisUser;
+        ns.innerHTML =b;
+        sco.innerHTML = score;
+
     }
 
 </script>
