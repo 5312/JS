@@ -17,7 +17,7 @@
     //整数
     inps[1].onclick = function(){
         var num = inps[0].value;
-        // Int(num);
+        Int(num);
         // p.innerHTML = real(num)
         // p.innerHTML = negative(num);
         // p.innerHTML = number(num);
@@ -31,12 +31,12 @@
         // p.innerHTML =letterStra(num)
          // p.innerHTML = mouth(num);
           // p.innerHTML =day(num);
-           p.innerHTML = date(num);
+           // p.innerHTML = date(num);
     }
     //整数小数
     function Int(val){
-        var patten = /^-?[0-9]+$/
-        var patten2 = /^-?[0-9]+\.?[0-9]{0,}$/
+        var patten = /^-?[1-9][0-9]*$/
+        var patten2 = /^-?[0-9]+\.{1}[0-9]{0,}$/
         if(patten.test(val)){
             p.innerHTML = '是整数';
         }else if(patten2.test(val)){
@@ -47,12 +47,14 @@
     }
     //非零的正整数
     function real(val){
-        var patten = /^[1-9]+$/
+        // var patten = /^[1-9]+$/
+        var patten = /^[1-9][0-9]*$/
         return patten.test(val);
     }
     //非零的负整数
     function negative(val){
-        var patten = /^-[1-9]+$/
+        // var patten = /^-[1-9]+$/
+        var patten = /^-[1-9][0-9]*$/
         return patten.test(val)
     }
     //只能输入数字
@@ -83,7 +85,7 @@
     //字母验证
     //只能输入由数字和26个英文字母组成的字符串
     function letterNumStr(val){
-        var patten = /([A-Za-z]+[0-9]+$)|([0-9]+[A-Za-z]+$)/
+        var patten = /^[A-Za-z0-9]+$/
         return patten.test(val);
     }
     //只能输入由26个英文字母组成的字符串
