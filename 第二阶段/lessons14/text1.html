@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <input type="button" value="验证">
+    <div></div>
+</body>
+<script>
+    var inps = document.querySelectorAll('input');
+    var p = document.querySelector('div');
+    //整数
+    inps[1].onclick = function(){
+        var num = inps[0].value;
+        // Int(num);
+        // p.innerHTML = real(num)
+        // p.innerHTML = negative(num);
+        // p.innerHTML = number(num);
+        // p.innerHTML = nNumber(num)
+        // p.innerHTML =nNumbers(num);
+        // p.innerHTML =mNumbers(num);
+        // p.innerHTML =zero(num);
+        // p.innerHTML =letterNumStr(num);
+        // p.innerHTML =letterStr26(num)
+        // p.innerHTML =letterStrA(num)
+        // p.innerHTML =letterStra(num)
+         // p.innerHTML = mouth(num);
+          // p.innerHTML =day(num);
+           p.innerHTML = date(num);
+    }
+    //整数小数
+    function Int(val){
+        var patten = /^-?[0-9]+$/
+        var patten2 = /^-?[0-9]+\.?[0-9]{0,}$/
+        if(patten.test(val)){
+            p.innerHTML = '是整数';
+        }else if(patten2.test(val)){
+            p.innerHTML = '是小数';
+        }else{
+            p.innerHTML = '不是整数'
+        }
+    }
+    //非零的正整数
+    function real(val){
+        var patten = /^[1-9]+$/
+        return patten.test(val);
+    }
+    //非零的负整数
+    function negative(val){
+        var patten = /^-[1-9]+$/
+        return patten.test(val)
+    }
+    //只能输入数字
+    function number(val){
+        var patten = /^[0-9]*$/;
+        return patten.test(val);
+    }
+    //只能输入n位数字
+    function nNumber(val){
+        var patten = /^[0-9]{n}$/;
+        return patten.test(val);
+    }
+    //只能输入至少n位数字
+    function nNumbers(val){
+        var patten = /^[0-9]{n,}$/;
+        return patten.test(val);
+    }
+    //只能输入至少m-n位数字
+    function mNumbers(val){
+        var patten = /^[0-9]{m,n}$/;
+        return patten.test(val);
+    }
+    //只能输入零和非零开头的数字
+    function zero(val){
+        var patten = /^(0|[1-9][0-9]*)$/
+        return patten.test(val);
+    }
+    //字母验证
+    //只能输入由数字和26个英文字母组成的字符串
+    function letterNumStr(val){
+        var patten = /([A-Za-z]+[0-9]+$)|([0-9]+[A-Za-z]+$)/
+        return patten.test(val);
+    }
+    //只能输入由26个英文字母组成的字符串
+    function letterStr26(val){
+        var patten = /^[a-zA-Z]+$/
+        return patten.test(val);
+    }
+    //只能输入由26个大写英文字母组成的字符串
+    function letterStrA(val){
+        var patten = /^[A-Z]+$/
+        return patten.test(val);
+    }
+    //只能输入26个小写英文字母组成的字符串
+    function letterStra(val){
+        var patten = /^[a-z]+$/
+        return patten.test(val);
+    }
+    //日期验证
+    //一年的12个月
+    function mouth(val){
+        var patten = /(0[1-9]$|1[0-2]$)/
+        return patten.test(val);
+    }
+    //31天
+    function day(val){
+        var patten = /0[1-9]{1}|1[0-9]{1}|2[0-9]{1}|3[0-1]{1}/
+        return patten.test(val);
+    }
+    //日期
+    function date(val){
+        var patten = /^\d{4}-(0[1-9]$|1[0-2]$)-(0[1-9]{1}|1[0-9]{1}|2[0-9]{1}|3[0-1]{1})/
+        return patten.test(val);
+    }
+</script>
+</html>

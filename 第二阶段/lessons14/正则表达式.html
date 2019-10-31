@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+/**
+    var str = '11ab334dcd0c1s1ew33mkdpw5500qadk44';
+    str = str.split('')
+    var arr = [];
+    //找出字符串中所有的数字，并同意输出在控制台；
+var len = str.length;
+
+    for(var i = 0;i < len;i++){
+        var t = str[i];
+        if(t*1 || t == 0){
+            var n = t ;
+            while(str[i+1] *1 || str[i+1] == 0){
+                n +=str[i+1]
+                i++;
+            }
+            arr.push(n);
+        }
+    }
+    console.log(arr)
+    **/
+
+//正则表达式：不是一个字符串，而是一套字符串的匹配规则。主要用于对字符串进行格式的限制或者从字符串中的根据某些规则过滤字符；
+
+//正则规则：双斜杠 ‘ // ’ 表示正则表达式。表达式的规则由普通字符以及正则的元字符组成。
+
+//正则匹配规则： 字符串中一位一位的从左向右进行规则匹配。
+//RegExp
+
+var str = 'abcdefg';
+var reg = /a/;
+
+//正则方法：test(),只能由正则表达式调用，参数是字符串，如果符合正则式定的规则那么返回true,否则返回false.
+
+//字符串方法：match()，只能由字符串调用，参数是正则表达式。如果在字符串中找到了符合正则规则的字符串或者字符，那么将符合规则的内容装进数组返回。
+
+//字符串方法： replace(reg,str)
+
+//元字符：正则表达式规定了一些字符具有特殊意义，所有元字符在正则规则中都必须要进行转义'\'  ;
+
+
+// . :表示匹配除了换行符制表符以外的所有字符。
+var str  = 'abc123,@';
+var reg = /./g ;
+console.log(str.match(reg));
+
+// ^ : 表示以此符号后面的字符作为开头。
+var str = 'abc123';
+var reg = /^01/;
+console.log(reg.text());
+
+// $ : 表示以此符号前面的字符作为结尾。
+var str = '123';
+var reg = /2$/;
+console.log(reg.test(str));
+
+// * :表示此符号前面的字符出现的次数是[0,正无穷)
+var reg = /1*/;
+
+// + ：表示此符号前面的字符连续出现的次数是[1,正无穷)；
+var reg = /1+/；
+var str = '0123';
+
+// ？ ： 表示此符号前面的字符连续出现的次数是[0,1];
+var reg = /1?/;
+var str = '123';
+
+// (): 表示将（）内的字符作为一个整体进行匹配
+// []: 表示符号内的字符任意一个或多个符合规则即可；
+
+// ^ :当 ^ 出现在[] 里面，就不再表示以它后面的字符作为开头，表示除了^ 后面的字符以外的字符。
+
+//  - ： 当 - 出现在 [] 里面，表示一个连续区间。
+//[ 0-9 ] 等价于 [0123456789];
+//[a-z]  > [abcdefghijklmnopqrstuvwxyz]
+// [a-zA-Z]
+
+//{}  : 表示符号前字符连续出现的次数
+//   /a{5}/ 表示‘a’必须连续出现5 次，多一次不行少一次也不行
+//   /a{0,1}/表示‘a’ 要么出现1次要么不出现，功能上等价于 ？
+//   /a{0,}/ 等价于 *
+//   /a{1, }/ 功能等价于 +
+//   /a{5,10}/ 表示 'a' 最少连续出现5 次 ，最多连续出现10次 ;
+
+// | : 不能出现在[] 内，表示或者的意思
+var str = 'abc123';
+var reg = /^(a|1)/;
+console.log(reg.test(str));
+</script>
+</html>
