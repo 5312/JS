@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0;user-select:none;}
+        #bg{width: 343px;height: 480px;background: url(./source/img/bg.jpg);margin: 0 auto; overflow: hidden; position: relative;}
+        #sEl{text-align: center; margin-top: 50px;font-size: 0;position: relative;z-index: 1000;}
+        #startBtn{position: absolute;left: calc(50% - 42.5px);top: 300px;}
+        /* 开场动画 */
+        #head{
+            width: 236px;
+            height: 77px;
+            position: absolute;
+            top: 120px;
+            left: calc(50% - 118px);
+            animation: head 1s infinite alternate;
+        }
+        #headBird{
+            width: 40px;
+            height: 26px;
+            background: url(./source/img/bird0.png);
+            position: absolute;
+            right: 0;
+            top: calc(50% - 13px);
+            animation: fly 1s infinite;
+        }
+        @keyframes head{
+            0%{
+                top: 120px;
+            }100%{
+                top: 165px;
+            }
+        }
+        @keyframes fly{
+            from{
+                background: url(./source/img/bird0.png);
+            }to{
+                background: url(./source/img/bird1.png);
+            }
+        }
+        #banner{
+            width: 200%;
+            height: 14px;
+            position: absolute;
+            font-size: 0;
+            bottom: 43px;
+            animation: banner 3s linear infinite;
+        }
+        @keyframes banner{
+            from{
+                left: 0;
+            }to{
+                left: -100%;
+            }
+        }
+
+        .bird{
+            width: 40px;
+            height: 30px;
+            position: absolute;
+            left: 40px;
+            top: 0;
+        }
+
+        /* 管道相关 */
+        .pipe{
+            width: 62px;
+            height: 423px;
+            position: absolute;
+            left: 350px;
+            top: 0;
+        }
+        .up{
+            width: 100%;
+            font-size: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .down{
+            width: 100%;
+            font-size: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .up_mod,.down_mod{
+            width: 100%;
+        }
+
+        .over{
+            position: absolute;
+            left: calc(50% - 110.5px);
+            top: calc(50% - 20px);
+            animation: head 1s infinite alternate;
+        }
+
+        #alert{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, .6);
+            font-size: 30px;
+        }
+        #alert input{
+            font-size: 20px;
+            width: 170px;
+        }
+        #alert>div{
+            width: 100%;
+            margin-top: 10px;
+            color: #fff;
+            text-align: center;
+        }
+        #alert>div:nth-child(1){
+            margin-top: 180px;
+        }
+        #alert>div:nth-child(3)>input{
+            width: 100px;
+        }
+
+        #scorecard{
+            width: 269px;
+            height: 135px;
+            background: url(./source/img/message.jpg);
+            position: absolute;
+            left: calc(50% - 134.5px);
+            top: calc(50% - 67.5px);
+            display: none;
+        }
+        #scorecard>span{
+            font-size: 20px;
+            position: absolute;
+        }
+        #n{
+            left: 38px;
+            top: 60px;
+        }
+        #s{
+            left: 200px;
+            top: 35px;
+        }
+        #m{
+            left: 200px;
+            top: 90px;
+        }
+    </style>
+</head>
+<body>
+    <div id="bg">
+        <div id="sEl">
+            <img src="./source/img/0.jpg">
+            <img src="./source/img/0.jpg">
+        </div>
+        <img src="./source/img/start.jpg" id="startBtn">
+        <div id="head">
+            <img src="./source/img/head.jpg">
+            <div id="headBird"></div>
+        </div>
+        <div id="banner">
+            <img src="./source/img/banner.jpg">
+            <img src="./source/img/banner.jpg">
+        </div>
+
+        <!-- 登录注册页面 -->
+        <div id="alert">
+            <div>账号：<input type="text" id="un"></div>
+            <div>密码：<input type="text" id="pw"></div>
+            <div>
+                <input type="button" value="登录" id="lbtn">
+                <input type="button" value="注册" id="rbtn">
+            </div>
+        </div>
+
+        <!-- 计分板 -->
+        <div id="scorecard">
+            <span id="n"></span>
+            <span id="s"></span>
+            <span id="m"></span>
+        </div>
+
+        <!-- <div class="pipe">
+            <div class="up">
+                <img src="./source/img/up_mod.png" class="up_mod">
+                <img src="./source/img/up_pipe.png">
+            </div>
+            
+            <div class="down">
+                <img src="./source/img/down_pipe.png">
+                <img src="./source/img/down_mod.png" class="down_mod">
+            </div>
+        </div> -->
+    </div>
+</body>
+<script>
+    // 获取要操作的元素
+    // 得分元素
+    var ss = document.querySelectorAll('#sEl>img');
+    // 开场动画
+    var head = document.querySelector('#head');
+    // 开始按钮
+    var sbtn = document.querySelector('#startBtn');
+    // 背景容器
+    var bg = document.querySelector('#bg');
+    // 路
+    var banner = document.querySelector('#banner');
+
+    // 登录注册父元素
+    var alEl = document.querySelector('#alert');
+    // 账号及密码输入框
+    var inps = document.querySelectorAll('input');
+
+    inps[1].oninput = function(){
+        var val = this.value;
+        if(val){
+            pwLevel(val,this);
+        }else{
+            this.style.background = 'white';
+        }
+    }
+    
+    // 登录事件
+    inps[2].onclick = function(){
+        //获取当前输入的账号和密码
+        var cn = inps[0].value;
+        var cp = inps[1].value;
+        var rp = localStorage.getItem(cn).split(',')[0];
+        if(rp){
+            if(rp == cp){
+                alEl.remove();
+                uname = cn;
+            }else{
+                alert('密码错误');
+            }
+        }else{
+            alert('账号不存在');
+        }
+    }
+
+    // 注册事件
+    inps[3].onclick = function(){
+        //获取当前输入的账号和密码
+        var cn = inps[0].value;
+        var cp = inps[1].value;
+        var rp = localStorage.getItem(cn);
+        if(rp){
+            alert('账号已存在');
+        }else{
+            localStorage.setItem(cn,cp);
+            alert('注册成功');
+        }
+    }
+
+    function showCard(){
+        // 显示计分板
+        document.querySelector('#scorecard').style.display = 'block';
+        // 更新计分板数据
+        var n = document.querySelector('#n');
+        var s = document.querySelector('#s');
+        var m = document.querySelector('#m');
+
+        n.innerHTML = uname;
+        s.innerHTML = score;
+        
+        // 处理最高分
+        // 1.判断当前得分是否为最高分
+        var max = localStorage.getItem(uname).split(',')[1];
+        if(max){
+            if(max < score){
+                m.innerHTML = score;
+                var arr = localStorage.getItem(uname).split(',');
+                arr[1] = score;
+                localStorage.setItem(uname,arr.join(','));
+            }else{
+                m.innerHTML = max;
+            }
+        }else{
+            var arr = localStorage.getItem(uname).split(',');
+            arr[1] = score;
+            localStorage.setItem(uname,arr.join(','));
+            m.innerHTML = score;
+        }
+    }
+
+
+    // 相关变量
+    var pipeTimer = null;//用于持续创建管道的定时器
+    var upheight = 49;//小鸟上升一次的高度
+    var blank = 60;//管道间的间隙
+    var score = 0;//累加得分
+    var uname; //记录游戏的玩家
+
+    // 游戏逻辑都从点击开始按钮开始
+    sbtn.onclick = function(){
+        // 关闭动画
+        head.remove();
+        // 按钮消失
+        this.remove();
+        // 小鸟出现
+        showbird();
+        // 管道出现
+        showpipes();
+    }
+
+    // 小鸟相关
+    function showbird(){
+        // 创建小鸟
+        var bird = new Image();
+        bg.appendChild(bird);
+        bird.src = './source/img/down_bird0.png';
+        bird.className = 'bird';
+        // 小鸟得分的方法
+        bird.getScore = getScore;
+        // 小鸟下落
+        // 小鸟下落的初始速度
+        bird.speed = 0.5;
+        // 小鸟持续下落
+        bird.down = setInterval(function(){
+            // 从当前位置向下移动speed个px
+            var t = bird.offsetTop + bird.speed;
+            // 小鸟最大下落距离
+            var max = banner.offsetTop - bird.height;
+            // 小鸟最大上升高度
+            if(t <= 0){t = 0;}
+            // 碰撞检测
+            var pipes = document.querySelectorAll('.up,.down');
+            for(var i=0;i<pipes.length;i++){
+                if(crash(bird,pipes[i])){
+                    //游戏结束，关闭动画
+                    // banner.style.animationPlayState = 'paused';
+                    banner.style.animation = 'none';
+                    clearTimer();
+                    // 小鸟坠落
+                    bird.speed = 0;
+                    bird.die = setInterval(function(){
+                        var t = bird.offsetTop + bird.speed;
+                        if(t >= max){
+                            t = max;
+                            clearInterval(bird.die);
+                            showCard();
+                        }
+                        bird.style.top = t + 'px';
+                        bird.speed += 1;
+                    },20)
+                }
+            }
+            if(t >= max){
+                t = max;
+                // 游戏结束，关闭动画
+                // // banner.style.animationPlayState = 'paused';
+                banner.style.animation = 'none';
+                clearTimer();
+                gameOver();
+                showCard();
+            }
+            bird.style.top = t + 'px';
+            // 小鸟匀加速
+            bird.speed += 0.5;
+            // 改变小鸟朝向
+            if(bird.speed >= 0){
+                bird.src = './source/img/down_bird0.png';
+            }else{
+                bird.src = './source/img/up_bird0.png';
+            }
+            // 匀加速的最大速度值
+            if(bird.speed > 10){
+                bird.speed = 10;
+            }
+            // 得分
+            bird.getScore();
+        },20)
+        setTimeout(function(){
+            bg.onclick = function(){
+                //小鸟上升
+                bird.speed = -7;
+            }
+        })
+    }
+
+    // 管道相关
+    function showpipes(){
+        pipeTimer = setInterval(function(){
+            // 创建管道
+            // 管道容器
+            var pipewrap = document.createElement('div');
+            // 防止一根管道多次得分
+            pipewrap.lock = false;
+            pipewrap.className = 'pipe';
+            bg.appendChild(pipewrap);
+            // 管道动画
+            pipewrap.move = setInterval(function(){
+                var l = pipewrap.offsetLeft - 5;
+                pipewrap.style.left = l + 'px';
+                if(l <= -70){
+                    clearInterval(pipewrap.move);
+                    pipewrap.remove();
+                }
+            },20)
+
+
+            // 上管道部分
+            var upwrap = document.createElement('div');
+            upwrap.className = 'up';
+            pipewrap.appendChild(upwrap);
+            var upmod = new Image();
+            upmod.className = 'up_mod';
+            upmod.src = './source/img/up_mod.png';
+            var h = rn(0,103);
+            upmod.height = h;
+            upwrap.appendChild(upmod);
+            var uppipe = new Image();
+            uppipe.src = './source/img/up_pipe.png';
+            upwrap.appendChild(uppipe);
+
+            // 下管道
+            var downwrap = document.createElement('div');
+            downwrap.className = 'down';
+            pipewrap.appendChild(downwrap);
+            var downpipe = new Image();
+            downpipe.src = './source/img/down_pipe.png';
+            downwrap.appendChild(downpipe);
+            var downmod = new Image();
+            downmod.className = 'down_mod';
+            downmod.src = './source/img/down_mod.png';
+            downmod.height = 423-200-60-60-h;
+            downwrap.appendChild(downmod);
+        },1000)
+    }
+
+    function rn(x,y){
+        return Math.round(Math.random()*(y-x)+x);
+    }
+
+    function crash(el1,el2){
+        var l1 = el1.offsetLeft,
+            r1 = l1 + el1.offsetWidth,
+            t1 = el1.offsetTop,
+            b1 = t1 + el1.offsetHeight,
+
+            l2 = el2.parentNode.offsetLeft,
+            r2 = l2 + el2.offsetWidth,
+            t2 = el2.offsetTop,
+            b2 = t2 + el2.offsetHeight;
+        if(l1 > r2 || r1 < l2 || t1 > b2 || b1 < t2){
+            return false;
+        }
+        return true;
+    }
+
+    function clearTimer(){
+        var timer = setInterval(function(){});
+        for(var i=1;i<=timer;i++){
+            clearInterval(i);
+        }
+    }
+
+    // 得分相关
+    function getScore(){
+        // 判断得分
+        // 小鸟的最左边位置
+        var birdLeft = this.offsetLeft;
+        
+        var pipes = document.querySelectorAll('.pipe');
+        // 用每一根管道的最右边位置与小鸟的最左边位置进行比较
+        for(var i=0;i<pipes.length;i++){
+            // 获取管道的右边位置
+            var p = pipes[i];
+            var pipeRight = p.offsetLeft + p.offsetWidth;
+            // 表示当前管道已经加过一次分了，就不能再去计算得分
+            if(p.lock){continue;}
+            if(birdLeft > pipeRight){
+                // 得分
+                score ++;
+                showScore(score);
+                p.lock = true;
+            }
+        }
+    }
+
+    // 处理得分
+    function showScore(sco){
+        // 获取得分的十位数字
+        var one = parseInt(sco/10); 
+        // 获取得分的个位数字
+        var two = sco%10;
+        ss[0].src = './source/img/'+one+'.jpg';
+        ss[1].src = './source/img/'+two+'.jpg';
+    }
+
+    function gameOver(){
+        var over = new Image();
+        bg.appendChild(over);
+        over.src = './source/img/game_over.jpg';
+        over.className = 'over';
+    }
+
+    function pwLevel(pw,el){
+        // 判断长度及内容是否符合
+        var reg1 = /^\w{6,16}$/;
+        if(reg1.test(pw)){
+            var regL = /^\d+$|^[a-z]+$|^_+$/i;
+            var regM1 = /^[^_]+$|^[^\d]+$|^[^a-z]+$/i;
+            if(regL.test(pw)){
+                // h.innerHTML = '安全等级低';
+                el.style.background = 'red';
+            }else if(regM1.test(pw)){
+                // h.innerHTML = '安全等级中';
+                el.style.background = 'orange';
+            }else{
+                // h.innerHTML = '安全等级高';
+                el.style.background = 'greenyellow';
+            }
+        }else{
+            // alert('密码违规');
+            el.style.background = 'lightgray';
+        }
+    }
+
+</script>
+</html>

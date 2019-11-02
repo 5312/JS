@@ -36,19 +36,91 @@
             }
         }
         .pipe{
+            font-size: 0;
             width: 62px;
             height: 423px;
             position: absolute;
             top: 0;
-            /* left: 350px; */
+            left: 350px;
+            /* animation: move 2s linear infinite; */
         }
         .up{
-            
+
         }
+        .down{
+            position: absolute;
+            bottom: 0;
+        }
+        .down_mod{
+            width: 62px;
+            height: 2px;
+        }
+        .up_mod{
+            width: 62px;
+            /* height: 20px; */
+        }
+        @keyframes move {
+            from{
+                left: 350px;
+            }to{
+                left: -70px;
+            }
+        }
+        #signIn{
+            /* display: none; */
+            width: 100%;
+            height: 100%;
+            color:white;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            font-size: 25px;
+            padding-top: 105px;
+            position: absolute;
+            top: 0;
+        }
+        #signIn>input{
+            padding:0;
+            height: 30px;
+            margin:10px 60px;
+            border-radius: 4px;
+        }
+        .over{
+            position: absolute;
+            top: 50%;
+            left:45px;
+        }
+        #sEl{
+            margin-top: 30px;
+            text-align: center;
+        }
+        .boxs{
+            width: 100%;
+            height: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .box{
+            width: calc(100% / 3);
+            height: 100%;
+        }
+        .box:nth-child(1){
+            background-color: rgba(0, 0, 0, 0);
+        }
+        .box:nth-child(2){
+            background-color: rgba(0, 0, 0, 0);
+        }
+        .box:nth-child(3){
+            background-color:rgba(0, 0, 0, 0);
+        }
+
     </style>
 </head>
 <body>
     <div id="bg">
+        <div id="sEl">
+            <img src="./img/0.jpg" alt="">
+            <img src="./img/0.jpg" alt="">
+        </div>
         <div id="heads">
             <img src="./img/head.jpg" id="head">
             <img src="./img/bird0.png" id="bird0">
@@ -58,31 +130,73 @@
             <img src="./img/banner.jpg" >
             <img src="./img/banner.jpg" >
         </div>
-        <div class="pipe">
+        <!-- <div class="pipe">
             <div class="up">
                 <img src="./img/up_mod.png" class="up_mod">
                 <img src="./img/up_pipe.png" alt="">
             </div>
-            <div class="dowm">
+            <div class="down">
                 <img src="./img/down_pipe.png" alt="">
                 <img src="./img/down_mod.png" class="down_mod">
             </div>
+        </div> -->
+        <div id="signIn">
+            账号：<br>
+            <input type="text"><br>
+            密码：<br>
+            <input type="text">
+            <div class="boxs">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+            <input type="button" value="登录">
+            <input type="button" value="注册">
         </div>
     </div>
 </body>
 <script>
     var start = document.getElementById('start'),
-        heads = document.getElementById('heads')
-
+        heads = document.getElementById('heads'),
+        ss = document.querySelectorAll('#sEl>img'),
+        inps = document.querySelectorAll('input'),
+        box = document.querySelectorAll('.box');
+        //管道
+    var pipesTime;
     var bird;
+//表单验证
 
+inps[1].oninput = function(){
+    var str = inps[1].value;
+    var reg = /^\w{6,16}$/;
+
+    if(reg.test(str)){
+        // box[0].style.backgroundColor = 'red';
+        var reg2 = /^\d+$|^[a-z]+$/i;
+        var reg3 = /^[^_]+$|^[^\d]+$|^[^a-z]+$/i;
+        if(reg2.test(str)){
+            box[0].style.backgroundColor = 'red';
+
+        }else if(reg3.test(str)){
+            
+        }
+    }else{
+        box[0].style.backgroundColor = 'rgba(0,0,0,0)';
+    }
+}
+
+
+
+
+//开始按钮
     start.onclick = function(){
         //开始按钮和flash消失
         start.remove();
         heads.remove();
+        //鸟出现
         birdCreate();
+        showpipes();
     }
-
     function birdCreate(){
         //创建鸟
         bird = new Image();
@@ -91,48 +205,163 @@
         bg.appendChild(bird);
         //下落速度
         bird.speen = 0.5;
-
+        //鸟下落
         bird.down = setInterval(function(){
-
             var t = bird.offsetTop + bird.speen;
             var max = banner.offsetTop - bird.offsetHeight ;
-            t = t>=max ? max :t;
-
+            t = t<=0?0:t;
+            //碰撞检测
+            var pipes = document.querySelectorAll('.up,.down');
+            for(var i = 0 ; i< pipes.length ; i++){
+                if(crash(bird,pipes[i])){
+                    t = max;
+                    bird.speen = 0;
+                    bird.style.top = t + 'px';
+                    bird.style.transition = 'all 1s';
+                    banner.style.animation = 'none';
+                    clearTimer();
+                    gameOver();
+                }
+            }
+            //游戏结束
             if(t >= max ){
                 t = max ;
                 clearInterval(bird.down);
+                clearInterval(pipesTime)
                 banner.style.animation = 'none'
+                gameOver();
             }
+
             bird.style.top = t +'px';
             bird.speen+=0.5;
             clickup();
-
             if(bird.speen >=0){
                 bird.src = './img/down_bird0.png';
             }else{
                 bird.src = './img/up_bird0.png'
             }
-
+            getScore();
         },20)
 
     }
-
     //点击上升
     function clickup() {
         document.onclick = function(){
-            bird.speen = -7 ;
+            bird.speen = -8 ;
 
         }
     }
-
     //管道
     function showpipes(){
         pipesTime = setInterval(function(){
-            var pipewrpa = document.createElement('div');
-            pipewrap;
+            //pipewrap
+            var pipewrap = document.createElement('div');
+            pipewrap.className = 'pipe';
+            pipewrap.lock = false;
+            //pipeup上
+            var pipeup = document.createElement('div');
+            pipeup.className = 'up';
+            //柱身
+            var pipeupmod = new Image();
+            pipeupmod.className = 'up_mod';
+            pipeupmod.src = './img/up_mod.png';
+            //上柱身高度 .总高一半之内
+            var h = rn(0,153)
+            console.log(h)
+            pipeupmod.style.height = h + 'px';
+            pipeup.appendChild(pipeupmod);
+            //柱头
+            var pipeuphead = new Image();
+            pipeuphead.src = './img/up_pipe.png';
+            pipeup.appendChild(pipeuphead);
+            //pipedown下
+            var pipedown = document.createElement('div');
+            pipedown.className = 'down';
+            //柱头
+
+            var pipedownhead = new Image();
+            pipedownhead.src = './img/down_pipe.png';
+            pipedown.appendChild(pipedownhead);
+            //柱身
+            var pipedownmod = new Image();
+            pipedownmod.className = 'down_mod';
+            pipedownmod.src = './img/down_mod.png';
+            //下半柱身高度
+            pipedownmod.style.height = 480 - h -124 - 180 + 'px';
+            pipedown.appendChild(pipedownmod);
+            //添加
+            bg.appendChild(pipewrap);
+            pipewrap.appendChild(pipeup);
+            pipewrap.appendChild(pipedown);
+            //柱子移动
+            pipewrap.move = setInterval(function(){
+                var l = pipewrap.offsetLeft - 5;
+                pipewrap.style.left = l + 'px';
+                if(l < -70){
+                    clearInterval(pipewrap.move);
+                    pipewrap.remove();
+                }
+
+            },20)
 
         },2000)
     }
+//得分
+var score = 0;
+function getScore(){
+    var pi = document.querySelectorAll('.pipe');
+    for(var i = 0; i < pi.length;i++){
+        var p = pi[i];
+        var pipesRight = p.offsetLeft + p.offsetWidth;
+        if(p.lock){continue};
+        if(bird.offsetLeft > pipesRight){
+            score++;
+            showscore(score);
+            p.lock = true;
+        }
+    }
+}
+//分数变化
+function showscore(s){
+    //十位
+    var one = parseInt(s/10);
+    //个位
+    var two = s%10;
+    ss[0].src = './img/'+one+'.jpg';
+    ss[1].src = './img/'+two+'.jpg';
+}
+function rn(x,y){
+    return Math.floor(Math.random()*(y-x+1)+x);
+}
+//碰撞判断
+function crash(el1,el2){
+    var l1 = el1.offsetLeft,
+        r1 = l1 + el1.offsetWidth,
+        t1 = el1.offsetTop,
+        b1 = t1 + el1.offsetHeight;
 
+    var l2 = el2.parentElement.offsetLeft,
+        r2 = l2 + el2.offsetWidth,
+        t2 = el2.offsetTop,
+        b2 = t2 + el2.offsetHeight;
+
+        if(l1>r2 || r1 < l2 || t1> b2 || b1< t2){
+            return false;
+        }
+        return true;
+}
+
+function clearTimer(){
+    var timer = setInterval(function(){});
+    for (var i = 0; i < timer; i++) {
+        clearInterval(i);
+    }
+}
+function gameOver(){
+    var over = new Image();
+    over.className = 'over';
+    over.src = './img/game_over.jpg';
+    bg.appendChild(over);
+}
 </script>
 </html>

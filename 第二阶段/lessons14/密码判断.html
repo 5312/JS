@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #grade{
+
+            width: 180px;
+            height: 20px;
+            margin-top: 30px;
+            margin-left: 20px;
+            display: flex;
+
+            justify-content: flex-start;
+        }
+        .box{
+            display: none;
+
+            width: 60px;
+            height: 100%;
+            border:1px solid;
+        }
+        #grade>div:nth-child(1){
+            background-color: red;
+        }
+        #grade>div:nth-child(2){
+            background-color: yellow;
+        }
+        #grade>div:nth-child(3){
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    密码<input type="text" id="inps">
+    <div id="grade">
+        <div class="box"></div>
+        <div  class="box"></div>
+        <div  class="box"></div>
+    </div>
+</body>
+<script>
+/**
+5.写一个函数，参数为用户输入的密码，判断密码安全等级，并弹出结果。
+安全等级判定规则：
+1.密码长度在6-16位之间
+2.密码只能包含数字、字母、_
+3.密码只包含数字或只包含字母，安全级别低（不区分大小写）
+4.密码包含了数字和字母的，安全级别中（不区分大小写）
+5.密码包含了数字、字母和下划线的，安全级别高（不区分大小写）
+**/
+    var inps = document.getElementById('inps');
+    var boxs = document.querySelectorAll('.box');
+    //输入时
+    inps.oninput = function(){
+        //输入的内容
+        var str = inps.value;
+        //长度6-16位
+        var reg = /^((\d){6,16}|([a-zA-Z]){6,16})$/;
+        //正则匹
+        var bool = reg.test(str);
+        //数字字母
+        var regA = /^[A-Za-z0-9]{6,16}$/;
+        var boolA = regA.test(str);
+        //
+        var re_g = /^\w{6,16}$/   ;
+        var boo_l =re_g.test(str) ;
+        // console.log(bool)
+            console.log(boolA)
+                // console.log(boo_l)
+        if(bool){
+            boxs[0].style.display = 'block'
+
+        }else if(boolA){
+            boxs[1].style.display = 'block'
+        }else if(boo_l){
+            boxs[2].style.display = 'block'
+        }
+        else{
+            boxs[0].style.display = 'none';
+            boxs[1].style.display = 'none';
+            boxs[2].style.display = 'none';
+        }
+    }
+
+
+</script>
+</html>

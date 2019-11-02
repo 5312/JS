@@ -149,7 +149,7 @@
             line-height: 40px;
             display:none;
             color:white;
-            background:rgba(0,0,0,.9);
+            background:rgba(0,0,0,.7);
             font-size: 20px;
             border:1px solid;
             border-radius: 4px;
@@ -184,7 +184,7 @@
             line-height: 40px;
 
             color:white;
-            background:rgba(0,0,0,.9);
+            background:rgba(0,0,0,.7);
             font-size: 20px;
             border:1px solid;
             border-radius: 4px;
@@ -229,6 +229,30 @@
             top:90px;
             left:207px;
         }
+        #passbox{
+            width: 229px;
+            height: 20px;
+            margin-left: 10px;
+            margin-top: 10px;
+            /* border:1px solid; */
+            display: flex;
+
+            justify-content: space-around;
+        }
+        .pasb{
+            display: none;
+            height: 100%;
+            width: calc(229px/3);
+        }
+        #passbox>div:nth-child(1){
+            background-color: red;
+        }
+        #passbox>div:nth-child(2){
+            background-color: yellow;
+        }
+        #passbox>div:nth-child(3){
+            background-color: green;
+        }
     </style>
 </head>
 <body>
@@ -262,6 +286,11 @@
         <div class="signOut">
             <span>账号：</span><input type="text">
             <span>密码：</span><input type="text">
+            <div id="passbox">
+                <div class="pasb"></div>
+                <div class="pasb"></div>
+                <div class="pasb"></div>
+            </div>
             <input type="button" value="注册" class='btn'>
         </div>
         <div class="signIn">
@@ -307,6 +336,45 @@
     var ap = document.querySelector('p');
     var signIn = document.querySelector('.signIn');
     var signOut = document.querySelector('.signOut');
+    //密码等级判断
+    console.log(inps[1]);
+
+    var boxs = document.querySelectorAll('.pasb');
+    //输入时
+    inps[1].oninput = function(){
+        //输入的内容
+        var str = inps[1].value;
+        //长度6-16位
+        var reg = /^((\d){6,16}|([a-zA-Z]){6,16})$/;
+        //正则匹
+        var bool = reg.test(str);
+        //数字字母
+        var regA = /^[A-Za-z0-9]{6,16}$/;
+        var boolA = regA.test(str);
+        //
+        var re_g = /^\w{6,16}$/   ;
+        var boo_l =re_g.test(str) ;
+        // console.log(bool)
+            console.log(boolA)
+                // console.log(boo_l)
+        if(bool){
+            boxs[0].style.display = 'block'
+
+        }else if(boolA){
+            boxs[0].style.display = 'block'
+            boxs[1].style.display = 'block'
+        }else if(boo_l){
+            boxs[0].style.display = 'block'
+            boxs[1].style.display = 'block'
+            boxs[2].style.display = 'block'
+        }
+        else{
+            boxs[0].style.display = 'none';
+            boxs[1].style.display = 'none';
+            boxs[2].style.display = 'none';
+        }
+    }
+
     //登录按钮
     inps[5].onclick = function(){
         //登录输入的账号密码
@@ -400,7 +468,6 @@
                     banner.style.animation = 'none';
                     clearTimer();
                     gameOver();
-
                 }
             }
 
@@ -485,10 +552,7 @@
                 //         score();
                 //         lock = false
                 //     }
-
                 // }
-
-
                 pipewrap.style.left = l + 'px';
                 if(l<= -70){
                     pipewrap.remove();
