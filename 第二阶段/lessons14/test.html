@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+var str = '   sfs sfd    ';
+console.log(str.split(','));
+console.log(getStr(str).split(','))
+    //去除返回值
+    function getStr(str){
+
+
+        var arr = str.replace(/(^\s*)|(\s*$)/g, "");
+        return arr;
+    }
+</script>
+</html>
