@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <style>
+        #wrap {
+            width: 400px;
+            height: 400px;
+            background: yellow;
+            position: relative;
+            top: 100px;
+            left: 200px;
+        }
+
+        div {
+            background: red;
+        }
+
+        .blue {
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <div id="wrap">
+        <div class=""></div>
+    </div>
+
+</body>
+<script>
+    $(function () {
+        var d = $('#wrap>div').css({
+            width: '200px',
+            height: '200px',
+            // background:'red',
+            position: 'absolute',
+            left: '100px',
+            top: '50px'
+        });
+        // jq中提供的事件绑定方式：
+        // 方式一：jq提供了以大多数事件类型为方法名的操作方法来做事件的绑定，事件处理函数作为参数。
+        // 鼠标事件
+        // 1.点击事件  click
+        // d.click(function(){  
+        //     // jq事件处理函数中：
+        //     // 1.this 指向的是触发事件的 js原生DOM
+        //     // 2.$(this) 指向的是触发事件的 jq包装后的原生DOM
+        //     console.log(this);
+        //     console.log($(this))
+        // })
+
+        // 2.双击事件
+        // d.dblclick(function(){
+        //     console.log('双击');
+        // })
+
+        // 3.按键按下
+        // d.mousedown(function(e){
+        //     console.log('按下');
+        //     console.log(e.clientX,e.clientY);
+        //     console.log(e.pageX,e.pageY)
+        //     console.log(e.screenX,e.screenY)
+        //     console.log(e.type)
+        //     console.log(e.target)
+        // })
+
+        // d.mouseup(function(){
+        //     console.log('抬起')
+        // })
+
+        // d.mousemove(function(){
+        //     console.log('移动')
+        // })
+
+        // d.mouseover(function(){console.log('移入over')})
+        // d.mouseenter(function(){console.log('移入enter')})
+        // d.mouseout(function(){console.log('移出out')})
+        // d.mouseleave(function(){console.log('移出leave')})
+        // d.contextmenu(function(){console.log('右键menu')})
+
+        // 获取元素的偏移量
+        var o = d.offset();
+        var l = o.left;
+        var t = o.top;
+        // console.log(l,t)
+
+        // 获取元素相对于定位父级的偏移量
+        var p = d.position();
+        var l = p.left;
+        var t = p.top;
+        // console.log(l,t);
+
+
+        // jq提供的用于操作DOM的class属性的方法
+        // addClass()/removeClass()
+        // addClass()：需要一个string参数，表示要添加的类名，如果元素已经有要添加的类型，那么就不再添加
+        // removeClass()：需要一个string参数，表示要删除的类名，如果元素没有要删除的类型，那么就不执行操作。
+        var isBlue = false;
+        d.click(function () {
+            // if(isBlue){
+            //     // this.className = '';
+            //     $(this).removeClass('blue');
+
+            // }else{
+            //     // this.className = 'blue';
+            //     $(this).addClass('blue');
+            // }
+            // isBlue = !isBlue;
+
+            $(this).toggleClass('blue');
+        })
+
+        // 元素属性的设置与获取
+        // setAttribute()
+        // getAttribute()
+
+        // attr()：用于对元素设置或读取属性（包含自定义属性），如果参数是1个那么就是读取，如果参数是两个就是设置
+        // console.log(d.attr('index',6));
+        // console.log(d.attr('index'));
+
+
+        // $(document).keydown(function(e){
+        //     console.log(e.keyCode);
+        // })
+        // $(document).keypress(function(e){
+        //     console.log(e.keyCode);
+        // })
+        // $(document).keyup(function(e){
+        //     console.log(e.keyCode);
+        // })
+
+        var inp = $('input');
+        // inp.focus(function () {
+            // console.log('获取焦点');
+        // })
+        // inp.blur(function () {
+            // console.log('失去焦点');
+        // })
+        // inp.change(function () {
+            // console.log('内容改变后');
+            // console.log(this.value);
+            // val()：用于对表单元素的value属性进行值得设置预读取，如果存在参数那么就是设置
+            // value，如果没有参数就是读取value值;
+            // console.log($(this).val());
+        // })
+        // inp.input(function(){   
+        //     console.log('内容改变时')
+        // })
+
+        // jq提供的另外一种绑定事件的方法：
+        /*
+            语法：
+            $(selector).on(type,function);
+    
+            事件移除：
+            $(selector).off()
+            // 1.没有参数的时候，表示将该元素身上所有类型的事件以及他们所有的处理函数都移除。
+            // 2.只有一个参数，string，表示事件类型
+            // 3.两个参数，分别表示事件类型以及事件类型对应的处理函数。（此处删除）
+        */
+        $('input').on('input change blur focus', function (e) {
+            // console.log($(this).val());
+            switch (e.type) {
+                case 'input':
+                    console.log($(this).val());
+                    break;
+                case 'change':
+                    console.log('输入结束');
+                    break;
+                case 'blur':
+                    $(this).css('background', 'red');
+                    break;
+                case 'focus':
+                    $(this).css('background', 'green')
+            }
+        })
+        $('input').off('blur', function () { });
+
+        /*
+        jq事件绑定特点：
+            1.事件处理函数不是赋值而是以回调函数的形式体现，所以它支持同一事件类型下有多个事件处理函数，
+            他们不会覆盖只会按顺序执行
+            2.事件类型为方法名的绑定方式无法移出事件
+            3.通过on方法绑定事件，允许一次性为元素绑定多个类型不同的事件，但是只有一个事件处理函数，这时候
+            就需要事件对象的type属性帮忙了。
+            4.如果$(selector)获取的是多个元素，不再需要循环绑定事件，jq会自动集合中的每一个元素绑定事件
+    
+    
+            1.each()  map()   jquery.color.js juery.easing.js
+            2.翻译练习：使用jq写放大镜
+            3.
+
+            each()方法为每个匹配的元素规定要运行的函数
+            返回false可用于及早停止循环
+            参数function(index,element)
+            index：选择器的index位置，element：当前元素
+
+            map()方法返回一个新数组，数组中的元素为原始数组元素调用函数处理的后值。 
+            map()方法按照原始数组元素顺序依次处理元素。 
+
+        */
+
+        // 滚轮事件
+        $('#wrap').on('mousewheel DOMMouseScroll', function (e) {
+            switch (e.type) {
+                case 'mousewheel':
+                    if (e.originalEvent.wheelDelta > 0) {
+                        console.log('向上')
+                    } else {
+                        console.log('向下')
+                    }
+                    break;
+                case 'DOMMouseScroll':
+                    if(e.originalEvent.detail > 0){
+                        console.log('向下');
+                    }else{
+                        console.log('向上');
+                    }
+                    break;
+            }
+        })
+
+        // jq包装的符合事件
+        // hover
+        $('#wrap').hover(function(){
+            $(this).css('background','blue');
+        },function(){
+            $(this).css('background','purple');
+        })
+
+    
+})
+
+
+</script>
+
+</html>
