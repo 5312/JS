@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class= 'box'></div>
+</body>
+<script src= '../../jquery-3.4.1.js'></script>
+<script>
+$(function(){
+    var box = $('.box').css({
+        position:'absolute',
+        width:'200px',
+        height:'200px',
+        background:'red'
+    })
+
+    box.mousedown(function(e){
+        var ex =e.clientX - box.offset().left;
+        var ey = e.clientY - box.offset().top;
+        console.log(ex,ey);
+        box.mousemove(function(w){
+            var em = w.clientX;
+            var en = w.clientY;
+            box.css('left',em-ex).css('top',en-ey);
+
+        })
+        box.mouseup(function(){
+            
+        })
+    })
+})
+
+</script>
+</html>

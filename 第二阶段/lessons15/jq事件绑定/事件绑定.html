@@ -5,9 +5,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+    #wrap{
+        position: relative;
+        width: 300px;
+        height: 300px;
+        background-color: yellow;
+    }
+    #wrap>div{
+        background:red;
+    }
+    .blue{
+        background:blue;
+    }
+    </style>
 </head>
 <body>
-
+    <div id='wrap'>
+        <div calss = ''></div>
+    </div>
 </body>
-<script src="../../jquery-3.4.1.js" charset="utf-8"></script>>
+<script src="../../jquery-3.4.1.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(function(){
+     var d = $('#wrap>div').css({
+         width:'200px',
+         height:'200px',
+         background:'red',
+         position:'absolute',
+         left:'100px',
+         top:'50px'
+     });
+    /**
+    JQ中提供的事件绑定方式
+    鼠标事件
+    方式一：jq提供了以大多数事件类型为方法的操作方法来事件的绑定，事件处理函数作为参数。
+    1. 点击事件 click
+    **/
+    d.click(function(){
+        //jq事件处理函数中；
+        //1. this指向的是触发事件的js原生DOM
+        //2 . $(this)指向的是触发事件的jq包装后的原生DOM
+        console.log(this);
+    })
+
+    //2. 双击事件
+    d.dblclick(function(){
+        console.log('双击')
+    })
+
+    //3. 按键按下
+    d.mousedown(function(e){
+        console.log(e)
+
+    })
+
+    //4. 抬起
+    d.mouseup(function(){
+        console.log('抬起')
+    })
+
+    //5. 移动
+    d.mousemove(function(){
+        console.log('移动')
+    })
+    //6 . 移入
+    d.mouseover(function(){
+        console.log('移入')
+    })
+    d.mouseenter(function(){
+        console.log('移入')
+    })
+    //7. 移出
+    d.mouseout(function(){
+        console.log('移出')
+    })
+    d.mouseleave(function(){
+        console.log('移出')
+    })
+    //8. 右键
+    d.contextmenu(function(){
+        console.log('右键')
+    })
+
+    //获取元素相对于视窗的偏移量
+    var o = d.offset();
+    var l = o.left;
+    var t = o.top;
+    console.log(l,t);
+
+    //获取元素相对于定位父级的偏移量
+    var p = d.position();
+    var l = p.left,
+        t = p.top;
+        console.log(l,t);
+//jq提供的用于操作DOM的class属性的方法
+//addClass()/removeClass();
+//addClass():需要一个string参数，表示要添加的类名，如果元素已经有要添加的类型，那么就不要在添加
+//removeClass();需要一个string参数，表示要删除的类名。如果元素没有要删除的类型，那么就不执行删除操作
+/**
+        var isBlue = false;
+        d.click(function(){
+            if(isBlue){
+                $(this).removeClass('blue');
+            }else{
+                $(this).addClass('blue')
+            }
+            isBlue = !isBlue;
+        })
+})
+**/
+d.click(function(){
+    $(this).toggleClass('blue');
+})
+
+//元素属性的设置于获取
+// attr();用于对元素设置或读取属性（包含自定义属性），如果参数是1个那么就是读取，如果参数是两个就是设置。
+)}
+
+
+</script>
 </html>
