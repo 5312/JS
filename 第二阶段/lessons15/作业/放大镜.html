@@ -10,29 +10,46 @@
             border:1px solid;
             width: 350px;
             height: 449px;
+            position: relative;
+            z-index: 9;
         }
     </style>
 </head>
 <body>
     <div class="wrap">
         <img src="./min5.jpg" alt="">
+        <img src="./max5.jpg" class='max'>
     </div>
+
 </body>
 <script src="../../jquery-3.4.1.js" charset="utf-8"></script>
 <script>
     $(function(){
         var min = $('.wrap');
+        $('.max').hide().css({
+            'position':'absolute',
+            'top':'0px',
+            'width':'700px',
+            'height':'1000px'
+        });
         //移入
         min.mouseover(function(e){
             var ex = e.clientX;
             var my = e.clientY;
             min.mousemove(function(q){
-                var moveX = q.clientX;
+                var moveX = q.clientX ;
                 var moveY = q.clientY;
-                $
-            })
-        })
+                $('.max').show().css({
+                    'left':moveX,
+                    'top':moveY
+                });
 
+            })
+
+        })
+        min.mouseout(function(){
+            $('.max').hide();
+        })
 
     })
 </script>

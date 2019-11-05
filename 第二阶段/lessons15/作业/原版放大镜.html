@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .minBox{
+            border:2px solid;
+            width: 350px;
+            height: 449px;
+            position:relative;
+        }
+    </style>
+</head>
+<body>
+    <div class='minBox'>
+        <img src="./min1.jpg" alt="">
+        <div class="slider"></div>
+    </div>
+    <div class='rbox'>
+        <img src="./min1.jpg" class='rimg'>
+    </div>
+</body>
+<script src="../../jquery-3.4.1.js" charset="utf-8"></script>
+<script>
+    $(function(){
+        $('.slider').css({
+            'display':'none',
+            'width':'300px',
+            'height':'300px',
+            'background':'rgba(255, 255, 0, 0.3)',
+            'position':'absolute',
+            'top':'0'
+        })
+        $('.rimg').css({
+            'position':'absolute',
+
+            'width':'800px',
+            'height':'1026px'
+        });
+        $('.rbox').css({
+            'width':'548px',
+            'height':'547px',
+            'position':'absolute',
+            'top':'8px',
+            'left':'370px',
+            'border':'2px solid',
+            'overflow':'hidden'
+        }).hide();
+        $('.minBox').mouseover(function(e){
+            //移入出现
+            $('.rbox').show();
+            var mx = e.clientX;
+            var my = e.clientY;
+
+        }).mousemove(function(q){
+            var l = q.clientX - $('.minBox').offset().left ;
+            var t = q.clientY  - $('.minBox').offset().top ;
+            l -= $('.slider').width()/2;
+            t -= $('.slider').height()/2;
+            var maxL = $('.minBox').width()-$('.slider').width();
+            var maxT = $('.minBox').height()-$('.slider').height();
+            l = l>=maxL?maxL:l;
+            l = l<=0?0:l;
+            t = t>=maxT?maxT:t;
+            t = t<=0?0:t;
+            //黄色块
+            $('.slider').css({
+                'display':'block',
+                'top':t,
+                'left':l
+            })
+            //右侧
+            //可移动最大距离
+            var maxrL = $('.rbox').width() - $('.rimg').width();
+            var maxrT = $('.rbox').height() - $('.rimg').height();
+            //左侧的移动距离比右侧的移动距离 比例
+
+            var scaleX = maxrL / maxL;
+            var scaleY = maxrT / maxT;
+            var rl =  $('.slider').offset().left -10 ;
+            var rt = $('.slider').offset().top -10;
+            $('.rimg').css({
+                'left':rl * scaleX ,
+                'top': rt * scaleY
+            })
+        }).mouseout(function(){
+            $('.rbox').hide();
+            $('.slider').css({
+                'display':'none'
+            })
+        })
+
+
+
+
+
+    })
+</script>
+</html>
