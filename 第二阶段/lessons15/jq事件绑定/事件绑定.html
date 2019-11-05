@@ -123,6 +123,14 @@ d.click(function(){
 // attr();用于对元素设置或读取属性（包含自定义属性），如果参数是1个那么就是读取，如果参数是两个就是设置。
 )}
 
-
+//jq包装的符合事件
+//hover
+$('#wrap').hover(function(){
+    //鼠标移入时触发
+    $(this).css('background','blue');
+},function(){
+    //鼠标移除时触发
+    $(this).css('background','orange');
+})
 </script>
 </html>

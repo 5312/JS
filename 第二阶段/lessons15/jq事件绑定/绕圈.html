@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width: 800px;
+            height: 500px;
+            border:1px solid;
+            position:absolute;
+            margin:0 auto;
+        }
+        .car{
+            width: 30px;
+            height: 30px;
+            border:1px solid;
+            position:absolute;
+            background:red;
+        }
+        input{
+            position:absolute;
+            bottom:100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="car"></div>
+    </div>
+    <input type="button" value="开始">
+    <button>stop</button>
+</body>
+<script src="../../jquery-3.4.1.js"></script>
+<script>
+    $(function(){
+var car = $('.car')
+        $('input').click(function(){
+
+            car.animate({
+                'left':'770px'
+            },1000).delay(2000).animate({
+                'top':'470px'
+            },1000).animate({
+                'left':'0px'
+            },1000).animate({
+                'top':'0px'
+            },1000)
+        })
+        //stop();用于控制动画对列中动画的播放
+        //存在两个参数，bool，bool;
+        //false,false:立即停止当前动画，执行队列中的下一动画
+        //true,true:立即结束当前动画，并且停止动画队列
+        //false,true:立即结束当前动画，并且执行队列中的下一动画
+        //true,false:立即停止当前动画，并且停止动画队列
+
+        //第一个参数用来控制动画队列中的剩余动画是否播放，false表示播放，true表示不播放
+        //第二个参数用来控制当前动画是否立即停止播放，false表示立即停止，true表示立即结束
+        $('button').css({
+            'position':'absolute',
+            'bottom':'130px'
+        })
+        $('button').click(function(){
+            car.stop(false,true)
+        })
+
+        //通过delay()方法来使动画对列中的动画延时播放
+
+        // 1. each()  map()  jquery.color.js  jquery.easing.js
+        // 2. 翻译练习：使用jq实现放大镜
+    })
+    
+</script>
+</html>

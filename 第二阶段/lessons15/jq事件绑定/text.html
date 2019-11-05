@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background:red;
+            margin:0 auto;
+            position: absolute;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+<script src="../../jquery-3.4.1.js"></script>
+<script>
+    //jq提供的一些简单的动画特效
+    //show（）：使隐藏的元素显示
+    //hide():使显示的元素隐藏
+
+    //fadeIn():淡入
+    //fadeOut():淡出
+
+    //slideDown():滑入
+    //slideUp():滑出
+    $(function(){
+        var d = $('div');
+        var isShow = true;
+        $(document).click(function(){
+            // isShow?d.fadeOut():d.fadeIn();
+            // isShow?d.hide():d.show();
+            // isShow?d.slideUp():d.slideDown();
+            // d.slideToggle();
+
+            isShow = !isShow;
+
+            //jq提供的:animate();
+            //调用一次animate()只能播放一回单过程，如果动画存在多个过程，那么需要将多个动画过程按顺序添加到元素的动画队列中。
+            // d.animate({
+            //     'left':'50',
+            //     'width':'100px',
+            //     'height':'100px',
+            //     'border-radius':'50%'
+            // },2000, function(){
+            //     //当动画播放完成后自动调用
+            //     console.log('动画播放完成')
+            // }).animate({
+            //     'left':'300px',
+            //     'top':'100px',
+            //     'width':'300px',
+            //     'height':'300px',
+            //     'border-radius':'0'
+            // },2000)
+
+            //stop():用于控制动画队列中动画的播放
+        })
+    })
+</script>
+</html>

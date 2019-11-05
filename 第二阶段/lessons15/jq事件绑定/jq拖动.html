@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class= 'box'></div>
+    <input type="text">
 </body>
 <script src= '../../jquery-3.4.1.js'></script>
 <script>
@@ -30,10 +31,80 @@ $(function(){
 
         })
         box.mouseup(function(){
-            
+            $(document).off(mousemove);
         })
     })
-})
+    $(document).keydown(function()e{
+        console.log(e.keyCode)
+    })
+    $(document).keypress(function(e){
+        console.log(e.keyCode)
+    })
+    $(document).keyup(function(e){
+        console.log(e.keyCode)
+    })
 
+    var inp = $('input');
+    inp.focus(function(){
+        console.log('获取焦点')
+
+    })
+    inp.blur(function(){
+        console.log('失去焦点')
+    })
+    inp.change(function(){
+        console.log('内容改变后')
+        //val():用于对表单元素的value属性进行值的设置与读取，如果存在参数那么就是设置value，如果没有参数就是读取vaue;
+        $(this).val();
+    })
+    // inp.input(function(){
+    //     console.log('内容改变时')
+    // })
+
+    //jq提供的另外一种绑定事件的方法
+    /*
+        语法：
+        $(selector).on(type,function);
+
+        事件移除：
+        $(selector).off();
+        1. 没有参数的时候，表示将该元素身上所有类型的事件以及他们所有的处理函数都移除
+        2. 只有一个参数，string表示事件类型
+        3. 两个参数，分别表示事件类型以及事件类型对应的的处理函数，（此处理删除事件的要求与DOM2级相同）
+    */
+
+    $('input').on('input',function(){
+        console.log($(this).val());
+        switch (e.type) {
+            case 'input':
+
+                break;
+            default:
+
+        }
+    })
+    $('input').off('blur',function(){})
+})
+/*
+    jq事件绑定特点：
+        1. 事件处理函数不是赋值而是以回调函数的形式体现，所以它支持同一事件类型下有多个事件处理函数，他们不会覆盖只会按照顺序执行。
+        2. 事件类型为方法名的绑定方式无法移除事件
+        3. 通过on方法绑定事件，允许一次性为元素绑定多个类型不同的事件。但是只能有一个事件处理函数。这时候就需要事件对象的type属性帮忙了
+        4. 如果$(selector)获取的是多个元素，不在需要循环绑定事件，jq会自动为集合中的每一个元素绑定事件。
+
+        jq提供的
+        each();
+        map();
+
+        滚轮事件
+        $('wrap').on('mousewheel DOMMouseScroll',function(e){
+        switch(e.type){
+        case 'mousewheel':
+            if(e.wheelDelta > 0){
+
+        }
+    }
+    })
+*/
 </script>
 </html>
