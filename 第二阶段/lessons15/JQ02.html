@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery-1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+</body>
+<script>
+    // DOM加载方法
+    $(function () {
+        //1.DOM的获取(选择器)
+        // js原生
+        // getELementById('id');
+        // getElementsByClassName('class');
+        // getElementsByTagName('tagName');
+        // getElementsByName('name');这个多用于表单中
+        // querySelector('选择器');
+        // querySelectorAll('选择器');
+
+
+        // jq：$('css选择器')，得到的元素集合是静态的，支持所有的css选择器，还支持一些css中没有的选择器
+        // var ss = $('span');
+        // console.log(ss);
+        // 通过jq提供的方式方法得到的不是直接的DOM对象，而是对DOM进行了包装的jq对象，不能直接使用js原生DOM的操作方法，要么转化成DOM对象，要么使用jq提供的方法.
+        // js原生的DOM对象与jq包装的DOM对象之间的相互转化
+        // jq -> js 通过jq提供的方法get()或者直接取下标
+        // console.log(s1);
+        // console.log(s1[0]);
+        // console.log(s1.log(0));
+
+        // js -> jq 直接将js的DOM对象作为$()的参数即可
+
+
+        // :eq()选择器，用来选择指定下标的元素
+        // 如果下标越界那么将什么也无法获取
+        // $('ul>li:eq(3)')[0].style.background = 'red';
+        // eq()方法
+        // $('ul>li').eq(2)[0].style.backgroundColor = 'red';
+
+        // :odd选择器，用来选择指定元素集合中所有的奇数下标元素
+        console.log(('ul>li:odd'));
+
+        // :even选择器，用来选择指定元素集合中所有的偶数下标元素
+        console.log(('ul>li:even'));
+
+        // :gt()选择器.用来选择大于指定下标的所有元素
+        console.log('ul>li:gt(4)')
+        // :lt()选择器，用来选择小于指定下标的所有元素
+
+        // 
+        var t = $('li');
+        for (var i = 0; i < t.length / 2; i++) {
+            $('ul>li:even')[i].style.backgroundColor = 'red';
+            $('ul>li:odd')[i].style.backgroundColor = 'yellow';
+        }
+        // jq中对DOM对象设置样式的方法
+        // 链式写法
+        $('li:odd').css('background','yellow').css('color','red');
+        $('li:even').css('background','red').css('color','white');
+
+        $('li').css({
+            'background':'red',
+            'border-radius':'5px',
+            'color':'white'
+        })
+    })
+</script>
+
+</html>

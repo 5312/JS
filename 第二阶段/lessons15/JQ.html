@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
 
 </body>
-<script src="../jquery-3.4.1.js"></script>
+<script src="../jquery-1.9.1/jquery.js"></script>
 <script>
-    //jq就是jQuery的简称，JQuery是一套js代码库，核心在于极大的简化了DOM操作。另外jQ的源码是开源的，可用插件跟多。
-    //jq的初衷：write less do more;
-    //想要早项目中使用jq必须先引入jq文件。
-    // 1x版本实现了对IE678的兼容
-    // 2x,3x版本已经放弃了对IE678的兼容处理
-    //文件版本的更新，是向下兼容的，老版本的方法可以在新版本文件下使用，但是新版本文件中的方法不能在老版本中使用。
-    //CDN引用：‘https://code.jquery.com/jquery-1.9.1.min.js’;
+    // jq就是jQuery的简称，jQuery是一套轻量级的js代码库，优势在于极大的简化了DOM操作。另外jQuery的源码是开源的，可用的插件更多。
+    // jq的初衷：write less do more;
+    // 想要在项目中使用jq，必须先引入jq文件
+    // 1x，2x，3x版本
+    // 1x版本实现了IE678的兼容
+    // 2x，3x版本就已经放弃了对IE678的兼容处理
+    // 文件版本的更新，是向下兼容的，老版本中的方法可以在新版本文件下使用，但是新版本文件中的方法不能再老版本中使用
+    // 废弃，舍弃
 
-    //整个JQ文件的核心就是一个jquery对象
-    window.onload = function(){
+    // 1.CDN引入："https://code.jquery.com/jquery-1.8.3.min.js"
+    // 2.下载到本地，通过相对或绝对路径引入
+
+    // 整个jQ文件的核心就是一个jQuery对象 -> $
+    window.onload = function () {
         console.log('window load');
     }
-    jQuery(document).ready(function(){
+    jQuery(document).ready(function () {
         console.log('jQuery load');
     })
-    //简写形式
-    $(document).ready(function(){
+    // 简写形式
+    $(document).ready(function () {
         console.log('$ load');
     })
-    $(function(){
-        console.log('$ load2')
-    })
-    //window.onload 与 jQuery.ready的区别
-    //1 . 关于加载内容，window。onload需要等DOM以及媒体资源都加载完成才会触发而jQuery.ready只需要等待DOM加载完成即可。
-    //2. window.onload 多次绑定会覆盖，只有最后一次可以执行：而jQuery.ready允许多次绑定，会按照绑定的先后顺序依次执行。
-    //只要使用了jQuery.不管代码写在文档的那个位置，必须都要写加载函数
-    $(function(){
-
+    $(function () {
+        console.log('$ load2');
     })
 
-    
+    // window.onload 与 jQuery.ready的区别
+    // 1.关于加载内容，window.onload需要等DOM以及媒体资源都加载完成才会触发，而jQuery.ready只需要等待DOM加载完成即可
+    // 2.window.onload多次绑定会覆盖，只有最后一个可以执行：而jQuery.ready允许多次绑定，会按照绑定的先后顺序依次执行
+
+    // 对后面的要求，只要使用了jQuery，不管代码写在文档的哪个位置，必须都要写加载函数
 </script>
 </html>

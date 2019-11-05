@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+    </ul>
+</body>
+<script src="../jquery-3.4.1.js"></script>
+<script>
+    //DOM遍历：根据DOM之间的关系来获取DOM
+    //父关系：parentNode/parentElement
+    //$('li').parent().css('background','red');
+    //parents()返回当前元素的所有父元素
+
+    //parentsUntil():返回当前元素的所有父元素知道指定的元素为止
+    console.log($('li').parentsUntil)
+
+    //子关系 childNode ,children
+    //children()
+    console.log($('ul').children());
+    //find();从所有后代元素中找符合条件的元素
+    $('ul').find('.t').css('background','red')
+    //同胞关系:
+    //pervlousSibling -> pervious
+    //next();//后一个相邻的兄弟元素
+    prev();//前一个相邻 的兄弟元素
+    $('li:eq(4)').next().css('backogrund','red');
+
+    //nextAll():当前元素后面的所有兄弟元素
+    $('ul>li:nth-of-type(1)').nextAll.css('','')
+    //nextUntil():当前元素后面的兄弟元素直到指定的元素为止。
+
+    //prevAll().prevUntil()与next的用法相同
+
+//创建元素
+var div = $('<div></div>');
+//添加
+//append()
+// $('body').append(div);
+//appendTo()
+div.appendTo($('body'));
+
+// prepend()
+// $('body').prepend(div);
+
+// prependTo()
+//div.prependTo($('body'));
+
+//before();
+$('li:eq(2)').before(div);
+//after();
+$('li:eq(4)').after(div)
+
+//删除
+//remove();
+//empty();将指定元素内容置空
+
+</script>
+</html>

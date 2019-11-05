@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+    </ul>
+    <!-- <ul>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+        <li>17</li>
+    </ul> -->
+</body>
+<script src="../jquery-1.9.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        // DOM遍历：根据DOM之间的关系来获取DOM
+        // 父关系：parentNode/parentElement
+        // parent()返回当前元素的直接父元素
+        $('li').parent().css('background', 'pink');
+        // oarents()返回当前元素的所有父元素
+        console.log($('li').parents());
+        // parentsUnil()返回当前元素的父元素，知道指定的元素为止
+        console.log($('li').parentsUntil(('body')));
+
+        // 子关系：childNodes, children
+        // children();所有的子元素
+        console.log($('ul').children());
+        // find()从所有后代元素中找符合条件的元素
+        $('ul').find('.t').css('background', 'red');
+
+        // 同胞关系:previousSibing -> previous
+        // nextSibling ->nextElementSibling
+        // next(); 后一个相邻的兄弟元素
+        // prve(); 前一个相邻的兄弟元素
+        $('li:eq(4)').css('background', 'yellow').next().css('background', 'red').prev().prev().css(
+            'background', 'red')
+
+        // nextAll():当前元素后面的所有兄弟元素
+        // $('ul>li:first').nextAll().css('background','lightblue')
+        // nevtUntil():当前元素后面的兄弟元素直到指定的元素为止
+        $('ul>li:first').nextUntil($('ul>li:last')).css('background', 'lightblue')
+
+        // prevAll(),prevAll()与next的用法相同
+
+        // 创建元素
+        var div = $('<div class = "box" ></div>').css({})
+
+
+        // 添加
+        // append()
+        // $('body').append(div);
+        // appendTo()
+        // div.appendTo($('body'));
+        // prepend()
+        // $('body').prepend(div);
+        // prependTo()
+        // div.prependTo($('body'));
+        // before()在找到的元素前添加指定元素
+        // $('li:eq(2)').before(div);
+        // after()在找到的元素后添加指定元素
+        // $('li:eq(4)').after(div);
+
+
+        // 删除
+        // remove();
+        // empty();将指定元素内容置空
+    })
+</script>
+
+</html>
