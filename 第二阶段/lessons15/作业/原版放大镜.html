@@ -12,15 +12,27 @@
             height: 449px;
             position:relative;
         }
+        .img>img{
+            width: 55px;
+            height: 64px;
+        }
     </style>
 </head>
 <body>
     <div class='minBox'>
-        <img src="./min1.jpg" alt="">
+        <img src="./min1.jpg" class="minimg">
         <div class="slider"></div>
     </div>
     <div class='rbox'>
         <img src="./min1.jpg" class='rimg'>
+    </div>
+    <div class='img'>
+        <img src="./min1.jpg" alt="">
+        <img src="./min2.jpg" alt="">
+        <img src="./min3.jpg" alt="">
+        <img src="./min4.jpg" alt="">
+        <img src="./min4.jpg" alt="">
+        <img src="./min1.jpg" alt="">
     </div>
 </body>
 <script src="../../jquery-3.4.1.js" charset="utf-8"></script>
@@ -93,6 +105,12 @@
             })
         })
 
+        $('.img>img').map(function(){
+            $(this).mouseover(function(){
+                console.log($('.minimg'))
+                $('.minimg').attr('src',$(this).attr('src'))
+            })
+        })
 
 
 
