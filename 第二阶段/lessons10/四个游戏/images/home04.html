@@ -12,7 +12,7 @@
         #bg{
             width: 320px;
             height: 480px;
-            background: url(./images/game_bg.jpg);
+            background: url(game_bg.jpg);
             position: relative;
             margin: 50px auto;
         }
@@ -55,10 +55,10 @@
     <div id="bg">
         <div id="start">开始</div>
         <div id="scoreEl">0</div>
-        <img src="./images/progress.png" id="timeEl">
+        <img src="progress.png" id="timeEl">
     </div>
 </body>
-<script src="./files/tween.js"></script>
+<script src="../../../tween.js"></script>
 <script>
 // 获取要操作的元素
 var bg = document.getElementById('bg'),
@@ -111,7 +111,7 @@ function createWolf(time){
             wolf.lock = false;
             // 确定类型
             wolf.type = wolfType();
-            wolf.src = './images/'+wolf.type+'0.png';
+            wolf.src = wolf.type+'0.png';
             // 确定位置
             wolf.index = wolfIndex();
             wolf.style.left = points[wolf.index][1];
@@ -123,12 +123,12 @@ function createWolf(time){
         var i = 0;
         wolf.up = setInterval(function(){
             i ++;
-            wolf.src = './images/'+wolf.type+i+'.png';
+            wolf.src = wolf.type+i+'.png';
             if(i >= 5){
                 clearInterval(wolf.up);
                 wolf.down = setInterval(function(){
                     i --;
-                    wolf.src = './images/'+wolf.type+i+'.png';
+                    wolf.src =wolf.type+i+'.png';
                     if(i <= 0){
                         clearInterval(wolf.down);
                         wolf.remove();
@@ -141,12 +141,12 @@ function createWolf(time){
             if(this.lock){return;}
             this.lock = true;
             i = 6;
-            this.src = './images/'+wolf.type+i+'.png';
+            this.src = wolf.type+i+'.png';
             clearInterval(wolf.up);
             clearInterval(wolf.down);
             this.hurt = setInterval(function(){
                 i ++;
-                wolf.src = './images/'+wolf.type+i+'.png';
+                wolf.src = wolf.type+i+'.png';
                 if(i >= 9){
                     clearInterval(wolf.hurt);
                     setTimeout(function(){
