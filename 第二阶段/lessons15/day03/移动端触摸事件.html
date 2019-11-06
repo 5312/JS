@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+</body>
+<script src="../../jquery-3.4.1.js" charset="utf-8"></script>
+<script>
+        //移动端没有鼠标，所以部分鼠标事件就得不到较好的支持
+        //在移动端上交互都是通过手指触屏。需要使用touch事件
+        // touchstart,touchmove,touchend,touchcancel
+        //click在移动端是有效的，只不过与touchstart相比存在200ms延迟
+
+$(function(){
+            var msg =document.getElementsByTagName('h1')[0]
+            document.ontouchstart = function(e){
+                //手指触电坐标
+                // 坐标点信息不能直接通过事件对象event获取。需要通知touch对象获取
+                // var touch = e.touches[0];
+
+                // msg.innerHTML = 'x:'+touch.clientX+'y:'+touch.clientY;
+            }
+            document.ontouchmove = function(e){
+
+                // msg.innerHTML = '移动'
+                // var touch = e.touches[0];
+                //
+                // msg.innerHTML = 'x:'+touch.clientX+'y:'+touch.clientY;
+            }
+            document.ontouchend = function(e){
+                console.log(e)
+                var touch = e.changedTouches[0];
+                msg.innerHTML = 'x:'+touch.clientX+'y:'+touch.clientY;
+            }
+
+})
+</script>
+</html>
