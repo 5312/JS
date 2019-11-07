@@ -58,7 +58,6 @@
 <script>
     $(function(){
         var w = $('.content').width()/4;
-        console.log(w)
         $('.content>div').css({
             width:w
         })
@@ -66,20 +65,78 @@
         $('.content>div').each(function(x,y){
             $(this).css({
                 'backgroundColor':colors[x],
-
             })
-
         })
         $('.head>div').each(function(x,y){
-            $(this).click(function(){
+            $(this).on('touchstart',function(e){
                 var ss = -((x+1)*1)*100 + 100+'%'
-                console.log(ss)
-                $('.content').css({
-                    left:ss
+                $('.content').animate({
+                    'left':ss
+                })
+                var t = $('.head>div')[x];
+                $('.head>div').css({
+                    background:'white'
+                })
+                $(this).css({
+                    background:'red'
                 })
 
             })
+            var i = 0;
+            //滑动
+            /**
+            $('.content').on('touchmove touchstart',function(e){
+                var touch = e.originalEvent.touches[0];
+                switch(e.type){
+                    case 'touchstart':
+                        i++;
+                        break;
+                    case 'touchmove':
+                        var touch = e.originalEvent.changedTouches[0];
+                        i= i>=3?3:i;
+                        var ss =  -i*100+'%'
+                        // 保存上次left
+                        var sv =ss;
+                        console.log(ss);
+                        $('.content').css({
+                            left:ss,
+                            transition:'1s'
+                        })
+                        break;
+                    }
+            })
+            */
+            var s = $(document).width();
+            $('.content').on('touchstart',function(e){
+                var touch = e.originalEvent.touches[0];
+                var sx = touch.clientX;
+                    $('.content').on('touchend',function(e){
+                        var touch = e.originalEvent.changedTouches[0];
+                        var ex = touch.clientX;
+                        if(sx-ex >0){
+                            // 下一页
+                            var l = $(this).position().left -s;
+
+                            $(this).css({
+                                left:l +'px'
+                            })
+                        }else{
+                            //上一页
+                            var l = $(this).position().left + s;
+                            l = l>0?0:l;
+                            $(this).css({
+                                left:l+'px'
+                            })
+                        }
+                        $(this).off('touchend');
+                    })
+            })
         })
+
     })
+    function change_select(index){
+        // siblings():获取指定元素的所有兄弟元素
+        $('nav>div').eq(index).addClass('select').siblings().removeClass('select');
+    }
 </script>
 </html>
