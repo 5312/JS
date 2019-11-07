@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>放大镜</title>
+    <style>
+        .wrap{
+            /* border:1px solid; */
+            width: 834px;
+            height: 449px;
+            position: relative;
+            z-index: 9;
+        }
+        .wrap>img{
+            width: 200px;
+            border:2px solid;
+
+        }
+        .box{
+            width: 200px;
+            height: 30px;
+            background-color: rgb(21, 4, 24);
+            position: absolute;
+            bottom: 0;
+        }
+        .max{
+            height: 200px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <img src="./apple1.jpeg" class='min'>
+        <img src="./apple2.jpeg" class='min'>
+        <img src="./apple3.jpeg" class='min'>
+        <img src="./apple4.jpeg" class='min'>
+        <div class="max">
+            <img src="./apple4.jpeg" class='maximg'>
+            <div class="box"></div>
+        </div>
+    </div>
+
+</body>
+<script src="../../jquery-3.4.1.js" charset="utf-8"></script>
+<script>
+    $(function(){
+        $('.max').hide()
+        var min = $('.wrap>img');
+        $('.max>img').css({
+            'position':'absolute',
+            'top':'0px',
+            'width':'200px',
+            'height':'200px'
+        });
+        //移入
+        $('.min').mouseover(function(e){
+
+            $('.min').mousemove(function(q){
+
+                var moveX = q.clientX ;
+                var moveY = q.clientY - 200;
+                $('.max').show().css({
+                    'left':moveX,
+                    'top':moveY
+                }).children('img').attr('src',$(this).attr('src'))
+
+            })
+
+        })
+        min.mouseout(function(){
+            $('.max').hide();
+        })
+
+    })
+</script>
+</html>
