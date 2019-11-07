@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    html,body{
+        width: 100%;
+        height: 100%;
+    }
+    div{
+        width: 100px;
+        height: 100px;
+        background:red;
+    }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+<script src="../../jquery-3.4.1.js"></script>
+<script>
+    $(function(){
+        var mx,my;
+        $('div').on('touchstart touchmove',function(e){
+            // switch(e.type)
+            var touch = e.originalEvent.changedTouches[0] || e.originalEvent.touches[0];
+            var scoll = $('div').offset();
+            mx = touch.clientX -scoll.left;
+            my = touch.clientY -scoll.top;
+        }).on('touchmove',function(e){
+            var touch = e.originalEvent.changedTouches[0] || e.originalEvent.touches[0];
+
+            var x = touch.clientX - mx;
+            var y = touch.clientY - my;
+            $(this).css({
+                position:'absolute',
+                left:x+'px',
+                top:y+'px'
+            })
+
+        })
+    })
+</script>
+</html>

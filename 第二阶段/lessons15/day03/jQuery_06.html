@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 10px;
+            color: #fff;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+</body>
+<script src="jquery.js"></script>
+<script>
+    // each()  map()
+    // 遍历器：主要功能就是为了遍历集合（元素、数组、对象）
+    // var arr = [1,2,3,4];
+    // $.each(arr,function(x,y){
+    //     console.log(x+' -> '+y);
+    // })
+
+    // var newArr = $.map(arr,function(x,y){
+    //     console.log(x+' -> '+y);
+    //     x%2==0?x:x*=2;
+    //     return x;
+    // })
+    // console.log(arr)
+    // console.log(newArr)
+
+    var colors = ['red','orange','yellow','green','cyan'];
+    var ds = document.querySelectorAll('div');
+    ea(ds,function(x,y){
+        y.onclick = function(){
+            this.style.background = colors[x];
+        }
+    })
+    function ea(els,fn){
+        for(var i=0;i<els.length;i++){
+            fn(i,els[i]);
+        }
+    }
+</script>
+</html>

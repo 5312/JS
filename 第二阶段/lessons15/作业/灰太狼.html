@@ -59,28 +59,35 @@
     </div>
 </body>
 <script src="../../jquery-3.4.1.js" charset="utf-8"></script>
+<script src="../../jquery.timer.1.2.js" charset="utf-8"></script>
 <script>
 // 狼出生的位置
 var points = [['117px','96px'],['161px','19px'],['143px','191px'],['193px','102px'],['222px','17px'],['213px','200px'],['295px','30px'],['276px','119px'],['297px','209px']];
 
 // 存储出现的狼的坐标位置，防止多个狼出现在同一位置。
 var wolfs = [];
+var score = 0;
     $(function(){
         $('#start').click(function(){
             //按钮消失
             $(this).remove();
+            // 狼出现
+            $('#bg').everyTime(rn(500,2000)+'ms','timer3',main)
             //进度条动画
             $('#timeEl').animate({
                 width:'0%'
-            },6000,'linear',function(){
+            },60000,'linear',function(){
                 //动画完成后 游戏结束
-
+                $('#bg').stopTime();
+                $('#bg').oneTime('5ms','alert',function(){
+                    alert('GAME OVER')
+                })
             })
         })
 
 
     })
-main();
+
     //开始
     function main(){
         //位置
@@ -91,17 +98,66 @@ main();
             position:'absolute',
             top:points[wolfdex][0],
             left:points[wolfdex][1]
-        }).appendTo($('#bg'))
+        }).appendTo($('#bg')).attr('lock',true);
+        var count = 0;
+        //上升
+        wolf.everyTime(rn(20,200)+'ms','timer1',function(){
+            count++;
+            if(count >=5){
+                wolf.stopTime();
+                // 下降
+                wolf.everyTime(rn(20,200)+'ms','timer2',function(){
+                    count--;
+                    if(count <=0){
+                        wolf.stopTime();
+                        wolf.remove();
+                        wolfs.splice(wolfs.indexOf(wolfdex),1);
+                    }
+                    wolf.attr('src',wolfype + count +'.png')
+                })
+            }
+            wolf.attr('src',wolfype + count +'.png')
+        })
+        //点击
+        wolf.click(function(){
+            // if($(this).attr('lock') == "false"){return};
+            if(wolfype == 'h'){
+                score+=10;
+            }
+            if(wolfype == 'x'){
+                score-=10;
+            }
 
+            $('#scoreEl').html(score);
+
+            wolf.stopTime('timer1');
+            wolf.stopTime('timer2');
+            //击中
+            count = 6;
+            //防止再次点击
+            $(this).attr('lock',false);
+
+            wolf.attr('src',wolfype + count +'.png');
+            wolf.everyTime(rn(20,200)+'ms','timer4',function(){
+                count++;
+                if(count>=9){
+                    wolf.stopTime('timer4');
+                    wolf.remove();
+                    wolfs.splice(wolfs.indexOf(wolfdex),1)
+                }
+                wolf.attr('src',wolfype + count +'.png');
+            })
+            //移除事件
+            wolf.off();
+        })
 
     }
-
     //确定位置
     //出现过的会存入一个新数组
     function wolfIndex(){
         var index = rn(0,8);
         if(wolfs.indexOf(index)>-1){
-            return wolfType();
+            return wolfIndex();
         }
         wolfs.push(index);
         return index;
@@ -118,7 +174,7 @@ main();
     }
     //随机数
     function rn(x,y){
-        return Math.floor(Math.random()*(y-x+1)+x);
+        return Math.round(Math.random()*(y-x)+x)
     }
 
 
