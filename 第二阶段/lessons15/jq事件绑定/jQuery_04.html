@@ -35,7 +35,25 @@
 
 </body>
 <script>
-    $(function () {
+    // json : 是一种数据格式，常常用于前台后台的数据传输，基本格式就是类似于js的object。
+    //
+    // js的object：
+    var obj = {}; //一个空的对象
+    var user = {
+        "name": "rose",
+        "age": "18",
+        "sex": "G",
+    } //记录了个人信息的对象
+
+    // JSON.stringify(obj):将js对象转化成json字符串
+    var date = JSON.stringify(user);
+    localStrage.setItem('msg', date);
+
+    // JSON.parse(jsonstr):将json字符串转成js对象或数组
+    var msg = localStrage.getItem('msg');
+    console.log(JSON.parse(msg));
+
+    $(function() {
         var d = $('#wrap>div').css({
             width: '200px',
             height: '200px',
@@ -48,7 +66,7 @@
         // 方式一：jq提供了以大多数事件类型为方法名的操作方法来做事件的绑定，事件处理函数作为参数。
         // 鼠标事件
         // 1.点击事件  click
-        // d.click(function(){  
+        // d.click(function(){
         //     // jq事件处理函数中：
         //     // 1.this 指向的是触发事件的 js原生DOM
         //     // 2.$(this) 指向的是触发事件的 jq包装后的原生DOM
@@ -103,7 +121,7 @@
         // addClass()：需要一个string参数，表示要添加的类名，如果元素已经有要添加的类型，那么就不再添加
         // removeClass()：需要一个string参数，表示要删除的类名，如果元素没有要删除的类型，那么就不执行操作。
         var isBlue = false;
-        d.click(function () {
+        d.click(function() {
             // if(isBlue){
             //     // this.className = '';
             //     $(this).removeClass('blue');
@@ -138,19 +156,19 @@
 
         var inp = $('input');
         // inp.focus(function () {
-            // console.log('获取焦点');
+        // console.log('获取焦点');
         // })
         // inp.blur(function () {
-            // console.log('失去焦点');
+        // console.log('失去焦点');
         // })
         // inp.change(function () {
-            // console.log('内容改变后');
-            // console.log(this.value);
-            // val()：用于对表单元素的value属性进行值得设置预读取，如果存在参数那么就是设置
-            // value，如果没有参数就是读取value值;
-            // console.log($(this).val());
+        // console.log('内容改变后');
+        // console.log(this.value);
+        // val()：用于对表单元素的value属性进行值得设置预读取，如果存在参数那么就是设置
+        // value，如果没有参数就是读取value值;
+        // console.log($(this).val());
         // })
-        // inp.input(function(){   
+        // inp.input(function(){
         //     console.log('内容改变时')
         // })
 
@@ -158,14 +176,14 @@
         /*
             语法：
             $(selector).on(type,function);
-    
+
             事件移除：
             $(selector).off()
             // 1.没有参数的时候，表示将该元素身上所有类型的事件以及他们所有的处理函数都移除。
             // 2.只有一个参数，string，表示事件类型
             // 3.两个参数，分别表示事件类型以及事件类型对应的处理函数。（此处删除）
         */
-        $('input').on('input change blur focus', function (e) {
+        $('input').on('input change blur focus', function(e) {
             // console.log($(this).val());
             switch (e.type) {
                 case 'input':
@@ -181,7 +199,7 @@
                     $(this).css('background', 'green')
             }
         })
-        $('input').off('blur', function () { });
+        $('input').off('blur', function() {});
 
         /*
         jq事件绑定特点：
@@ -191,8 +209,8 @@
             3.通过on方法绑定事件，允许一次性为元素绑定多个类型不同的事件，但是只有一个事件处理函数，这时候
             就需要事件对象的type属性帮忙了。
             4.如果$(selector)获取的是多个元素，不再需要循环绑定事件，jq会自动集合中的每一个元素绑定事件
-    
-    
+
+
             1.each()  map()   jquery.color.js juery.easing.js
             2.翻译练习：使用jq写放大镜
             3.
@@ -202,13 +220,13 @@
             参数function(index,element)
             index：选择器的index位置，element：当前元素
 
-            map()方法返回一个新数组，数组中的元素为原始数组元素调用函数处理的后值。 
-            map()方法按照原始数组元素顺序依次处理元素。 
+            map()方法返回一个新数组，数组中的元素为原始数组元素调用函数处理的后值。
+            map()方法按照原始数组元素顺序依次处理元素。
 
         */
 
         // 滚轮事件
-        $('#wrap').on('mousewheel DOMMouseScroll', function (e) {
+        $('#wrap').on('mousewheel DOMMouseScroll', function(e) {
             switch (e.type) {
                 case 'mousewheel':
                     if (e.originalEvent.wheelDelta > 0) {
@@ -218,9 +236,9 @@
                     }
                     break;
                 case 'DOMMouseScroll':
-                    if(e.originalEvent.detail > 0){
+                    if (e.originalEvent.detail > 0) {
                         console.log('向下');
-                    }else{
+                    } else {
                         console.log('向上');
                     }
                     break;
@@ -229,16 +247,14 @@
 
         // jq包装的符合事件
         // hover
-        $('#wrap').hover(function(){
-            $(this).css('background','blue');
-        },function(){
-            $(this).css('background','purple');
+        $('#wrap').hover(function() {
+            $(this).css('background', 'blue');
+        }, function() {
+            $(this).css('background', 'purple');
         })
 
-    
-})
 
-
+    })
 </script>
 
 </html>
