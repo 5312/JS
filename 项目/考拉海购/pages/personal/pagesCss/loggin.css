@@ -6,6 +6,7 @@ html, body, .wrap {
 
 .wrap {
     border-bottom: 1px solid #eee;
+    font-size: 12px;
 }
 
 .header {
@@ -68,6 +69,7 @@ html, body, .wrap {
 }
 
 .mettod {
+    font-size: 20px;
     font-weight: 700;
     width: 350px;
     height: 53px;
@@ -91,7 +93,17 @@ html, body, .wrap {
     padding-bottom: 10px;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 .m_bott {
+    font-size: 18px;
     text-align: right;
     color: #999;
     line-height: 14px;

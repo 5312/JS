@@ -19,7 +19,9 @@ $(function() {
     $('.botton').click(function() {
         // 登录
         if ($(this).text() == '登录') {
-            console.log($(this).text())
+            let uname = $('input:text').val();
+            let num = $('.num').val();
+            console.log(num)
         } else { //注册
 
         }
