@@ -1,15 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 初始化 -->
+    <link rel="stylesheet" href="../../lib/normalize/normalize.css">
+    <!-- layuicss -->
+    <link rel="stylesheet" href="../../lib/layui/css/layui.css">
+    <!-- indexcss -->
+    <link rel="stylesheet" href="index.css">
+    <!-- header -->
+    <link rel="stylesheet" href="../../public/header/header.css">
+    <!-- iconfont -->
+    <script src="../../lib/iconfont/font/iconfont.js"></script>
     <title>Document</title>
+
 </head>
 
-<body>
 
+<body>
+    <div id="headpages">
+        <!-- 头部 -->
+        <div class="header">
+            <div id="wrap">
+                <div class="left">
+                    <span>考拉欢迎你!</span>
+                    <span class="hov">登录</span>
+                    <span class="hov">免费注册</span>
+                    <span class="hov hide">手机考拉</span>
+                    <div class="hides">
+                        <img src="../../public/header/img/erweima.png" alt="">
+                        <div class="ps">下载app <br>领100元新人红包</div>
+                    </div>
+                </div>
+                <div class="right">
+                    <span class="hov">每日签到</span>
+                    <span class="hov">我的订单</span>
+                    <span class='whirls'>个人中心 </span>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-jiantouarrow486"></use>
+                    </svg>
+                    <span class='whirls'>客户服务</span>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-jiantouarrow486"></use>
+                    </svg>
+                    <span class='whirls'>充值中心</span>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-jiantouarrow486"></use>
+                    </svg>
+                    <span class='whirls'>消费者权益</span>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-jiantouarrow486"></use>
+                    </svg>
+                    <span class='whirls'>更多</span>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-jiantouarrow486"></use>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 商品内容 -->
+    <div id="main">
+        <!-- 海购 -->
+        <div class="docHeaderWrap">
+            <a href=""><img src="./img/dag.png" alt=""></a>
+            <div class="seach">
+                <div class="topSeach">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-tubiaolunkuo-"></use>
+                    </svg>
+                    <input class="seachbox" type="text" placeholder="ahc套装">
+                    <div class="ir">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-tubiaolunkuo-"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="shopcar">
+                <svg class="icon ileft" aria-hidden="true">
+                    <use xlink:href="#icon-gouwucheshangcheng-xianxing"></use>
+                </svg>
+                <span>购物车</span>
+            </div>
+        </div>
+        <!-- 分类 -->
+        <div class="m_center">
+            <!-- 横菜单 -->
+            <ul class="line_2">
+                <li class="f1e23">首页</li>
+                <li>今日限时购 </li>
+                <li>国家馆 </li>
+                <li>海外旗舰店 </li>
+                <li>工厂店 </li>
+                <li>品质奶粉 </li>
+                <li>人气面膜 </li>
+                <li>充值
+                </li>
+            </ul>
+            <!-- 分类列表 -->
+            <ul class='menu'>
+                <li>
+                    <div class="lineicon">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+                    <span>所有分类</span>
+                </li>
+                <li>美妆彩蛋</li>
+                <li>母婴儿童</li>
+                <li>营养保健</li>
+                <li>数码家电</li>
+                <li>个人洗护</li>
+                <li>服饰鞋靴</li>
+                <li>户外运动</li>
+                <li>手表配饰</li>
+                <li>轻奢</li>
+                <li>家具生活</li>
+                <li>环球美食</li>
+            </ul>
+        </div>
+    </div>
+    <!-- 轮播layui -->
+    <div class="m_posi">
+        <div class="m_showwindow">
+            <div class="layui-carousel" id="test1">
+                <div carousel-item>
+                    <div><img class="layimg" src="img/lun1.jpg" alt=""></div>
+                    <div><img class="layimg" src="img/lun2.jpg" alt=""></div>
+                    <div><img class="layimg" src="img/lin3.jpg" alt=""></div>
+                    <div><img class="layimg" src="img/lin4.jpg" alt=""></div>
+                </div>
+            </div>
+            <div class="footMask">
+                <div class="max">
+                    <div class="max_footLeft">
+                        <div class="self">自</div>
+                        <span>考拉自营</span>
+                        <div class="self">自</div>
+                        <span>全球直采</span>
+                        <div class="self">自</div>
+                        <span>假一赔十</span>
+                        <div class="self">自</div>
+                        <span>售后无忧
+
+
+                        </span>
+                    </div>
+                    <div class="max_footRight"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="main_shop">
+            <div class="shop_left">
+                <ul class="menu_col">
+                    <li class="padd">
+                        <img src="./img/88.jpg" alt="">
+                    </li>
+                    <li id="w">今日限时购</li>
+                    <li id="w">热门品牌</li>
+                    <li>美妆专区</li>
+                    <li>母婴专区</li>
+                    <li>营养保健</li>
+                    <li>数码家电</li>
+                    <li>个人洗护</li>
+                    <li>服饰鞋靴</li>
+                    <li>轻奢馆</li>
+                    <li>手表配饰</li>
+                    <li>户外运动</li>
+                    <li>美食生鲜</li>
+                    <li class="padd">
+                        <img src="./img/ma.png" alt="">
+                    </li>
+                </ul>
+            </div>
+            <div class="shop_mid">
+                <div class="article_top">
+                    <h1>今日限购</h1>
+                    <span>本场还剩</span>
+                    <span class="m_r">进入限购频道>></span>
+                </div>
+                <div class="shop_main clear">
+                    <!-- <img class="main_right" src="./img/erji.png" alt=""> -->
+                </div>
+            </div>
+            <div class="shop_right">
+                <div class="rtop"><img src="./img/1" alt="">签到</div>
+                <div class="rtop"><img src="./img/2" alt="">购物车</div>
+                <div class="rtop"><img src="./img/3" alt="">APP</div>
+                <div class="rtop"><img src="./img/4" alt="">TOP</div>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="../../lib/layui/layui.js"></script>
+<script src="../../lib/jq/jquery.js" charset="utf-8"></script>
+<script src="index.js" charset="utf-8"></script>
 
 </html>
