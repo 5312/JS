@@ -126,7 +126,7 @@ input[type="number"] {
     text-align: center;
     color: #fff;
     line-height: 32px;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -143,6 +143,8 @@ input[type="number"] {
 }
 
 .si {
+    cursor: pointer;
+    font-size: 12px;
     text-align: right;
     padding: 10px 20px;
     margin-top: 10px;
@@ -150,4 +152,22 @@ input[type="number"] {
     border-bottom: none;
     color: #e31436;
     background: #f8f8f8;
+}
+
+.error {
+    padding-top: 10px;
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row;
+    align-items: center;
+}
+
+.error {
+    text-align: left;
+}
+
+.error>div {
+    height: 9px;
+    width: calc(100%/3);
 }

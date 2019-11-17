@@ -18,11 +18,11 @@ function dates() {
         date.push({})
         date[date.length - 1].src = './img/m_le' + i + '.jpg';
         date[date.length - 1].id = i < 10 ? '00' + i : '0' + i;
-        date[date.length - 1].price = rn(29, 899);
+        date[date.length - 1].price = '￥' + rn(29, 899);
         date[date.length - 1].name = arr[i];
         date[date.length - 1].detail = arr[i];
     }
-    console.log(date);
+    // console.log(date);
 }
 // 随机数
 function rn(x, y) {
@@ -30,7 +30,13 @@ function rn(x, y) {
 }
 
 $(function() {
-
+    $('#sig').click(function() {
+        window.open('/home/ivan/Documents/JS/项目/考拉海购/pages/personal/loggin.html', '_self')
+    })
+    if (sessionStorage.getItem('nowsign')) {
+        var now = JSON.parse(sessionStorage.getItem('nowsign')).user
+        $('#sig').text(now)
+    }
     $('.menu>li').each(function(x, y) {
         $(y).css({
             backgroundImage: "url(img/iconw" + x + ".png)",
@@ -84,7 +90,6 @@ $(function() {
         })
     }
 
-    console.log($('.rtop:eq(3)'))
     $('.rtop:eq(3)').click(function() {
         $('html').animate({
             scrollTop: 0
