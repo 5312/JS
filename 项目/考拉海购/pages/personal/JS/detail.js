@@ -3,8 +3,9 @@ $(function() {
     var n = JSON.parse(localStorage.getItem(ss)).carnub;
     var ns = 0;
     for (var i = 0; i < n.length; i++) {
-        ns += n[i][0];
+        ns += n[i][0] * 1;
     }
+    // 购物车数量
     $('.poinnub').text(ns);
 
     if (sessionStorage.getItem('nowsign')) {
@@ -63,20 +64,28 @@ $(function() {
     $('.price').text(JSON.parse(minimgsrc).price);
     // 购物车数量
 
-
+    var q = 0;
     // 加入购物车
     $('.joincar').click(function() {
+        q++;
+        // 现在登录的用户信息
         var thisuser = JSON.parse(sessionStorage.getItem('nowsign'));
+        //现用户的购物车信息[['0','']]
         var thisjoin = thisuser.carnub;
         // push本次 数量和id
-        var nowpush = [thisjoin[thisjoin.length - 1][0] * 1 + 1, JSON.parse(minimgsrc).id];
+        var nowpush = [JSON.parse(minimgsrc).id, q];
+        // 遍历是否已添加
+        for (var i = 0; i < thisjoin.length; i++) {
+            if (thisjoin[i][0] == JSON.parse(minimgsrc).id) {
+
+            }
+        }
         thisuser.carnub.push(nowpush);
         // id只添加一次
         if (thisuser.carnub[carnub.length - 1].length < 2) {
             thisuser.carnub[carnub.length - 1].push(JSON.parse(minimgsrc).id)
         }
-        // localStorage.setItem(ss, JSON.stringify(thisuser));
-        // sessionStorage.setItem('nowsign', JSON.stringify(thisuser))
+
         $('.poinnub').text(JSON.parse(localStorage.getItem(ss)).carnub[0][0]);
     })
 })
