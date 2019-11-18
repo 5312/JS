@@ -21,6 +21,7 @@ function dates() {
         date[date.length - 1].price = '￥' + rn(29, 899);
         date[date.length - 1].name = arr[i];
         date[date.length - 1].detail = arr[i];
+        // localStorage.setItem(date)
     }
     // console.log(date);
 }
@@ -30,6 +31,9 @@ function rn(x, y) {
 }
 
 $(function() {
+    $('.shopcar').click(function() {
+        window.open('/home/ivan/Documents/JS/项目/考拉海购/pages/personal/shopcar.html', '_self')
+    })
     $('#sig').click(function() {
         window.open('/home/ivan/Documents/JS/项目/考拉海购/pages/personal/loggin.html', '_self')
     })

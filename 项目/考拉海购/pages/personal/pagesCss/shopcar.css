@@ -3,3 +3,108 @@
     margin: 0 auto;
     padding: 10px;
 }
+
+.shopbar {
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.light {
+    color: #999;
+}
+
+.menu {
+    margin-top: 10px;
+    line-height: 26px;
+    width: 1090px;
+    border: 1px solid #999;
+    height: 30px;
+}
+
+.l1 {
+    margin-left: 150px;
+}
+
+.l2 {
+    margin-left: 308px;
+}
+
+.l3 {
+    margin-left: 100px;
+}
+
+.l4 {
+    margin-left: 100px;
+}
+
+.l5 {
+    margin-left: 100px;
+}
+
+.car {
+    width: 1090px;
+    border: 1px solid #999;
+    height: 200px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row;
+    align-items: center;
+}
+
+.imgbox {
+    width: 80px;
+    height: 80px;
+    /* border: 1px solid #999; */
+}
+
+.imgbox>img {
+    width: 100%;
+    height: 100%;
+}
+
+.det {
+    /* border: 1px solid #999; */
+    width: 220px;
+    height: 100px;
+}
+
+.color {
+    /* border: 1px solid #999; */
+    width: 60px;
+    height: 20px;
+}
+
+.univalent {
+    /* border: 1px solid #999; */
+    width: 123px;
+    height: 80px;
+}
+
+.cols {
+    display: flex;
+    font-size: 0;
+}
+
+.col {
+    width: 30px;
+    border: 1px solid #999;
+    display: inline-block;
+    height: 30px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.sum {
+    width: 50px;
+    height: 50px;
+    /* border: 1px solid #999; */
+}
+
+.operate {
+    width: 95px;
+    height: 80px;
+    /* border: 1px solid #999; */
+    line-height: 38px;
+    text-align: center;
+}

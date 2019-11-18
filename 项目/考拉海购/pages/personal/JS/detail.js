@@ -1,9 +1,9 @@
 $(function() {
     var ss = JSON.parse(sessionStorage.getItem('nowsign')).accs;
-    var n = JSON.parse(localStorage.getItem(ss)).carnub;
+    var n = JSON.parse(sessionStorage.getItem('nowsign')).carnub;
     var ns = 0;
     for (var i = 0; i < n.length; i++) {
-        ns += n[i][0] * 1;
+        ns += n[i].num * 1;
     }
     // 购物车数量
     $('.poinnub').text(ns);
@@ -62,30 +62,83 @@ $(function() {
     $('.ap').text(JSON.parse(minimgsrc).name);
     $('.sp').text(JSON.parse(minimgsrc).detail);
     $('.price').text(JSON.parse(minimgsrc).price);
-    // 购物车数量
+    // 数量加减
+    $('.j').click(function() {
+        var v = $('.ival').val();
+        v--;
+        v = v < 1 ? 1 : v;
+        $('.ival').val(v)
 
-    var q = 0;
+    });
+    $('.a').click(function() {
+        var v = $('.ival').val();
+        v++;
+        $('.ival').val(v)
+    });
+    // console.log(us(JSON.parse(minimgsrc).id, 'nowsign'));
+
     // 加入购物车
+    $('.shopcar').click(function() {
+        window.open('/home/ivan/Documents/JS/项目/考拉海购/pages/personal/shopcar.html', '_self')
+    })
     $('.joincar').click(function() {
-        q++;
+
         // 现在登录的用户信息
         var thisuser = JSON.parse(sessionStorage.getItem('nowsign'));
-        //现用户的购物车信息[['0','']]
         var thisjoin = thisuser.carnub;
-        // push本次 数量和id
-        var nowpush = [JSON.parse(minimgsrc).id, q];
-        // 遍历是否已添加
-        for (var i = 0; i < thisjoin.length; i++) {
-            if (thisjoin[i][0] == JSON.parse(minimgsrc).id) {
+        // 第一次添加
+        if (!thisjoin[0]) {
+            thisjoin.push({
+                num: $('.ival').val(),
+                id: JSON.parse(minimgsrc).id,
+                src: JSON.parse(minimgsrc).src,
+                detail: JSON.parse(minimgsrc).detail,
+                price: JSON.parse(minimgsrc).price
 
+            })
+        } else {
+            var tf = us(JSON.parse(minimgsrc).id, 'nowsign');
+            if (tf) {
+                if (tf[0]) {
+                    var n1 = us(JSON.parse(minimgsrc).id, 'nowsign')[1];
+                    var n2 = thisjoin[n1].num * 1;
+                    n2 += 1;
+                    $('.ival').val(n2)
+                    thisjoin[n1].num = n2;
+                } else {
+                    thisjoin.push({
+                        num: $('.ival').val(),
+                        id: JSON.parse(minimgsrc).id,
+                        src: JSON.parse(minimgsrc).src,
+                        detail: JSON.parse(minimgsrc).detail,
+                        price: JSON.parse(minimgsrc).price
+                    })
+                }
+            } else {
+                thisjoin.push({
+                    num: $('.ival').val(),
+                    id: JSON.parse(minimgsrc).id,
+                    src: JSON.parse(minimgsrc).src,
+                    detail: JSON.parse(minimgsrc).detail,
+                    price: JSON.parse(minimgsrc).price
+                })
             }
         }
-        thisuser.carnub.push(nowpush);
-        // id只添加一次
-        if (thisuser.carnub[carnub.length - 1].length < 2) {
-            thisuser.carnub[carnub.length - 1].push(JSON.parse(minimgsrc).id)
-        }
-
-        $('.poinnub').text(JSON.parse(localStorage.getItem(ss)).carnub[0][0]);
+        // thisuser.carnub = [];
+        sessionStorage.setItem('nowsign', JSON.stringify(thisuser));
+        // localStorage.setItem('nowsign', JSON.stringify(thisuser))
     })
+
 })
+
+// 去重
+function us(nowid, pushkey) {
+    var us_this = JSON.parse(sessionStorage.getItem(pushkey));
+    var usjoin = us_this.carnub;
+    for (var i = 0; i < usjoin.length; i++) {
+        if (usjoin[i].id == nowid) {
+            var arr = ['true', i]
+            return arr;
+        }
+    }
+}

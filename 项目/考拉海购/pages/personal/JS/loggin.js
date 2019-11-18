@@ -140,9 +140,7 @@ $(function() {
             privacy.user = user;
             privacy.accs = acc;
             privacy.password = pass;
-            privacy.carnub = [
-                ['0', '']
-            ];
+            privacy.carnub = [];
 
             localStorage.setItem(acc, JSON.stringify(privacy))
             alert('注册成功')
