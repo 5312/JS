@@ -117,7 +117,7 @@ $(function() {
                 var json = JSON.parse(detail);
                 if (json.password == mi) {
                     sessionStorage.setItem('nowsign', detail)
-                    window.open('/home/ivan/Documents/JS/项目/考拉海购/pages/index/index.html', '_self');
+                    window.open('../index/index.html', '_self');
 
                 } else {
                     alert('密码错误')

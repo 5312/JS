@@ -79,7 +79,7 @@ $(function() {
 
     // 加入购物车
     $('.shopcar').click(function() {
-        window.open('/home/ivan/Documents/JS/项目/考拉海购/pages/personal/shopcar.html', '_self')
+        window.open('./shopcar.html', '_self')
     })
     $('.joincar').click(function() {
 

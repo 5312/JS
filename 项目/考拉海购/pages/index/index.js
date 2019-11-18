@@ -18,7 +18,7 @@ function dates() {
         date.push({})
         date[date.length - 1].src = './img/m_le' + i + '.jpg';
         date[date.length - 1].id = i < 10 ? '00' + i : '0' + i;
-        date[date.length - 1].price = '￥' + rn(29, 899);
+        date[date.length - 1].price = rn(29, 899);
         date[date.length - 1].name = arr[i];
         date[date.length - 1].detail = arr[i];
         // localStorage.setItem(date)
@@ -32,10 +32,10 @@ function rn(x, y) {
 
 $(function() {
     $('.shopcar').click(function() {
-        window.open('/home/ivan/Documents/JS/项目/考拉海购/pages/personal/shopcar.html', '_self')
+        window.open('../personal/shopcar.html', '_self')
     })
     $('#sig').click(function() {
-        window.open('/home/ivan/Documents/JS/项目/考拉海购/pages/personal/loggin.html', '_self')
+        window.open('../personal/loggin.html', '_self')
     })
     if (sessionStorage.getItem('nowsign')) {
         var now = JSON.parse(sessionStorage.getItem('nowsign')).user
