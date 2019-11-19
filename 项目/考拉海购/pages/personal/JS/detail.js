@@ -1,13 +1,14 @@
 $(function() {
-    var ss = JSON.parse(sessionStorage.getItem('nowsign')).accs;
-    var n = JSON.parse(sessionStorage.getItem('nowsign')).carnub;
-    var ns = 0;
-    for (var i = 0; i < n.length; i++) {
-        ns += n[i].num * 1;
+    if (sessionStorage.getItem('nowsign')) {
+        var ss = JSON.parse(sessionStorage.getItem('nowsign')).accs;
+        var n = JSON.parse(sessionStorage.getItem('nowsign')).carnub;
+        var ns = 0;
+        for (var i = 0; i < n.length; i++) {
+            ns += n[i].num * 1;
+        }
     }
     // 购物车数量
     $('.poinnub').text(ns);
-
     if (sessionStorage.getItem('nowsign')) {
         var now = JSON.parse(sessionStorage.getItem('nowsign'))
         var nowuser = now.user
@@ -83,6 +84,11 @@ $(function() {
     })
     $('.joincar').click(function() {
 
+        if (!sessionStorage.getItem('nowsign')) {
+            alert('未登录')
+            return
+        }
+        var arr = [];
         // 现在登录的用户信息
         var thisuser = JSON.parse(sessionStorage.getItem('nowsign'));
         var thisjoin = thisuser.carnub;
@@ -105,6 +111,7 @@ $(function() {
                     n2 += 1;
                     $('.ival').val(n2)
                     thisjoin[n1].num = n2;
+
                 } else {
                     thisjoin.push({
                         num: $('.ival').val(),
@@ -127,6 +134,8 @@ $(function() {
         // thisuser.carnub = [];
         sessionStorage.setItem('nowsign', JSON.stringify(thisuser));
         // localStorage.setItem('nowsign', JSON.stringify(thisuser))
+        // var q = JSON.parse(sessionStorage.getItem('nowsign'));
+
     })
 
 })

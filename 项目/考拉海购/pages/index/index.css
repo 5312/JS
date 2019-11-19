@@ -136,6 +136,65 @@
     position: relative;
 }
 
+.whirls {
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+}
+
+.changes {
+    width: 400px;
+    height: 380px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9;
+    margin: auto;
+    border: 1px solid #eee;
+    background-color: white;
+    /* display: none; */
+}
+
+.changes>input {
+    margin-top: 10px;
+    width: 397px;
+    height: 50px;
+}
+
+.clic {
+    text-align: center;
+    margin-top: 10px;
+    background: rgb(59, 112, 154);
+    line-height: 50px;
+    font-size: 20px;
+    color: rgb(38, 47, 125);
+    cursor: pointer;
+}
+
+.whirls:hover>.whirl {
+    display: block;
+}
+
+.whirl {
+    position: absolute;
+    width: 100px;
+    height: 80px;
+    background-color: white;
+    border: 1px solid #eee;
+    z-index: 9;
+    top: 10px;
+    left: -22px;
+    display: none;
+}
+
+.x {
+    font-size: 12px;
+    cursor: pointer;
+    /* text-align: center; */
+}
+
 .menu {
     position: absolute;
     z-index: 5;

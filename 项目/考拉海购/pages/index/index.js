@@ -23,7 +23,7 @@ function dates() {
         date[date.length - 1].detail = arr[i];
         // localStorage.setItem(date)
     }
-    // console.log(date);
+    console.log(date);
 }
 // 随机数
 function rn(x, y) {
@@ -31,6 +31,38 @@ function rn(x, y) {
 }
 
 $(function() {
+    $('.changes').hide();
+    // 修改密码
+    $('.x').click(function() {
+        $('.changes').show();
+
+    })
+    $('.clic').click(function() {
+        var nse = $('.change').val();
+        var old = $('.old').val();
+        var news = $('.news').val();
+        console.log(news)
+        if (localStorage.getItem(nse)) {
+            var olds = JSON.parse(localStorage.getItem(nse));
+            if (old == olds.password && news) {
+                olds.password = news;
+                localStorage.setItem(nse, JSON.stringify(olds));
+                alert('修改成功')
+                $('.changes').hide();
+                0
+            } else {
+                alert('密码错误')
+            }
+        } else {
+            alert('未注册')
+        }
+    })
+    // 注销
+    $('.signout').click(function() {
+        sessionStorage.setItem('nowsign', [])
+        $('#sig').text('登录')
+    })
+    // 购物车
     $('.shopcar').click(function() {
         if (sessionStorage.getItem('nowsign')) {
             window.open('../personal/shopcar.html', '_self')
@@ -38,9 +70,11 @@ $(function() {
             alert('请登录')
         }
     })
+    // 跳转登录页面
     $('#sig').click(function() {
         window.open('../personal/loggin.html', '_self')
     })
+    //
     if (sessionStorage.getItem('nowsign')) {
         var now = JSON.parse(sessionStorage.getItem('nowsign')).user
         $('#sig').text(now)
