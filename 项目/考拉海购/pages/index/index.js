@@ -32,7 +32,11 @@ function rn(x, y) {
 
 $(function() {
     $('.shopcar').click(function() {
-        window.open('../personal/shopcar.html', '_self')
+        if (sessionStorage.getItem('nowsign')) {
+            window.open('../personal/shopcar.html', '_self')
+        } else {
+            alert('请登录')
+        }
     })
     $('#sig').click(function() {
         window.open('../personal/loggin.html', '_self')
