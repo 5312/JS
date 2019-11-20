@@ -31,6 +31,11 @@ function rn(x, y) {
 }
 
 $(function() {
+    // 用户中心
+    $('.usercontent').click(function() {
+        window,
+        open('../personal/user.html')
+    })
     $('.changes').hide();
     // 修改密码
     $('.x').click(function() {
@@ -41,24 +46,27 @@ $(function() {
         }
     })
     $('.clic').click(function() {
-        var nse = $('.change').val();
+        var nse = JSON.parse(sessionStorage.getItem('nowsign')).accs;
+        console.log(nse)
         var old = $('.old').val();
         var news = $('.news').val();
-        console.log(news)
-        if (localStorage.getItem(nse)) {
-            var olds = JSON.parse(localStorage.getItem(nse));
-            if (old == olds.password && news) {
-                olds.password = news;
-                localStorage.setItem(nse, JSON.stringify(olds));
-                alert('修改成功')
-                $('.changes').hide();
-                0
-            } else {
-                alert('密码错误')
-            }
+        // console.log(news)
+        // if (localStorage.getItem(nse)) {
+        var olds = JSON.parse(localStorage.getItem(nse));
+        if (old == olds.password && news) {
+            olds.password = news;
+            localStorage.setItem(nse, JSON.stringify(olds));
+            sessionStorage.setItem('nowsign', [])
+            alert('修改成功,请重新登录')
+            $('#sig').text('登录')
+            // 修改密码框消失
+            $('.changes').hide();
         } else {
-            alert('未注册')
+            alert('密码错误')
         }
+        // } else {
+        //     alert('未注册')
+        // }
     })
     // 注销
     $('.signout').click(function() {

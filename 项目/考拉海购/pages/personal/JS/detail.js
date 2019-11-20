@@ -87,7 +87,6 @@ $(function() {
             alert('未登录')
             return
         }
-
         // 现在登录的用户信息
         var thisuser = JSON.parse(sessionStorage.getItem('nowsign'));
         var thisjoin = thisuser.carnub;
@@ -102,13 +101,18 @@ $(function() {
 
             })
         } else {
+            // 判断购物车里面有没有这个商品
             var tf = us(JSON.parse(minimgsrc).id, 'nowsign');
             if (tf) {
                 if (tf[0]) {
+                    // 本次商品下标
                     var n1 = us(JSON.parse(minimgsrc).id, 'nowsign')[1];
+
                     var n2 = thisjoin[n1].num * 1;
-                    n2 += 1;
-                    $('.ival').val(n2)
+                    // n2 += 1;
+                    n2 += $('.ival').val() * 1;
+                    //
+                    // $('.ival').val(n2)
                     thisjoin[n1].num = n2;
 
                 } else {
@@ -121,6 +125,7 @@ $(function() {
                     })
                 }
             } else {
+                // console.log(tf)
                 thisjoin.push({
                     num: $('.ival').val(),
                     id: JSON.parse(minimgsrc).id,
@@ -132,18 +137,7 @@ $(function() {
         }
         // thisuser.carnub = [];
         sessionStorage.setItem('nowsign', JSON.stringify(thisuser));
-
-
-        // 小车的数字显示
-        var ss = JSON.parse(sessionStorage.getItem('nowsign')).accs;
-        var n = JSON.parse(sessionStorage.getItem('nowsign')).carnub;
-        var ns = 0;
-        for (var i = 0; i < n.length; i++) {
-            ns += n[i].num * 1;
-        }
-        // 购物车数量
-        $('.poinnub').text(ns);
-
+        poinnub()
     })
 
 })
@@ -158,4 +152,16 @@ function us(nowid, pushkey) {
             return arr;
         }
     }
+}
+// 小车的改变函数
+function poinnub() {
+    // 小车的数字显示
+    var ss = JSON.parse(sessionStorage.getItem('nowsign')).accs;
+    var n = JSON.parse(sessionStorage.getItem('nowsign')).carnub;
+    var ns = 0;
+    for (var i = 0; i < n.length; i++) {
+        ns += n[i].num * 1;
+    }
+    // 购物车数量
+    $('.poinnub').text(ns);
 }

@@ -23,8 +23,15 @@ $(function() {
                 ca.carnub.splice(x, 1);
                 sessionStorage.setItem('nowsign', JSON.stringify(ca))
             }
+            $('body').oneTime('1s', 'om', function() {
+                console.log(1)
+                nulls();
+            })
         })
+
     })
+    //
+    nulls();
     $('.da').click(function() {
         window.open('../index/index.html', '_self')
     })
@@ -33,6 +40,7 @@ $(function() {
     })
     $('.det').each(function(x, y) {
         $(y).text(car[x].detail);
+
     })
     $('.univalent').each(function(x, y) {
         $(y).text(car[x].price);
@@ -116,3 +124,13 @@ $(function() {
 function sum(arr) {
     return eval(arr.join("+"));
 };
+
+
+function nulls() {
+    if ($('.car').length == 0) {
+        $('<div class="nul">购物车空空如也~</div>').appendTo('.car_cen')
+    } else {
+        $('.nul').remove();
+    }
+
+}

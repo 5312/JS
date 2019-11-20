@@ -1,0 +1,164 @@
+html, body, .a {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.a {
+    margin-top: 200px;
+    border-top: 1px solid #999;
+    height: 700px;
+}
+
+.wrap {
+    width: 1090px;
+    height: 700px;
+    /* border: 1px solid #999; */
+    margin: 0 auto;
+    /* margin-top: 70px; */
+    cursor: pointer;
+}
+
+.wrap>div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.left {
+    width: 111px;
+    height: 100%;
+    margin-right: 20px;
+}
+
+.bott {
+    width: 1090px;
+    height: 300px;
+}
+
+.right {
+    width: 800px;
+    margin: 0 auto;
+    font-size: 20px;
+    /* height: 700px; */
+    /* font-weight: 700; */
+}
+
+.left>div:hover {
+    color: red;
+}
+
+.u, .us {
+    color: red;
+    font-weight: 700;
+    border-bottom: 1px solid #999;
+    line-height: 70px;
+}
+
+.account {
+    padding: 10px;
+    color: red;
+    border-left: 2px solid red;
+}
+
+.na {
+    padding: 10px;
+    line-height: 50px;
+}
+
+.address {
+    padding-left: 10px;
+    line-height: 50px;
+}
+
+.username {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.ui {
+    margin-top: 10px;
+    text-align: center;
+    height: 20px;
+}
+
+.chenge {
+    display: inline-block;
+    vertical-align: middle;
+    width: 300px;
+    border: 1px solid #999;
+    /* margin: 10px auto; */
+    height: 30px;
+}
+
+.ok {
+    width: 410px;
+    margin: 20px auto;
+    background-color: rgb(50, 94, 134);
+}
+
+.item {
+    font-size: 12px;
+    padding-left: 20px;
+    margin: 20px;
+}
+
+input {
+    margin-left: 10px;
+}
+
+ul li {
+    list-style-type: none;
+    background: url(../img/list-img.jpeg) no-repeat 0rem 0.3rem;
+    background-size: 1rem 1rem;
+    /* text-indent: 2em; */
+}
+
+.tittle {
+    margin-top: 30px;
+}
+
+.save {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    line-height: 36px;
+    background-color: #e31346;
+    margin: 20px 20px 0 20px;
+}
+
+.old {
+    border: 1px solid #999;
+    /* height: 200px; */
+    width: 100%;
+    /* display: flex; */
+    /* flex-flow: row; */
+    /* align-items: center; */
+    /* justify-content: space-around; */
+}
+
+.old>div {
+    width: 100%;
+    height: 82px;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.bar {
+    width: 100%;
+    height: 45px;
+    border-bottom: 1px solid #999;
+    color: #999;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.change, .splice {
+    margin: 10px;
+    color: rgb(138, 151, 170);
+}
