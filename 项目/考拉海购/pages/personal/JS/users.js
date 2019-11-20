@@ -42,7 +42,6 @@ $(function() {
             alert('设置成功')
         }
     })
-
     $('.address').click(function() {
         $(this).css({
             color: 'red'
@@ -56,6 +55,102 @@ $(function() {
         })
 
     })
+
+    // 置空
+    // var no = JSON.parse(sessionStorage.getItem('nowsign'));
+    // var lono = JSON.parse(localStorage.getItem(no.accs));
+    // lono.address = [];
+    // localStorage.setItem(no.accs, JSON.stringify(lono))
+    //
+    //
+    // 保存新地址
+    olds();
+    $('.save').click(function() {
+        console.log(layall)
+
+        // 当前登录
+
+        var no = JSON.parse(sessionStorage.getItem('nowsign'));
+        // 从local取
+        var lono = JSON.parse(localStorage.getItem(no.accs));
+        // 当有一项未填写时
+        var addarr = {};
+        $('.vall').each(function(x, y) {
+
+            if (!$('.vall')[x].value || !layall) {
+                var text = $('.vall')[x]
+                var t1 = $(text).prev().text();
+                alert('请填写' + t1)
+            } else {
+                // 所在地区
+                addarr.Region = layall;
+                // 详细地址
+                addarr.Address = $('.vall')[0].value;
+                // 收货人姓名
+                addarr.consigneeName = $('.vall')[1].value;
+                // 手机号码
+                addarr.mobilePhoneNumber = $('.vall')[2].value;
+                // 电话号码
+                addarr.telephoneNumber = $('.vall')[3].value;
+                //  邮箱
+                addarr.postbox = $('.vall')[4].value;
+            }
+        })
+
+        // 当全部输入时，保存地址信息
+        if (Object.keys(addarr).length == 6) {
+            // 不是第一次保存地址
+            if (lono.address) {
+                // 当地址不超过5次
+                if (lono.address.length < 5) {
+                    // 所在地区
+                    addarr.Region = layall;
+                    // 详细地址
+                    addarr.Address = $('.vall')[0].value;
+                    // 收货人姓名
+                    addarr.consigneeName = $('.vall')[1].value;
+                    // 手机号码
+                    addarr.mobilePhoneNumber = $('.vall')[2].value;
+                    // 电话号码
+                    addarr.telephoneNumber = $('.vall')[3].value;
+                    //  邮箱
+                    addarr.postbox = $('.vall')[4].value;
+                    // 添加
+                    lono.address.push(addarr);
+                    localStorage.setItem(no.accs, JSON.stringify(lono))
+                }
+            } else { // 第一次保存地址
+                lono.address = [addarr];
+                localStorage.setItem(no.accs, JSON.stringify(lono))
+            }
+        }
+        // olds();
+    })
+    var layall;
+    //配置插件目录
+    layui.config({
+        base: './layuiaddress/mods/',
+        version: '1.0'
+    });
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form', 'layarea'], function() {
+        var layer = layui.layer,
+            form = layui.form,
+            layarea = layui.layarea;
+
+        layarea.render({
+            elem: '#area-picker',
+            change: function(res) {
+                //选择结果
+                console.log(res);
+                layall = res;
+            }
+        });
+    });
+
+})
+
+function olds() {
     //  旧地址渲染
     var nows = JSON.parse(sessionStorage.getItem('nowsign'));
     var loca = JSON.parse(localStorage.getItem(nows.accs)).address;
@@ -76,67 +171,4 @@ $(function() {
             })
         })
     }
-    // 置空
-    // var no = JSON.parse(sessionStorage.getItem('nowsign'));
-    // var lono = JSON.parse(localStorage.getItem(no.accs));
-    // lono.address = [];
-    // localStorage.setItem(no.accs, JSON.stringify(lono))
-    //
-    //
-    // 保存新地址
-    $('.save').click(function() {
-        var no = JSON.parse(sessionStorage.getItem('nowsign'));
-        var lono = JSON.parse(localStorage.getItem(no.accs));
-        // 当有一项未填写时
-        var addarr = {};
-        $('.vall').each(function(x, y) {
-            if (!$('.vall')[x].value) {
-                var text = $('.vall')[x]
-                var t1 = $(text).prev().text();
-                alert('请填写' + t1)
-            } else {
-                // 所在地区
-                addarr.Region = $('.vall')[0].value;
-                // 详细地址
-                addarr.Address = $('.vall')[1].value;
-                // 收货人姓名
-                addarr.consigneeName = $('.vall')[2].value;
-                // 手机号码
-                addarr.mobilePhoneNumber = $('.vall')[3].value;
-                // 电话号码
-                addarr.telephoneNumber = $('.vall')[4].value;
-                //  邮箱
-                addarr.postbox = $('.vall')[5].value;
-            }
-        })
-        console.log(Object.keys(addarr).length)
-        // 当全部输入时，保存地址信息
-        if (Object.keys(addarr).length == 6) {
-            // 不是第一次保存地址
-            if (lono.address) {
-                // 当地址不超过5次
-                if (lono.address.length < 5) {
-                    // 所在地区
-                    addarr.Region = $('.vall')[0].value;
-                    // 详细地址
-                    addarr.Address = $('.vall')[1].value;
-                    // 收货人姓名
-                    addarr.consigneeName = $('.vall')[2].value;
-                    // 手机号码
-                    addarr.mobilePhoneNumber = $('.vall')[3].value;
-                    // 电话号码
-                    addarr.telephoneNumber = $('.vall')[4].value;
-                    //  邮箱
-                    addarr.postbox = $('.vall')[5].value;
-                    // 添加
-                    lono.address.push(addarr);
-                    localStorage.setItem(no.accs, JSON.stringify(lono))
-                }
-            } else { // 第一次保存地址
-
-                lono.address = [addarr];
-                localStorage.setItem(no.accs, JSON.stringify(lono))
-            }
-        }
-    })
-})
+}

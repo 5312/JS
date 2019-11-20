@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./pagesCss/user.css">
+    <link rel="stylesheet" href="./layuiaddress/layui/css/layui.css">
     <title>Document</title>
 </head>
 
@@ -40,8 +41,27 @@
                     <div class="tittle">新增收货地址</div>
                     <ul>
                         <li class="item">
-                            <span>&emsp;所在地区</span>
-                            <input class='vall' type="text" name="" value="">
+                            <!-- <span>&emsp;所在地区</span> -->
+                            <div class="layui-form">
+                                <div class="layui-form-item" id="area-picker">
+                                    <div class="layui-form-label">所在地区</div>
+                                    <div class="layui-input-inline" style="width: 200px;">
+                                        <select name="province" class="province-selector" data-value="广东省" lay-filter="province-1">
+                                            <option value="">请选择省</option>
+                                        </select>
+                                    </div>
+                                    <div class="layui-input-inline" style="width: 200px;">
+                                        <select name="city" class="city-selector" data-value="深圳市" lay-filter="city-1">
+                                            <option value="">请选择市</option>
+                                        </select>
+                                    </div>
+                                    <div class="layui-input-inline" style="width: 200px;">
+                                        <select name="county" class="county-selector" data-value="龙岗区" lay-filter="county-1">
+                                            <option value="">请选择区</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li class="item">
                             <span>&emsp;详细地址</span>
@@ -76,5 +96,7 @@
 </body>
 <script src="../../lib/jq/jquery.js" charset="utf-8"></script>
 <script src="./JS/users.js" charset="utf-8"></script>
+<script src="./layuiaddress/layui/layui.js"></script>
+<!-- <script src="../layuiaddress/mods/layarea.js" charset="utf-8"></script> -->
 
 </html>
