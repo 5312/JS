@@ -23,7 +23,7 @@ function dates() {
         date[date.length - 1].detail = arr[i];
         // localStorage.setItem(date)
     }
-    console.log(date);
+    // console.log(date);
 }
 // 随机数
 function rn(x, y) {
