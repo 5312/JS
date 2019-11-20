@@ -45,12 +45,19 @@ $(function() {
         var sy = $(y).siblings('.univalent').text();
         $(y).text(ys * sy)
     })
+    var min = JSON.parse(sessionStorage.getItem('nowsign'))
     $('.ji').each(function(x, y) {
-        var i = $(this).next().text();
-        $(this).click(function() {
+
+        $(y).click(function() {
+            var min = JSON.parse(sessionStorage.getItem('nowsign'))
+            var i = min.carnub[x].num;
             i--;
             i = i < 1 ? 1 : i;
+            var th = min.carnub[x];
+            th.num = i;
+            console.log(i);
             $(this).next().text(i);
+            sessionStorage.setItem('nowsign', JSON.stringify(min));
             $('.sum').each(function(x, y) {
                 var ys = $(y).siblings('.cols').children('.import').text();
                 var sy = $(y).siblings('.univalent').text();
@@ -58,11 +65,16 @@ $(function() {
             })
         })
     })
+
     $('.ja').each(function(x, y) {
-        var i = $(this).prev().text();
-        $(this).click(function() {
+        $(y).click(function() {
+            var min = JSON.parse(sessionStorage.getItem('nowsign'))
+            var i = min.carnub[x].num;
             i++;
             $(this).prev().text(i);
+            var th = min.carnub[x];
+            th.num = i;
+            sessionStorage.setItem('nowsign', JSON.stringify(min));
             $('.sum').each(function(x, y) {
                 var ys = $(y).siblings('.cols').children('.import').text();
                 var sy = $(y).siblings('.univalent').text();
@@ -91,9 +103,11 @@ $(function() {
                 $(this).prop('checked', true);
                 // 总额计算
                 var rests = $(this).siblings('.sum').text();
-                $('.am').text(rests)
+                var yuan = $('.am').text();
+                $('.am').text(rests * 1)
             } else {
                 $(this).prop('checked', false);
+                $('.am').text(0)
             }
         })
     })

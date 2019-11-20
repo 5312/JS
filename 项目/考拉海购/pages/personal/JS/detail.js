@@ -84,11 +84,20 @@ $(function() {
     })
     $('.joincar').click(function() {
 
+
         if (!sessionStorage.getItem('nowsign')) {
             alert('未登录')
             return
         }
-        var arr = [];
+        // 小车的数字显示
+        var ss = JSON.parse(sessionStorage.getItem('nowsign')).accs;
+        var n = JSON.parse(sessionStorage.getItem('nowsign')).carnub;
+        var ns = 0;
+        for (var i = 0; i < n.length; i++) {
+            ns += n[i].num * 1;
+        }
+        // 购物车数量
+        $('.poinnub').text(ns);
         // 现在登录的用户信息
         var thisuser = JSON.parse(sessionStorage.getItem('nowsign'));
         var thisjoin = thisuser.carnub;

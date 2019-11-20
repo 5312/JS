@@ -34,8 +34,11 @@ $(function() {
     $('.changes').hide();
     // 修改密码
     $('.x').click(function() {
-        $('.changes').show();
-
+        if (sessionStorage.getItem('nowsign')) {
+            $('.changes').show();
+        } else {
+            alert("请先登录")
+        }
     })
     $('.clic').click(function() {
         var nse = $('.change').val();
