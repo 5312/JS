@@ -1,11 +1,12 @@
 $(function() {
     // 安全控制
-
     var isok = false,
+
         lt, // 要修改的地址下标
         layall; //layui接受值
-    // $('.addressed').hide();
-    $('.username').hide()
+    $('.addressed').hide();
+    // console.log(isde)
+    // $('.username').hide()
     $('.na').css({
         color: 'red'
     }).click(function() {
@@ -99,10 +100,11 @@ $(function() {
                     addarr.telephoneNumber = $('.vall')[3].value;
                     //  邮箱
                     addarr.postbox = $('.vall')[4].value;
+                    addarr.default = false;
                 }
             })
             // 当全部输入时，保存地址信息
-            if (Object.keys(addarr).length == 6) {
+            if (Object.keys(addarr).length == 7) {
                 // 不是第一次保存地址
                 if (lono.address) {
                     // 当地址不超过5次
@@ -119,6 +121,8 @@ $(function() {
                         addarr.telephoneNumber = $('.vall')[3].value;
                         //  邮箱
                         addarr.postbox = $('.vall')[4].value;
+                        // 默认
+                        addarr.default = false;
                         // 添加
                         lono.address.push(addarr);
                         localStorage.setItem(no.accs, JSON.stringify(lono))
@@ -181,7 +185,6 @@ $(function() {
         var lono = JSON.parse(localStorage.getItem(nows.accs));
         // 地址信息
         var loca = lono.address;
-
         var ev = e || window.event;
         var target = e.target || e.srcElement;
         // console.log(target.parentNode)
@@ -210,7 +213,6 @@ $(function() {
             $('.layui-input:eq(1)').val(ll.Region.city)
             $('.layui-input:eq(2)').val(ll.Region.county)
             // console.log($('.layui-input'))
-
         }
     })
 
@@ -227,7 +229,11 @@ document.getElementsByClassName('old')[0].onmouseup = function(oEvent) {
     if (oEvent.button == 2) {
         if (confirm('是否设为默认地址？')) {
             var indexId = target.getAttribute('index-id') * 1;
+            // console.log(indexId)
             dell(indexId);
+            defaul();
+            // isde = false;
+            // def();
         }
     }
 }
@@ -247,8 +253,9 @@ function olds() {
             $('.receive1')[x].innerHTML = y.Address;
             $('.receive2')[x].innerHTML = y.mobilePhoneNumber;
             // console.log(x, loca.length - 1)
-            def(x);
+            // def(x);
         })
+        defaul();
         // 有旧地址的时候才可以修改删除
         $('.paren').each(function(x, y) {
             $(this).attr('index-id', x)
@@ -259,12 +266,14 @@ function olds() {
             $(y).click(function() {
                 // console.log($(this).parent().parent().remove());
                 $(this).parent().parent().remove();
+                var nows = JSON.parse(sessionStorage.getItem('nowsign'));
+                var lono = JSON.parse(localStorage.getItem(nows.accs));
+                var loca = lono.address;
                 loca.splice(x, 1);
                 localStorage.setItem(nows.accs, JSON.stringify(lono))
             })
         })
     }
-
 }
 
 // 默认地址设置
@@ -273,28 +282,20 @@ function def(x) {
     var lono = JSON.parse(localStorage.getItem(nows.accs));
     // 地址信息
     var loca = lono.address;
-    // 默认最后一个为新地址
-    if (ea()) {
-        if (x == loca.length - 1) {
-            loca[x].default = true;
-            // console.log(loca[x]);
-            localStorage.setItem(nows.accs, JSON.stringify(lono))
-            $('.default')[x].setAttribute('class', 'default db');
-        }
-    }
-}
-
-function ea() {
-    var nows = JSON.parse(sessionStorage.getItem('nowsign'));
-    var lono = JSON.parse(localStorage.getItem(nows.accs));
-    // 地址信息
-    var loca = lono.address;
-    $.each(loca, function() {
-
+    // console.log(isde)
+    $.each(loca, function(x, y) {
+        y.default = false;
     })
+    // 默认最后一个为新地址
+    if (x == loca.length - 1) {
+        loca[x].default = true;
+        localStorage.setItem(nows.accs, JSON.stringify(lono));
+        defaul();
+    }
 
 }
 
+// 点击设置默认地址
 function dell(i) {
     var nows = JSON.parse(sessionStorage.getItem('nowsign'));
     var lono = JSON.parse(localStorage.getItem(nows.accs));
@@ -304,4 +305,20 @@ function dell(i) {
         y.default = false;
     })
     loca.default = true;
+    localStorage.setItem(nows.accs, JSON.stringify(lono))
+}
+
+// 默认地址的显示
+function defaul() {
+    var nows = JSON.parse(sessionStorage.getItem('nowsign'));
+    var lono = JSON.parse(localStorage.getItem(nows.accs)).address;
+    $.each(lono, function(x, y) {
+        $('.default')[x].setAttribute('class', 'default')
+        // console.log(y)
+        if (y.default) {
+            var yu = document.getElementsByClassName('default');
+            $('.default')[x].setAttribute('class', 'default db')
+        }
+    })
+
 }

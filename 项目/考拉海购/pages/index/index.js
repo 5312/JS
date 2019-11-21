@@ -33,8 +33,13 @@ function rn(x, y) {
 $(function() {
     // 用户中心
     $('.usercontent').click(function() {
-        window,
-        open('../personal/user.html')
+        if (sessionStorage.getItem('nowsign')) {
+            window,
+            open('../personal/user.html', '_self')
+        }
+        else {
+            alert('未登录')
+        }
     })
     $('.changes').hide();
     // 修改密码
