@@ -127,7 +127,8 @@ $(function() {
                         lono.address.push(addarr);
                         localStorage.setItem(no.accs, JSON.stringify(lono))
                         alert('保存成功');
-                        location.href = "";
+                        // location.href = "";
+                        olds();
                     } else {
                         alert('地址已达到上限')
                     }
@@ -136,7 +137,8 @@ $(function() {
                     localStorage.setItem(no.accs, JSON.stringify(lono))
                     alert('保存成功');
                     // 刷新网页重载以保存地址
-                    location.href = "";
+                    // location.href = "";
+                    olds();
                 }
             }
             // olds();
@@ -156,7 +158,8 @@ $(function() {
             localStorage.setItem(nows.accs, JSON.stringify(lono))
             alert('修改成功')
             $('.save').text('保存新地址')
-            location.reload();
+            // location.reload();
+            olds();
         }
     })
     //配置插件目录
@@ -179,6 +182,12 @@ $(function() {
             }
         });
     });
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function() {
+        var element = layui.element;
+
+        //…
+    })
     // 修改按钮
     $('.old').click(function(e) {
         var nows = JSON.parse(sessionStorage.getItem('nowsign'));
@@ -192,7 +201,7 @@ $(function() {
         if (target.className == 'change') { //点击修改按钮时
             // 点击修改时资料填入下面
             $('html').animate({
-                scrollTop: 300
+                scrollTop: 600
             })
             $('.save').text('修改地址')
             var text = target.parentNode.parentNode;
@@ -215,31 +224,45 @@ $(function() {
             // console.log($('.layui-input'))
         }
     })
+    //阻止浏览器默认右键点击事件
+    // $(".old").bind("contextmenu", function() {
+    //     return false;
+    // })
 
+    $('.old').on('click', '.paren', function(e) {
+        // console.log(e.which)
+        if (confirm('是否设为默认地址？')) {
+            var indexId = $(this).attr('index-id');
+            // var indexId = $(target).index() - 1;
+            console.log(indexId)
+            // console.log($(target).index() - 1)
+            dell(indexId);
+            defaul();
+        }
+    })
 })
 // 右键设置默认
 //这一步是为了阻止右击时系统默认的弹出框
-document.getElementsByClassName('old')[0].oncontextmenu = function(e) {
-    e.preventDefault();
-};
+// document.getElementsByClassName('old')[0].oncontextmenu = function(e) {
+//     e.preventDefault();
+// };
 //定义事件的函数
-document.getElementsByClassName('old')[0].onmouseup = function(oEvent) {
-    if (!oEvent) oEvent = window.event;
-    var target = oEvent.target || oEvent.srcElement;
-    if (oEvent.button == 2) {
-        if (confirm('是否设为默认地址？')) {
-            var indexId = target.getAttribute('index-id') * 1;
-            // console.log(indexId)
-            dell(indexId);
-            defaul();
-            // isde = false;
-            // def();
-        }
-    }
-}
-
-
+// document.getElementsByClassName('old')[0].onmouseup = function(oEvent) {
+//     if (!oEvent) oEvent = window.event;
+//     var target = oEvent.target || oEvent.srcElement;
+//     if (oEvent.button == 2) {
+//         if (confirm('是否设为默认地址？')) {
+//             var indexId = $(target).attr('index-id');
+//             // var indexId = $(target).index() - 1;
+//             console.log(indexId)
+//             // console.log($(target).index() - 1)
+//             dell(indexId);
+//             defaul();
+//         }
+//     }
+// }
 function olds() {
+    $('.old').empty().html('<div class="bar"><span>收货人</span><span>收货地址</span><span>联系电话</span><span>操作</span><div class="defaults"></div></div>')
     //  旧地址渲染
     var nows = JSON.parse(sessionStorage.getItem('nowsign'));
     var lono = JSON.parse(localStorage.getItem(nows.accs));
@@ -250,7 +273,7 @@ function olds() {
             $('<div class="paren"><span class="receive0">收货人</span><span class="receive1">收货地址</span ><span class="receive2">联系电话</span><span class="receive3"><span class="change">修改</span>|<span class="splice">删除</span></span><div class="default">默认地址</div></div>').appendTo($('.old'));
             // console.log(y)
             $('.receive0')[x].innerHTML = y.consigneeName;
-            $('.receive1')[x].innerHTML = y.Address;
+            $('.receive1')[x].innerHTML = y.Region.province + y.Region.city + y.Region.county + y.Address;
             $('.receive2')[x].innerHTML = y.mobilePhoneNumber;
             // console.log(x, loca.length - 1)
             // def(x);
@@ -270,31 +293,49 @@ function olds() {
                 var lono = JSON.parse(localStorage.getItem(nows.accs));
                 var loca = lono.address;
                 loca.splice(x, 1);
-                localStorage.setItem(nows.accs, JSON.stringify(lono))
+                localStorage.setItem(nows.accs, JSON.stringify(lono));
+                if (!spce()) {
+                    loca[loca.length - 1].default = true;
+                    localStorage.setItem(nows.accs, JSON.stringify(lono))
+                }
+                olds();
+
             })
         })
+    }
+    // jq
+}
 
+// 删除默认地址
+function spce() {
+    var nows = JSON.parse(sessionStorage.getItem('nowsign'));
+    var lono = JSON.parse(localStorage.getItem(nows.accs));
+    var loca = lono.address;
+    for (var i = 0; i < loca.length; i++) {
+        if (loca[i].default) {
+            return true;
+        }
     }
 }
 
 // 默认地址设置
-function def(x) {
-    var nows = JSON.parse(sessionStorage.getItem('nowsign'));
-    var lono = JSON.parse(localStorage.getItem(nows.accs));
-    // 地址信息
-    var loca = lono.address;
-    // console.log(isde)
-    $.each(loca, function(x, y) {
-        y.default = false;
-    })
-    // 默认最后一个为新地址
-    if (x == loca.length - 1) {
-        loca[x].default = true;
-        localStorage.setItem(nows.accs, JSON.stringify(lono));
-        defaul();
-    }
-
-}
+// function def(index) {
+//     var nows = JSON.parse(sessionStorage.getItem('nowsign'));
+//     var lono = JSON.parse(localStorage.getItem(nows.accs));
+//     // 地址信息
+//     var loca = lono.address;
+//     // console.log(isde)
+//     $.each(loca, function(x, y) {
+//         y.default = false;
+//     })
+//     // 默认最后一个为新地址
+//     if (index == loca.length - 1) {
+//         loca[x].default = true;
+//         localStorage.setItem(nows.accs, JSON.stringify(lono));
+//         defaul();
+//     }
+//
+// }
 
 // 点击设置默认地址
 function dell(i) {

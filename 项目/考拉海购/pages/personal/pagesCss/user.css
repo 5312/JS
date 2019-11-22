@@ -5,7 +5,7 @@ html, body, .a {
 }
 
 .a {
-    /* margin-top: 200px;/ */
+    /* margin-top: 100px; */
     border-top: 1px solid #999;
     height: 700px;
 }
@@ -24,7 +24,7 @@ html, body, .a {
     vertical-align: top;
 }
 
-.left {
+.lefts {
     width: 111px;
     height: 100%;
     margin-right: 20px;
@@ -35,7 +35,7 @@ html, body, .a {
     height: 300px;
 }
 
-.right {
+.rights {
     width: 953px;
     margin: 0 auto;
     font-size: 20px;
@@ -43,7 +43,7 @@ html, body, .a {
     /* font-weight: 700; */
 }
 
-.left>div:hover {
+.lefts>div:hover {
     color: red;
 }
 
@@ -123,7 +123,7 @@ input {
     margin-left: 10px;
 }
 
-ul li {
+.item {
     list-style-type: none;
     background: url(../img/list-img.jpeg) no-repeat 0rem center;
     background-size: 1rem 1rem;
@@ -183,6 +183,16 @@ ul li {
 
 /* 默认地址 */
 .default {
+    width: 76px;
+    height: 22px;
+    /* border: 1px solid #e31436; */
+    /* color: #e31436; */
+    font-size: 0px;
+    text-align: center;
+    line-height: 23px;
+}
+
+.defaults {
     width: 76px;
     height: 22px;
     /* border: 1px solid #e31436; */

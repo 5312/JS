@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="../../lib/normalize/normalize.css">
     <script src='../../lib/iconfont/font/iconfont.js'></script>
+    <link rel="stylesheet" href="../layui-v2.5.5/layui/css/layui.css">
     <title>Document</title>
 </head>
 
 <body>
-    <div class="header">
+    <!-- <div class="header">
         <div id="wrap">
             <div class="left">
                 <span>考拉欢迎你!</span>
@@ -49,9 +50,25 @@
                 </svg>
             </div>
         </div>
-    </div>
+    </div> -->
+    <ul class="layui-nav hie" lay-filter="">
+        <li class="layui-nav-item"><a href="">考拉欢迎你！ </a></li>
+        <li class="layui-nav-item layui-this"><a href="">登录 </a></li>
+        <li class="layui-nav-item"><a href=""> 免费注册</a></li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">个人中心</a>
+            <dl class="layui-nav-child">
+                <!-- 二级菜单 -->
+                <dd><a href="">修改密码</a></dd>
+                <dd><a href="">用户中心</a></dd>
+                <!-- <dd><a href="">电商平台</a></dd> -->
+            </dl>
+        </li>
+        <li class="layui-nav-item"><a href="">更多</a></li>
+    </ul>
 </body>
 <script src="../../lib/jq/jquery.js" charset="utf-8"></script>
 <script src="./header.js" charset="utf-8"></script>
+<script src="../layui-v2.5.5/layui/layui.js"></script>
 
 </html>
