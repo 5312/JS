@@ -117,13 +117,16 @@
     width: 100%;
     margin-top: 20px;
     border: 1px solid #999;
-    height: 30px;
+    height: 51px;
+    line-height: 50px;
+    /* layui样式更改 */
+    font: 1.2em "Fira Sans", sans-serif;
 }
 
 .allmoney {
     font-size: 12px;
     text-align: right;
-    padding-right: 50px;
+    /* padding-right: 50px; */
 }
 
 .nul {
@@ -134,4 +137,13 @@
     text-align: center;
     line-height: 100px;
     color: #999;
+}
+
+.pay {
+    padding: 0 20px 0;
+    font-size: 35px !important;
+    font-weight: 700;
+    color: white;
+    background-color: red;
+    margin: 0 0 0 30px;
 }

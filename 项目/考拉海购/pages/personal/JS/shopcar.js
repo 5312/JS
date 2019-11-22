@@ -119,6 +119,23 @@ $(function() {
             }
         })
     })
+    // 去支付
+    $('.pay').click(function() {
+        var price = $('.am').text()
+        sessionStorage.setItem('price', price)
+        // if ($('.car')) {
+        layui.use('layer', function() {
+            var layer = layui.layer;
+            layer.open({
+                type: 2,
+                content: ['./orderForm.html', 'no'], //这里content是一个普通的String
+                area: ['1200px', '500px']
+            });
+        })
+        // }
+    })
+
+
 })
 
 function sum(arr) {

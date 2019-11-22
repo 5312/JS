@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./pagesCss/orderForm.css">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="head">请选择收货地址</div>
+    <div class="addressed">
+        <!-- <div class="address">
+            <div class="he"><div class="db">默认地址</div></div>
+            <div class="inDetail">
+                <div>陕西省 西安市 灞桥区 纺织城街道</div>
+                <div>切尔奇若 </div>
+                <div>134****7524</div>
+            </div>
+        </div> -->
+    </div>
+    <div class="verify">
+        <pre class="v_left">
+            发票须知：
+            1. 保税仓发货商品与海外仓发货商品属跨境海外商品，无法开具国内增值税发票
+            2. 自2017年7月1日起，发票抬头选择公司（企业、有税号的非企业性单位和个体工商户）需提供纳税人识别号
+            3. 自营国内仓商品支持开具电子普通发票，电子普通发票在确认收货后48小时内开具
+            4. 杭州1号仓和杭州4号仓的商品，若下单开具纸质普通发票，发票随包裹一起寄出，补开则单独寄出
+            5. 其他自营国内仓商品，若开具纸质普通发票，发票在确认收货后3个工作日内单独寄出
+            6. 第三方商家若无法开具电子发票，则自动开纸质发票，商家发票以实际收到为准
+            7. 如需增值税专用发票，请在下单时填写增值税专用发票信息，核对无误后提交，发票在确认收货后3个工作日内单独寄出
+            8. 礼品卡支付金额不支持开发票
+        </pre>
+        <div class="v_right">
+            <div class='show'>应付金额<span class='show-num'></span>
+            </div>
+            <div class='btn'>提交订单</div>
+        </div>
+    </div>
+    <div class='jpg-box'>
+        <img src="./img/pay.jpg" class='pay-jpg'>
+    </div>
+</body>
+<script src="./JS/jquery.js" charset="utf-8"></script>
+<script>
+    $(function() {
+        $('.jpg-box').hide();
+        var noow = JSON.parse(sessionStorage.getItem('nowsign'));
+        var loca = JSON.parse(localStorage.getItem(noow.accs));
+        $.each(loca.address, function(x, y) {
+            create();
+            $('.he')[x].innerText = loca.address[x].consigneeName + '  收';
+            $('.inn1')[x].innerText = loca.address[x].Region.province;
+            $('.inn2')[x].innerText = loca.address[x].Address;
+            $('.inn3')[x].innerText = loca.address[x].mobilePhoneNumber;
+            $('.show-num').text('￥：' + sessionStorage.getItem('price'))
+            if (loca.address[x].default) {
+                $('.address')[x].style.border = '3px solid red';
+                $('.db')[x].style.fontSize = '12px'
+            }
+        })
+        // 提交订单
+        $('.btn').click(function() {
+            $('.jpg-box').toggle('1s');
+        })
+        // 事件委托
+        $('.addressed').on('click', '.address', function(ev) {
+            $('.address').css({
+                border: '1px solid #eee'
+            })
+            $(this).css({
+                border: '2px solid red'
+            })
+        })
+    })
+    // 创建地址函数
+    function create() {
+        $('<div class="address"><div class ="he"></div><div class="db">默认地址</div><div class = "inDetail"><div class="inn1"></div><div class="inn2"></div><div class="inn3"></div></div></div>').appendTo($('.addressed'))
+    }
+    // 地址填入
+</script>
+
+</html>
