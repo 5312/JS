@@ -1,26 +1,19 @@
 $(function() {
     // 安全控制
     var isok = false,
-
         lt, // 要修改的地址下标
         layall; //layui接受值
-    $('.addressed').hide();
-    // console.log(isde)
-    // $('.username').hide()
-    $('.na').css({
-        color: 'red'
-    }).click(function() {
-        $(this).css({
-            color: 'red'
-        });
-        $('.username').show();
-        $('.us').text('我的昵称')
-        $('.addressed').hide();
-        $('.address').css({
-            color: 'black'
-        })
-    })
 
+
+    $('.na').click(function() {
+        sessionStorage.setItem('click', 'na');
+        showHide()
+    })
+    $('.address').click(function() {
+        sessionStorage.setItem('click', 'address');
+        showHide()
+    });
+    showHide();
     $('.chenge').on('input', function() {
         var regeX = /^[\u4e00-\u9fa5]{2,10}/;
         var te = $(this).val()
@@ -36,7 +29,7 @@ $(function() {
                 color: 'red'
             })
         }
-    })
+    });
     $('.ok').click(function() {
         if (isok) {
             var uns = JSON.parse(sessionStorage.getItem('nowsign'))
@@ -47,20 +40,8 @@ $(function() {
             sessionStorage.setItem('nowsign', JSON.stringify(uns))
             alert('设置成功')
         }
-    })
-    $('.address').click(function() {
-        $(this).css({
-            color: 'red'
-        })
-        // 点击地址昵称消失
-        $('.username').hide();
-        $('.us').text('我的收货地址')
-        $('.addressed').show();
-        $('.na').css({
-            color: 'black'
-        })
+    });
 
-    })
 
     // 置空
     // var no = JSON.parse(sessionStorage.getItem('nowsign'));
@@ -168,11 +149,12 @@ $(function() {
         version: '1.0'
     });
     //一般直接写在一个js文件中
-    layui.use(['layer', 'form', 'layarea'], function() {
+    layui.use(['layer', 'form', 'layarea', 'element'], function() {
+        var element = layui.element; //注意：导航 依赖 element 模块，否则无法进行功能性操作
         var layer = layui.layer,
             form = layui.form,
             layarea = layui.layarea;
-
+        //…
         layarea.render({
             elem: '#area-picker',
             change: function(res) {
@@ -181,13 +163,9 @@ $(function() {
                 layall = res;
             }
         });
-    });
-    //注意：导航 依赖 element 模块，否则无法进行功能性操作
-    layui.use('element', function() {
-        var element = layui.element;
 
-        //…
-    })
+    });
+
     // 修改按钮
     $('.old').click(function(e) {
         var nows = JSON.parse(sessionStorage.getItem('nowsign'));
@@ -318,25 +296,6 @@ function spce() {
     }
 }
 
-// 默认地址设置
-// function def(index) {
-//     var nows = JSON.parse(sessionStorage.getItem('nowsign'));
-//     var lono = JSON.parse(localStorage.getItem(nows.accs));
-//     // 地址信息
-//     var loca = lono.address;
-//     // console.log(isde)
-//     $.each(loca, function(x, y) {
-//         y.default = false;
-//     })
-//     // 默认最后一个为新地址
-//     if (index == loca.length - 1) {
-//         loca[x].default = true;
-//         localStorage.setItem(nows.accs, JSON.stringify(lono));
-//         defaul();
-//     }
-//
-// }
-
 // 点击设置默认地址
 function dell(i) {
     var nows = JSON.parse(sessionStorage.getItem('nowsign'));
@@ -362,5 +321,45 @@ function defaul() {
             $('.default')[x].setAttribute('class', 'default db')
         }
     })
+}
 
+function showHide() {
+    if (sessionStorage.getItem('click')) {
+        console.log(sessionStorage.getItem('click') == 'na')
+        if (sessionStorage.getItem('click') == 'na') {
+            $('.us').text('我的昵称')
+            $('.na').css({
+                color: 'red'
+            });
+            $('.username').show();
+
+            $('.addressed').hide();
+            $('.address').css({
+                color: '#999'
+            });
+        } else {
+            $('.us').text('我的收货地址')
+            $('.username').hide();
+            console.log($('.na'))
+            $('.na').css({
+                color: '#999'
+            });
+
+            $('.address').css({
+                color: 'red'
+            });
+            $('.addressed').show();
+
+        }
+    } else {
+        $('.us').text('我的昵称')
+        $('.na').css({
+            color: 'red'
+        });
+        $('.address').css({
+            color: '#999'
+        });
+        $('.username').show();
+        $('.addressed').hide();
+    }
 }

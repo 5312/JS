@@ -1,5 +1,6 @@
 var iconsrc = ['img/icon1.png', 'img/icon2.png', 'icon3.png'];
 
+
 // 瀑布流容器
 var oul = $('<ul></ul>').appendTo($('.shop_main')).addClass('main_left');
 
@@ -31,12 +32,25 @@ function rn(x, y) {
 }
 
 $(function() {
-    //注意：导航 依赖 element 模块，否则无法进行功能性操作
-    layui.use('element', function() {
-        var element = layui.element;
-
-        //…
-    })
+    // 轮播layui
+    layui.use(['carousel', 'layer', 'element'], function() {
+        var element = layui.element; //注意：导航 依赖 element 模块，否则无法进行功能性操作
+        // 弹出层
+        // var layer = layui.layer;
+        // layer.msg('hello');
+        // 轮播图
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1',
+            width: '100%' //设置容器宽度
+                ,
+            arrow: 'hover' //始终显示箭头
+                //,anim: 'updown' //切换动画方式
+                ,
+            height: '505px',
+        });
+    });
     // 用户中心
     $('.usercontent').click(function() {
         if (sessionStorage.getItem('nowsign')) {
@@ -47,37 +61,51 @@ $(function() {
             alert('未登录')
         }
     })
+    // '<div class="changes">请输入旧密码<input class="old" type="password">请输入新密码<input class="news" type="password"><div class="clic">确认修改密码</div></div>'
     $('.changes').hide();
     // 修改密码
     $('.x').click(function() {
         if (sessionStorage.getItem('nowsign')) {
-            $('.changes').show();
+
+            // $('.changes').show();
+            layui.use('layer', function() {
+                var layer = layui.layer;
+                layer.config({
+                    extend: 'myskin/style.css', //加载新皮肤
+                    skin: 'my-input' //一旦设定，所有弹层风格都采用此主题。
+                });
+                layer.open({
+                    area: ['800px', '700px'],
+                    title: '修改密码',
+                    type: 0,
+                    content: '<div class="changes">请输入旧密码<input class="old" type="text">请输入新密码<input class="news" type="text"></div>',
+                    btn: ['确认修改'],
+                    yes: function(index, layero) {
+                        //按钮【按钮一】的回调
+                        var nse = JSON.parse(sessionStorage.getItem('nowsign')).accs;
+                        console.log(nse)
+                        var old = $('.old').val();
+                        var news = $('.news').val();
+                        var olds = JSON.parse(localStorage.getItem(nse));
+                        if (old == olds.password && news) {
+                            olds.password = news;
+                            localStorage.setItem(nse, JSON.stringify(olds));
+                            sessionStorage.setItem('nowsign', [])
+                            alert('修改成功,请重新登录')
+                            $('#sig').text('登录')
+                            // 修改密码框消失
+                            // $('.changes').hide();
+                        } else {
+                            alert('密码错误')
+                        }
+                        return false
+                    }
+                });
+            })
+
         } else {
             alert("请先登录")
         }
-    })
-    $('.clic').click(function() {
-        var nse = JSON.parse(sessionStorage.getItem('nowsign')).accs;
-        console.log(nse)
-        var old = $('.old').val();
-        var news = $('.news').val();
-        // console.log(news)
-        // if (localStorage.getItem(nse)) {
-        var olds = JSON.parse(localStorage.getItem(nse));
-        if (old == olds.password && news) {
-            olds.password = news;
-            localStorage.setItem(nse, JSON.stringify(olds));
-            sessionStorage.setItem('nowsign', [])
-            alert('修改成功,请重新登录')
-            $('#sig').text('登录')
-            // 修改密码框消失
-            $('.changes').hide();
-        } else {
-            alert('密码错误')
-        }
-        // } else {
-        //     alert('未注册')
-        // }
     })
     // 注销
     $('.signout').click(function() {
@@ -175,20 +203,6 @@ function smain() {
         $(y).html(date[x].detail)
     })
 }
-// 轮播layui
-layui.use('carousel', function() {
-    var carousel = layui.carousel;
-    //建造实例
-    carousel.render({
-        elem: '#test1',
-        width: '100%' //设置容器宽度
-            ,
-        arrow: 'hover' //始终显示箭头
-            //,anim: 'updown' //切换动画方式
-            ,
-        height: '505px',
-    });
-});
 
 
 function main() {

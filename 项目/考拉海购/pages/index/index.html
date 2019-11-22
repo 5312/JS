@@ -38,26 +38,17 @@
                 <div class="right">
                     <span class="hov">每日签到</span>
                     <span class="hov">我的订单</span>
-                    <span class='whirls'>个人中心
-                        <div class="whirl">
-                            <div class="x">修改密码</div>
-
-                            <div class='usercontent'>用户中心</div>
-                        </div>
-
-                    </span>
-                    <div class="changes">
-                        <!-- 请输入账号
-                        <input class="change" type="text"> -->
-                        请输入旧密码
-                        <input class='old' type="password">
-                        请输入新密码
-                        <input class='news' type="password">
-                        <div class='clic'>确认修改密码</div>
-                    </div>
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-jiantouarrow486"></use>
-                    </svg>
+                    <ul id='scroll' class="layui-nav hie" lay-filter="">
+                        <li id='scroll-li' class="layui-nav-item whirls">
+                            <a href="javascript:;">个人中心</a>
+                            <dl class="layui-nav-child whirl">
+                                <!-- 二级菜单 -->
+                                <dd><a class="x">修改密码</a></dd>
+                                <dd><a class='usercontent'>用户中心</a></dd>
+                                <!-- <dd><a href="">电商平台</a></dd> -->
+                            </dl>
+                        </li>
+                    </ul>
                     <span class='whirls'>客户服务</span>
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-jiantouarrow486"></use>

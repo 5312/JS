@@ -1,7 +1,25 @@
 #main {
     width: 1090px;
+    height: 170px;
     margin: 0 auto;
     text-align: center;
+}
+
+#scroll {
+    width: 143px;
+    height: 30px;
+    display: inline-block;
+    padding: 0;
+    line-height: 10px;
+    background: none;
+    font-size: 14px;
+}
+
+#scroll-li {
+    width: 143px;
+    height: 30px;
+    display: inline-block;
+    line-height: 25px;
 }
 
 .docHeaderWrap {
@@ -46,6 +64,13 @@
     line-height: 35px;
 }
 
+.docHeaderWrap {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
 .shopcar {
     width: 110px;
     height: 40px;
@@ -55,7 +80,12 @@
     color: #ff2337;
     text-align: left;
     line-height: 36px;
-    position: relative;
+    /* position: absolute; */
+    /* right: 0; */
+}
+
+dd {
+    font-size: 12px;
 }
 
 /* 右搜索哦
@@ -142,57 +172,9 @@
     text-align: center;
 }
 
-.changes {
-    width: 400px;
-    height: 380px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 9;
-    margin: auto;
-    border: 1px solid #eee;
-    background-color: white;
-    /* display: none; */
-}
-
-.changes>input {
-    margin-top: 10px;
-    width: 397px;
-    height: 50px;
-}
-
-.clic {
-    text-align: center;
-    margin-top: 10px;
-    background: rgb(59, 112, 154);
-    line-height: 50px;
-    font-size: 20px;
-    color: rgb(38, 47, 125);
-    cursor: pointer;
-}
-
-.whirls:hover>.whirl {
-    display: block;
-}
-
-.whirl {
-    position: absolute;
-    width: 100px;
-    height: 80px;
-    background-color: white;
-    border: 1px solid #eee;
-    z-index: 9;
-    top: 10px;
-    left: -22px;
-    display: none;
-}
-
 .x {
     font-size: 12px;
     cursor: pointer;
-    /* text-align: center; */
 }
 
 .menu {
@@ -411,4 +393,10 @@ ul>.padd {
 .rtop>img {
     position: absolute;
     margin-top: 10px;
+}
+
+.closed {
+    font-size: 30px;
+    text-align: right;
+    cursor: pointer;
 }
