@@ -71,7 +71,7 @@ $(function() {
             layui.use('layer', function() {
                 var layer = layui.layer;
                 layer.config({
-                    extend: 'myskin/style.css', //加载新皮肤
+                    extend: 'mysKin/style.css', //加载新皮肤
                     skin: 'my-input' //一旦设定，所有弹层风格都采用此主题。
                 });
                 layer.open({
