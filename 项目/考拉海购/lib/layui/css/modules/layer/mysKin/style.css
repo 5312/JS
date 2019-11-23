@@ -1,3 +1,26 @@
-.my-input {
-    background-color: rgb(77, 159, 26);
+body .my-input {
+    background-color: rgba(229, 241, 239, 0.93);
+}
+
+.my-input .changes {
+    line-height: 100px;
+    font-size: 25px;
+    color: rgb(26, 26, 28);
+}
+
+body .my-input .my-input_old {
+    width: 500px;
+}
+
+body .my-input .my-input_news {
+    width: 500px;
+}
+
+body .my-input div {
+    margin-right: 25px;
+    display: inline-block;
+}
+
+body .layui-layer-btn {
+    margin: 0 auto;
 }

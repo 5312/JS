@@ -69,16 +69,18 @@ $(function() {
 
             // $('.changes').show();
             layui.use('layer', function() {
+                var that = this;
                 var layer = layui.layer;
                 layer.config({
                     extend: 'mysKin/style.css', //加载新皮肤
                     skin: 'my-input' //一旦设定，所有弹层风格都采用此主题。
                 });
                 layer.open({
+                    tipsMore: true,
                     area: ['800px', '700px'],
                     title: '修改密码',
-                    type: 0,
-                    content: '<div class="changes">请输入旧密码<input class="old" type="text">请输入新密码<input class="news" type="text"></div>',
+                    type: 1,
+                    content: '<div class="changes"><div>请输入旧密码</div><input class="old my-input_old" type="text"><div>请输入新密码</div><input class="news my-input_news" type="text"></div>',
                     btn: ['确认修改'],
                     yes: function(index, layero) {
                         //按钮【按钮一】的回调
@@ -91,12 +93,17 @@ $(function() {
                             olds.password = news;
                             localStorage.setItem(nse, JSON.stringify(olds));
                             sessionStorage.setItem('nowsign', [])
-                            alert('修改成功,请重新登录')
+                            layer.msg('修改成功', {
+                                icon: 1
+                            });
                             $('#sig').text('登录')
                             // 修改密码框消失
                             // $('.changes').hide();
                         } else {
-                            alert('密码错误')
+                            // $(that).click();
+                            layer.msg('密码错误', {
+                                icon: 2
+                            })
                         }
                         return false
                     }
