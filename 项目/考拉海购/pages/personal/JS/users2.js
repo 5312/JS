@@ -61,61 +61,24 @@ $(function() {
             // 当有一项未填写时
             var addarr = {};
             if (layall) {
-                $('.vall').each(function(x, y) {
-                    if (!$('.vall')[x].value) {
-                        var text = $('.vall')[x]
-                        var t1 = $(text).prev().text();
-                        // alert('请填写' + t1)
-                        // alert('请输入所在地区')
-                        layui.use('layer', function() {
-                            layer.config({
-                                extend: 'mysKin/style.css', //加载新皮肤
-                                skin: 'my-input' //一旦设定，所有弹层风格都采用此主题
-                            });
-                            layer.open({
-                                shade: false,
-                                type: 1,
-                                tipsMore: true,
-                                // title: '请填写' + t1,
-                                // icon: 2,
-                                time: 2000,
-                                icon: 2,
-                                offset: [ //随机坐标
-                                    Math.random() * ($(window).height() - 300), Math.random() * ($(window).width() - 390)
-                                ],
-                                content: '请填写' + t1,
-                            });
-                        })
-                    } else {
-                        // 所在地区
-                        addarr.Region = layall;
-                        // 详细地址
-                        addarr.Address = $('.vall')[0].value;
-                        // 收货人姓名
-                        addarr.consigneeName = $('.vall')[1].value;
-                        // 手机号码
-                        addarr.mobilePhoneNumber = $('.vall')[2].value;
-                        // 电话号码
-                        addarr.telephoneNumber = $('.vall')[3].value;
-                        //  邮箱
-                        addarr.postbox = $('.vall')[4].value;
-                        addarr.default = false;
-                    }
-                })
+                if (tfs()) {
+                    // 所在地区
+                    addarr.Region = layall;
+                    // 详细地址
+                    addarr.Address = $('.vall')[0].value;
+                    // 收货人姓名
+                    addarr.consigneeName = $('.vall')[1].value;
+                    // 手机号码
+                    addarr.mobilePhoneNumber = $('.vall')[2].value;
+                    // 电话号码
+                    addarr.telephoneNumber = $('.vall')[3].value;
+                    //  邮箱
+                    addarr.postbox = $('.vall')[4].value;
+                    addarr.default = false;
+                }
             } else {
-                // alert('请输入所在地区')
-                layui.use('layer', function() {
-                    layer.config({
-                        extend: 'mysKin/style.css', //加载新皮肤
-                        skin: 'my-input' //一旦设定，所有弹层风格都采用此主题。
-                    });
-                    layer.msg('请输入所在地区', {
-                        icon: 2,
-                        time: 1000
-                    })
-                })
+                ms('请输入所在地区')
             }
-
             // 当全部输入时，保存地址信息
             if (Object.keys(addarr).length == 7) {
                 // 不是第一次保存地址
@@ -395,7 +358,6 @@ function rn(x, y) {
 $('.item:eq(0)').css({
     backgroundImage: 'url("./img/list-img.jpeg")'
 })
-var phone;
 $('.item').on('input', 'input', function(e) {
     if ($(this).val()) {
         $(this).parent().css({
@@ -408,7 +370,6 @@ $('.item').on('input', 'input', function(e) {
     }
     //为手机号时
     if ($(this).attr('placeholder') == "手机号码，电话号码必须一致") {
-        tfs();
         var reg = /^[1]([3-9])[0-9]{9}$/;
         if (reg.test($(this).val())) {
             phone = true;
