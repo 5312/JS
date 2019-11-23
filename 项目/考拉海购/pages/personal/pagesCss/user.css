@@ -212,3 +212,30 @@ input {
 .paren:hover {
     background-color: rgb(123, 219, 216);
 }
+
+.receive0, .receive1, .receive2, .receive3 {
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.receive0 {
+    width: 80px;
+    height: 30px;
+}
+
+.receive1 {
+    width: 235px;
+    height: 30px;
+}
+
+.receive2 {
+    width: 123px;
+    height: 30px;
+}
+
+.receive3 {
+    width: 126px;
+    height: 30px;
+}

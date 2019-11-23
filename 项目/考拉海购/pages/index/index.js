@@ -35,10 +35,6 @@ $(function() {
     // 轮播layui
     layui.use(['carousel', 'layer', 'element'], function() {
         var element = layui.element; //注意：导航 依赖 element 模块，否则无法进行功能性操作
-        // 弹出层
-        // var layer = layui.layer;
-        // layer.msg('hello');
-        // 轮播图
         var carousel = layui.carousel;
         //建造实例
         carousel.render({
@@ -61,8 +57,7 @@ $(function() {
             alert('未登录')
         }
     })
-    // '<div class="changes">请输入旧密码<input class="old" type="password">请输入新密码<input class="news" type="password"><div class="clic">确认修改密码</div></div>'
-    $('.changes').hide();
+
     // 修改密码
     $('.x').click(function() {
         if (sessionStorage.getItem('nowsign')) {
@@ -77,10 +72,10 @@ $(function() {
                 });
                 layer.open({
                     tipsMore: true,
-                    area: ['800px', '700px'],
+                    area: ['500px', '500px'],
                     title: '修改密码',
                     type: 1,
-                    content: '<div class="changes"><div>请输入旧密码</div><input class="old my-input_old" type="text"><div>请输入新密码</div><input class="news my-input_news" type="text"></div>',
+                    content: '<div class="changes"><div>原密码：</div><input class="old my-input_old" type="text"><div>新密码：</div><input class="news my-input_news" type="text"></div>',
                     btn: ['确认修改'],
                     yes: function(index, layero) {
                         //按钮【按钮一】的回调
@@ -162,7 +157,7 @@ $(function() {
         if ((scroll) >= 740) {
             $('.shop_right').css({
                 position: 'fixed',
-                right: '89px'
+                left: '1530px'
             })
             $('.shop_left').css({
                 position: 'fixed',
@@ -172,7 +167,7 @@ $(function() {
             $('.shop_right').css({
                 position: 'absolute',
                 top: '0px',
-                right: '-85px'
+                left: '1200px'
             })
             $('.shop_left').css({
                 position: 'absolute',

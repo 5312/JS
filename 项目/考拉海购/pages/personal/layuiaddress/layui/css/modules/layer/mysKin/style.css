@@ -24,7 +24,7 @@ body .my-input .my-input_news {
 body .my-input .layui-layer-title {
     color: #999;
     background-color: #393D49;
-    font-size: 30px;
+    /* font-size: 30px; */
     width: 100%;
     text-align: center;
     padding: 0;

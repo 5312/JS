@@ -48,8 +48,6 @@ $(function() {
     // var lono = JSON.parse(localStorage.getItem(no.accs));
     // lono.address = [];
     // localStorage.setItem(no.accs, JSON.stringify(lono))
-
-    //
     // 保存新地址
     olds();
     $('.save').click(function() {
@@ -62,28 +60,63 @@ $(function() {
             var lono = JSON.parse(localStorage.getItem(no.accs));
             // 当有一项未填写时
             var addarr = {};
-            $('.vall').each(function(x, y) {
+            if (layall) {
+                $('.vall').each(function(x, y) {
+                    if (!$('.vall')[x].value) {
+                        var text = $('.vall')[x]
+                        var t1 = $(text).prev().text();
+                        // alert('请填写' + t1)
+                        // alert('请输入所在地区')
+                        layui.use('layer', function() {
+                            layer.config({
 
-                if (!$('.vall')[x].value || !layall) {
-                    var text = $('.vall')[x]
-                    var t1 = $(text).prev().text();
-                    alert('请填写' + t1)
-                } else {
-                    // 所在地区
-                    addarr.Region = layall;
-                    // 详细地址
-                    addarr.Address = $('.vall')[0].value;
-                    // 收货人姓名
-                    addarr.consigneeName = $('.vall')[1].value;
-                    // 手机号码
-                    addarr.mobilePhoneNumber = $('.vall')[2].value;
-                    // 电话号码
-                    addarr.telephoneNumber = $('.vall')[3].value;
-                    //  邮箱
-                    addarr.postbox = $('.vall')[4].value;
-                    addarr.default = false;
-                }
-            })
+                                extend: 'mysKin/style.css', //加载新皮肤
+                                skin: 'my-input' //一旦设定，所有弹层风格都采用此主题
+                            });
+                            layer.open({
+                                shade: false,
+                                type: 1,
+                                tipsMore: true,
+                                // title: '请填写' + t1,
+                                // icon: 2,
+                                time: 2000,
+                                icon: 2,
+                                offset: [ //随机坐标
+                                    Math.random() * ($(window).height() - 300), Math.random() * ($(window).width() - 390)
+                                ],
+                                content: '请填写' + t1,
+                            });
+                        })
+                    } else {
+                        // 所在地区
+                        addarr.Region = layall;
+                        // 详细地址
+                        addarr.Address = $('.vall')[0].value;
+                        // 收货人姓名
+                        addarr.consigneeName = $('.vall')[1].value;
+                        // 手机号码
+                        addarr.mobilePhoneNumber = $('.vall')[2].value;
+                        // 电话号码
+                        addarr.telephoneNumber = $('.vall')[3].value;
+                        //  邮箱
+                        addarr.postbox = $('.vall')[4].value;
+                        addarr.default = false;
+                    }
+                })
+            } else {
+                // alert('请输入所在地区')
+                layui.use('layer', function() {
+                    layer.config({
+                        extend: 'mysKin/style.css', //加载新皮肤
+                        skin: 'my-input' //一旦设定，所有弹层风格都采用此主题。
+                    });
+                    layer.msg('请输入所在地区', {
+                        icon: 2,
+                        time: 1000
+                    })
+                })
+            }
+
             // 当全部输入时，保存地址信息
             if (Object.keys(addarr).length == 7) {
                 // 不是第一次保存地址
@@ -109,6 +142,14 @@ $(function() {
                         localStorage.setItem(no.accs, JSON.stringify(lono))
                         alert('保存成功');
                         // location.href = "";
+                        if (!spce()) {
+                            var nows = JSON.parse(sessionStorage.getItem('nowsign'));
+                            var lono = JSON.parse(localStorage.getItem(nows.accs));
+                            // 地址信息
+                            var loca = lono.address;
+                            loca[loca.length - 1].default = true;
+                            localStorage.setItem(nows.accs, JSON.stringify(lono))
+                        }
                         olds();
                     } else {
                         alert('地址已达到上限')
@@ -122,7 +163,7 @@ $(function() {
                     olds();
                 }
             }
-            // olds();
+
         } else {
             var nows = JSON.parse(sessionStorage.getItem('nowsign'));
             var lono = JSON.parse(localStorage.getItem(nows.accs));
@@ -219,26 +260,7 @@ $(function() {
         }
     })
 })
-// 右键设置默认
-//这一步是为了阻止右击时系统默认的弹出框
-// document.getElementsByClassName('old')[0].oncontextmenu = function(e) {
-//     e.preventDefault();
-// };
-//定义事件的函数
-// document.getElementsByClassName('old')[0].onmouseup = function(oEvent) {
-//     if (!oEvent) oEvent = window.event;
-//     var target = oEvent.target || oEvent.srcElement;
-//     if (oEvent.button == 2) {
-//         if (confirm('是否设为默认地址？')) {
-//             var indexId = $(target).attr('index-id');
-//             // var indexId = $(target).index() - 1;
-//             console.log(indexId)
-//             // console.log($(target).index() - 1)
-//             dell(indexId);
-//             defaul();
-//         }
-//     }
-// }
+
 function olds() {
     $('.old').empty().html('<div class="bar"><span>收货人</span><span>收货地址</span><span>联系电话</span><span>操作</span><div class="defaults"></div></div>')
     //  旧地址渲染
@@ -253,15 +275,12 @@ function olds() {
             $('.receive0')[x].innerHTML = y.consigneeName;
             $('.receive1')[x].innerHTML = y.Region.province + y.Region.city + y.Region.county + y.Address;
             $('.receive2')[x].innerHTML = y.mobilePhoneNumber;
-            // console.log(x, loca.length - 1)
-            // def(x);
         })
         defaul();
         // 有旧地址的时候才可以修改删除
         $('.paren').each(function(x, y) {
             $(this).attr('index-id', x)
         })
-
         // 删除
         $('.splice').each(function(x, y) {
             $(y).click(function() {
@@ -325,7 +344,6 @@ function defaul() {
 
 function showHide() {
     if (sessionStorage.getItem('click')) {
-        console.log(sessionStorage.getItem('click') == 'na')
         if (sessionStorage.getItem('click') == 'na') {
             $('.us').text('我的昵称')
             $('.na').css({
@@ -362,4 +380,8 @@ function showHide() {
         $('.username').show();
         $('.addressed').hide();
     }
+}
+
+function rn(x, y) {
+    return Math.floor(Math.random() * (y - x + 1) + x);
 }
