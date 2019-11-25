@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //面向对象和面向过程都是一种编程思想
+    //面向过程：代表c语言：面向过程在解决问题的时候，关注的实现问题的步骤，就是将每一步要做的事情写成函数，最后一次调用这些函数解决问题
+    //面向对象：代表java语言等，而面向对象在解决问题时，关注的时解决问题的参与者本身，他们恩应该具备怎样的行为与特征，通过对象描述行为与特征，最后由这些参与者共同解决问题
+    //
+    // 万物皆对象：编码过程中还是现实生活种处处是对象
+    // 面向对象的优势：健壮性，拓展性，复用性
+    // 面想对象的特点：封装，继承，多态
+    // 面向对象的基础:抽象
+
+    // 之前接触过的对象
+    // window document element
+    // NUmber string Boolean Function Array Object Regexp Date
+    //
+    // Math ,JSON (内置的静态对象，不需要在去建造对象实例，直接拿来用)
+    //
+    // js代码执行机制：包装对象，浏览器引擎会将非对象（使用了属性和方法，但本身类型不是object）的值拷贝，然后创建一个临时对象，由这个临时对象去使用属性和方法，将结果作为返回值，之后自动销毁临时对象
+    //
+    // 代码优化问题：主要针对的字符串String 如果你的字符串需要频繁订单调用属性和方法，那么在创建他时请使用new String（）的方式：如果字符串仅仅用于显示那么请使用字面量
+
+    // js虽然也有对象的概念。但并不是一个真正的面向对象语言。因为js中没有类的概念
+    // 类：是对某些事物共同特征和行为抽象的结果
+    // 对象：是对类的具体实现
+    // 抽象：就是对某些事物共同特征和行为提炼的过程
+    // 类和对象的区分：如果唯一就是对象，如果能想到很对符合的内容，那么就是类
+    //
+    // js中没有类，通过构造函数来代替类，用于创建对象
+    //js数组就是特殊的对象（有序，key值是从0开始递增的正整数）
+    //
+    // js中如何创建对象
+    // 1. 字面量创建、
+    /**  var obj = {};
+    obj.name = '小王';
+    obj['age'] = 20;
+    obj.say = function() {
+        alert('hello')
+
+    };
+    console.log(obj.age)
+    console.log(obj.say) //function ，我们将属性值为函数的属性称为方法
+    **/
+    // 2. 通过系统提供的Object构造函数创建
+    /**
+    var obj = new Object();
+    obj.name = '小王';
+    obj['age'] = 20;
+    obj.say = function() {
+        alert('hello')
+
+    };
+    // 3. 工厂模式
+    function sutdents(name,age,sex,tel){
+        return {
+            name:name,
+            age:age,
+            sex:sex,
+            say:function (){
+
+        }
+        }
+    }
+    **/
+    //
+    // 4. 通过自定义构造函数创建对象（自定义构造函数就想相当于类）
+    // 构造函数本质上也是函数，但是通过首字母大写，来和普通函数加以区分
+    //
+    function People(age, sex, height, weight, name) {
+        this.eyes = 2;
+        this.age = age;
+        this.sex = sex;
+        this.type = '哺乳类';
+        this.height = height;
+        this.weight = weight;
+        this.name = name;
+        this.eat = function() {
+            console.log('好开心')
+        }
+    }
+    /**
+    // 通过系统关键字  new 来创建对象
+    var p1 = new People(5, '男', 80, 30, '李富贵');
+    console.log(p1)
+    **/
+    // 基础数据类型赋值：拷贝赋值
+    // var a = 2;
+    // var b =a ;
+    // b+=5;
+    // console.log(a);//2
+
+    //引用数据类型赋值：引用赋值
+    // var a = [1, 2, 3];
+    // var b = a;
+    // b.push(4);
+    // console.log(a)
+
+    // 基础数据类型比较的值是否相等
+    // var a = 2;
+    // var b = 2;
+    // console.log(a == b);//true;
+
+    // 引用数据类型比较的是内存地址是否相等
+    var a = [1, 2, 3];
+    var b = [1, 2, 3];
+    console.log(a == b) //false;
+    // console.log({} == {}) //false;
+</script>
+
+</html>
