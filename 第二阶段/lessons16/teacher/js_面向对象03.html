@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var user = {
+        uname:'小旺',
+        pword:'xw123456',
+        cars:[{
+            shop_name:'旺仔牛奶',
+            shop_price:20,
+            shop_descrip:'小明，你的妈妈带着旺仔牛奶来看你了',
+            shop_num:20
+        }],
+        address:[{
+            province:'陕西省',
+            city:'西安市',
+            county:'雁塔区',
+            info:'创业研发园C区16号楼4楼蓝鸥科技'
+        }],
+        nickname:'再看就把你喝掉'
+    }
+
+    // for...in...循环：专门用于遍历对象的循环
+    // for(var x in user){
+    //     // 循环过程中，循环变量x始终表示每一次遍历键值对中的key
+    //     console.log(x);
+    //     // 循环过程中，value需要通过user[x]来读取，不能使用.语法
+    //     console.log(user[x]);
+    //     if(typeof user[x] == 'object'){
+    //         for(var y in user[x]){
+    //             console.log(user[x][y]);
+    //             if(typeof user[x][y] == 'object'){
+    //                 for(var z in user[x][y]){
+    //                     console.log(user[x][y][z]);
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+    // 对象的赋值（拷贝）
+    // 深拷贝/浅拷贝
+    // 浅拷贝
+    // var newuser = user;
+    // user.nickname = '听说';
+    // console.log(user);
+    // console.log(newuser);
+    // console.log(user === newuser);
+
+    // 深拷贝
+    var newuser = {};
+    for(var x in user){
+        newuser[x] = user[x];
+    }
+    newuser.uname = '小仔';
+    console.log(user);
+    console.log(newuser);
+    console.log(user === newuser);
+
+    // 影子、克隆
+
+    // 作业：
+    // 1.导图
+    // 2.自己从日常生活中归纳提炼20个类，并且每个类创建至少两个实例对象
+    // 3.自己提前查一查看一看写一写（原型，原型链，继承）
+
+</script>
+</html>

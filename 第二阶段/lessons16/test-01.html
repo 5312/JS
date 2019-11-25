@@ -11,6 +11,21 @@
 </body>
 <script src="../jquery-3.4.1.js" charset="utf-8"></script>
 <script>
+    function PersonInfo() {
+        // 自身的实例字段.
+        this.name = ""; // 姓名.
+        this.gender = 0; // 性别. 0未知, 1男, 2女.
+    }
+
+
+    function doTest() {
+        var txtresult = document.getElementById("txtresult");
+        txtresult.value = "";
+        // do
+        var p = new PersonInfo();
+        p.name = "Zhang San"; // 张三.
+        addlog(p.getHello());
+    }
 </script>
 
 </html>

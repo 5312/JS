@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <select>
+        <option>width</option>
+        <option>height</option>
+        <option>background</option>
+        <option>borderRadius</option>
+        <option>color</option>
+    </select>
+    <input type="text">
+    <input type="button" value="change">
+    <div>test</div>
+</body>
+<script>
+
+var arr1 = ['left','right'];
+var arr2 = ['top','bottom'];
+var n1 = Math.floor(Math.random()*2),
+    n2 = Math.floor(Math.random()*2);
+console.log(arr1[n1],arr2[n2]);
+
+var inps = document.querySelectorAll('input'),
+    sel = document.querySelector('select'),
+    box = document.querySelector('div');
+
+inps[1].onclick = function(){
+    var val = inps[0].value;
+    var style = sel.value;//'width'
+    box.style[style] = val;
+}
+
+</script>
+</html>
