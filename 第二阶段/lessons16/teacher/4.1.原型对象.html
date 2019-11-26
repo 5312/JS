@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 原型：每个构造函数都存在一个属性prototype（原型），值是一个对象，所有通过构造函数创建的实例，都可以访问创建它的构造函数的原型上的属性和方法。
+
+// 写一个动物类
+function Animal(type,sex,age,color,voice){
+    // this.cell = '细胞核+细胞质+细胞膜';
+    this.type = type;
+    this.sex = sex;
+    this.age = age;
+    this.color = color;
+    this.voice = voice;
+    // this.call = function(){
+    //     console.log(this.voice);
+    // }
+}
+
+// 我们一般将方法以及值固定不变的属性都写在构造函数的原型上
+Animal.prototype.call = function(){
+    console.log(this.voice);
+}
+Animal.prototype.cell = '细胞核+细胞质+细胞膜';
+
+var anm1 = new Animal('犬科','公',10,'黄色','汪汪');
+var anm2 = new Animal('猫科','母',2,'橘色','喵喵');
+console.log(anm1,anm2);
+// 对象自身并没有call方法，但依然可以调用call方法，这个call方法来自于创建对象的构造函数的原型。
+anm1.call();
+anm2.call();
+console.log(anm1.cell,anm2.cell);
+// 直接存在于对象自身的属性称为对象的本地属性，本地属性只能对象自己使用，其他对象无法使用
+
+// 植物类
+function Plant(type){
+    this.type = type;
+}
+Plant.prototype.cell = '细胞核+细胞质+细胞膜+细胞壁';
+Plant.prototype.play = function(){
+    console.log('晒太阳，进行光合作用');
+}
+var pla1 = new Plant('菌类');
+
+// __proto__   constructor  prototype
+
+// 关于prototype原型：
+// 1.每个构造函数都有属于自己的原型，原型上的方法和属性可以供构造函数创建的实例对象访问使用
+// 2.当原型上的属性和构造函数中的属性命名冲突时，构造函数中的属性优先级更高。（就近原则）
+
+// 3.isPrototypeOf()方法用来判断当前原型是否是指定实例对象的构造函数的原型   返回布尔值
+// console.log(Animal.prototype.isPrototypeOf(anm1));
+// console.log(Animal.prototype.isPrototypeOf(pla1));
+
+// 4.hasOwnProperty()方法用来判断对象的属性来自于自身的本地属性还是原型上的属性 返回布尔值
+// console.log(anm1.hasOwnProperty('cell'));
+// console.log(anm1.hasOwnProperty('type'));
+</script>
+</html>

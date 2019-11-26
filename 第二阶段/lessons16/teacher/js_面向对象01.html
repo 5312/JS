@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+
 </body>
 <script>
     // 面向对象和面向过程都是一种编程思想
@@ -20,7 +22,7 @@
     // 面向对象的基础：抽象
 
     // 只有对象才能使用属性和方法
-    
+
     // 四大发明中的活字印刷术就是面向对象的体现。
     // 遥控器、电脑等
 
@@ -47,9 +49,9 @@
 
     var str = '123';
     console.log(typeof str);
-    var newStr = str.replace('1','0');
+    var newStr = str.replace('1', '0');
     console.log(newStr);
-    
+
     var a = [];
     a.index = 0;
     console.log(a.index);
@@ -57,6 +59,6 @@
     // js代码执行机制：包装对象，浏览器引擎会将非对象（使用了属性和方法，但本身类型不是object）的值拷贝，然后创建一个临时对象，由这个临时对象去使用属性和方法，将结果作为返回值，之后自动销毁临时对象。
 
     // 代码优化问题：主要针对的是字符串String，如果你的字符串需要频繁的调用属性和方法，那么在创建它时请使用new String()的方式；如果字符串仅仅用于显示那么请使用字面量。
-
 </script>
+
 </html>

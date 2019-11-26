@@ -1,18 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
 </head>
 
 <body>
-
+    <textarea id='te' name="name" rows="8" cols="80"></textarea>
 </body>
 <script>
+    function addlog(val) {
+        var text = document.getElementById('te');
+        text.value = text.value + val + "\r\n";
 
+    }
+    // 首字母大写
+    function Str(val) {
+        this.vall = val;
+    }
+
+    Str.prototype.Capitalized = function() {
+        var t = this.vall;
+        return t = t.replace(/\b(\w)|\s(\w)/g, function(m) {
+            return m.toUpperCase();
+        })
+    }
+    var str = new Str('i am a good body');
+
+    addlog(str.Capitalized())
+
+    // 删除首尾空格
+    function Strs(val) {
+        this.vall = val;
+    }
+    Strs.prototype.Deletrail = function() {
+        var t = this.vall;
+        var reg = /(^\s*)|(\s*$)/g;
+        return t = t.replace(reg, "");
+    }
+    var strs = new Strs('    i am a good body    ');
+    addlog(strs.Deletrail())
+
+    // 升序排序
+    function Ascending(val) {
+        this.vall = val;
+    }
+
+    Ascending.prototype.Ascend = function() {
+        return this.vall.split(",").sort(sortNum).join(',')
+    }
+
+    function sortNum(a, b) {
+        return a - b
+    }
+    var ascrend = new Ascending('3,2,5,1,89,99,23');
+    addlog(ascrend.Ascend())
+
+    // 分数类：分子，分母
+    //打印分数
+    function ScoreCategory(mol, den) {
+        this.molecular = mol; //分子
+        this.denominator = den; //分母
+    }
+    //
+    ScoreCategory.prototype.Printway = function() {
+        if (this.denominator == 0) {
+            alert('分母不合法');
+        } else {
+            // if (this.denominator < 0) {
+            //     this.molecular = -this.molecular
+            //     this.denominator = -this.denominator;
+            // }
+            return this.molecular + '/' + this.denominator;
+        }
+
+    }
+    var sco = new ScoreCategory('-2', '-3');
+    addlog()
+    addlog(sco.Printway());
+    // 分数约数
+    function weigh() {
+        // this.
+    }
 </script>
+
+
 
 </html>

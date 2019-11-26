@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 车 
+    function Car(type,style,volume,brand,voice){
+        this.type=type;
+        this.style=style;
+        this.volume=volume;
+        this.brand=brand;
+        this.voice=voice;
+        this.call=function(){
+            console.log(this.voice);
+        }
+
+    }
+
+    // 构造函数
+    // 越野
+    function Orv(type,style,volume,brand,voice){
+        Car.call(this,type,style,volume,brand,voice)
+    }
+    var orv=new Orv('越野','简约','4人','DJ牌','嗖嗖');
+    console.log(orv);
+    // console.log(orv.type);
+    // orv.call();
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .ball{
+            /* width: 20px;
+            height: 20px; */
+            border-radius: 50%;   
+            position: absolute;
+            /* left: 0;
+            top: 0; */
+            
+        }
+    </style>
+</head>
+
+<body>
+
+
+</body>
+<script>
+    // 一百个圆 直径在20--100之间  颜色随机 除了黑色以外 位置最少显示1/4  js 
+
+
+
+
+
+    // var box=document.createElement('div');
+
+    // 颜色
+    for (var i = 0; i < 100; i++) {
+        var box = document.createElement('div');
+        box.className='ball';
+        box.style.background = 'rgba(' + rn(1, 255) + ',' + rn(1, 255) + ',' + rn(1, 255) + ')';
+        var w = rn(20, 100);
+        box.style.width = w + 'px';
+        box.style.height = w + 'px';
+        
+
+        // 位置
+        // 宽度  高度
+        var maxW=document.body.clientWidth-box.offsetWidth/2;
+  
+        var maxH=document.body.clientHeight-box.offsetHeight/2;
+
+        box.style.left=rn(-box.offsetWidth/2,maxW)+'px';
+        box.style.top=rn(-box.offsetHeight/2,maxH)+'px';
+        document.body.appendChild(box);
+
+       
+        
+    }
+ 
+
+//    // 上面的属性只是对圆形特征的描述 网页中显示圆形还是需要标签将圆形特征体现
+
+//    for(var i=0;i<100;i++){
+//         var cir=new Circle;//通过new 创建对象 如果构造函数没有参数，那么小括号是可以省略的
+//         cir.show();
+//     }
+
+//     function Circle() {
+//         this.w = rn(20, 100);
+//         this.h = this.w;
+//         this.c = 'rgb(' + rn(1, 255) + ',' + rn(1, 255) + ',' + rn(1, 255) + ')';
+//         this.x = rn(-this.w / 2, document.body.clientWidth - this.w / 2);
+//         this.y = rn(-this.h / 2, document.body.clientHeight - this.h / 2);
+//         // 将圆形显示在网页的方法
+//         this.show = function () {
+//             var ball = document.createElement('div');
+//             ball.className = 'ball';
+//             ball.style.width = this.w + 'px';
+//             ball.style.height = this.h + 'px';
+//             ball.style.background = this.c;
+//             ball.style.left = this.x + 'px';
+//             ball.style.top = this.y + 'px';
+//             document.body.appendChild(ball);
+
+//         }
+//     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // 随机函数
+    function rn(x, y) {
+        return Math.round(Math.random() * (y - x) + x);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

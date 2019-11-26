@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>继承</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*继承：根据规则或特征提炼准则的不同，类的范围有所不同，将多个类间的相同特征
+     写给一个公共类，这个就称为父类。子类的实例对象可以访问父类中定义的属性和方法。
+    称之为继承。js中的继承是单继承。一个子级只能有一个父类，并且子类不能再作为父类的父类*/
+
+
+    // 动物类
+    function Animal(type, eat, play,voice) {
+        this.cell = '没有细胞壁';
+        this.type = type;
+        this.play = play;
+        this.eat = eat;
+        this.voice=voice;
+        this.call=function(){
+            console.log(this.voice)
+        }
+    }
+
+    // 1.构造函数继承
+    // 狗类
+    function Dog(type, eat, play,voice) {
+        // 第一参数this 第二参数为type eat play 用，隔开
+        Animal.call(this, type, eat, play,voice);//空的对象 Dog属性可以访问Animal的方法
+        this.smell='嗅觉灵敏，追踪能力强';
+
+
+    }
+    var dog = new Dog('犬科', '肉', '木棍','汪汪');
+    console.log(dog);
+    console.log(dog.type);
+    // dog.call();
+
+    // 猫类
+    function Cat(type, eat, play,voice) {
+        // Animal.call(this);
+        Animal.call(this, type, eat, play,voice);
+        this.dump='有锋利的爪子，可以跳的高'
+        //   this.type='猫科'
+        //  this.eat='鱼'
+        //  this.play='球'
+
+
+    }
+    var cat = new Cat('猫科', '鱼', '球','喵喵');
+    console.log(cat)
+    console.log(cat.type)
+    // cat.call();
+    // console.log(cat.cell)
+
+    // 鸟
+    function Bird(type, eat, play,voice) {
+        Animal.apply(this,[type, eat, play,voice]);
+        this.fly='拥有翅膀可以飞翔'
+
+    }
+    var bird = new Bird('鸟科', '虫', '石子','嘤嘤');
+    console.log(bird)
+    console.log(bird.type)
+    bird.call()
+
+
+    Animal.prototype.cell='没有细胞壁'
+    Animal.prototype.call=function(){
+        console.log(this.voice)
+    }
+   
+
+
+
+    // 通过call()方法和apply()方法实现的继承称为构造函数继承，只能继承到父类构造函数中的属性和方法
+    // 无法继承到父类原型中的属性和方法。
+
+    // 构造函数创建对象，需要用到系统关键字new
+    // var an1=new Animal();
+    // console.log(an1);
+
+    // 1.创建了一个空对象 object
+    // 2.将Anmal中的指向改变，变成了空的object
+    // 3.按顺序执行Anmal中的代码
+    // 4.return 返回了添加了属性和方法的object
+
+    // 所有函数都存在两个方法:call()/apply()可以改变指定函数中this的指向
+    // 两个方法的共同点：第一个参数需要一个对象，表示将当前函数中的this指向改变为当前的对象
+    // 区别：第二参数可选参数，对于call()方法第二参数需要列举用','隔开，而apply 方法第二参数需要一个数组
+    // function a(){
+    //     console.log(this);
+    // }
+    // var o={
+    //     id:'001'
+    // }
+
+    // a.call(o);//指向我们创建的o 而不是window
+    // a.apply(o);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>
