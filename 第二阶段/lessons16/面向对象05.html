@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 继承
+    // 根据规则或特征提炼准则的不同，类的范围有所不同，将多个类间的相同特征写给一个公共类，这个成为父类。子类的实例对象可以访问父类中定义的属性和方法
+    //
+    // 所有函数都存在两个方法 call()/apply()可以改变指定函数的this指向
+    // 两个方法的区别：第二参数（可选参数），对于call（）方法第二参数需要用’，’ 隔开，而apply()第二参数需要放入数组
+    //
+    // 通过构建函数创建对象需要系统关键字new;
+    // 1. 创建了一个空的object
+    // 2. 将Animal中的
+    //
+    //
+    //
+    //
+    // 1. 构造函数继承
+    // 通过call()方法和apply（）方法实现的继承称为构造函数继承，只能继承到父类构造函数中的函数属性和方法。无法继承父类函数原型中的属性和方法;
+
+    function Animal(type, eat, play) {
+        this.type = type;
+        this.eat = eat;
+        this.play = play;
+        this.voice = voice;
+    }
+    Animal.prototype.cell = '没有细胞壁'
+    Animal.prototype.call = function() {
+        console.log(this.voice)
+    }
+
+    function Dog() {
+        Animal.call(this);
+
+    }
+    var Dog = new Dog('犬科', '骨头', '木棍')
+
+    function Cat() {
+        Animal.call(this, type, eat, play);
+
+    }
+    var Cat = new Cat('猫科', '鱼', '球')
+
+    console.log(Cat)
+
+
+    function Bird() {
+        Animal.call(this);
+    }
+    var Bird = new Brid('鸟科', '虫', '石头')
+</script>
+
+</html>

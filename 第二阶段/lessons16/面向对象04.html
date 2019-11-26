@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: rgba(0, 0, 0, .7);
+
+        }
+
+        div {
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+<script>
+    // 原型 ：每个构造函数都存在一个属性prototype(原型)，值是一个对象，所有通过构造函数创建的实例，都可以访问创建他的构造函数的原型上的属性和方法
+    //
+    //
+    //
+    // 存在于对象自身的属性称为对象的本地属性，本地属性只能对象自己使用其他对象无法使用
+    // 我们一般将方法以及值固定不变的属性都写在构造函数的原型上
+    // 对象自身并没有方法：但依然可以使用方法，那么这个对象方法来自于创建构造函数的原型
+
+    // _proto_   constructor prototype
+    // 关于prototype原型
+    // 1. 每个构造函数都有属于自己的原型，原型上的方法和属性可以提供构造函数创建的实力对象访问使用
+    // 2. 当原型上的属性和构造函数中的属性命名冲突时，构造函数中的属性优先及更高
+    //
+    // 3. isPrototypeOf()方法用来判断当前原型是否时指定实例对象的构造函数的原型
+    //
+    //4. hasOwnProperty()判断当前对象的属性来自本地还是原型上的属性
+    //
+    //
+    var cirl = document.getElementsByTagName('div')[0];
+    var body = document.body;
+    for (var i = 0; i < 100; i++) {
+        var cir = new Cirl({
+            "width": rn(20, 100),
+            top: rn(0, 90) + '%',
+            left: rn(0, 90) + '%',
+            background: "rgb(" + rn(0, 255) + ',' + rn(0, 255) + ',' + rn(0, 255) + ')'
+        }) //通过new 创建对象如果构造函数没有参数，那么小括号可以省略
+        cir.show();
+    }
+
+    function Cirl(flang) {
+        // 属性只是对原型特征的描述，网页中显示圆形还需要标签将园的特征体现
+        flang = flang || {};
+        this.width = flang['width'];
+        this.height = flang['width'];
+        this.top = flang['top'];
+        this.left = flang['left'];
+        this.backgroundColor = flang['background']
+        this.show = function() {
+            var ball = document.createElement('div');
+            body.appendChild(ball)
+            ball.style.width = this.width + 'px';
+            ball.style.height = this.width + 'px';
+            ball.style.backgroundColor = this.backgroundColor;
+            ball.style.top = this.top;
+            ball.style.left = this.left;
+        }
+    }
+
+    function rn(x, y) {
+        return Math.floor(Math.random() * (y - x + 1) + x);
+    }
+</script>
+
+</html>

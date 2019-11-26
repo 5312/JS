@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 2. 原型继承
+    // (1)
+    //引用继承。可以实现对父类原型上属性和方法的访问，但是存在问题，因为直接赋值，那么从此Animal的原型就是Dog的原型，Dog的原型也就是Animal的原型，对Dog原型的操作会直接影响父类Animal的原型。这是不合理的
+
+    // 拷贝继承:可以实现父类原型的属性和方法继承，但是也存在一些问题，虽然解决了引用继承存在的问题，但是拷贝继承是一次性的继承，如果父类的原型又做了拓展，子类想要继承必须再次执行拷贝继承，那么会存在大量冗余代码
+    for (var x in Animal.prototype) {
+        Dog.prototype. [x] = Animal.prototype[x];
+    }
+
+
+    // 真引用继承：
+    // 既可以实现原型上的继承，也可以实现构造函数上的继承，并且继承完成后，对子类
+    //
+    //
+    //所有的对象存在一个属性constructor ,他指向创建当前对象的构造函数
+</script>
+
+</html>
