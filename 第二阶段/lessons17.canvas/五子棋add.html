@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>五子棋 Backgammon</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        canvas {
+            display: block;
+            border: 1px solid #999;
+            margin: 10px auto;
+            box-shadow: -2px -2px 2px #efefef, 5px 5px 5px #b9b9b9;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+</body>
+<script src="../jquery-3.4.1.js"></script>
+<script>
+    $(function() {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var go = new Backgammon('red', '1', '2');
+        // 棋子类
+        function Backgammon() {
+            this.over = false; //游戏是否结束
+            this.color = true; //棋子颜色
+            this.history = []; //上次点击的坐标
+            this.allChesses = []; //所有棋子
+            this.wins = []; //所有赢法;
+            this.winBack = []; //黑子赢法
+            this.winWhite = []; //白子赢法
+            this.Backcount = 0;
+            this.Whitecount = 0;
+        }
+        //开始
+        Backgammon.prototype.init = function() {
+            this.createCanvas(); //棋盘
+            this.dorpChesses(); //落字
+            this.winGameinit(); //算法初始化
+        };
+        //创建棋盘
+        Backgammon.prototype.createCanvas = function() {
+
+            for (var i = 0; i < 15; i++) {
+                context.strokeStyle = '#999'; //线条颜色
+                // 竖
+                context.beginPath(); //创建一条起始路径
+                context.moveTo(20 + i * 40, 20); //开始位置
+                context.lineTo(20 + i * 40, 580); //经过路径
+                context.stroke(); //画线
+                context.closePath(); //结束
+                //横
+                context.beginPath();
+                context.moveTo(20, 20 + i * 40);
+                context.lineTo(580, 20 + i * 40);
+                context.stroke();
+            }
+        };
+        //画子
+        Backgammon.prototype.darwChesses = function(i, j, color) {
+            context.beginPath();
+            // 中心点【xy】,直径，弧度
+            context.arc(20 + i * 40, 20 + j * 40, 18, 0, 2 * Math.PI);
+            context.stroke();
+            context.closePath();
+            //
+            if (color) {
+                context.fillStyle = 'black';
+                this.color = false;
+                this.wins[i][j] = 1;
+                this.winGameAll(1);
+            } else {
+                context.fillStyle = 'white';
+                this.color = true;
+                this.wins[i][j] = 2;
+                this.winGameAll(2);
+            }
+            context.fill();
+            console.log(this.wins)
+        }
+        //落子
+        Backgammon.prototype.dorpChesses = function() {
+            var out = this;
+            $('#canvas').on('click', function(e) {
+                // 当前坐标除以格子宽度为点击在那条线上
+                var unex = Math.floor(e.offsetX / 40);
+                var uney = Math.floor(e.offsetY / 40);
+                console.log(unex, uney)
+                // 当点击后不在点击
+                if (out.history[0] == unex && out.history[1] == uney) {
+                    return
+                }
+                out.darwChesses(unex, uney, out.color);
+
+                // 保存上次点击坐标
+                out.history[0] = unex;
+                out.history[1] = uney;
+            })
+        };
+        //赢
+        Backgammon.prototype.winGameinit = function() {
+            // 二维数组 保存路径 初始化
+            for (var i = 0; i < 15; i++) {
+                this.wins[i] = [];
+                for (var j = 0; j < 15; j++) {
+                    this.wins[i][j] = [];
+                }
+            }
+        };
+        // 赢法
+        Backgammon.prototype.winGameAll = function(num) {
+            // 每次下子时调用
+            for (var i = 0; i < 15; i++) {
+                for (var j = 0; j < 15; j++) {
+                    if (this.wins[i][j] == num) {
+                        console.log(this.wins[i][j])
+                        if (num == 1) {
+                            this.Backcount++;
+                            if (this.Backcount == 5) {
+                                alert('黑子赢')
+                            }
+                        } else {
+                            this.Whitecount++;
+                            console.log(this.Whitecount)
+                            if (this.Whitecount == 5) {
+                                alert('白子赢')
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        go.init();
+    })
+</script>
+
+</html>

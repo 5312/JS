@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>五子棋</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        canvas {
+            display: block;
+            border: 1px solid #999;
+            margin: 10px auto;
+            box-shadow: -2px -2px 2px #efefef, 5px 5px 5px #b9b9b9;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+</body>
+<script src="../jquery-3.4.1.js" charset="utf-8"></script>
+<script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext("2d");
+    var isblack = 'black';
+    // 重复点击判断
+    var historyx = 0;
+    var historyy = 0;
+    //画棋盘
+    chessboard();
+    $(function() {
+        $('#canvas').on('click', function(e) {
+            var x = Math.floor(e.offsetX / 40);
+            var y = Math.floor(e.offsetY / 40);
+            if (historyx == x && historyy == y) {
+                return
+            }
+            if (isblack == 'black') {
+                upClick(x, y, isblack, 18);
+                isblack = 'white'
+            } else {
+                upClick(x, y, isblack, 18);
+                isblack = 'black'
+            }
+            historyx = x;
+            historyy = y;
+        })
+    })
+    // 输赢判断
+    function wins(objx, objy) {
+        // 横向  当前点击的y不变
+        for (var x = 0; x < 15; x++) {
+            for (var y = 0; y < 15; y++) {
+
+            }
+        }
+
+    }
+
+    //画棋子
+    upClick(7, 7, 'black', 5)
+
+    function upClick(i, j, isblack, pi) {
+        context.beginPath();
+        context.arc(20 + i * 40, 20 + j * 40, pi, 0, 2 * Math.PI); //中心坐标
+        context.closePath();
+        if (isblack == 'black') {
+            context.fillStyle = 'black';
+        } else {
+            context.fillStyle = 'white';
+        }
+        context.fill();
+        context.stroke();
+    }
+
+    function chessboard() {
+        for (var i = 0; i < 15; i++) {
+            //横线
+            context.strokeStyle = '#999';
+
+            context.beginPath();
+            context.moveTo(20 + i * 40, 20); //开始位置
+            context.lineTo(20 + i * 40, 580);
+            context.stroke();
+            context.closePath();
+            // //竖线
+            context.beginPath();
+            context.moveTo(20, 20 + i * 40);
+            context.lineTo(580, 20 + i * 40);
+            context.stroke();
+            context.closePath();
+
+        }
+    }
+</script>
+
+</html>
