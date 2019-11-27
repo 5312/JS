@@ -15,11 +15,11 @@
     // 父类构造函数的属性
     function Animal(type) {
         this.type = '动物';
-      
+
     }
     // 父类原型上的属性
     Animal.prototype.cell = '没有细胞壁';
-    Animal.prototype.call = function () {
+    Animal.prototype.call = function() {
         console.log(this.voice);
     }
 
@@ -36,7 +36,7 @@
     // 赋值，那么从此Animal的原型就是Dog的原型，Dog的原型也就是Animal的原型
     // 对Dog原型的操作就会直接影响父级Animal的原型.这是不合理的
     // Dog.prototype = Animal.prototype;
-    // Dog.prototype.favorite='骨头' 
+    // Dog.prototype.favorite='骨头'
     // var dog = new Dog('汪汪');
     // dog.call();
     // console.log(dog.favorite)
@@ -70,11 +70,11 @@
     // 3.真引用继承 既可以实现原型上的继承，也可以实现构造函数上的继承
     // 并且继承完成后，对子类的操作也不会影响到父类，对父类的操作，子类可以动态获取
 
-    // 实现思路：将子类元素，指向父类的实例对象
-    Animal.prototype.like='sleep'
-    Dog.prototype = new Animal();//constructor 是Animal
-    Dog.prototype.constructor=Dog;//把值赋给 Dog  constructor是Dog
-    Dog.prototype.love = '肉'//添加新的属性
+    // 实现思路：将子类原型，指向父类的实例对象
+    Animal.prototype.like = 'sleep'
+    Dog.prototype = new Animal(); //constructor 是Animal
+    Dog.prototype.constructor = Dog; //把值赋给 Dog  constructor是Dog
+    Dog.prototype.love = '肉' //添加新的属性
 
 
     var dog = new Dog('汪汪')
@@ -82,7 +82,7 @@
     // console.log(dog.type);
     // console.log(dog.like);
 
-    // // animal   
+    // // animal
     // var an1 = new Animal();
     // console.log(an1.love)
 
@@ -91,18 +91,6 @@
     // console.log(dog.constructor)
     // dog.constructor.prototype.test='测试'
     // console.log(Animal.prototype.test);
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 
 </html>
