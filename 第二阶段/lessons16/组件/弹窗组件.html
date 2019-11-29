@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./弹窗.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class='btn' type="button" name="button">弹</button>
+</body>
+
+<script src='./弹窗组件.js'></script>
+<script>
+    var btn = document.getElementsByClassName('btn')[0];
+    btn.onclick = function() {
+        this.blur();
+        pop.open({
+            title: '弹窗',
+            content: '你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好',
+            // area: [500, 500],
+            // btn: ['按钮1', '按钮2'],
+            yes: function() {
+                alert('你好')
+            },
+            cancel: function() {
+                alert('你好')
+            }
+        })
+    }
+</script>
+
+</html>
