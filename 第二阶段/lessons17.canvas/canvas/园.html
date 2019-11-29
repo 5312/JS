@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        canvas {
+            box-shadow: 5px 5px 5px gray;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="900" height="800"></canvas>
+</body>
+<script>
+    var cv = document.getElementById('canvas');
+    var ctx = cv.getContext('2d');
+    // 清除画布上的图形
+    // 1. 在画一个与画布颜色相同的内容 盖住要清除的内容
+    // 2. ctx.clearRect(x,y,w,h);
+    // 3 . cv.width = cv.width
+    // canvas绘制圆弧
+    // 弧度，Math.PI = 180弧度。一个整圆弧有360弧度
+    // arc（x，y,r,s,e,d)方法绘制圆弧
+    // x，y表示圆心坐标
+    // r表示圆弧半径
+    // s表示圆弧开始的弧度，e表示圆弧结束的弧度
+    // d布尔值，表示绘制圆弧的方向，默认为false表示顺时针
+    console.log(Math.PI)
+    ctx.beginPath()
+    ctx.moveTo(250, 250);
+    ctx.arc(250, 250, 250, -Math.PI / 4, -Math.PI / 4 * 3, true);
+    ctx.closePath();
+    ctx.fillStyle = 'rgb(28, 112, 128)';
+    ctx.fill();
+    ctx.closePath();
+    // 圆形分布图
+    cir(0, 360 * 0.6, 'red');
+    cir(360 * 0.6, 360 * 0.07 + 360 * 0.6, 'green')
+    cir(360 * 0.07 + 360 * 0.6, 360 * 0.07 + 360 * 0.6 + 360 * 0.18, 'yellow')
+    cir(360 * 0.07 + 360 * 0.6 + 360 * 0.18, 360 * 0.07 + 360 * 0.6 + 360 * 0.18 + 360 * 0.15, 'gray')
+
+    function cir(date, degs, color) {
+        var deg = Math.PI / 180;
+        ctx.beginPath();
+        ctx.moveTo(600, 150);
+        ctx.arc(600, 150, 100, date * deg, degs * deg);
+        ctx.closePath();
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.beginPath();
+    }
+    //  奥运五环
+    var deg = Math.PI / 180;
+    theOlympicRings(ctx, 110, 400, 'blue', 0, 360); //蓝
+    theOlympicRings(ctx, 200, 500, 'yellow', 0, 360); //黄
+    theOlympicRings(ctx, 110, 400, 'blue', -10, 20); //蓝
+    theOlympicRings(ctx, 330, 400, 'black', 0, 360); //黑
+    theOlympicRings(ctx, 200, 500, 'yellow', -80, -40); //黄
+    theOlympicRings(ctx, 430, 500, 'green', 0, 360) //绿
+    theOlympicRings(ctx, 330, 400, 'black', -10, 20) //黑
+    theOlympicRings(ctx, 550, 400, 'red', 0, 360) //红
+    theOlympicRings(ctx, 430, 500, 'green', -85, -40)
+
+    function theOlympicRings(ctx, x, y, color, start, end) {
+        var deg = Math.PI / 180;
+        ctx.beginPath();
+        // ctx.moveTo();
+        ctx.arc(x, y, 100, start * deg, end * deg);
+        ctx.lineWidth = 12;
+        ctx.strokeStyle = color;
+        ctx.stroke();
+    }
+    //
+    // for (var i = 0; i < 5; i++) {
+    //     var deg = Math.PI / 180;
+    //     ctx.beginPath();
+    //     // ctx.moveTo();
+    //     ctx.arc(110 + i * 120, y, 100, start * deg, end * deg);
+    //     ctx.lineWidth = 12;
+    //     ctx.strokeStyle = color;
+    //     ctx.stroke();
+    // }
+</script>
+
+
+</html>

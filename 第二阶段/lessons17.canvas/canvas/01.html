@@ -1,20 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        canvas {
+            box-shadow: 5px 5px 5px gray;
+            border: 1px solid #999;
+        }
+    </style>
 </head>
 
 <body>
     <!--
         1. 什么是canvas？
             是H5新增标签，双标签，兼容性IE9以下不支持，标签内容只有在不兼容的情况下显示（不兼容时相当于一个div
-            display属性值inline-block
+            display属性值inline-block ，默认大小300*150
+            功能：相当于一块画布，自身只有显示渲染图像的功能，绘制需要js完成。
+
+            存在width  and height 属性，如果要设置画布大小，请通过标签属性设置，不要在层叠样式表设置（会使画布上的绘制内容拉伸)
  -->
-    <canvas id="canvas" width="300" height="300"></canvas>
+    <canvas id="canvas" width="500" height="500">当前浏览器版本过低</canvas>
 </body>
+<script>
+    //  操作流程(画布中坐标系是以画布左上角原点，向右为正，向下为正)
+    //  canvas中绘制内容。默认情况下，后绘制的内容会覆盖在新绘制的上面
+    //1. 获取上下文
+    var cv = document.getElementById('canvas');
+    var ctx = cv.getContext('2d'); //只有画笔才有往画布上绘制图形的能力
+    // 2. 开始绘制
+    /**
+    ctx.beginPath(); //不是必须,
+    // 3. 开始绘制线段
+    // （1）moveTo(x.y)：就相当于将画笔放在了画布的指定坐标上，也可以理解为设置了绘制路径的起点
+    ctx.moveTo(125, 250);
+    // （2）lineTO(x,y):指定连线中点的坐标
+    ctx.lineTo(375, 250);
+    // 5. 对画笔进行样式设置
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'red';
+    // 4 渲染
+    ctx.stroke(); //以连线，描边的方式渲染
+    ctx.closePath();
+    ctx.beginPath();
+    ctx.moveTo(250, 150);
+    ctx.lineTo(250, 375)
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'yellow'
+    ctx.stroke();
+**/
+    // 在画布上绘制一个锐角三角形
+    // ctx.beginPath();
+    // ctx.moveTo(250, 10);
+    // ctx.lineTo(200, 110);
+    // ctx.lineTo(300, 110);
+    // // ctx.lineTo(250, 10);
+    // ctx.closePath(); //自动形成闭合回路
+    // ctx.stroke();
+
+    // ctx.beginPath();
+    // ctx.moveTo(150, 150);
+    // ctx.lineTo(350, 150);
+    // ctx.lineTo(350, 350);
+    // ctx.lineTo(150, 350);
+    // ctx.closePath();
+    // ctx.stroke();
+    // 在画布上绘制一个矩形
+    //计算四个点的坐标，依次连接
+    //2，矩形起点，宽高
+    //rect(x,y,w,h),规划一个矩形的闭合路径，并未绘制
+
+    // ctx.rect(150, 150, 250, 250);
+    // ctx.strokeStyle = 'blue'
+    // ctx.stroke();
+    // ctx.fillStyle = 'red'
+    // ctx.fill();
+    // fill():渲染绘制路径，会自动闭合路径并对闭合区域填充
+    // strokeRect(x, y, w, h);
+    // fillRect(x, y, w, h);
+    // ctx.strokeRect(50, 50, 100, 100);
+    // ctx.fillRect(350, 350, 100, 100)
+</script>
+
 
 </html>
