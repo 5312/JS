@@ -1,6 +1,6 @@
 var jq = document.createElement('script'),
     head = document.getElementsByTagName('head')[0];
-jq.src = "https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js";
+jq.src = "https://cdn.staticfile.org/jquery/3.4.1/jquery.js";
 head.appendChild(jq);
 var pop;
 window.onload = function() {
