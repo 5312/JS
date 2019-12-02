@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        canvas {
+            box-shadow: 5px 5px 5px gray;
+            border: 1px solid #999;
+        }
+
+        span,
+        select {
+            vertical-align: top;
+            margin-left: 10px;
+        }
+
+        .box {
+            /* width: 144px; */
+            display: inline-block;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <span>第</span>
+    <select class="menu" name="">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <span>题</span>
+    <div class='box'>
+        <span>画笔粗细</span>
+        <select class="lw1" name="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <span>画笔/橡皮</span>
+        <select name="" class="ch2">
+            <option value="画笔">画笔</option>
+            <option value="橡皮">橡皮</option>
+        </select>
+        <span>背景</span>
+        <select class="bc3" name="">
+            <option value="white">白</option>
+            <option value="red">红</option>
+            <option value="black">黑</option>
+        </select>
+    </div>
+    <canvas id="canvas" width="900" height="800"></canvas>
+</body>
+<script>
+    var cv = document.getElementById('canvas');
+    var ctx = cv.getContext('2d');
+
+    var isok = false;
+    var ok2 = false;
+
+    function No1() {
+        this.x = 0;
+        this.y = 0;
+        this.lx = 0;
+        this.ly = 0;
+        this.twox = 0;
+        this.twoy = 0;
+    }
+    var no1 = new No1();
+    // 背景色
+    var bcolor = document.getElementsByClassName('bc3')[0];
+    var menu = document.getElementsByClassName('menu')[0];
+    if (menu.value == '1') {
+        sel1();
+    } else if (menu.value == '2') {
+        document.getElementsByClassName('box')[0].style.display = 'none'
+    } else {
+        document.getElementsByClassName('box')[0].style.display = 'block'
+    }
+    menu.oninput = function() {
+        menu.blur();
+        cv.width = cv.width;
+        if (menu.value == '1') {
+            sel1();
+            ok2 = false;
+        } else if (menu.value == '2') {
+            cv.width = cv.width;
+            ok2 = true;
+            ctx.beginPath();
+            ctx.fillStyle = 'yellow';
+            ctx.fillRect(0, 0, 100, 100);
+            ctx.fill();
+            document.getElementsByClassName('box')[0].style.display = 'none'
+        } else {
+            ok2 = false;
+            cv.width = cv.width;
+            document.getElementsByClassName('box')[0].style.display = 'block'
+        }
+
+    }
+    cv.style.backgroundColor = bcolor.value;
+    bcolor.oninput = function() {
+        cv.style.backgroundColor = bcolor.value;
+    }
+    document.onkeydown = function(e) {
+        if (ok2) {
+            ctx.beginPath();
+            ctx.fillStyle = 'yellow'
+            var e = e || windiw.event;
+            var dir = e.keyCode;
+            //上
+            if (dir == 38) {
+                no1.twoy -= 10;
+                cv.width = cv.width;
+                ctx.beginPath();
+                ctx.fillStyle = 'yellow';
+                ctx.fillRect(no1.twox, no1.twoy, 100, 100);
+                ctx.fill();
+            }
+            //下
+            if (dir == 40) {
+                no1.twoy += 10;
+                cv.width = cv.width;
+                ctx.beginPath();
+                ctx.fillStyle = 'yellow';
+                ctx.fillRect(no1.twox, no1.twoy, 100, 100);
+                ctx.fill();
+            }
+            //左
+            if (dir == 37) {
+                no1.twox -= 10;
+                cv.width = cv.width;
+                ctx.beginPath();
+                ctx.fillStyle = 'yellow';
+                ctx.fillRect(no1.twox, no1.twoy, 100, 100);
+                ctx.fill();
+            }
+            //右
+            if (dir == 39) {
+                no1.twox += 10;
+                cv.width = cv.width;
+                ctx.beginPath();
+                ctx.fillStyle = 'yellow';
+                ctx.fillRect(no1.twox, no1.twoy, 100, 100);
+                ctx.fill();
+            }
+        }
+    }
+
+
+    cv.onmousedown = function(e) {
+        isok = true;
+        var x = e.clientX - this.offsetLeft - no1.lx;
+        var y = e.clientY - this.offsetTop - no1.ly;
+        no1.x = x;
+        no1.y = y;
+        var a = e.clientX - this.offsetLeft;
+        var c = e.clientY - this.offsetTop;
+        if (menu.value == '1') {} else if (menu.value == '2') {
+
+        } else { //第三题
+            ctx.beginPath();
+            ctx.moveTo(a, c);
+        }
+    }
+    cv.onmousemove = function(e) {
+
+        // 3画板
+        if (isok) {
+            var x = e.clientX - this.offsetLeft - no1.x;
+            var y = e.clientY - this.offsetTop - no1.y;
+            var max = this.offsetTop + cv.height - 200 - 30;
+            var may = this.offsetTop - 30;
+            var ma = this.offsetLeft + cv.width - 200 - 20;
+            var my = this.offsetLeft - 20;
+            x = x > my ? x : my;
+            x = x < ma ? x : ma;
+            no1.lx = x;
+            no1.ly = y;
+            y = y < may ? may : y;
+            y = y > max ? max : y;
+            if (menu.value == '1') {
+                cv.width = cv.width;
+                ctx.beginPath();
+                ctx.fillStyle = 'rgb(213, 42, 108)';
+                ctx.fillRect(x, y, 200, 200);
+                ctx.fill();
+            } else {
+                var a = e.clientX - this.offsetLeft;
+                var c = e.clientY - this.offsetTop;
+                ctx.lineTo(a, c);
+                var lw = document.getElementsByClassName('lw1')[0].value; //画笔粗细
+                if (bcolor.value == "black") {
+                    ctx.strokeStyle = 'white'
+                }
+                ctx.lineWidth = lw;
+                // 画笔橡皮
+                var ch2 = document.getElementsByClassName('ch2')[0].value;
+                if (ch2 == "画笔") {
+                    ctx.stroke();
+                } else if (ch2 == "橡皮") {
+                    ctx.clearRect(a - 10, c - 10, 30, 30);
+                }
+            }
+
+        }
+    }
+    cv.onmouseup = function(e) {
+        var x = e.clientX - this.offsetLeft;
+        var y = e.clientY - this.offsetTop;;
+        isok = false;
+
+    }
+
+    // 第一题
+    function sel1() {
+        ctx.beginPath();
+        ctx.fillStyle = 'rgb(213, 42, 108)';
+        ctx.fillRect(0, 0, 200, 200);
+        ctx.fill();
+        document.getElementsByClassName('box')[0].style.display = 'none';
+    }
+</script>
+
+</html>

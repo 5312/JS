@@ -35,7 +35,7 @@
     var deg = Math.PI / 180;
 
 
-    setInterval(function () {
+    setInterval(function() {
 
         //60 个 刻度
         for (var i = 0; i < 60; i++) {
@@ -44,7 +44,7 @@
             ctx.moveTo(300, 300);
             ctx.arc(300, 300, 300, 6 * i * deg, 6 * (i + 1) * deg);
             ctx.lineWidth = 5;
-            ctx.strokeStyle='#333'
+            ctx.strokeStyle = '#333'
             ctx.stroke();
 
             // 大圆
@@ -61,7 +61,7 @@
             ctx.moveTo(300, 300);
             ctx.arc(300, 300, 300, 30 * i * deg, 30 * (i + 1) * deg);
             ctx.lineWidth = 5;
-            ctx.strokeStyle='#333'
+            ctx.strokeStyle = '#333'
             ctx.stroke();
 
             // 大圆
@@ -86,7 +86,7 @@
         // 时针
         ctx.beginPath();
         ctx.moveTo(300, 300);
-        ctx.arc(300, 300, 150, (-90+h*30+(m/2)+(s/120))*deg,(-90+h*30+(m/2)+(s/120))*deg);
+        ctx.arc(300, 300, 150, (-90 + h * 30 + (m / 2) + (s / 120)) * deg, (-90 + h * 30 + (m / 2) + (s / 120)) * deg);
         ctx.lineWidth = 5;
         ctx.strokeStyle = 'red';
         ctx.stroke();
@@ -94,7 +94,7 @@
         // 分针
         ctx.beginPath();
         ctx.moveTo(300, 300);
-        ctx.arc(300, 300, 200,  (-90+m*6+(s/10))*deg,(-90+m*6+(s/10))*deg);
+        ctx.arc(300, 300, 200, (-90 + m * 6 + (s / 10)) * deg, (-90 + m * 6 + (s / 10)) * deg);
         ctx.lineWidth = 3;
         ctx.strokeStyle = 'yellow';
         ctx.stroke();
@@ -102,12 +102,12 @@
         // 秒针
         ctx.beginPath();
         ctx.moveTo(300, 300);
-        ctx.arc(300, 300, 250,(-90+s*6)*deg,(-90+s*6)*deg);
+        ctx.arc(300, 300, 250, (-90 + s * 6) * deg, (-90 + s * 6) * deg);
         ctx.lineWidth = 2;
         ctx.strokeStyle = 'green';
         ctx.stroke();
 
-        
+
         // 表芯
         ctx.beginPath();
         ctx.moveTo(300, 300);
@@ -117,23 +117,6 @@
 
 
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 
 </html>
