@@ -14,6 +14,7 @@
         canvas {
             box-shadow: 5px 5px 5px gray;
             border: 1px solid #999;
+            cursor: url('./橡皮.cur'), auto;
         }
 
         span,
@@ -208,6 +209,7 @@
                 if (ch2 == "画笔") {
                     ctx.stroke();
                 } else if (ch2 == "橡皮") {
+                    cv.style.cursor = "url('./橡皮.cur'), auto";
                     ctx.clearRect(a - 10, c - 10, 30, 30);
                 }
             }
