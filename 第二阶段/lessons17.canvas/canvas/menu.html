@@ -9,12 +9,15 @@
     <style>
         body {
             text-align: center;
+
         }
 
         canvas {
             box-shadow: 5px 5px 5px gray;
             border: 1px solid #999;
-            cursor: url('./橡皮.cur'), auto;
+            /* cursor: pointer; */
+            cursor: url(橡皮.cur), pointer;
+            /* background-image: url(橡皮.cur) */
         }
 
         span,
@@ -118,6 +121,7 @@
             ctx.fillStyle = 'yellow'
             var e = e || windiw.event;
             var dir = e.keyCode;
+            console.log(dir)
             //上
             if (dir == 38) {
                 no1.twoy -= 10;
@@ -183,8 +187,8 @@
             var may = this.offsetTop - 30;
             var ma = this.offsetLeft + cv.width - 200 - 20;
             var my = this.offsetLeft - 20;
-            x = x > my ? x : my;
-            x = x < ma ? x : ma;
+            // x = x > my ? x : my;
+            // x = x < ma ? x : ma;
             no1.lx = x;
             no1.ly = y;
             y = y < may ? may : y;

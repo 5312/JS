@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+</body>
+<script type="text/javascript">
+    var cv = document.getElementById('canvas');
+    var ctx = cv.getContext('2d');
+
+    function Keymove(x, y, w, h, c) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.c = c;
+    }
+    Keymove.prototype.cks = function() {
+        ctx.beginPath();
+        ctx.fillStyle = this.c;
+        ctx.rect(this.x, this.y, this.w, this.h)
+        ctx.fill();
+    };
+
+    var km = new Keymove(0, 0, 100, 100, 'white');
+
+    document.onkeydown = function(e) {
+        var e = e || window.event;
+        var dir = e.keyCode;
+        if (dir == 38) {
+            this.y -= 10;
+        }
+        if (dir == 40) {
+            this.y += 10;
+        }
+        if (dir == 36) {
+
+        }
+        if (dir == 37) {
+
+        }
+        if (dir == 39) {
+
+        }
+    }
+</script>
+
+</html>
