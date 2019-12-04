@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            box-shadow: 0px 2px 27px rgb(53, 47, 55);
+        }
+
+        input {
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="900" height="800"></canvas>
+</body>
+<script>
+    var cv = document.getElementById('canvas')
+    var ctx = cv.getContext('2d');
+    var maxW = cv.width - 20,
+        maxH = cv.height - 20;
+
+    function Snake() {
+        this.x = 20;
+        this.y = 40;
+        this.w = 20;
+        this.h = 20;
+        this.c = 0;
+        this.l = false;
+        this.r = false;
+        this.t = false;
+        this.b = false;
+        this.co;
+        this.s = 5;
+    }
+
+    function Box(x, y, w, h) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+    }
+    Snake.prototype.draw = function() {
+        this.move();
+        // cv.width = cv.width;
+        //初始位置
+        ctx.beginPath();
+        ctx.fillStyle = this.c;
+        ctx.fillRect(this.x, this.y, this.w, this.h)
+    };
+    Snake.prototype.move = function() {
+        if (this.l) {
+            s.x -= this.s
+        }
+        if (this.r) {
+            s.x += this.s
+        }
+        if (this.t) {
+            s.y -= this.s
+        }
+        if (this.b) {
+            s.y += this.s
+        }
+    };
+
+    Snake.prototype.clog = function(x, y, w, h, c) {
+        ctx.beginPath();
+        ctx.fillStyle = c;
+        ctx.fillRect(x, y, w, h);
+        ctx.fill();
+    };
+    var b1, b2, b3, b4, b5
+    Snake.prototype.init = function() {
+        // 障碍物
+        this.co = 'rgb(' + this.rn(0, 255) + ',' + this.rn(0, 255) + ',' + this.rn(0, 255) + ')';
+        this.clog(100, 200, 100, 100, this.co);
+        b1 = new Box(100, 200, 100, 100);
+        this.co = 'rgb(' + this.rn(0, 255) + ',' + this.rn(0, 255) + ',' + this.rn(0, 255) + ')';
+        this.clog(700, 200, 100, 100, this.co);
+        b2 = new Box(700, 200, 100, 100);
+        this.co = 'rgb(' + this.rn(0, 255) + ',' + this.rn(0, 255) + ',' + this.rn(0, 255) + ')';
+        this.clog(100, 600, 100, 100, this.co);
+        b3 = new Box(100, 600, 100, 100);
+        this.co = 'rgb(' + this.rn(0, 255) + ',' + this.rn(0, 255) + ',' + this.rn(0, 255) + ')';
+        this.clog(700, 600, 100, 100, this.co);
+        b4 = new Box(700, 600, 100, 100);
+        this.co = 'rgb(' + this.rn(0, 255) + ',' + this.rn(0, 255) + ',' + this.rn(0, 255) + ')';
+        this.clog(450, 300, 100, 100, this.co);
+        b5 = new Box(450, 300, 100, 100);
+        this.draw();
+    };
+    Snake.prototype.die = function(objs, obj) {
+        var tl = objs.x + objs.w >= obj.x,
+            fl = objs.x <= obj.w + obj.x,
+            tt = objs.y + objs.h >= obj.y,
+            tb = objs.y <= obj.y + obj.w;
+        if (tl && fl && tt && tb) {
+            return true;
+        }
+    };
+
+    Snake.prototype.rn = function(x, y) { //功能函数 随机
+        return Math.floor(Math.random() * (y - x + 1) + x);
+    };
+    Snake.prototype.open = function(object) {
+        this.c = object.color;
+        this.init();
+    };
+
+    var s = new Snake();
+    s.open({
+        color: 'rgb(28, 185, 34)'
+    })
+    document.onkeydown = function(e) {
+        var e = e || window.event;
+        if (e.keyCode == 37) {
+            s.l = true;
+        }
+        if (e.keyCode == 38) {
+            s.t = true;
+        }
+        if (e.keyCode == 39) {
+            s.r = true;
+        }
+        if (e.keyCode == 40) {
+            s.b = true;
+        }
+    }
+    document.onkeyup = function(e) {
+        var e = e || window.event;
+        if (e.keyCode == 37) {
+            s.l = false;
+        }
+        if (e.keyCode == 38) {
+            s.t = false;
+        }
+        if (e.keyCode == 39) {
+            s.r = false;
+        }
+        if (e.keyCode == 40) {
+            s.b = false;
+        }
+    }
+    var time = setInterval(function() {
+        console.log(s.die(s, b2))
+        s.x <= 0 ? s.x = 0 : s.x;
+        s.x >= maxW ? s.x = maxW : s.x;
+        s.y <= 0 ? s.y = 0 : s.y;
+        s.y >= maxH ? s.y = maxH : s.y;
+        // 碰撞检测
+        if (s.die(s, b1) || s.die(s, b2) || s.die(s, b3) || s.die(s, b4) || s.die(s, b5)) {
+            clearInterval(time);
+        }
+        s.draw();
+    })
+</script>
+
+</html>

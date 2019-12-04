@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="900" height="800"></canvas>
+</body>
+<script>
+    var cv = document.getElementById('canvas');
+    var ctx = cv.getContext('2d');
+
+    // var text = 'Hello';
+    // ctx.font = '50px 宋体';
+    // ctx.textAlign = 'center' //left right /center
+    // ctx.textBaseline = ''; //top bottom middle ,<hangin></hangin>g
+    // ctx.strokeText(text, cv.width / 2, cv.height / 2);
+
+    // 绘制图片
+    // img.onload = function() {
+    // 1. 三参数 img ,x,y
+    // ctx.drawImage(img,x,y);
+    // 2. 五参数 img ,x, y ,w,h ;尽量在设置w和h的时候保证他们的比例不变
+    // ctx.drawImage(img,100,100,400,200);
+    //
+    // 3. 九参数 img,x1,y1,w1,h1,x2,y2,w2,h2;
+    // ctx.drawImage(img, 206, 0, 246, img, height, 0, 0, 246, img, height)
+    //
+    //图形组合  globalCompositeOperation
+    //源图像： 即将绘制在画布上 的图形
+    //目标图像：已经绘制在画布上的图形
+    // 主要用于设置canvas上绘制图形的组合方式，默认情况下，源图像会覆盖在目标图像的上面
+    // ctx.fillRect(400, 400, 200, 300)
+    // source
+    // 1. source-over  :源图像显示在目标图像上
+    // 2. source-atop  :源图像显示在目标图像上，目标图像外的源图像透明
+    // 3. source-in :源图像显示在目标图像上，目标图像透明
+    // 4. source-out :源图像显示在目标图像外。目标图像透明
+    // destination
+    // destination-over:目标像显示在源图像上
+    // destination-atop：目标图像显示在源图像上，源图像外的目标图像透明
+    // destination-in：目标图像显示在源图像上，源图像透明
+    // destination-out：目标图像显示在源图像外。源图像透明
+    // ctx.beginPath();
+    // ctx.fillStyle = 'red';
+    // ctx.globalCompositeOperation = 'destination-atop';
+    // ctx.fillRect(300, 300, 200, 200);
+    // // }
+    ctx.beginPath();
+    ctx.arc(400, 400, 300, 0, 2 * Math.PI);
+    ctx.fillStyle = 'red';
+    ctx.fill();
+    var img = new Image;
+    img.src = '../canvas/下载.jpeg';
+    img.onload = function() {
+        ctx.globalCompositeOperation = 'source-atop'
+        ctx.drawImage(img, 100, 100, 600, 600)
+    }
+</script>
+
+</html>

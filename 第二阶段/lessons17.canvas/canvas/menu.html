@@ -115,13 +115,15 @@
     bcolor.oninput = function() {
         cv.style.backgroundColor = bcolor.value;
     }
+    var sxie = false;
+    var xxie = false;
     document.onkeydown = function(e) {
         if (ok2) {
             ctx.beginPath();
             ctx.fillStyle = 'yellow'
             var e = e || windiw.event;
             var dir = e.keyCode;
-            console.log(dir)
+
             //上
             if (dir == 38) {
                 no1.twoy -= 10;
@@ -130,6 +132,18 @@
                 ctx.fillStyle = 'yellow';
                 ctx.fillRect(no1.twox, no1.twoy, 100, 100);
                 ctx.fill();
+                sxie = true;
+            }
+            if (dir == 39) {
+                if (sxie) {
+                    no1.twoy -= 10;
+                    no1.twox += 10
+                    cv.width = cv.width;
+                    ctx.beginPath();
+                    ctx.fillStyle = 'yellow';
+                    ctx.fillRect(no1.twox, no1.twoy, 100, 100);
+                    ctx.fill();
+                }
             }
             //下
             if (dir == 40) {
@@ -139,6 +153,19 @@
                 ctx.fillStyle = 'yellow';
                 ctx.fillRect(no1.twox, no1.twoy, 100, 100);
                 ctx.fill();
+                xxie = true;
+            }
+            if (dir == 39) {
+                if (xxie) {
+                    no1.twoy += 10;
+                    no1.twox += 10;
+                    cv.width = cv.width;
+                    ctx.beginPath();
+                    ctx.fillStyle = 'yellow';
+                    ctx.fillRect(no1.twox, no1.twoy, 100, 100);
+                    ctx.fill();
+                    xxie = true;
+                }
             }
             //左
             if (dir == 37) {
@@ -161,7 +188,9 @@
         }
     }
 
+    document.onkeyup = function() {
 
+    }
     cv.onmousedown = function(e) {
         isok = true;
         var x = e.clientX - this.offsetLeft - no1.lx;

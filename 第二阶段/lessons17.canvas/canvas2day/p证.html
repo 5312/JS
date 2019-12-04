@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            box-shadow: 0px 2px 27px rgb(53, 47, 55);
+        }
+        input{
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" name="" value=""><input type="button" name="" value="确认">
+    <canvas id="canvas" width="600" height="420"></canvas>
+</body>
+<script>
+    var cv = document.getElementById('canvas')
+    var ctx = cv.getContext('2d');
+    var img = new Image();
+    img.src = './房产证.jpg'
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0);
+        document.getElementsByTagName('input')[1].onclick = function() {
+            cv.width = cv.width;
+            ctx.drawImage(img, 0, 0);
+            var tet = document.getElementsByTagName('input')[0].value;
+            ctx.strokeStyle = '#000';
+            ctx.font = '20px 宋体';
+            ctx.fillText(tet, 100, 40)
+            // ctx.strokeText(tet, 100, 40)
+        }
+    }
+</script>
+
+</html>
