@@ -31,13 +31,13 @@
         this.y = 40;
         this.w = 20;
         this.h = 20;
-        this.c = 0;
+        this.c = '#000';
         this.l = false;
         this.r = false;
         this.t = false;
         this.b = false;
         this.co;
-        this.s = 5;
+        this.s = 3;
     }
 
     function Box(x, y, w, h) {
@@ -48,24 +48,40 @@
     }
     Snake.prototype.draw = function() {
         this.move();
-        // cv.width = cv.width;
+        cv.width = cv.width;
         //初始位置
         ctx.beginPath();
         ctx.fillStyle = this.c;
-        ctx.fillRect(this.x, this.y, this.w, this.h)
+        ctx.fillRect(this.x, this.y, this.w, this.h);
+
+        // 障碍物
+        this.clog(100, 200, 100, 100, this.co);
+        b1 = new Box(100, 200, 100, 100);
+        this.clog(700, 200, 100, 100, this.co);
+        b2 = new Box(700, 200, 100, 100);
+        this.clog(100, 600, 100, 100, this.co);
+        b3 = new Box(100, 600, 100, 100);
+        this.clog(700, 600, 100, 100, this.co);
+        b4 = new Box(700, 600, 100, 100);
+        this.clog(450, 300, 100, 100, this.co);
+        b5 = new Box(450, 300, 100, 100);
+
+
     };
     Snake.prototype.move = function() {
         if (this.l) {
-            s.x -= this.s
-        }
+            s.x--;
+        } else
         if (this.r) {
-            s.x += this.s
-        }
+            s.x++;
+        } else
         if (this.t) {
-            s.y -= this.s
-        }
+            s.y--
+        } else
         if (this.b) {
-            s.y += this.s
+            s.y++
+        } else {
+            s.x++;
         }
     };
 
@@ -74,26 +90,6 @@
         ctx.fillStyle = c;
         ctx.fillRect(x, y, w, h);
         ctx.fill();
-    };
-    var b1, b2, b3, b4, b5
-    Snake.prototype.init = function() {
-        // 障碍物
-        this.co = 'rgb(' + this.rn(0, 255) + ',' + this.rn(0, 255) + ',' + this.rn(0, 255) + ')';
-        this.clog(100, 200, 100, 100, this.co);
-        b1 = new Box(100, 200, 100, 100);
-        this.co = 'rgb(' + this.rn(0, 255) + ',' + this.rn(0, 255) + ',' + this.rn(0, 255) + ')';
-        this.clog(700, 200, 100, 100, this.co);
-        b2 = new Box(700, 200, 100, 100);
-        this.co = 'rgb(' + this.rn(0, 255) + ',' + this.rn(0, 255) + ',' + this.rn(0, 255) + ')';
-        this.clog(100, 600, 100, 100, this.co);
-        b3 = new Box(100, 600, 100, 100);
-        this.co = 'rgb(' + this.rn(0, 255) + ',' + this.rn(0, 255) + ',' + this.rn(0, 255) + ')';
-        this.clog(700, 600, 100, 100, this.co);
-        b4 = new Box(700, 600, 100, 100);
-        this.co = 'rgb(' + this.rn(0, 255) + ',' + this.rn(0, 255) + ',' + this.rn(0, 255) + ')';
-        this.clog(450, 300, 100, 100, this.co);
-        b5 = new Box(450, 300, 100, 100);
-        this.draw();
     };
     Snake.prototype.die = function(objs, obj) {
         var tl = objs.x + objs.w >= obj.x,
@@ -104,10 +100,18 @@
             return true;
         }
     };
+    var b1, b2, b3, b4, b5
+    Snake.prototype.init = function() {
+
+        this.draw();
+    };
+
 
     Snake.prototype.rn = function(x, y) { //功能函数 随机
+        // this.co = 'rgb(' + this.rn(0, 255) + ',' + this.rn(0, 255) + ',' + this.rn(0, 255) + ')';
         return Math.floor(Math.random() * (y - x + 1) + x);
     };
+
     Snake.prototype.open = function(object) {
         this.c = object.color;
         this.init();
@@ -121,34 +125,30 @@
         var e = e || window.event;
         if (e.keyCode == 37) {
             s.l = true;
+            s.t = false;
+            s.r = false;
+            s.b = false;
         }
         if (e.keyCode == 38) {
             s.t = true;
+            s.l = false;
+            s.r = false;
+            s.b = false;
         }
         if (e.keyCode == 39) {
             s.r = true;
+            s.l = false;
+            s.t = false;
+            s.b = false;
         }
         if (e.keyCode == 40) {
             s.b = true;
-        }
-    }
-    document.onkeyup = function(e) {
-        var e = e || window.event;
-        if (e.keyCode == 37) {
             s.l = false;
-        }
-        if (e.keyCode == 38) {
             s.t = false;
-        }
-        if (e.keyCode == 39) {
             s.r = false;
-        }
-        if (e.keyCode == 40) {
-            s.b = false;
         }
     }
     var time = setInterval(function() {
-        console.log(s.die(s, b2))
         s.x <= 0 ? s.x = 0 : s.x;
         s.x >= maxW ? s.x = maxW : s.x;
         s.y <= 0 ? s.y = 0 : s.y;

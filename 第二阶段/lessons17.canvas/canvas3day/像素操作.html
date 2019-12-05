@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+
+            box-shadow: 0 0 10px rgb(179, 145, 33);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="900" height="800"></canvas>
+</body>
+<script>
+    var cv = document.getElementById('canvas');
+    var ctx = cv.getContext('2d');
+
+    ctx.fillRect(100, 100, 100, 100);
+    // getImageDate()方法的工作环境：如果读取的是图片的像素信息，那么必须在服务器环境下才能运行，
+    // canvas提供方法getImageData(),来读取画布指定区域内的像素点信息
+    var imgData = ctx.getImageData(100, 100, 100, 100);
+
+    console.log(imgData);
+    // 像素点信息存储在imgDate的ｄａｔｅ属性中
+    // ｄａｔｅ是一个数组。数组中存放是指定区域所有的像素点信息，每个像素点有ｒｇｂａ构成
+    //
+    var data = imgData.data;
+    for (var i = 0; i < data.length; i += 4) {
+        data[i] = rn()
+        data[i + 1] = rn()
+        data[i + 2] = rn();
+        data[i + 3] = rn()
+    }
+    // putImageData(): 将像素信息重新绘制在画布指定区域
+    ctx.putImageData(imgData, 100, 100)
+
+    function rn() {
+        return Math.round(Math.random() * 255);
+    }
+</script>
+
+</html>
