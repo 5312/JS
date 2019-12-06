@@ -18,32 +18,70 @@
 </head>
 
 <body>
-    <canvas id="canvas" width="650" height="800"></canvas>
+    <canvas id="canvas" width="300" height="150"></canvas>
 </body>
 <script>
     var cv = document.getElementById('canvas')
     var ctx = cv.getContext('2d');
-    var img = new Image();
-    img.src = './探照灯.jpg'
-    img.onload = function() {
+    // 绘制图层
+    ctx.fillStyle = '#cacaca';
+    ctx.fillRect(0, 0, cv.width, cv.height)
+
+    // 刮图层
+    cv.onmousedown = function(e) {
+        var dx = e.clientX - this.offsetLeft;
+        var dy = e.clientY - this.offsetTop;
         ctx.beginPath();
-        ctx.fillStyle = '#fff';
-        ctx.fillRect(0, 0, cv.width, cv.height);
-        ctx.fill();
-        ctx.globalCompositeOperation = 'destination-over'
-        ctx.drawImage(img, 0, 0, 650, 800);
+        ctx.lineWidth = 10;
+        ctx.moveTo(dx, dy);
         cv.onmousemove = function(e) {
 
+            var mx = e.clientX - this.offsetLeft;
+            var my = e.clientY - this.offsetTop;
+
+            ctx.globalCompositeOperation = 'destination-out';
+
+            ctx.lineTo(mx, my)
+            ctx.stroke();
+
+            ctx.globalCompositeOperation = 'destination-over';
+
+            ctx.font = '40px 宋体';
+            ctx.textAlign = 'center';
+            ctx.textBaseLine = 'middle';
+            ctx.fillStyle = 'gold';
+            ctx.fillText('谢谢惠顾', 150, 75);
+            autoplay()
         }
-        cv.onmouseleave = function() {
-            cv.width = cv.width;
-            ctx.beginPath();
-            ctx.fillStyle = '#fff';
-            ctx.fillRect(0, 0, cv.width, cv.height);
-            ctx.fill();
-            ctx.globalCompositeOperation = 'destination-over'
-            ctx.drawImage(img, 0, 0, 650, 800);
+
+    }
+    cv.onmouseup = function() {
+        cv.onmousemove = null;
+    }
+
+    function autoplay() {
+        var count = 0; //已经透明的像素点有几个
+        var imgData = ctx.getImageData(0, 0, cv.width, cv.height);
+        var data = imgData.data;
+        for (var i = 3; i < data.length; i += 4) {
+            var a = data[i];
+            if (a == 0) {
+                count++;
+            }
         }
+        if (count > cv.width * cv.height * 0.4) {
+            for (var i = 3; i < data.length; i += 4) {
+                data[i] = 0
+            }
+            ctx.putImageData(imgData, 0, 0)
+            ctx.font = '40px 宋体';
+            ctx.textAlign = 'center';
+            ctx.textBaseLine = 'middle';
+            ctx.fillStyle = 'gold';
+            ctx.fillText('谢谢惠顾', 150, 75)
+        }
+
+
     }
 </script>
 

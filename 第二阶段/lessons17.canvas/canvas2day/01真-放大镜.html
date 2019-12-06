@@ -20,27 +20,29 @@
     var cv = document.querySelector('#cv');
     var ctx = cv.getContext('2d');
     var img = new Image();
-    img.src = 'f1.jfif';
+    img.src = './房产证.jpg';
 
-
-    img.onload = function () {
+    img.onload = function() {
         ctx.drawImage(img, 0, 0);
 
-        cv.onmousemove = function (e) {
+        cv.onmousemove = function(e) {
+            // １．　清空画布
             cv.width = cv.width;
             var e = e || window.event;
             var x = e.clientX - this.offsetLeft,
                 y = e.clientY - this.offsetTop;
+            //２． 重绘图片
             ctx.drawImage(img, 0, 0);
             ctx.drawImage(img, x - 50, y - 50, 100, 100, x - 100, y - 100, 200, 200);
             ctx.globalCompositeOperation = 'destination-in';
+            // ３．　放大镜添加
             ctx.arc(x, y, 100, 0, Math.PI * 2);
             ctx.fillStyle = 'white'
             ctx.fill();
             ctx.globalCompositeOperation = "destination-over";
             ctx.drawImage(img, 0, 0);
         }
-        cv.onmouseleave = function () {
+        cv.onmouseleave = function() {
             cv.width = cv.width;
             ctx.drawImage(img, 0, 0);
         }

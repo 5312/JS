@@ -16,73 +16,15 @@
 <body>
     <canvas id="main" width="900" height="800"></canvas>
 </body>
+<script src="../../jquery-3.4.1.js" charset="utf-8"></script>
 <script src="https://cdn.bootcss.com/zrender/4.1.1/zrender.min.js"></script>
+<script src="./class.js" charset="utf-8"></script>
 <script>
     window.onload = function() {
-        var cv = document.querySelector('#main');
-        var ctx = cv.getContext('2d');
-        var zr = zrender.init(document.getElementById('main'));
 
-        var linearColor = new zrender.LinearGradient(0, 0, 0, 1, [{
-                offset: 0,
-                color: '#5fd634'
-            },
-            {
-                offset: 1,
-                color: '#1b6e24'
-            }
-        ]);
-        var rect = new zrender.Rect({
-            shape: {
-                x: 25,
-                y: 25,
-                width: 25,
-                height: 25
-            },
-            style: {
-                fill: linearColor
-            },
+        s.open({
 
-        });
-        rect.animateTo({
-            position: [800, 25]
-        }, 5000, 0, 'linear')
-        zr.add(rect)
-
-
-        // 画布
-        function Canvas() {
-            this.w = cv.width; //宽
-            this.h = cv.height; //高
-            this.unit = 25; //每格子大小
-            this.rownum = cv.width / 25; //横向几格
-            this.colnum = cv.height / 25; //竖几格
-        }
-        // 食物
-        function Foot() {
-            this.x;
-            this.y;
-            this.w;
-            this.h;
-        }
-        Canvas.prototype = new Canvas();
-        Canvas.prototype.constructor = Foot;
-        // 蛇
-        function Snake() {
-            this.x;
-            this.y;
-            this.w;
-            this.h;
-            this.path = 'right';
-            this.speed = 1; //速度
-        }
-        Foot.prototype = new Foot();
-        Foot.prototype.constructor = Snake;
-        // 画蛇
-        Snake.prototype.drawSnake = function() {
-
-        };
-        var s = new Snake();
+        })
     }
 </script>
 

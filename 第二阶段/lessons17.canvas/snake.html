@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #cv {
+            box-shadow: 0 0 30px #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="cv" width="1200" height="600"></canvas>
+</body>
+<script src="../jquery-3.4.1.js"></script>
+<script src="./class.js"></script>
+<script>
+    var cv = document.querySelector('#cv');
+    var ctx = cv.getContext('2d');
+    var timer;
+
+    // 逻辑
+    // 绘制地图
+    smap.init();
+    smap.draw();
+    // 创建蛇对象并绘制
+    var snake = new Snake(0, 0);
+    snake.drawHead();
+    // 创建食物并绘制
+    smap.drawFood();
+    // 点击空格开始游戏
+</script>
+
+</html>
