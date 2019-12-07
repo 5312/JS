@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打飞机</title>
+    <style>
+        body {
+            text-align: center;
+
+        }
+
+        canvas {
+            box-shadow: 0 0 10px rgb(110, 99, 125);
+            background:url(./img/background.png)
+        }
+    </style>
+</head>
+
+
+<body>
+    <canvas id="canvas" width="320" height="568"></canvas>
+</body>
+<script src="./jquery-3.4.1.js" charset="utf-8"></script>
+<script src="./main.js" charset="utf-8"></script>
+<!-- <script src="https://cdn.bootcss.com/zrender/4.1.1/zrender.min.js"></script> -->
+<!-- <script src="./zendermain.js" charset="utf-8"></script> -->
+<script type="text/javascript">
+    $(function() {
+        /**
+         * [description] 键盘时间监听
+         * @param  {[type]} e [description]
+         * @return {[type]}   [description]
+         */
+        document.onkeydown = function(e) {
+            var e = e || window.event;
+            // wsad ＆＆　上下左右
+            switch (e.keyCode) {
+                case 32:
+                    // 游戏开始
+                    my.animat();
+                    break;
+                case 65:
+                case 37:
+                    // 左键
+                    my.move[0] = 'left';
+                    break;
+                case 87:
+                case 38:
+                    my.move[1] = 'top';
+                    break;
+                case 68:
+                case 39:
+                    my.move[2] = 'right';
+                    break;
+                case 83:
+                case 40:
+                    my.move[3] = 'bottom';
+                    break;
+                default:
+
+            }
+        }
+    })
+</script>
+
+</html>
