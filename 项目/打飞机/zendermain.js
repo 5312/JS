@@ -63,6 +63,7 @@ Flay.prototype.main = function(img) {
     var y = 0;
     var y2 = -cv.height,
         that = this;
+    // time
     var time = setInterval(function() {
         // 清空画布　背景渲染
         cv.width = cv.width;
@@ -73,7 +74,7 @@ Flay.prototype.main = function(img) {
         // 我的飞机
         my.show();
         // 飞机移动
-        my.moveup();
+        my.mainplain();
 
     }, 20)
 };
@@ -96,8 +97,9 @@ Flay.prototype.rnbeget = function(img) {
             return
         }
     }
-}
 
+}
+// 敌方飞机
 function Foe(en, fw, fh) {
     this.en = en
     this.mode = 0;
@@ -109,9 +111,10 @@ function Foe(en, fw, fh) {
 }
 Foe.prototype.beget = function() {
     this.fy += this.sp;
-    // console.log(this.fx)
     ctx.drawImage(img[this.en], this.fw * this.mode, 0, this.fw, this.fh, this.fx, this.fy, this.fw, this.fh);
 };
+
+
 /**
  * [Myplain description]飞机
  * @constructor
@@ -125,7 +128,10 @@ function Myplain() {
     this.a = 1;
     // 按键安全判断
     this.down = false;
-    this.move = ['null', 'null', 'null', 'null']
+    this.move = ['null', 'null', 'null', 'null'];
+    this.num = 'one'; //子弹样式
+    // 子弹间隔
+    this.gap = 0;
 }
 // 继承
 Myplain.prototype = new Flay();
@@ -134,11 +140,12 @@ Myplain.prototype.constructor = Myplain;
 Myplain.prototype.show = function() { //飞机显示
     ctx.drawImage(img.herofly, this.w * this.a, 0, this.w, this.h, this.x, this.y, 66, this.h);
 };
-Myplain.prototype.moveup = function() { //飞机移动　
+Myplain.prototype.mainplain = function() { //飞机移动　
     var xmax = cv.width - this.w;
     var ymax = cv.height - this.h;
     var that = this
-    if (that.down) { //当开始动画完成后才能移动
+    if (that.down) {
+        //当开始动画完成后才能移动
         if (that.move[0] == 'left') {
             that.a = 0; //飞机状态
             that.x = that.x <= 0 ? 0 : that.x -= 5 //边界判断
@@ -161,9 +168,21 @@ Myplain.prototype.moveup = function() { //飞机移动　
             that.foe[i].beget();
             if (that.foe[i].fy > 568) {
                 that.foe.splice(i, 1); //飞出画布后删除
-                console.log(that.foe)
             }
         }
+        // 子弹
+        that.gap++; //控制子弹出现间隔
+        if (that.gap > 5) {
+            that.bullet.push(new Bullet(that)) //创建啊子弹并放进数组
+            that.gap = 0;
+        }
+        for (var i = 0; i < that.bullet.length; i++) {
+            that.bullet[i].go();
+            if (that.bullet[i].by < -20) {
+                that.bullet.splice(i, 1);
+            }
+        }
+        //
     }
 };
 Myplain.prototype.animat = function() { //飞机动画
@@ -171,6 +190,7 @@ Myplain.prototype.animat = function() { //飞机动画
     var that = this;
     var xmax = cv.width / 2 - this.w / 2;
     var ymax = cv.height - this.h;
+    // start
     var start = setInterval(function() {
         that.x = that.x >= xmax ? xmax : that.x += 5;
         that.y = that.y >= ymax ? ymax : that.y += 5;
@@ -182,9 +202,59 @@ Myplain.prototype.animat = function() { //飞机动画
 };
 var my = new Myplain();
 
+//子弹构造函数
+function Bullet(that) {
+    this.bw = 6;
+    this.bh = 14;
+    if (that.num == 'one') {
+        //单子弹　 出生点　我的飞机顶部
+        this.bx = that.x + that.w / 2 - 2;
+        this.by = that.y - 0;
+    } else if (that.num == 'tow') {}
+}
+Bullet.prototype.go = function() {
+    this.by -= 5;
+    ctx.drawImage(img.bullet1, 0, 0, this.bw, this.bh, this.bx, this.by, this.bw, this.bh)
+};
+
 
 function rn(x, y) {
     return Math.round(Math.random() * (y - x) + x);
+}
+/**
+ * [description] 键盘时间监听
+ * @param  {[type]} e [description]
+ * @return {[type]}   [description]
+ */
+document.onkeydown = function(e) {
+    var e = e || window.event;
+    // wsad ＆＆　上下左右
+    switch (e.keyCode) {
+        case 32:
+            // 游戏开始
+            my.animat();
+
+            break;
+        case 65:
+        case 37:
+            // 左键
+            my.move[0] = 'left';
+            break;
+        case 87:
+        case 38:
+            my.move[1] = 'top';
+            break;
+        case 68:
+        case 39:
+            my.move[2] = 'right';
+            break;
+        case 83:
+        case 40:
+            my.move[3] = 'bottom';
+            break;
+        default:
+
+    }
 }
 //空格开始
 document.onkeyup = function(e) {
