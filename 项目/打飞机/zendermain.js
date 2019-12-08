@@ -18,7 +18,11 @@ function ImgSrc() {
     this.prop = './img/prop.png';
 }
 var src = new ImgSrc(); //构造图片路径
-
+/**
+ * [description]
+ * @param  {[type]} img [description]
+ * @return {[type]}     [description]
+ */
 for (var x in src) {
     img[x] = new Image();
     img[x].src = src[x];
@@ -29,9 +33,6 @@ for (var x in img) {
         if (falg == 8) {
             console.log('图片加载完成');
             flay.main(img) // 主函数 定时器
-            // var f = new Foe('enemy1', 38, 34)
-            // console.log(f)
-            // f.beget();
         }
     }
 }
@@ -45,11 +46,7 @@ function Flay() {
 }
 var flay = new Flay();
 
-/**
- * [description]
- * @param  {[type]} img [description]
- * @return {[type]}     [description]
- */
+
 
 /**
  * [背景绘制]
@@ -90,30 +87,37 @@ Flay.prototype.rnbeget = function(img) {
         }
         if (num > 70 && num < 75) {
             this.foe.push(new Foe('enemy2', 110, 160))
+            this.foe.push(new Foe('prop', 39, 68, 2))
             return
         }
         if (num >= 75) {
-            this.foe.push(new Foe('enemy3', 46, 60))
+            this.foe.push(new Foe('enemy3', 46, 60));
+            this.foe.push(new Foe('prop', 39, 68, 1))
             return
         }
+    }
+    var n = rn(0, 1000)
+    if (n > 999) {
+        this.foe.push(new Foe('prop', 39, 68, 0));
+        return;
     }
 
 }
 // 敌方飞机
-function Foe(en, fw, fh) {
+function Foe(en, fw, fh, m) {
     this.en = en
-    this.mode = 0;
+    this.mode = m || 0;
     this.fw = fw;
     this.fy = -100;
     this.fh = fh;
     this.sp = rn(2, 4);
-    this.fx = rn(0, cv.width - this.fw)
+    this.fx = rn(0, cv.width - this.fw);
+    this.worn = 0;
 }
 Foe.prototype.beget = function() {
     this.fy += this.sp;
     ctx.drawImage(img[this.en], this.fw * this.mode, 0, this.fw, this.fh, this.fx, this.fy, this.fw, this.fh);
 };
-
 
 /**
  * [Myplain description]飞机
@@ -137,6 +141,48 @@ function Myplain() {
 Myplain.prototype = new Flay();
 Myplain.prototype.constructor = Myplain;
 
+Myplain.prototype.worns = function(en, i, mx, my) {
+    if (!en) {
+        return
+    }
+    var ins = en.worn;
+    // 击中后删除
+    switch (en.en) {
+        case 'enemy1':
+            if (ins > 3) {
+                en.mode++;
+                if (en.mode > 4) {
+                    this.foe.splice(i, 1)
+                }
+            }
+            break;
+        case 'enemy2':
+            if (ins > 20) {
+                en.mode++;
+                if (en.mode > 8) {
+                    this.foe.splice(i, 1)
+                }
+            }
+            break;
+        case 'enemy3':
+            if (ins > 10) {
+                en.mode++;
+                if (en.mode > 4) {
+                    this.foe.splice(i, 1)
+                }
+            }
+            break;
+        case 'prop':
+            if (en.mode == 1) {
+                if (en.fx > mx && en.fx + 39 < mx + 66 && my < en.fy + 68 && my > en.fy) {
+                    this.num = 'two';
+                    this.foe.splice(i, 1);
+                }
+            }
+        default:
+
+    }
+};
 Myplain.prototype.show = function() { //飞机显示
     ctx.drawImage(img.herofly, this.w * this.a, 0, this.w, this.h, this.x, this.y, 66, this.h);
 };
@@ -166,14 +212,17 @@ Myplain.prototype.mainplain = function() { //飞机移动　
         that.rnbeget()
         for (var i = 0; i < that.foe.length; i++) {
             that.foe[i].beget();
-            if (that.foe[i].fy > 568) {
+            if (that.foe[i].fy > 600) {
                 that.foe.splice(i, 1); //飞出画布后删除
-            }
+            };
+            that.worns(that.foe[i], i, that.x, that.y); //敌机变化
         }
+
         // 子弹
         that.gap++; //控制子弹出现间隔
         if (that.gap > 5) {
-            that.bullet.push(new Bullet(that)) //创建啊子弹并放进数组
+            that.bullet.push(new Bullet(that, 'l')) //创建啊子弹并放进数组
+            that.bullet.push(new Bullet(that, 'r')) //创建啊子弹并放进数组
             that.gap = 0;
         }
         for (var i = 0; i < that.bullet.length; i++) {
@@ -181,8 +230,50 @@ Myplain.prototype.mainplain = function() { //飞机移动　
             if (that.bullet[i].by < -20) {
                 that.bullet.splice(i, 1);
             }
+            // 碰撞检测
+            for (var j = 0; j < that.foe.length; j++) {
+                // 敌机
+                var foe = that.foe[j];
+                var xl = foe.fx,
+                    xr = foe.fx + foe.fw;
+                var yt = foe.fy,
+                    yb = foe.fy + foe.fh;
+                var bullet = that.bullet[i];
+                if (foe.en != 'prop') {
+                    // 双子弹
+                    if (this.num == 'two') {
+                        if (!bullet) {
+                            return
+                        }
+                        var bxl = bullet.bx1 + 3,
+                            byt = bullet.by;
+                        if (bxl > xl && bxl < xr && byt < yb && byt > yt) {
+                            that.bullet.splice(i, 1);
+                            foe.worn++;
+                            break;
+                        }
+                        var bxr = bullet.bx2 + 3,
+                            byt = bullet.by;
+                        if (bxr > xl && bxr < xr && byt < yb && byt > yt) {
+                            that.bullet.splice(i, 1);
+                            foe.worn++;
+                            break;
+                        }
+                    } else {
+                        // 单子弹
+                        var bxl = bullet.bx + 3,
+                            byt = bullet.by;
+                        if (bxl > xl && bxl < xr && byt < yb && byt > yt) {
+                            that.bullet.splice(i, 1);
+                            foe.worn++;
+                            break;
+                        }
+                    }
+                }
+
+            }
+
         }
-        //
     }
 };
 Myplain.prototype.animat = function() { //飞机动画
@@ -203,18 +294,35 @@ Myplain.prototype.animat = function() { //飞机动画
 var my = new Myplain();
 
 //子弹构造函数
-function Bullet(that) {
+function Bullet(that, content) {
     this.bw = 6;
     this.bh = 14;
+    this.t = 'one'
+    this.site = content || 'middle';
     if (that.num == 'one') {
         //单子弹　 出生点　我的飞机顶部
         this.bx = that.x + that.w / 2 - 2;
-        this.by = that.y - 0;
-    } else if (that.num == 'tow') {}
+        this.by = that.y;
+    } else if (that.num == 'two') {
+        this.t = 'two';
+        this.bx1 = that.x + 7;
+        this.bx2 = that.x + 55;
+        this.by = that.y;
+    }
 }
 Bullet.prototype.go = function() {
     this.by -= 5;
-    ctx.drawImage(img.bullet1, 0, 0, this.bw, this.bh, this.bx, this.by, this.bw, this.bh)
+    if (this.t == 'one') {
+        ctx.drawImage(img.bullet1, 0, 0, this.bw, this.bh, this.bx, this.by, this.bw, this.bh)
+    } else if (this.t == 'two') {
+        if (this.site == 'l') {
+            ctx.drawImage(img.bullet1, 0, 0, this.bw, this.bh, this.bx1, this.by, this.bw, this.bh);
+        }
+        if (this.site == 'r') {
+            ctx.drawImage(img.bullet1, 0, 0, this.bw, this.bh, this.bx2, this.by, this.bw, this.bh);
+        }
+
+    }
 };
 
 
@@ -233,7 +341,6 @@ document.onkeydown = function(e) {
         case 32:
             // 游戏开始
             my.animat();
-
             break;
         case 65:
         case 37:
