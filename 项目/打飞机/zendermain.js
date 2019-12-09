@@ -125,7 +125,7 @@ Foe.prototype.beget = function() {
  */
 function Myplain() {
     this.x = 0;
-    this.y = 0;
+    this.y = cv.height / 2;
     this.w = 66; //飞机宽
     this.h = 82; //飞机高
     // 图片截取起始位置即　飞机状态
@@ -153,6 +153,7 @@ Myplain.prototype.worns = function(en, i, mx, my) {
                 en.mode++;
                 if (en.mode > 4) {
                     this.foe.splice(i, 1)
+                    i--;
                 }
             }
             break;
@@ -161,6 +162,7 @@ Myplain.prototype.worns = function(en, i, mx, my) {
                 en.mode++;
                 if (en.mode > 8) {
                     this.foe.splice(i, 1)
+                    i--;
                 }
             }
             break;
@@ -169,14 +171,16 @@ Myplain.prototype.worns = function(en, i, mx, my) {
                 en.mode++;
                 if (en.mode > 4) {
                     this.foe.splice(i, 1)
+                    i--;
                 }
             }
             break;
-        case 'prop':
+        case 'prop': //物资变化
             if (en.mode == 1) {
                 if (en.fx > mx && en.fx + 39 < mx + 66 && my < en.fy + 68 && my > en.fy) {
                     this.num = 'two';
                     this.foe.splice(i, 1);
+                    i--;
                 }
             }
         default:
@@ -214,6 +218,7 @@ Myplain.prototype.mainplain = function() { //飞机移动　
             that.foe[i].beget();
             if (that.foe[i].fy > 600) {
                 that.foe.splice(i, 1); //飞出画布后删除
+                i--;
             };
             that.worns(that.foe[i], i, that.x, that.y); //敌机变化
         }
@@ -229,6 +234,7 @@ Myplain.prototype.mainplain = function() { //飞机移动　
             that.bullet[i].go();
             if (that.bullet[i].by < -20) {
                 that.bullet.splice(i, 1);
+                // i--; //删掉一个数组长度减一 会跳过后一个;
             }
             // 碰撞检测
             for (var j = 0; j < that.foe.length; j++) {
@@ -249,6 +255,7 @@ Myplain.prototype.mainplain = function() { //飞机移动　
                             byt = bullet.by;
                         if (bxl > xl && bxl < xr && byt < yb && byt > yt) {
                             that.bullet.splice(i, 1);
+                            i--;
                             foe.worn++;
                             break;
                         }
@@ -256,6 +263,7 @@ Myplain.prototype.mainplain = function() { //飞机移动　
                             byt = bullet.by;
                         if (bxr > xl && bxr < xr && byt < yb && byt > yt) {
                             that.bullet.splice(i, 1);
+                            i--;
                             foe.worn++;
                             break;
                         }
@@ -265,6 +273,7 @@ Myplain.prototype.mainplain = function() { //飞机移动　
                             byt = bullet.by;
                         if (bxl > xl && bxl < xr && byt < yb && byt > yt) {
                             that.bullet.splice(i, 1);
+                            i--;
                             foe.worn++;
                             break;
                         }
@@ -276,6 +285,7 @@ Myplain.prototype.mainplain = function() { //飞机移动　
         }
     }
 };
+
 Myplain.prototype.animat = function() { //飞机动画
     clearInterval(start)
     var that = this;

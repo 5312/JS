@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #cv {
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="cv" width="320" height="568"></canvas>
+</body>
+<script src="./load.js"></script>
+<script src="./bg.js"></script>
+<script src="./hero.js"></script>
+<script src="./enemy.js"></script>
+<script src="./bullet.js"></script>
+<script src="./prop.js"></script>
+<script src="./bomb.js"></script>
+<script>
+    // 开始游戏，资源加载
+    preload(function() {
+        // 创建背景对象
+        bg = new Bg();
+        // 创建英雄对象
+        hero = new Hero();
+        timer = setInterval(function() {
+            // 清空画布
+            cv.width = cvw;
+            // 1.绘制背景
+            bg.draw();
+            // 2.绘制英雄
+            hero.draw();
+            // 3.绘制敌机
+            enemy_draw();
+            // 4.绘制子弹
+            bullet_draw();
+            // 5.绘制物资
+            prop_draw();
+            // 6.绘制炸弹
+            bomb_draw();
+            // 7.碰撞监测
+            game_crash();
+            // 8.绘制得分
+            bg.score();
+
+        }, 25)
+    })
+</script>
+
+</html>
