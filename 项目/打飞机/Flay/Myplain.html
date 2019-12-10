@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+
+        }
+
+        #cv {
+            border: 1px solid;
+            position: relative;
+        }
+
+        span {
+            color: white;
+        }
+
+        div:nth-of-type(1) {
+            width: 250px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 160px auto;
+        }
+
+        div:nth-of-type(2) {
+            width: 250px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 250px auto;
+        }
+
+        .signin {
+            width: 50px;
+            height: 30px;
+            color: white;
+            background-color: rgb(37, 162, 201);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 300px auto;
+            cursor: pointer;
+        }
+
+        .signout {
+            width: 50px;
+            height: 30px;
+            color: white;
+            background-color: rgb(37, 162, 201);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 340px auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="cv" width="320" height="568"></canvas>
+</body>
+<script src="./jquery-3.4.1.js" charset="utf-8"></script>
+<script>
+    $(function() {
+        var cv = document.querySelector('#cv');
+        // 获取画笔
+        var ctx = cv.getContext('2d');
+        ctx.save();
+        ctx.translate(150, 150)
+        ctx.rotate(Math.PI / 3);
+        ctx.fillRect(0, 0, 100, 100)
+        ctx.restore();
+
+    })
+</script>
+
+</html>
