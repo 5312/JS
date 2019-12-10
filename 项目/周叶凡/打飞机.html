@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        canvas {
+            box-shadow: 0 0 10px rgb(20, 26, 27);
+        }
+
+        span {
+            color: white;
+        }
+
+        div:nth-of-type(1) {
+            width: 250px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 160px auto;
+        }
+
+        div:nth-of-type(2) {
+            width: 250px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 250px auto;
+        }
+
+        .signin {
+            width: 50px;
+            height: 30px;
+            color: white;
+            background-color: rgb(37, 162, 201);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 300px auto;
+            cursor: pointer;
+        }
+
+        .signout {
+            width: 50px;
+            height: 30px;
+            color: white;
+            background-color: rgb(37, 162, 201);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 340px auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="320" height="568"></canvas>
+</body>
+<script src="./jquery-3.4.1.js" charset="utf-8"></script>
+<script>
+    var cv = document.getElementById('canvas');
+    var ctx = cv.getContext('2d');
+    var mainTimer = null; //主定时器
+    var start = false; //开始游戏
+    var imgs = []; //图片数组
+    var cvw = cv.width,
+        cvh = cv.height;
+    var my = null; //我方飞机
+    var createNum = 0;
+    // 存放敌机的数组
+    var foe = [];
+    // 子弹类型
+    var bulletType = 'one';
+    var bullets = [];
+    // 物资数组
+    var props = [];
+    // 子弹
+    var bullet = null;
+    var speed = 4;
+    // 炸弹
+    var bombs = [];
+    var t = false;
+    //得分
+    var score = 0;
+    // 图片预加载
+    imgSrc = ['./img/background.png', './img/bomb.png', './img/bullet1.png', './img/enemy1.png', './img/enemy2.png', './img/enemy3.png', './img/herofly.png', './img/prop.png']
+
+    function load(callback) {
+        var count = 0;
+        for (var i = 0; i < imgSrc.length; i++) {
+            var img = new Image();
+            img.src = imgSrc[i];
+            imgs.push(img);
+            img.onload = function() {
+                count++;
+                if (count == imgSrc.length) {
+                    console.log('图片加载完成')
+                    callback();
+                }
+            }
+        }
+    }
+    load(function() {
+        // 清空画布
+        cv.width = cv.width;
+        // 创建背景对象
+        var bg = new Bg();
+        // 创建我方英雄对象
+        my = new Myplain();
+        mainTimer = setInterval(function() {
+            // 画背景
+            bg.bg_draw();
+            // 我的飞机
+            my.my_draw();
+            locasstion_draw(function() {
+                // 敌方飞机
+                foe_draw();
+                // 子弹
+                bullet_draw();
+                // 物资
+                prop_draw();
+                if (t) {
+                    bomb_draw();
+                }
+                // 得分
+                source_draw(score);
+            })
+
+        }, 20)
+    })
+
+    // 背景
+    function Bg() {
+        this.x = 0;
+        this.y = 0;
+
+    }
+    Bg.prototype.bg_draw = function() {
+        this.move();
+        ctx.drawImage(imgs[0], this.x, this.y - cvh)
+        ctx.drawImage(imgs[0], this.x, this.y);
+    }
+    Bg.prototype.move = function() {
+        this.y += 3;
+        if (this.y >= cvh) {
+            this.y = 0;
+        }
+    };
+    // 我方飞机
+    function Myplain() {
+        this.img = imgs[6];
+        this.w = this.img.width / 5;
+        this.h = this.img.height;
+        this.x = cvw / 2 - this.w / 2;
+        this.y = cvh / 2 - this.h / 2;
+        this.index = 1;
+        // 方向控制
+        this.movePath = ['null', 'null', 'null', 'null'];
+        // 子弹类型
+        this.type = 'one'
+    }
+    Myplain.prototype.my_draw = function() {
+        this.onkeymove();
+        ctx.beginPath();
+        ctx.drawImage(this.img, this.w * this.index, 0, this.w, this.h, this.x, this.y, this.w, this.h)
+    }
+    // ｍｙplain移动
+    Myplain.prototype.onkeymove = function() {
+        if (this.movePath[0] == 'left') {
+            this.x = this.x <= 0 ? 0 : this.x -= 4;
+        }
+        if (this.movePath[1] == 'top') {
+            this.y = this.y <= 0 ? 0 : this.y -= 4;
+        }
+        if (this.movePath[2] == 'right') {
+            this.x = this.x >= cvw - this.w ? cvw - this.w : this.x += 4;
+        }
+        if (this.movePath[3] == 'bottom') {
+            this.y = this.y >= cvh - this.h ? cvh - this.h : this.y += 4;
+        }
+    };
+
+    // 敌机
+    function Enemy(img, w, n) {
+        this.img = img;
+        this.w = this.img.width / w;
+        this.h = this.img.height;
+        this.index = 0;
+        this.x = rn(0, cvw - this.w);
+        this.y = 0 - this.h;
+        this.speed = rn(1, 3)
+        this.wron = n;
+    }
+    Enemy.prototype.draw = function() {
+        ctx.beginPath();
+        ctx.drawImage(this.img, this.index * this.w, 0, this.w, this.h, this.x, this.y, this.w, this.h)
+    }
+    Enemy.prototype.move = function() {
+        this.y += this.speed;
+
+    };
+    // 创建敌方飞机
+    function enemy_create() {
+        if (rn(0, 100) > 80) {
+            createNum++;
+        }
+        if (createNum >= 10) {
+            createNum = 0;
+            var type = rn(0, 100);
+            if (type <= 70) { //小飞机
+                var enemy = new Enemy(imgs[3], 5, 4)
+            } else if (type > 70 && type < 80) {
+                var enemy = new Enemy(imgs[4], 10, 20);
+            } else {
+                var enemy = new Enemy(imgs[5], 6, 13);
+            }
+            foe.push(enemy);
+        }
+    }
+    var bo = null //爆炸
+    //绘制敌机
+    function foe_draw() {
+        enemy_create();
+        for (var i = 0; i < foe.length; i++) {
+            var enemy = foe[i];
+            if (enemy.y > cvh) {
+                foe.splice(i, 1);
+                i--;
+                continue;
+            }
+            if (main_crash(my, enemy)) {
+                var t = my.y;
+                var b = enemy.y;
+                my.y = t;
+                enemy.y = b;
+                my.index++;
+                enemy.index++;
+                // 机毁人亡
+                setTimeout(function() {
+                    clearInterval(mainTimer);
+                    end();
+                }, 40)
+            }
+            // 移动
+            enemy.move();
+            // 绘制
+            enemy.draw();
+        }
+
+    }
+    // 子弹
+    function Bullet(x, y) {
+        this.img = imgs[2];
+        this.w = this.img.width;
+        this.h = this.img.height;
+        this.x = x;
+        this.y = y;
+    }
+    Bullet.prototype.moves = function() {
+        this.y -= speed;
+    }
+    Bullet.prototype.draw = function() {
+        ctx.beginPath();
+        ctx.drawImage(this.img, 0, 0, this.w, this.h, this.x, this.y, this.w, this.h);
+
+    }
+    var buNum = 0;
+
+    function bullet_draw() {
+        buNum++;
+        if (buNum % 10 == 0) {
+            if (my.type == 'one') {
+                bullet = new Bullet(my.x + my.w / 2 - 3, my.y - 20);
+                bullets.push(bullet);
+            } else {
+                bullet = new Bullet(my.x, my.y - 20);
+                bullets.push(bullet);
+                bullet = new Bullet(my.x + my.w / 4 * 3, my.y - 20);
+                bullets.push(bullet);
+            }
+
+        }
+        for (var i = 0; i < bullets.length; i++) {
+            var bull = bullets[i]
+            if (bull.y < -bull.h) {
+                bullets.splice(i, 1);
+                i--;
+                continue;
+            }
+            for (var j = 0; j < foe.length; j++) {
+                var enemy = foe[j];
+                if (main_crash(bull, enemy)) { //打中飞机后
+                    enemy.wron--;
+                    enemy.index++;
+                    if (enemy.wron <= 0) {
+                        score++; //分数变化
+                        loca(function(name) {
+                            // 最高分才加如
+                            if (name.score < score) {
+                                name.score = score;
+                            }
+                        }, false); //添加分数
+                        foe.splice(j, 1);
+                        j--;
+                        continue;
+                    }
+                    bullets.splice(i, 1);
+                    i--;
+                    continue;
+                }
+            }
+            bull.moves();
+            bull.draw();
+        }
+        if (buNum > 1000) {
+            buNum = 0;
+        }
+
+    }
+    // 物资
+    function Prop(index) {
+        this.img = imgs[7];
+        this.w = this.img.width / 3;
+        this.h = this.img.height;
+        this.x = rn(0, cvw - this.w);
+        this.y = -this.h;
+        this.speed = rn(2, 4)
+        this.index = index;
+    }
+    Prop.prototype.move = function() {
+        this.y += this.speed;
+    }
+
+    Prop.prototype.draw = function() {
+        ctx.beginPath();
+        ctx.drawImage(this.img, this.w * this.index, 0, this.w, this.h, this.x, this.y, this.w, this.h)
+    };
+    var prop = 0;
+
+    function prop_create() {
+        if (rn(0, 100) > 90) {
+            prop++;
+        }
+        if (prop == 20) {
+            prop = 0;
+            var num = rn(0, 100);
+            if (num < 70) {
+                var bomb = new Prop(0); //炸弹
+            } else if (num > 70 && num < 80) {
+                var bomb = new Prop(1); //子弹
+            } else {
+                var bomb = new Prop(2); //头
+            }
+            props.push(bomb);
+        }
+
+    }
+
+    function source_draw(score) {
+        // 绘制得分
+        ctx.beginPath();
+        ctx.font = '30px 宋体';
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'top';
+        ctx.fillText(score, cvw, 0);
+    }
+
+    function prop_draw() {
+        prop_create();
+
+        for (var i = 0; i < props.length; i++) {
+            var prop = props[i];
+            if (prop.y > cvh) {
+                props.splice(i, 1);
+                i--;
+                continue;
+            }
+            if (main_crash(my, prop)) {
+                // console.log(prop)
+                if (prop.index == 1) {
+                    my.type = 'two'
+                }
+                if (prop.index == 2) {
+                    speed++;
+                }
+                if (prop.index == 0) {
+                    var bom = new Bomb();
+                    if (bombs.length < 3) {
+                        bombs.push(bom);
+                    }
+                    t = true;
+                }
+                props.splice(i, 1);
+                i--;
+                continue;
+            }
+            prop.move();
+            prop.draw();
+        }
+    }
+    // 炸弹
+    function Bomb() {
+        this.img = imgs[1];
+        this.w = this.img.width;
+        this.h = this.img.height;
+        this.x = 0;
+        this.y = 0;
+        // 掉落速度
+        this.speed = rn(1, 4);
+    }
+    Bomb.prototype.draw = function(i) {
+        ctx.beginPath();
+        ctx.drawImage(this.img, this.x + this.w * i, this.y, this.w, this.h, )
+    }
+    // 炸弹爆炸
+    function bobo() {
+        for (var i = 0; i < bombs.length; i++) {
+            for (var j = 0; j < foe.length; j++) {
+                foe[j].index++;
+                setTimeout(function() {
+                    foe.splice(j, 1);
+                    j--;
+                }, 300)
+
+            }
+            bombs.splice(bombs.length - 1, 1);
+        }
+    }
+
+    function bomb_draw() {
+        for (var i = 0; i < bombs.length; i++) {
+            var bomb = bombs[i];
+            bomb.draw(i);
+        }
+    }
+
+    // 碰撞监测函数
+    function main_crash(my, foe) {
+        var l1 = my.x,
+            r1 = l1 + my.w,
+            t1 = my.y,
+            b1 = t1 + my.h;
+        var l2 = foe.x,
+            r2 = l2 + foe.w,
+            t2 = foe.y,
+            b2 = t2 + foe.h;
+
+        if (l1 > r2 || r1 < l2 || t1 > b2 || b1 < t2) {
+            return false;
+        }
+        return true;
+    }
+
+    function rn(x, y) {
+        return Math.round(Math.random() * (y - x) + x);
+    }
+    var cloud = cvh;
+    var num = false;
+    var clouds = true;
+    var ins = false;
+
+    function locasstion_draw(callback) {
+        if (ins) {
+            callback();
+        }
+        cloud = cloud <= 0 ? 0 : cloud -= 6
+        if (clouds) {
+            // 绘制遮罩
+            ctx.beginPath();
+            ctx.fillStyle = 'rgba(44, 61, 71, 0.7)';
+            ctx.fillRect(0, cloud, cvw, cvh);
+        }
+        if (cloud == 0) {
+            if (!num) {
+                createElement();
+                $('.signin').on('click', function() {
+                    var user = $('input:eq(0)').val();
+                    var pass = $('input:eq(1)').val();
+                    if (localStorage.getItem('users')) {
+                        var down = JSON.parse(localStorage.getItem('users'));
+                        for (var i = 0; i < down.length; i++) {
+                            if (down[i].user == user && down[i].pass == pass) {
+                                // alert('登录成功');
+                                clouds = false;
+                                $('div').remove();
+                                ins = true;
+                                sessionStorage.setItem('user', JSON.stringify(down[i]));
+                            }
+                        }
+
+                    } else {
+                        alert('请注册')
+                    }
+                })
+                $('.signout').on('click', function() {
+                    var user = $('input:eq(0)').val();
+                    var pass = $('input:eq(1)').val();
+                    var u = {
+                        user: user,
+                        pass: pass,
+                        score: 0
+                    }
+                    if (user == '' || pass == '') {
+                        alert('内容不能为空')
+                        return;
+                    }
+                    if (localStorage.getItem('users')) {
+                        var down = JSON.parse(localStorage.getItem('users'));
+                        for (var i = 0; i < down.length; i++) {
+                            if (down[i].user == user) {
+                                alert('请不要重复注册')
+                                return;
+                            }
+                        }
+                        down.push(u)
+                        localStorage.setItem('users', JSON.stringify(down))
+                    } else {
+                        var ns = [u]
+                        localStorage.setItem('users', JSON.stringify(ns))
+                    }
+
+                })
+                num = true;
+            }
+        }
+
+    }
+
+    // 创建登录界面
+    function createElement() {
+        $('<div><span>用户名</span><input type="text"></div>　').appendTo('body');
+        $('<div><span>密&emsp;码</span><input type="text"></div>').appendTo('body');
+        $('<div class="signin">登录</div><div class="signout">注册</div>').appendTo('body');
+    }
+
+    function loca(callback, ft) {
+        // /数据存取 当前用户
+        var loca = JSON.parse(localStorage.getItem('users'));
+        var sess = JSON.parse(sessionStorage.getItem('user'));
+        for (var i = 0; i < loca.length; i++) {
+            if (loca[i].user == sess.user && loca[i].pass == sess.pass && !ft) {
+                var name = loca[i];
+                callback(name);
+                sess = name;
+            }
+            if (ft) {
+                var alls = loca[i];
+                callback(alls)
+            }
+
+        }
+        localStorage.setItem('users', JSON.stringify(loca));
+        sessionStorage.setItem('user', JSON.stringify(sess))
+    }
+    // 排行榜绘制
+    function end() {
+        var ends = [];
+        loca(function(alls) {
+            ends.push(alls);
+            console.log(ends)
+            // 排序
+            for (var i = 0; i < ends.length; i++) {
+                var one = ends[i];
+                for (var x = 0; x < ends.length - i - 1; x++) {
+                    if (ends[i] < ends[x + 1]) {
+                        var temp = ends[x];
+                        ends[x] = ends[x + 1]
+                        ends[x + 1] = temp;
+                    }
+                }
+            }
+            for (var j = 0; j < ends.length; j++) {
+                draw_ends(ends, j)
+                console.log(ends)
+            }
+        }, true)
+    }
+
+    function draw_ends(ends, j) {
+        ctx.beginPath();
+        ctx.fillStyle = 'white'
+        ctx.fillRect(0, cvh / 6 + (j * 40), cvw, 40);
+        ctx.fill();
+        // ctx.beginPath();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = rncolor()
+        ctx.font = '30px 宋体';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'top';
+        ctx.fillText(ends[j].user, cvw / 7, cvh / 6 + (j * 40));
+        ctx.fillText(ends[j].score, cvw / 2, cvh / 6 + (j * 40));
+    }
+
+    function rncolor() {
+        var r = rn(0, 255),
+            g = rn(0, 255),
+            b = rn(0, 255);
+        return 'rgb(' + r + ',' + g + ',' + b + ')';
+    }
+    // 键盘事件
+    document.onkeydown = function(e) {
+        var dir = e.keyCode;
+        switch (dir) {
+            case 37:
+                my.movePath[0] = 'left';
+                break;
+            case 38:
+                my.movePath[1] = 'top';
+                break;
+            case 39:
+                my.movePath[2] = 'right';
+                break;
+            case 40:
+                my.movePath[3] = 'bottom';
+                break;
+            case 32:
+                bobo();
+            default:
+        }
+
+        my.index = 0;
+    }
+    document.onkeyup = function(e) {
+        var dir = e.keyCode;
+        switch (dir) {
+            case 37:
+                my.movePath[0] = 'null';
+                break;
+            case 38:
+                my.movePath[1] = 'null';
+                break;
+            case 39:
+                my.movePath[2] = 'null';
+                break;
+            case 40:
+                my.movePath[3] = 'null'
+            default:
+        }
+        if (my) {
+            my.index = 1;
+        }
+
+    }
+</script>
+
+</html>

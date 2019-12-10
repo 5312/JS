@@ -81,14 +81,22 @@
 <script>
     $(function() {
         var cv = document.querySelector('#cv');
+        var cvw = cv.width,
+            cvh = cv.height;
         // 获取画笔
         var ctx = cv.getContext('2d');
-        ctx.save();
-        ctx.translate(150, 150)
-        ctx.rotate(Math.PI / 3);
-        ctx.fillRect(0, 0, 100, 100)
-        ctx.restore();
-
+        ctx.beginPath();
+        ctx.fillStyle = 'rgb(107, 237, 58)'
+        ctx.fillRect(0, cvh / 4, cvw, 40);
+        ctx.fill();
+        // ctx.beginPath();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = 'rgb(115, 43, 176)'
+        ctx.font = '30px 宋体';
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'top';
+        ctx.fillText('12', cvw / 2, cvh / 4);
+        ctx.fillText('12', cvw / 4, cvh / 4);
     })
 </script>
 
