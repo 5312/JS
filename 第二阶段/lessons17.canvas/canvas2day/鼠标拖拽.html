@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #cv {
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="cv" width="500" height="500"></canvas>
+</body>
+<script>
+    var cv = document.querySelector('#cv');
+    var ctx = cv.getContext('2d');
+
+    // ctx.beginPath();
+    // ctx.fillStyle = 'red';
+    // ctx.fillRect(0, 0, 100, 100)
+
+    var maxW = cv.width - 20, maxH = cv.height - 20;
+    // var a = 0, b = 0;
+    // cv.onmousedown = function (e) {
+    //     var e = e || window.event;
+    //     var mx = e.clientX - this.offsetLeft - a;
+    //     var my = e.clientY - this.offsetTop - b;
+    //     if (mx >= 0 && mx <= 100 && my >= 0 && my <= 100) {
+    //         console.log(mx, my)
+    //         cv.onmousemove = function (e) {
+    //             var e = e || window.event;
+    //             a = e.clientX - this.offsetLeft - mx;
+    //             b = e.clientY - this.offsetTop - my;
+    //             if (a <= 0) { a = 0 }
+    //             if (a >= maxW) { a = maxW }
+    //             if (b <= 0) { b = 0 }
+    //             if (b >= maxH) { b = maxH }
+    //             cv.width = cv.width;
+    //             ctx.beginPath();
+    //             ctx.fillStyle = 'red';
+    //             ctx.fillRect(a, b, 100, 100);
+    //         }
+    //     }
+    // }
+    // document.onmouseup = function () {
+    //     cv.onmousemove = null;
+    // }
+
+    // document.onkeydown = function (e) {
+    //     // cv.width = cv.width;
+    //     var e = e || window.event;
+    //     if (a <= 1) { a = 1 }
+    //     if (a >= maxW) { a = maxW -1}
+    //     if (b <= 0) { b = 1}
+    //     if (b >= maxH) (b = maxH-1)
+    //     switch (e.keyCode) {
+    //         case 37:
+    //             console.log(1);
+    //             cv.width = cv.width;
+    //             a -= 5;
+    //             ctx.beginPath();
+    //             ctx.fillStyle = 'red';
+    //             ctx.fillRect(a, b, 100, 100);
+    //             // ctx.stroke();
+    //             break;
+    //         case 38:
+    //             cv.width = cv.width;
+    //             b -= 5;
+    //             ctx.beginPath();
+    //             ctx.fillStyle = 'red';
+    //             ctx.fillRect(a, b, 100, 100);
+    //             // ctx.stroke();
+    //             break;
+    //         case 39:
+    //             cv.width = cv.width;
+    //             a += 5;
+    //             ctx.beginPath();
+    //             ctx.fillStyle = 'red';
+    //             ctx.fillRect(a, b, 100, 100);
+    //             break;
+    //         case 40:
+    //             cv.width = cv.width;
+    //             b += 5;
+    //             ctx.beginPath();
+    //             ctx.fillStyle = 'red';
+    //             ctx.fillRect(a, b, 100, 100);
+    //     }
+    // }
+
+    // function Rect(x, y, w, h, c) {
+    //     this.x = x;
+    //     this.y = y;
+    //     this.w = w;
+    //     this.h = h;
+    //     this.c = c;
+    // }
+    // Rect.prototype.draw = function (style) {
+    //     ctx.beginPath();
+    //     ctx.rect(this.x, this.y, this.w, this.h);
+    //     if (style == 'fill') {
+    //         ctx.fillStyle = this.c;
+    //     } else {
+    //         ctx.strokeStyle = this.c;
+    //     }
+    //     ctx[style]();
+    // }
+
+    // var rect = new Rect(200, 50, 100, 100, 'blue');
+    // rect.draw('fill');
+
+    // cv.onmousedown = function (e) {
+    //     var e = e || window.event;
+    //     // 鼠标相对于canvas坐标
+    //     var dx = e.clientX - this.offsetLeft;
+    //     var dy = e.clientY - this.offsetTop;
+    //     if (dx >= rect.x && dx <= rect.x + 100 && dy >= rect.y && dy <= rect.y + 100) {
+    //         dx -= rect.x;
+    //         dy -= rect.y;
+    //         cv.onmousemove = function () {
+    //             var e = e || window.event;
+    //             var x = e.clientX - dx - cv.offsetLeft;
+    //             var y = e.clientY - dy - cv.offsetTop;
+    //             x <= 0 ? x = 0 : x;
+    //             x >= maxW ? x = maxW : x;
+    //             y <= 0 ? y = 0 : y;
+    //             y >= maxH ? y = maxH : y;
+    //             rect.x = x;
+    //             rect.y = y;
+    //             cv.width = cv.width;
+    //             rect.draw('fill');
+    //         }
+    //         cv.onmouseup = function () {
+    //             cv.onmousemove = null;
+    //         }
+    //     }
+    // }
+
+    function S(x, y, w, h, c) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.c = c;
+        this.l = false;
+        this.r = false;
+        this.t = false;
+        this.b = false;
+        this.s = 10;
+    }
+    S.prototype.draw = function () {
+        this.move();
+        // cv.width = cv.width;
+        ctx.beginPath();
+        ctx.fillStyle = this.c;
+        ctx.fillRect(this.x, this.y, this.w, this.h);
+    }
+    S.prototype.move = function () {
+        if (this.l) { s.x -= this.s }
+        if (this.r) { s.x += this.s }
+        if (this.t) { s.y -= this.s }
+        if (this.b) { s.y += this.s };
+    }
+    var s = new S(50, 50, 20, 20, 'green');
+    s.draw();
+    document.onkeydown = function (e) {
+        var e = e || window.event;
+        if (e.keyCode == 37) {
+            s.l = true;
+        }
+        if (e.keyCode == 38) {
+            s.t = true;
+        }
+        if (e.keyCode == 39) {
+            s.r = true;
+        }
+        if (e.keyCode == 40) {
+            s.b = true;
+        }
+    }
+    document.onkeyup = function (e) {
+        var e = e || window.event;
+        if (e.keyCode == 37) {
+            s.l = false;
+        }
+        if (e.keyCode == 38) {
+            s.t = false;
+        }
+        if (e.keyCode == 39) {
+            s.r = false;
+        }
+        if (e.keyCode == 40) {
+            s.b = false;
+        }
+    }
+    setInterval(function(){
+        s.x <= 0 ? s.x = 0 : s.x;
+        s.x >= maxW ? s.x = maxW : s.x;
+        s.y <= 0 ? s.y = 0 : s.y;
+        s.y >= maxH ? s.y = maxH : s.y;
+        s.draw();
+    },30)
+</script>
+
+</html>

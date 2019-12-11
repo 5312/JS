@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #cv {
+            box-shadow: 0 0 10px gray;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="cv" width="750" height="450"></canvas>
+</body>
+<script>
+    var cv = document.querySelector('#cv');
+    var ctx = cv.getContext('2d');
+    var timer = null;
+
+    function Rect(x, y, w, h, c) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.c = c;
+    }
+    Rect.prototype.draw = function() {
+        // for()
+        ctx.beginPath();
+        ctx.fillStyle = this.c;
+        ctx.fillRect(this.x, this.y, this.w, this.h);
+    }
+
+    function Snake(x, y, w, h) {
+        Rect.call(this, x, y, w, h);
+        this.dir = 39; //方向
+        this.speed = 30;
+        this.die = false; //碰撞变为true
+    }
+    // 继承
+    Snake.prototype = new Rect();
+    Snake.prototype.constructor = Snake;
+
+    Snake.prototype.dr = function() {
+
+        for (var i = arr.length - 1; i >= 0; i--) {
+            ctx.beginPath();
+            ctx.fillStyle = this.c;
+            // arr[arr.length-1].c= 'red';
+            ctx.fillRect(arr[i][0], arr[i][1], this.w, this.h);
+        }
+    }
+    // 蛇移动
+    Snake.prototype.move = function() {
+        switch (this.dir) {
+            case 37:
+                this.x -= this.speed;
+                break;
+            case 38:
+                this.y -= this.speed;
+                break;
+            case 39:
+                this.x += this.speed;
+                break;
+            case 40:
+                this.y += this.speed;
+        }
+    }
+    // 碰撞检测
+    Snake.prototype.crash = function(rect) {
+        // 获取snake的四周，rect的四周
+        // 一定不碰撞条件
+        if (this.x > rect.x + rect.w || this.y > rect.y + rect.h || this.x + this.w < rect.x || this.y + this.h < rect.y) {
+            return false;
+        }
+        return true;
+    }
+    var snake = new Snake(0, 0, 30, 30, c);
+    snake.draw();
+    // 障碍物
+    var rects = [];
+    for (var i = 0; i < 5; i++) {
+        var w = 30,
+            h = 30,
+            x = rn(0, (cv.width - w) / 30),
+            y = rn(0, (cv.height - h) / 30),
+
+            c = 'rgb(' + rn(0, 255) + ',' + rn(0, 255) + ',' + rn(0, 255) + ')';
+        var rect = new Rect(x * 30, y * 30, w, h, c);
+        // console.log(x)
+        // rect.draw();
+        rects.push(rect);
+    }
+
+    function Line(x, y, w, h, c) {
+        Rect.call(this, x, y, w, h, c);
+    }
+    Line.prototype = new Rect();
+    Line.prototype.constructor = Line;
+
+    Line.prototype.draw = function() {
+        ctx.beginPath();
+        ctx.fillStyle = '#000';
+        ctx.fillRect(this.x, this.y, this.w, this.h);
+        // ctx.stroke();
+    }
+    drawline();
+
+    function drawline() {
+        for (var i = 1; i < 15; i++) {
+            new Line(0, i * 30, 750, 1).draw();
+        }
+        for (var i = 1; i < 25; i++) {
+            new Line(i * 30, 0, 1, 450).draw();
+        }
+    }
+
+    function rn(x, y) {
+        return Math.round(Math.random() * (y - x) + x);
+    }
+
+    document.onkeydown = function(e) {
+        var keyCode = e.keyCode;
+        if (keyCode > 36 && keyCode < 41) {
+            snake.dir = keyCode;
+        }
+    }
+    var arr = [];
+    var arr1 = [snake.x, snake.y, snake.c];
+    arr.push(arr1);
+    var t = 3;
+    timer = setInterval(function() {
+        cv.width = cv.width;
+        // ctx.clearRect()
+        snake.c = '#000';
+        snake.move();
+        drawline();
+        arr[arr.length - 1][2] = 'red';
+        snake.dr();
+        arr1 = [snake.x, snake.y]
+        arr.push(arr1);
+        if (arr.length > t) {
+            arr.shift()
+        }
+        for (var i = 0; i < rects.length; i++) {
+            // rects[i].draw();
+            if (snake.crash(rects[i])) {
+                snake.die = true;
+                t++;
+                console.log(rects.indexOf(rects[i]))
+                rects = rects.splice(rects.indexOf(rects[i]), 1);
+                // rects[i].c = '#000';
+            }
+        }
+
+        if (snake.die) {
+            // clearInterval(timer);
+            // timer = null;
+            // snake.w+=30;
+            snake.die = false;
+        }
+    }, 300)
+</script>
+
+</html>

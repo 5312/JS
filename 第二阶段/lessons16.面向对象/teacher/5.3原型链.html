@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 原型链：在继承过程中，子类，父类，父类的父类等等之间的原型就会产生关联
+    // 形成链接结构称之为原型链
+
+    function Animal() {};
+
+    function Dog() {};
+
+    function Teed() {}
+
+    // 狗继承 动物
+    Dog.prototype = new Animal();
+    Dog.prototype.constructor = Dog;
+
+    // 泰迪继承狗
+    Teed.prototype = new Dog();
+    Teed.prototype.constructor = Teed;
+
+    var teed = new Teed();
+    // 所有对象都存在一个属性  __proto__  指向创建当前对象的构造函数的原型  两个下划线
+
+    var res1 = teed.__proto__ === Teed.prototype;
+    var res2 = Teed.prototype.__proto__ === Dog.prototype;
+    var res3 = Dog.prototype.__proto__ === Animal.prototype;
+    var res4 = Animal.prototype.__proto__ === Object.prototype;
+    var res5 = Object.prototype.__proto__;
+    console.log(res1, res2, res3, res4, res5)
+    var res6 = teed.__proto__.__proto__.__proto__.__proto__ === Object.prototype;
+    console.log(res6)
+</script>
+
+</html>

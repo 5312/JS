@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="animate.css">
+     <!-- <link href="/static/css/demo.css" rel="stylesheet" media="all" /> -->
+    <style>
+        body{
+            margin: 0;
+            padding:0;
+            text-align: center;
+        }
+        input{
+            width: 600px;
+            height: 100px;
+            background: pink;
+            font-size: 61px;
+            animation: pulse .5s ease infinite;
+            border-radius: 5px;
+            border: none;
+            margin:10px auto;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <p>活动开始</p>
+    <input type="text" id="div">
+    <p>现在时间</p>
+    <input type="text" id="div1" disabled="disabled">
+    <p>倒计时</p>
+    <input type="text" id="div2">
+    <!-- <canvas id="c"></canvas> -->
+</body>
+<script>
+var di = document.getElementById('div')
+var di1 = document.getElementById('div1')
+var di2 = document.getElementById('div2')
+
+function aniTime1() {
+    //从12月12s号开始倒计时
+    var date = new Date(2019, 11, 12, 0, 0, 0, 0, );
+    // console.log(newDate);
+
+    // var dateTime = newDate - date;
+    // console.log(dateTime)
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    month += 1;
+    month = pan(month)
+    var day = pan(date.getDate());
+    var hours = pan(date.getHours());
+    var minutes = pan(date.getMinutes());
+    var seconds = pan(date.getSeconds());
+    var t = year + '/' + month + '/' + day + '/ ' + hours + ':' + minutes + ':' + seconds
+    di.value = t
+    return date;
+}
+aniTime1()
+setInterval(aniTime1, 1000)
+
+
+function aniTime() {
+
+    var date = new Date;
+    // console.log(dateTime)
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    month += 1;
+    month = pan(month)
+    var day = pan(date.getDate());
+    var hours = pan(date.getHours());
+    var minutes = pan(date.getMinutes());
+    var seconds = pan(date.getSeconds());
+    var t = year + '/' + month + '/' + day + '/ ' + hours + ':' + minutes + ':' + seconds
+    di1.value = t;
+    return date;
+}
+aniTime();
+setInterval(aniTime, 1000)
+//各位数加0 函数
+function pan(n) {
+    return n > 9 ? n : '0' + n;
+}
+//倒计时
+function aniTime3(year, month, day, hours, minutes, seconds) {
+    //设置时间
+    // var newDate = new Date(year,month - 1,day,hours,minutes,seconds);
+    var date = new Date;
+    // var dateTime = newDate - date;//时间差毫秒数
+    var dateTime = aniTime1() - date; //时间差毫秒数
+    var day = parseInt(dateTime / 1000 / 60 / 60 / 24);
+
+    var hours = pan(parseInt(dateTime / (1000 * 60 * 60) % 24));
+
+    var min = pan(parseInt(dateTime / (1000 * 60) % 60));
+
+    var sec = pan(parseInt(dateTime / 1000 % 60));
+    var t = day + '天 ' + hours + ':' + min + ':' + sec
+    di2.value = t;
+    // console.log(di.value)
+}
+aniTime3()
+setInterval("aniTime3(2019,10,8,0,0,0)", 1000);
+</script>
+
+</html>

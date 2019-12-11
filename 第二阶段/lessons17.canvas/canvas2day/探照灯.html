@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            box-shadow: 0px 2px 27px rgb(53, 47, 55);
+        }
+
+        input {
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="650" height="800"></canvas>
+</body>
+<script>
+    var cv = document.getElementById('canvas')
+    var ctx = cv.getContext('2d');
+    var img = new Image();
+    img.src = './探照灯.jpg'
+    img.onload = function() {
+        ctx.beginPath();
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(0, 0, cv.width, cv.height);
+        ctx.fill();
+        ctx.globalCompositeOperation = 'destination-over'
+        ctx.drawImage(img, 0, 0, 650, 800);
+        cv.onmousemove = function(e) {
+            var e = e || window.event;
+            cv.width = cv.width;
+            ctx.drawImage(img, 0, 0, 650, 800);
+            var x = e.clientX - this.offsetLeft;
+            var y = e.clientY - this.offsetTop;
+            ctx.beginPath();
+            ctx.fillStyle = '#fff';
+            ctx.globalCompositeOperation = 'destination-atop'
+            ctx.arc(x, y, 100, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        cv.onmouseleave = function() {
+            cv.width = cv.width;
+            ctx.beginPath();
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, cv.width, cv.height);
+            ctx.fill();
+            ctx.globalCompositeOperation = 'destination-over'
+            ctx.drawImage(img, 0, 0, 650, 800);
+        }
+    }
+</script>
+
+</html>

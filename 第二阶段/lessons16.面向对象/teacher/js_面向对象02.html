@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+// js虽然也有对象的概念，但并不是一个真正的面向对象语言，因为js中没有类。
+// 类：是对某些事物共同特征和行为抽象的结果。
+// 对象：是对类的具体实现。
+// 抽象：就是对某些事物共同特征和行为提炼的过程。
+// 类和对象的区分：如果唯一就是对象，如果能想到很多符合的内容，那么就是类了。
+
+// js中没有类，通过构造函数来代替类，用于创建具体对象。
+// js中数组就是一类特殊的对象（有序，key值是从0开始递增的正整数）
+
+// js中如何创建对象？
+// 1.字面量创建
+// var obj = {};//创建了一个空的对象
+// 可以通过.语法或者[]语法来对对象进行属性的读写或方法的设置与调用。
+// obj.name = '小王';
+// obj['age'] = 20;
+// obj.sex = '男';
+// obj.tel = '13222222222';
+// obj.say = function(){
+//     alert('hello，大家好，我叫'+this.name+'今年'+this.age+'岁了，性别'+this.sex+'我的电话是'+this.tel+'，没事给我打电话噢');
+// }
+
+// console.log(obj.name);//'小王'
+// console.log(obj.age);//20
+// console.log(obj.say);//function，我们将属性值为函数的属性称为方法。
+// obj.say();
+
+// 2.通过系统提供的Object构造函数创建
+// var obj = new Object();//创建了一个空的对象
+// obj.name = '小李';
+// obj.age = 22;
+// obj.sex = '女';
+// obj.tel = '';
+// obj.say = function(){
+//     alert('hello，大家好，我叫'+this.name+'今年'+this.age+'岁了，性别'+this.sex+'我的电话是'+this.tel+'，没事给我打电话噢');
+// }
+// obj.say();
+
+// 以上两种方式适合创建少量或单个对象
+
+// -------------
+
+// 3.工厂模式创建
+function students(name,age,sex,tel){//学生工厂
+    return {
+        name:name,
+        age:age,
+        sex:sex,
+        tel:tel,
+        say:function(){
+            alert('hello，大家好，我叫'+this.name+'今年'+this.age+'岁了，性别'+this.sex+'我的电话是'+this.tel+'，没事给我打电话噢');
+        }
+    }
+}
+
+// var stu1 = students('小张',20,'女','14412345678');
+// var stu2 = students('小李',21,'男','13523456789');
+// var stu3 = students('小周',22,'男','17712345678');
+// // stu1.say();
+// // stu2.say();
+// // stu3.say();
+// console.log(stu1);
+// console.log(stu2);
+// console.log(stu3);
+
+// 4.通过自定义构造函数创建对象（自定义构造函数就相当于类）
+// 构造函数本质上也是函数，但是通常首字母大写，来和普通函数加以区分
+
+// 声明了一个人的类
+function People(age,sex,height,weight,name){
+    this.eyes = 2;
+    this.age = age;
+    this.sex = sex;
+    this.type = '哺乳类';
+    this.height = height;
+    this.weight = weight;
+    this.name = name;
+    this.eat = function(){
+        console.log('好开心哦，又吃成长快乐了');
+    }
+}
+
+// 通过系统关键字 new 来创建对象
+// var p1 = new People(5,'男',80,30,'李富贵');
+// console.log(p1);
+
+// 基础数据类型赋值：拷贝赋值
+// var a = 2;
+// var b = a;
+// b += 5;
+// console.log(a);//2
+
+// 引用数据类型赋值：引用赋值
+// var a = [1,2,3];
+// var b = a;
+// b.push(4);
+// console.log(a);
+
+// 基础数据类型比较的值是否相等
+// var a = 2;
+// var b = 2;
+// console.log(a == b);//true
+
+// 引用数据类型比较的是内存地址是否相等
+// var a = [1,2,3];
+// var b = [1,2,3];
+// console.log(a == b);//false
+
+</script>
+</html>

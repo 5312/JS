@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>五星红旗</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        canvas {
+            box-shadow: 5px 5px 5px gray;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="500">当前浏览器版本过低</canvas>
+</body>
+<script>
+    var cv = document.getElementById('canvas');
+    var ctx = cv.getContext('2d');
+    // 在画布的正中心绘制一个五角星
+    ctx.beginPath();
+    ctx.fillStyle = 'red'
+    ctx.fillRect(100, 100, 400, 290);
+    ctx.beginPath();
+    draw_start(ctx, 20, 140, 190, 0);
+    draw_start(ctx, 20, 180, 130, 0);
+    draw_start(ctx, 20, 220, 180, 0);
+    draw_start(ctx, 20, 220, 240, 0);
+    draw_start(ctx, 20, 170, 280, 0);
+    // ctx.moveTo(160, 140); //1
+    // ctx.lineTo(140, 190); //2
+    // ctx.lineTo(190, 160); //3
+    // ctx.lineTo(130, 160); //4
+    // ctx.lineTo(180, 190); //5
+    // ctx.fillStyle = 'yellow'
+    // ctx.lineWidth = 2;
+    // ctx.fill();
+    //
+    // ctx.beginPath();
+    // ctx.moveTo(170, 200);
+    // ctx.lineTo(160, 225);
+    // ctx.lineTo(185, 210);
+    // ctx.lineTo(155, 210);
+    // ctx.lineTo(180, 225);
+    // ctx.fillStyle = 'yellow'
+    // ctx.lineWidth = 2;
+    // ctx.fill();
+
+    /*****************************
+     * cxt 为绘图上下文环境
+     * r 为大圆半径
+     * x，y 为相对 canvas 原点的坐标位置
+     * rot 为顺时针旋转角度
+     ****************************/
+    function draw_start(cxt, r, x, y, rot) {
+        cxt.save();
+        cxt.translate(x, y);
+        cxt.rotate(rot / 180 * Math.PI);
+        cxt.scale(r, r);
+        startPath(cxt);
+        ctx.fill();
+        // cxt.stroke();
+        cxt.restore();
+    }
+    //五角星标准路径
+    function startPath(cxt) {
+        cxt.beginPath();
+        for (var i = 0; i < 5; i++) {
+            var x1 = Math.cos((54 + i * 72) / 180 * Math.PI);
+            var y1 = Math.sin((54 + i * 72) / 180 * Math.PI);
+            var x2 = Math.cos((18 + i * 72) / 180 * Math.PI) * 0.6;
+            var y2 = Math.sin((18 + i * 72) / 180 * Math.PI) * 0.6;
+            cxt.lineTo(x2, y2);
+            cxt.lineTo(x1, y1);
+        }
+        ctx.fillStyle = 'yellow';
+        cxt.closePath();
+    }
+</script>
+
+</html>

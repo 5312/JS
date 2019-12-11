@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <textarea id='te' name="name" rows="8" cols="80"></textarea>
+</body>
+<script>
+    function addlog(val) {
+        var text = document.getElementById('te');
+        text.value = text.value + val + "\r\n";
+
+    }
+    // 首字母大写
+
+    String.prototype.Capitalized = function() {
+        return t = this.replace(/\b(\w)|\s(\w)/g, function(m) {
+            return m.toUpperCase();
+        })
+    }
+    var str = 'i am a good body';
+
+    addlog(str.Capitalized())
+
+    // 删除首尾空格
+    String.prototype.Deletrail = function() {
+        return this.replace(/(^\s*)|(\s*$)/g, "");
+    }
+    var strs = '    i am a good body    '
+    addlog(strs.Deletrail())
+
+    // 升序排序
+    String.prototype.Ascend = function() {
+        return this.split(",").sort(sortNum).join(',')
+    }
+
+    function sortNum(a, b) {
+        return a - b
+    }
+    var ascrend = '3,2,5,1,89,99,23'
+    addlog(ascrend.Ascend())
+
+    // 分数类：分子，分母
+    //打印分数
+    function Fraction(numerator, denominator) {
+        //分数类
+        this.n = numerator;
+        this.d = denominator;
+    }
+    Fraction.prototype.yueFen = function() {
+        // 最小数
+        var min = Math.min(this.n, this.d);
+        // 最大公约数
+        for (var i = min; i > 1; i--) {
+            if (this.n % i == 0 && this.d % i == 0) {
+                break;
+            }
+        }
+        this.n /= i;
+        this.d /= i;
+        return this.n + '/' + this.d
+    }
+
+    var yuefen = new Fraction(12, 3);
+    addlog(yuefen.yueFen())
+    // 乘
+    Fraction.prototype.Fan_mul = function(num) {
+        var fenzi = this.n //
+        var fenmu = this.d //
+        var numFenzi = num.n;
+        var numFenmu = num.d;
+        var x = fenzi * numFenmu;
+        var y = fenmu * numFenzi;
+        var t = gcd(x, y);
+        return x / t + '/' + y / t;
+    }
+
+    var mul1 = new Fraction(10, 4);
+    var mul2 = new Fraction(20, 3);
+    console.log(mul1.Fan_mul(mul2))
+
+    function gcd(a, b) {
+        //最大公约数,用于化简
+        if (a < b) {
+            var temp = a;
+            a = b;
+            b = temp;
+        }
+        return (a % b ? gcd(a % b, b) : b);
+    }
+
+    function fra_add(a, b) {
+        //加法
+        if (a.n == 0)
+            return b;
+        else if (b.n == 0)
+            return a;
+        var x = lcm(a.d, b.d);
+        var y = a.n * (x / a.d) + b.n * (x / b.d);
+        var g = gcd(x, y);
+        return new Fraction(y / g, x / g);
+    }
+
+    function fra_mul(a, b) {
+        //乘法
+        var x = a.n * b.n;
+        var y = a.d * b.d;
+        if (x == 0)
+            return new Fraction(0, 1);
+        var g = gcd(x, y);
+        return new Fraction(x / g, y / g);
+    }
+
+    function lcm(a, b) {
+        //最小公倍数
+        if (a < b) {
+            var temp = a;
+            a = b;
+            b = temp;
+        }
+        for (var i = 1; i <= b; i++) {
+            if ((a * i) % b == 0) {
+                return a * i;
+            }
+        }
+    }
+</script>
+
+
+</html>

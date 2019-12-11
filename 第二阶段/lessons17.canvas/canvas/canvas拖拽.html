@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        body {
+        text-align: center;
+    }
+
+    canvas {
+        box-shadow: 5px 5px 5px gray;
+        border: 1px solid #999;
+        cursor: url('./橡皮.cur'), auto;
+    }
+
+    span,
+    select {
+        vertical-align: top;
+        margin-left: 10px;
+    }
+
+    .box {
+        /* width: 144px; */
+        display: inline-block;
+        margin-left: 50px;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+</body>
+<script type="text/javascript">
+    var cv = document.getElementById('canvas')
+    var ctx = cv.getContext('2d')
+
+    function Rect(x, y, w, h, c) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.c = c;
+    }
+    Rect.prototype.draw = function(style) {
+        ctx.beginPath();
+        ctx.rect(this.x, this.y, this.w, this.y)
+        if (style == 'fill') {
+            ctx.fillStyle = this.c
+        } else {
+            ctx.strokeStyle = this.c
+        }
+        ctx[style]();
+    };
+    var rect = new Rect(200, 50, 100, 100, 'blue');
+    rect.draw('fill');
+    cv.onmousedown = function(e) {
+        var e = e || window.event;
+        var dx = e.clientX - this.offsetLeft;
+        var dy = e.clientY - this.offsetTop;
+        if (dx >= rect.x && dx <= rect.x + rect.w && dy >= rect.y && dy <= rect.y + rect.h) {
+            // 获取鼠标相对于rect的坐标
+            dx -= rect.x;
+            dy -= rect.y;
+            cv.onmousemove = function(e) {
+                var e = e || window.event;
+                rect.x = e.clientX - dx - this.offsetLeft;
+                rect.y = e.clientY - dy - this.offsetTop;
+                cv.width = cv.width;
+                rect.draw('fill');
+            }
+
+        }
+    }
+    cv.onmouseup = function() {
+        cv.onmousemove = null;
+    }
+</script>
+
+</html>

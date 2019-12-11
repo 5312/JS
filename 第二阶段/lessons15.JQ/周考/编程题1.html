@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input{
+      display:block;
+    }
+    input[type='button']{
+      display:inline-block;
+    }
+  </style>
+</head>
+
+<body>
+    <!-- 19:48 -->
+    FirstsNum:
+    <input type="number">
+    SecondNum:
+    <input type="number">
+    <input type="button" value="加">
+    <input type="button" value="减">
+    <input type="button" value="乘">
+    <input type="button" value="除">
+    <input type="button" value="取余">
+</body>
+<script src="/home/ivan/Documents/JS/第二阶段/jquery-3.4.1.js"></script>
+<script>
+    $(function() {
+        // 获取所有的按钮
+        $('input:button').click(function() {
+            // 获取输入的数字
+            var first = $('input')[0].value * 1;
+            var second = $('input')[1].value * 1;
+            // switch 语句判断 点击的是哪个按钮
+            switch (this.value) {
+                // 点击加
+                case '加':
+                    alert(first + second);
+                    break;
+                    // 点击减
+                case '减':
+                    alert(first - second);
+                    break;
+                    // 点击乘
+                case '乘':
+                    alert(first * second);
+                    break;
+                    // 点击除
+                case '除':
+                    // 判断除数是否为零
+                    if (second == 0) {
+                        alert('除数不能为零')
+                        break;
+                    }
+                    alert(first / second);
+                    break;
+                    // 取余
+                case '取余':
+                    // 判断除数是否为零
+                    if (second == 0) {
+                        alert('除数不能为零')
+                        break;
+                    }
+                    alert(first % second);
+                    break;
+
+            }
+        })
+    })
+</script>
+
+</html>

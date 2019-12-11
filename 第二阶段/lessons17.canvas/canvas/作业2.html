@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        canvas {
+            box-shadow: 5px 5px 5px gray;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="909" height="800"></canvas>
+</body>
+<script>
+    var cv = document.getElementById('canvas');
+    var ctx = cv.getContext('2d');
+    // 作业父类     // 父类构造函数
+    function Beget() {
+        this.tf = true;
+        this.angle = 0;
+        this.count = 360;
+    }
+
+    // 画出背景区域
+    Beget.prototype.canvas = function() {
+        // 吃豆人区域
+        ctx.beginPath();
+        ctx.fillRect(0, 0, 301, 301);
+        ctx.stroke();
+        //太极区域
+        ctx.beginPath();
+        ctx.rect(302, 0, 301, 301);
+        ctx.stroke();
+        //时钟
+        ctx.beginPath();
+        ctx.rect(603, 0, 301, 301);
+        ctx.stroke();
+        // 霓虹
+        ctx.beginPath();
+        ctx.rect(0, 310, 905, 490);
+        ctx.stroke();
+    };
+    // 画圆的父类
+    Beget.prototype._arc = function(tf) { //创建
+        var deg = Math.PI / 180;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y)
+        ctx.arc(this.x, this.y, this.r, this.start * deg, this.end * deg)
+        ctx.closePath();
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        if (tf) {
+            ctx.stroke();
+        }
+        ctx.beginPath();
+        ctx.moveTo(120, 50);
+        ctx.arc(120, 50, 20, 0 * deg, 180 * deg);
+        ctx.fillStyle = 'rgb(195, 72, 39)';
+        ctx.fill();
+    };
+    // 吃豆人
+    function Pacman(x, y, r, s, e, c) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.start = s;
+        this.end = e;
+        this.color = c;
+        this.t = 0;
+    }
+    // 吃豆人继承 作业
+    Pacman.prototype = new Beget();
+    Pacman.prototype.constructor = Pacman;
+    //
+    Beget.prototype.ont = function(x, y, r, s, e, c) { //传参数
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.start = s;
+        this.end = e;
+        this.color = c;
+    };
+    Pacman.prototype.eatInit = function() { //开吃
+        // 吃豆人
+        this.ont(110, 110, 100, 0, 360, 'yellow'); //闭嘴传参
+        var _this = this;
+        setInterval(function() {
+
+            ctx.clearRect(0, 0, 300, 300);
+            if (_this.tf) {
+                _this.t = ++_this.t;
+                _this.start = _this.t;
+                _this.end = -_this.t;
+                _this._arc(true);
+                if (_this.t == 45) {
+                    _this.tf = false;
+                }
+            }
+            if (!_this.tf) {
+                _this._arc(true);
+                _this.t = --_this.t;
+                _this.start = _this.t;
+                _this.end = -_this.t;
+
+                if (_this.t == 0) {
+                    _this.tf = true;
+                }
+            }
+
+        }, 50);
+
+    };
+
+    function Tiji() {
+        // 太极
+        this.x;
+        this.y;
+        this.width = 200;
+        this.height = 200;
+
+    }
+    // 太极继承作业
+    Tiji.prototype = new Beget();
+    Tiji.prototype.constructor = Tiji;
+    // 太极转
+    Tiji.prototype.rotate = function(x, y, radius, angle, wise) {
+        angle = angle || 0;
+        wise = wise ? 1 : -1;
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(angle);
+        ctx.fillStyle = 'black';
+        ctx.beginPath();
+        ctx.arc(0, 0, radius, 0, Math.PI, true); //黑色大半圆 true顺时针
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.fillStyle = 'white';
+        ctx.arc(0, 0, radius, 0, Math.PI, false); //白色大半圆 逆时针
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = 'white';
+        ctx.beginPath();
+        ctx.arc(wise * -0.5 * radius, 0, radius / 2, 0, Math.PI * 2, true); //红色中号圆
+        ctx.fill();
+        ctx.beginPath();
+        ctx.fillStyle = 'black';
+        ctx.arc(wise * +0.5 * radius, 0, radius / 2, 0, Math.PI * 2, false); //黑色中号圆
+        ctx.arc(wise * -0.5 * radius, 0, radius / 10, 0, Math.PI * 2, true); //黑色小圆
+        ctx.fill();
+        ctx.beginPath();
+        ctx.fillStyle = 'white';
+        ctx.arc(wise * +0.5 * radius, 0, radius / 10, 0, Math.PI * 2, true); //红色小圆
+        ctx.fill();
+        ctx.restore();
+    }
+
+    // 时钟
+    function Clock() {
+        this.w;
+        this.h;
+    }
+    // 时钟继承
+    Clock.prototype = new Beget();
+    Clock.prototype.constructor = Clock;
+
+    Clock.prototype.clockInit = function() {
+        // 表盘
+        this.ont(750, 150, 130, 0, 360, 'blue')
+        this._arc(false);
+        this.ont(750, 150, 125, 0, 360, '#fff')
+        this._arc(false);
+        ctx.beginPath();
+        ctx.arc(750, 150, 4, 0, 360)
+        ctx.fillStyle = 'black';
+        ctx.fill();
+        // 刻度
+        var deg = Math.PI / 180;
+        for (var i = 0; i < 12; i++) {
+            this.ont(750, 150, 125, i * deg, i * deg, '#fff')
+            this._arc(false);
+        }
+    };
+
+    function Neon() {
+
+    }
+    Neon.prototype = new Beget();
+    Neon.prototype.constructor = Neon;
+
+    Neon.prototype.rn = function(x, y) {
+        return Math.floor(Math.random() * (y - x + 1) + x);
+    };
+    Neon.prototype.rgba = function() {
+        r = this.rn(0, 255);
+        g = this.rn(0, 255);
+        b = this.rn(0, 255);
+        a = Math.random();
+        return 'rgba' + '(' + r + ',' + g + ',' + b + ',' + a + ")";
+    };
+
+
+
+
+
+    // 添加父类原型： 初始化
+    Beget.prototype.init = function() {
+        this.canvas(); ///画背
+        this.eatInit(); //吃豆人
+        // 太极
+        var tiji = new Tiji();
+        var _this = this;
+        loop = setInterval(function() {
+            beginTag = true;
+            ctx.clearRect(302, 0, 301, 301);
+            tiji.rotate(452, 150, 150, Math.PI * (_this.angle / _this.count) * 2, true);
+            _this.angle = (_this.angle + 5) % _this.count;
+        }, 50);
+        // 时钟
+        var clock = new Clock();
+        clock.clockInit();
+    };
+    var beget = new Pacman();
+    beget.init();
+</script>
+
+
+</html>

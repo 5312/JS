@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>吃豆人</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        canvas {
+            box-shadow: 5px 5px 5px gray;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="909" height="800"></canvas>
+</body>
+<script>
+    var cv = document.getElementById('canvas');
+    var ctx = cv.getContext('2d');
+    // 吃豆人区域
+    ctx.beginPath();
+    ctx.fillRect(0, 0, 301, 301);
+    ctx.stroke();
+    //太极区域
+    ctx.beginPath();
+    ctx.rect(302, 0, 301, 301);
+    ctx.stroke();
+    //时钟
+    ctx.beginPath();
+    ctx.rect(603, 0, 301, 301);
+    ctx.stroke();
+
+    // 吃豆人
+    function Pacman(x, y, r, s, e, c) {
+
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.start = s;
+        this.end = e;
+        this.color = c;
+        this.t = 0;
+        this.tf = true;
+        // 太极
+        this.x1 = x;
+        this.y1 = y;
+        this.r1 = r;
+        this.start1 = s;
+        this.end1 = e;
+        this.color1 = c;
+    }
+    Pacman.prototype.init = function() {
+        this.eatInit();
+        this.rotate();
+    };
+    // 太极
+    Pacman.prototype.tiJiInit = function() {
+
+        this.ont1(452, 150, 100, 90, 270, 'white');
+        this._arc1(); //左白
+        this.ont1(452, 150, 100, -90, -270, 'black');
+        this._arc1(); //右黑
+        this.ont1(452, 100, 50, 90, 270, 'black');
+        this._arc1(); //小黑
+        this.ont1(452, 200, 50, -90, -270, 'white');
+        this._arc1(); //小白
+        this.ont1(452, 100, 25, 0, 360, 'white');
+        this._arc1();
+        this.ont1(452, 200, 25, 0, 360, 'black');
+        this._arc1()
+        // ctx.restore();
+    };
+    Pacman.prototype.rotate = function() {
+        var _this = this
+        setInterval(function() {
+
+            ctx.clearRect(302, 0, 301, 301)
+            ctx.save();
+            ctx.translate(0, 0);
+            ctx.rotate(_this.t / 9 * Math.PI / 180);
+            _this.tiJiInit();
+            ctx.restore();
+
+        }, 200)
+    };
+    Pacman.prototype.ont1 = function(x, y, r, s, e, c) { //传参数
+        this.x1 = x;
+        this.y1 = y;
+        this.r1 = r;
+        this.start1 = s;
+        this.end1 = e;
+        this.color1 = c;
+    };
+    Pacman.prototype._arc1 = function() { //创建
+        var deg = Math.PI / 180;
+        ctx.beginPath();
+        // ctx.moveTo(this.x1, this.y1)
+        ctx.arc(this.x1, this.y1, this.r1, this.start1 * deg, this.end1 * deg)
+        // ctx.closePath();
+        ctx.fillStyle = this.color1;
+        ctx.fill();
+        ctx.stroke();
+    };
+    Pacman.prototype.eatInit = function() { //初始化
+        // 吃豆人
+        this.ont(110, 110, 100, 0, 360, 'yellow'); //闭嘴传参
+        var _this = this;
+        setInterval(function() {
+
+            ctx.clearRect(0, 0, 300, 300);
+            if (_this.tf) {
+                _this.t = ++_this.t;
+                _this.start = _this.t;
+                _this.end = -_this.t;
+                _this._arc();
+                if (_this.t == 45) {
+                    _this.tf = false;
+                }
+            }
+            if (!_this.tf) {
+                _this._arc();
+                _this.t = --_this.t;
+                _this.start = _this.t;
+                _this.end = -_this.t;
+
+                if (_this.t == 0) {
+                    _this.tf = true;
+                }
+            }
+
+        }, 50);
+
+    };
+
+    Pacman.prototype.ont = function(x, y, r, s, e, c) { //传参数
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.start = s;
+        this.end = e;
+        this.color = c;
+    };
+    Pacman.prototype._arc = function() { //创建
+        var deg = Math.PI / 180;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y)
+        ctx.arc(this.x, this.y, this.r, this.start * deg, this.end * deg)
+        ctx.closePath();
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(120, 50);
+        ctx.arc(120, 50, 20, 0 * deg, 180 * deg);
+        ctx.fillStyle = 'rgb(195, 72, 39)';
+        ctx.fill();
+    };
+
+
+    var eat = new Pacman();
+    eat.init();
+</script>
+
+
+</html>

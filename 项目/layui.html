@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box>div {
+            font-size: 50px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui_carousel " id='test'>
+        <div class=" caeousel-item" class='box'>
+
+        </div>
+    </div>
+</body>
+<script src="./layui-v2.5.5/layui/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['layui', 'carouse'], function() {
+        var carouse = layui.carousel;
+        carousel.render({ //用来设置轮播图的基本属性：.set
+            elem: '#test', //dom对象
+            width: '100%', //默认600px
+            height: '300px' //默认280px;
+            full: false, // true 全屏播放
+            anim: 'default', //默认default左右切换  uodown上下切换  fade淡入淡出切换
+            autoplay： true, //是否自动切换
+            interval: 2000, //默认是3000ms，最小800ms
+            index: 0, //设置从那个items轮播
+            arrow: 'hover', //显示箭头的显示状态
+            //默认是hover悬停显示always始终显示 none不显示
+            indicator: 'inside' //指示器的位置，默认为inside容器内部outside容器外部none不显示
+            trigger: 'click', //点击之后触发 默认为click
+
+        })
+    })
+</script>
+
+</html>

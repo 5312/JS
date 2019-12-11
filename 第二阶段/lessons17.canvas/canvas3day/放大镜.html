@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            box-shadow: 0 0 10px rgb(119, 191, 110)
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="1000" height="800"></canvas>
+</body>
+<script>
+    var cv = document.getElementById('canvas');
+    var ctx = cv.getContext('2d');
+
+    var img = new Image();
+    img.src = './Ash Heap.png';
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0, 1000, 800);
+    }
+    document.onmousemove = function(e) {
+        //canvas中任何绘制的图形移动,都是一直在重新绘制,所以每次绘制之前需要清空画布,避免画布上多次重复绘制
+        cv.width = cv.width;
+        ctx.drawImage(img, 0, 0, 1000, 800);
+        var e = e || window.event;
+        var x = e.clientX - cv.offsetLeft;
+        var y = e.clientY - cv.offsetTop;
+        // console.log(x, y);
+        //将图片剪裁,其中的参数分贝是哪个图片,从xy什么位置开始剪裁,剪裁宽高,剪裁之后要显示的xy位置,以及显示图片的宽高,这个方法剪裁的是原图
+        // var drawWidth = 100,
+        //     drawHeight = 100;
+        // ctx.drawImage(img, x - drawWidth / 4, y - drawHeight / 4, drawWidth, drawHeight, 0, 0, drawWidth * 4, drawHeight * 4); //实现放大镜
+        //图形组合,后面写的为源图片,此属性上面为目标图片,这个属性是显示在源图片内部的目标图片,并且源图片透明
+        ctx.globalCompositeOperation = "destination-in";
+        ctx.arc(x, y, 50, 0, Math.PI * 2);
+        ctx.fill();
+        //添加了源图片之后让目标图片还是完全显示:这行代码可以将目标图片放在最上面
+        ctx.globalCompositeOperation = "destination-over";
+        ctx.drawImage(img, 0, 0, 1000, 800);
+    }
+    // }
+    //当鼠标抬起的时候,关闭鼠标移动事件
+    cv.onmouseup = function() {
+        document.onmousemove = null;
+        //此刻虽然停止了,但是放大镜还停止在页面上,
+        //让源图片完全显示使用这行代码:将源图片可以提高到所有图片的最上面
+        ctx.globalCompositeOperation = "source-over";
+        //将Img作为源图片进行绘制
+        ctx.drawImage(img, 0, 0, 1000, 800);
+    }
+</script>
+
+</html>

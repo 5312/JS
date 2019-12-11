@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        canvas {
+            box-shadow: 5px 5px 5px gray;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="900" height="800"></canvas>
+</body>
+<script>
+    var cv = document.getElementById('canvas');
+    var ctx = cv.getContext('2d');
+    // 1. 碰撞检测
+    ctx.fillRect(50, 100, 100, 100);
+    ctx.fillRect(300, 50, 200, 200);
+
+
+    function Box(x, y, c) {
+        this.a = 0;
+        this.b = 0;
+        this.x = x;
+        this.y = y;
+        this.c = c;
+        this.w = 30;
+        this.lock = false;
+        // 小障碍
+        this.min_x = 50;
+        this.min_y = 100;
+        this.min_w = 100;
+        // 大障碍
+        this.max_x = 300;
+        this.max_y = 50;
+        this.max_w = 200;
+    }
+    var box = new Box(300, 300, '#000');
+
+    ctx.fillRect(box.x, box.y, 30, 30);
+    cv.onmousedown = function(e) {
+        var e = e || window.event;
+        var x = e.clientX - this.offsetLeft;
+        var y = e.clientY - this.offsetTop;
+        box.a = e.clientX - this.offsetLeft - box.x;
+        box.b = e.clientY - this.offsetTop - box.y;
+        if (x >= box.x && x <= box.x + 30 && y >= box.y && y <= box.y + 30) {
+            box.lock = true;
+        }
+    }
+    cv.onmousemove = function(e) {
+        if (box.lock) {
+            cv.width = cv.width;
+            ctx.fillRect(50, 100, 100, 100);
+            ctx.fillRect(300, 50, 200, 200);
+
+            var e = e || window.event;
+            box.x = e.clientX - this.offsetLeft - box.a;
+            box.y = e.clientY - this.offsetTop - box.b;
+
+            //小障碍
+            if (box.x <= box.min_x + box.min_w && box.x + box.w >= box.min_x && box.y <= box.min_y + box.min_w && box.y + box.w >= box.min_y) {
+                ctx.fillStyle = 'red';
+            }
+            if (box.x <= box.max_x + box.max_w && box.x + box.w >= box.max_x && box.y <= box.max_y + box.max_w && box.y + box.w >= box.max_y) {
+                ctx.fillStyle = 'red';
+            }
+            ctx.fillRect(box.x, box.y, box.w, box.w);
+            ctx.fill();
+        }
+    }
+    cv.onmouseup = function() {
+        box.lock = false;
+    }
+</script>
+
+</html>

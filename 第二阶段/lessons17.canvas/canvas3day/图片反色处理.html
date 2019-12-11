@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas {
+            box-shadow: 0 0 10px rgb(254, 226, 34);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+</body>
+<script>
+    var cv = document.querySelector('#canvas');
+    var ctx = cv.getContext('2d');
+
+    var img = new Image();
+    img.src = './Ash Heap.png';
+    img.onload = function() {
+        ctx.drawImage(this, 0, 0, 400, 400);
+        // 反色处理
+        var imgData = ctx.getImageData(0, 0, 400, 400);
+        var data = imgData.data;
+        // 2. 对图片像素进行反色（２５５　－　当前色值）
+        // 2. 对图片像素进行灰度（就是把色值全部设置为平均值
+        // 2. 对图片像素进行镜像（就是把每一行中的像素颠倒位置
+        /**
+        for (var i = 0; i < data.length; i += 4) {
+            var value = (data[i] + data[i + 1] + data[i + 2]) / 3
+            data[i] = value;
+            data[i + 1] = value;
+            data[i + 2] = value;
+        }**/
+        var newData = [];
+        for (var x = 0; x < 400; x++) {
+            var a = [];
+            for (var y = 0; y < 400; y++) {
+                var b = [];
+                for (var z = y; z < 400 * (y + 1); z += 4) {
+                    b.push(data[x], data[z + 1], data[z + 2], data[z + 3]);
+                }
+                a.push(b);
+            }
+            newData.push(a);
+        }
+
+        for (var i = 0; i < 400; i++) { //控制行
+            for (var j = 0; j < 400 * (i + 1); j++) { //控制列
+                var temp = data[j];
+                data[j] = data[400 * (i + 1) - j - 1];
+            }
+        }
+        // 3. 将处理后的像素重新绘制在画布
+        ctx.putImageData(imgData, 400, 0)
+    }
+</script>
+
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>五子棋 Backgammon</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        canvas {
+            display: block;
+            border: 1px solid #999;
+            margin: 10px auto;
+            box-shadow: -2px -2px 2px #efefef, 5px 5px 5px #b9b9b9;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+</body>
+<script src="./jquery-3.4.1.js"></script>
+<script>
+    $(function() {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var go = new Backgammon('red', '1', '2');
+        // 五子棋 类
+        function Backgammon() {
+            this.over = false; //游戏是否结束
+            this.color = true; //棋子颜色 true黑棋，false白棋
+            this.allChesses = []; //所有棋子
+            this.wins = []; //所有赢法;
+            this.type = 1;
+        }
+        // 棋子类
+        function Chess(i, j, type) {
+            this.x = i;
+            this.y = j;
+            this.type = type;
+            this.c = type;
+        }
+        /**
+         * [description]
+         * @return {[type]} [description]
+         */
+        Chess.prototype.show = function() {
+            context.beginPath();
+            // 中心点【xy】,直径，弧度
+            context.arc(20 + this.x * 40, 20 + this.y * 40, 18, 0, 2 * Math.PI);
+            context.stroke();
+            context.closePath();
+            if (this.type == 1) {
+                context.fillStyle = 'black';
+            } else {
+                context.fillStyle = 'white';
+            }
+            context.fill();
+        };
+        //开始
+        Backgammon.prototype.init = function() {
+            this.createCanvas(); //棋盘
+            this.dorpChesses(); //落子
+        };
+        //创建棋盘
+        Backgammon.prototype.createCanvas = function() {
+            for (var i = 0; i < 15; i++) {
+                context.strokeStyle = '#999'; //线条颜色
+                // 竖
+                context.beginPath(); //创建一条起始路径
+                context.moveTo(20 + i * 40, 20); //开始位置
+                context.lineTo(20 + i * 40, 580); //经过路径
+                context.stroke(); //画线
+                context.closePath(); //结束
+                //横
+                context.beginPath();
+                context.moveTo(20, 20 + i * 40);
+                context.lineTo(580, 20 + i * 40);
+                context.stroke();
+            }
+        };
+        //落子
+        Backgammon.prototype.dorpChesses = function() {
+            var out = this;
+            $('#canvas').on('click', function(e) {
+                // 当前坐标除以格子宽度为点击在那条线上
+                var unex = Math.floor(e.offsetX / 40);
+                var uney = Math.floor(e.offsetY / 40);
+                // 防止重复点击
+                for (var i = 0; i < out.allChesses.length; i++) {
+                    var c = out.allChesses[i];
+                    if (c.x == unex && c.y == uney) {
+                        return;
+                    }
+                }
+                if (out.type == 1) {
+                    var chess = new Chess(unex, uney, out.type)
+                    chess.show();
+                    out.type = 2;
+                } else {
+                    var chess = new Chess(unex, uney, out.type)
+                    chess.show();
+                    out.type = 1;
+                }
+
+                // 保存棋子位置 /
+                out.allChesses.push(chess); //chess
+                // 判断输赢
+                go.winGameAll();
+            })
+        };
+        Backgammon.prototype.msg = function(count, type) {
+            if (count == 5) {
+                setTimeout(function() {
+                    var winner = type > 1 ? '白方' : '黑方';
+                    alert(winner + '胜利');
+                }, 100)
+            }
+        }
+        //输赢判断
+        // 赢法
+        Backgammon.prototype.winGameAll = function() { //当前子
+            // 遍历棋盘上所有的棋子，以每一颗为‘米’字的中心，判断胜负
+            for (var i = 0; i < this.allChesses.length; i++) {
+                var cx = this.allChesses[i].x,
+                    cy = this.allChesses[i].y;
+                var cc = this.allChesses[i].c;
+
+                var count = 0;
+                // 水平方向
+                for (var j = 0; j < this.allChesses.length; j++) {
+                    var nx = this.allChesses[j].x,
+                        ny = this.allChesses[j].y; // 当前棋子坐标
+                    var nc = this.allChesses[j].c; //当前遍历棋子颜色
+                    if (nc == cc && cy == ny && nx >= cx - 2 && nx <= cx + 2) {
+                        count++;
+                    }
+                }
+                this.msg(count, cc);
+                // 垂直方向
+                count = 0;
+                for (var j = 0; j < this.allChesses.length; j++) {
+                    var nx = this.allChesses[j].x,
+                        ny = this.allChesses[j].y;
+                    var nc = this.allChesses[j].c;
+                    if (nc == cc && nx == cx && ny >= cy - 2 && nx <= cy + 2) {
+                        count++;
+                    }
+                }
+                this.msg(count, cc);
+                count = 0;
+                // 左倾斜
+                for (var j = 0; j < this.allChesses.length; j++) {
+                    var nx = this.allChesses[j].x,
+                        ny = this.allChesses[j].y,
+                        nc = this.allChesses[j].c;
+                    if (cc == nc) {
+                        if (nx == cx - 1 && ny == cy - 1 || nx == cx - 2 && ny == cy - 2 ||
+                            nx == cx + 1 && ny == cy + 1 || nx == cx + 2 && ny == cy + 2 || nx == cx && ny == cy) {
+                            count++;
+                        }
+                    }
+                }
+                this.msg(count, cc);
+                count = 0;
+                // 右倾斜
+                for (var j = 0; j < this.allChesses.length; j++) {
+                    var nx = this.allChesses[j].x,
+                        ny = this.allChesses[j].y,
+                        nc = this.allChesses[j].c;
+                    if (nc == cc) {
+                        if (nx == cx - 1 && ny == cy + 1 || nx == cx - 2 && ny == cy + 2 || nx == cx + 1 && ny == cy - 1 || nx == cx + 2 && ny == cy - 2 || nx == cx && ny == cy) {
+                            count++;
+                        }
+                    }
+                }
+                this.msg(count, cc);
+                count = 0;
+            }
+
+        };
+
+        go.init();
+    })
+</script>
+
+</html>

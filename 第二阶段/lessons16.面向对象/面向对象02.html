@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <select class="opt" name="">
+        <option value="width">width</option>
+        <option value="height">height</option>
+        <option value="background">background</option>
+    </select>
+    <input type="text" class='in1'>
+    <input type="button" value="change" class='change'>
+    <div class="box1"></div>
+</body>
+<script>
+    var change = document.getElementsByClassName('change')[0];
+    change.onclick = function() {
+        var opt = document.getElementsByClassName('opt')[0].value;
+        var in1 = document.getElementsByClassName('in1')[0];
+
+        var box1 = document.getElementsByClassName('box1')[0];
+        // 中括号语法
+        box1.style[opt] = in1.value;
+        // switch (opt.value) {
+        //     case 'width':
+        //         console.log(opt.value)
+        //         box1.style.width = in1.value;
+        //         break;
+        //     case 'height':
+        //         console.log(opt.value)
+        //         box1.style.height = in1.value;
+        //         break;
+        //     case 'background':
+        //         console.log(opt.value)
+        //         box1.style.backgroundColor = in1.value;
+        //     default:
+        //
+        // }
+    }
+</script>
+
+</html>

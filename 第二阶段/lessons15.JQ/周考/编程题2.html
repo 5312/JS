@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- n个数中返回最大 -->
+  <input type="text">
+  <input type="button" value="输出最大值">
+</body>
+<script src="/home/ivan/Documents/JS/第二阶段/jquery-3.4.1.js">
+</script>
+<script>
+  $(function(){
+
+    $('input:button').click(function(){
+        // 获取输入的内容
+        var str = $("input:text").val();
+        // console.log(str)
+        max(str);
+    })
+  })
+
+  var arr = [1,0,12,321,21,1,123,43,890];
+  max(arr)
+  // 选择排序
+  function max(arr){
+    //定义变量
+    var Index,temp;
+      for(var i = 0 ; i < arr.length-1;i++){
+        // 保存前一个数
+        Index = i;
+        for(var j = i+1;j<arr.length;j++){
+          // 前一个数跟后一个数比较
+          if(arr[j] < arr[Index]){
+            // 后面的比前面的小 ，就将保存的前一个数变为后一个数
+              Index = j;
+          }
+        }
+        // 保存前一 个数
+        temp = arr[i];
+        // 后一个数放到前面
+        arr[i] = arr[Index];
+        //
+        arr[Index] = temp;
+      }
+      // 从小到大排列，取出最后一个，
+      console.log(arr[arr.length-1]);
+  }
+</script>
+</html>

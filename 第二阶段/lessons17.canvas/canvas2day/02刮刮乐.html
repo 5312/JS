@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>刮刮乐</title>
+    <style>
+        #cv {
+            box-shadow: 5px 5px 10px gray;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="cv" width="800" height="500"></canvas>
+</body>
+<script>
+    var cv = document.querySelector('#cv');
+    var ctx = cv.getContext('2d');
+    var text = '恭喜再来一次';
+    ctx.font = '50px 苹方字体';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.strokeStyle = 'red';
+    ctx.fillText(text, cv.width / 2, cv.height / 2);
+    ctx.strokeText(text, cv.width / 2, cv.height / 2);
+    var x = 300,
+        y = 200;
+    ctx.fillStyle = 'gray';
+    ctx.fillRect(0, 0, cv.width, cv.height);
+
+    cv.onmousemove = function (e) {
+        var e = e || window.e;
+        var x = e.clientX - this.offsetLeft;
+        var y = e.clientY - this.offsetTop;
+        ctx.arc(x, y, 50, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+        ctx.globalCompositeOperation = 'destination-atop';
+        ctx.fillStyle = 'black';
+        ctx.fillText(text, cv.width / 2, cv.height / 2);
+        // ctx.globalCompositeOperation = 'destination-over';
+        // ctx.fillStyle = 'gray';
+        // ctx.fillRect(0, 0, cv.width, cv.height);
+        // ctx.strokeText(text, cv.width / 2, cv.height / 2);
+    }
+</script>
+
+</html>

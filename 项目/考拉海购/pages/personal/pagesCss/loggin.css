@@ -1,0 +1,173 @@
+html, body, .wrap {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.wrap {
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+}
+
+.header {
+    width: 1000px;
+    height: 100px;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+.box1 {
+    float: left;
+}
+
+.box2 {
+    float: right;
+    line-height: 30px;
+    color: #999;
+    width: 504px;
+    /* height: 100px; */
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row;
+    align-items: center;
+    font-size: 12px;
+}
+
+.page1 {
+    width: 37px;
+    height: 49px;
+    display: inline-block;
+    background: url(../img/iconmin.png) -102px -91px no-repeat;
+}
+
+.page2 {
+    width: 37px;
+    height: 49px;
+    display: inline-block;
+    background: url(../img/iconmin.png) -104px -166px no-repeat;
+}
+
+.page3 {
+    width: 37px;
+    height: 49px;
+    display: inline-block;
+    background: url(../img/iconmin.png) -104px -232px no-repeat;
+}
+
+.sp {
+    display: inline-block;
+    /* width: 47px; */
+}
+
+.w_main {
+    width: 1090px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row;
+    align-items: center;
+}
+
+.mettod {
+    font-size: 20px;
+    font-weight: 700;
+    width: 350px;
+    height: 53px;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row;
+    align-items: center;
+    border: 1px solid #eee;
+}
+
+.mettod>div {
+    text-align: center;
+    width: 50%;
+}
+
+.ipone {
+    border-right: 1px solid #eee;
+}
+
+.text_pass {
+    padding-bottom: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.m_bott {
+    font-size: 18px;
+    text-align: right;
+    color: #999;
+    line-height: 14px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    padding: 20px 40px 15px;
+}
+
+.m_1>input {
+    width: 238px;
+    height: 36px;
+    padding-left: 30px;
+    background: url(../img/3) 0px 8px no-repeat;
+}
+
+.botton {
+    width: 100%;
+    height: 36px;
+    background-color: #e31436;
+    text-align: center;
+    color: #fff;
+    line-height: 32px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.m_sign {
+    border: 1px solid #eee;
+}
+
+.l_r {
+    float: right;
+}
+
+.l_l {
+    float: left;
+}
+
+.si {
+    cursor: pointer;
+    font-size: 12px;
+    text-align: right;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    color: #e31436;
+    background: #f8f8f8;
+}
+
+.error {
+    padding-top: 10px;
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row;
+    align-items: center;
+}
+
+.error {
+    text-align: left;
+}
+
+.error>div {
+    height: 9px;
+    width: calc(100%/3);
+}

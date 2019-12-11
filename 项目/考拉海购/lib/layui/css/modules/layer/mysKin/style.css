@@ -1,0 +1,41 @@
+body .my-input {
+    background-color: #e2e2e2;
+}
+
+.my-input .changes {
+    padding: 50px 0 0 56px;
+    line-height: 100px;
+    font-size: 25px;
+    color: rgb(13, 147, 161);
+}
+
+body .my-input .layui-layer-setwin .layui-layer-icon {
+    color: #fff;
+}
+
+body .my-input .my-input_old {
+    width: 276px;
+}
+
+body .my-input .my-input_news {
+    width: 276px;
+}
+
+body .my-input .layui-layer-title {
+    color: #999;
+    background-color: #393D49;
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+}
+
+body .my-input div {
+    color: #1b1818;
+    margin-right: 14px;
+    display: inline-block;
+}
+
+body .layui-layer-btn {
+    margin-left: 168px;
+}

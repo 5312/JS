@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>五子棋</title>
+		<style>
+			html{
+				background: url(bgs1.png);
+			}
+            .bg{
+                width: 450px;
+                height: 450px;
+                position: absolute;
+                left: calc((100vw - 450px)/2);
+				top: 50px;
+                /* font-size: 20px; */
+                color: #ffffff;
+                line-height: 50px;
+                background: url(bg2.png) no-repeat;
+                background-size: 100% 100%;
+				/* display: none; */
+            }
+			*{margin: 0 auto;}
+			#cv {
+				display: block;
+				margin:  0 auto;
+				border: 1px solid ;
+                /* width: 450px;
+                height: 450px; */
+				margin-top: 50px;
+				background: #eee;
+			}
+			input{
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				font-size: 18px;
+				font-family: 楷体;
+				font-weight: bolder;
+				border-radius: 50%;
+				position: absolute;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				background: #fff;
+				color: lightseagreen;
+			}
+			input:hover{
+				background: lightblue;
+			}
+			.smak{
+				width: 450px;
+				height: 450px;
+				background: url(cxk.png) no-repeat;
+				background-size: 100px;
+				background-position: 90% 90%;
+				position: absolute;
+				left: calc((100vw - 450px)/2);
+				top: 50px;
+				display: none;
+			}
+		
+			.inp1{
+				left: 40%;
+				top: 10px;		
+			}
+			.inp2{
+				left: 48%;
+				top: 10px;
+			}
+			.inp3{
+				left: 56%;
+				top: 10px;
+			}
+			.huiqi{
+				display: none;
+				width: 300px;
+				height: 300px;
+				background: url(xx.png) no-repeat;
+				background-size: 100%;
+				position: absolute;
+				left: 1000px;
+				top: 100px;
+			}
+			#dv{
+				position: absolute;
+				right: 20px;
+				top: 50px;
+			}
+			
+		
+		</style>
+	</head>
+
+	<body>
+		<div class="bts">
+				<input type="button" value="弈" class="inp1">
+				<input type="button" value="覆" class="inp2">
+				<input type="button" value="悔" class="inp3">
+		</div>
+		
+		<canvas id="cv" width="450px" height="450px" ></canvas>
+		<canvas id="dv" width="400px" height="450px"></canvas>
+		<div class="smak">
+			<div></div>
+		</div>
+		<div class="huiqi"></div>
+        <div class="bg">
+            <!-- <p>(1)对局双方各执一色棋子。</p>
+            <p>(2)空棋盘开局。</p>
+            <p>(3)黑先、白后，交替下子，每次只能下一子</p>
+            <p>(4)棋子下在棋盘的空白点上，棋子下定后，不得向其它点移动，不得从棋盘上拿掉或拿起另落别处。</p>
+            <p>(5)黑方的第一枚棋子可下在棋盘任意交叉点上。</p> -->
+        </div>
+		<script>
+			//获取元素
+			var smak = document.querySelector('.smak');
+			var inp1 = document.querySelector('.inp1');
+			var inp2 = document.querySelector('.inp2');
+			var inp3 = document.querySelector('.inp3')
+            var huiqi = document.querySelector('.huiqi')
+            var bgs = document.querySelector('.bg');
+            //全局
+			var index = 0;//旗子信息
+			var black1;//旗子的X坐标
+			var white1;//旗子的Y坐标
+			var black2;//电脑的X坐标
+			var white2;//电脑的Y坐标
+			var inps = 0;//
+            var hh = 0;//cv高度
+            
+            var cx = 0;//横线
+            var xc = 0;//竖线
+            var sc = 0;//起始线
+
+
+			//赢法的统计数组
+			var myWin = [];
+			var computerWin = [];
+			
+			//赢法数组
+			var wins = [];
+
+			var count = 0; //赢法总数
+
+			//绘制工具
+			var cv = document.getElementById('cv');
+			var ctx = cv.getContext('2d');
+			ctx.strokeStyle = 'gray';
+			var cw = cv.offsetWidth;
+			var ch = cv.offsetHeight;
+			//
+			var dv = document.querySelector('#dv');
+			var dtx = dv.getContext('2d');
+			var dw = dv.offsetWidth;
+			var dh = dv.offsetHeight;
+
+			var over = false;
+			var flag = true; //自己下的棋子
+			var chessBord = [];//棋盘
+			for(var i = 0; i < 15; i++) {
+				chessBord[i] = [];
+				for(var j = 0; j < 15; j++) {
+					chessBord[i][j] = 0;
+				}
+			}
+			
+
+			for(var i = 0; i < 15; i++) {
+				wins[i] = [];
+				for(var j = 0; j < 15; j++) {
+					wins[i][j] = [];
+				}
+			}
+
+			//横线赢法(165)种赢法
+			for(var i = 0; i < 15; i++) {
+				for(var j = 0; j < 11; j++) {
+					for(var k = 0; k < 5; k++) {
+						wins[i][j + k][count] = true;
+					}
+					count++;
+				}
+			}
+			//竖线赢法(165)种赢法
+			for(var i = 0; i < 15; i++) {
+				for(var j = 0; j < 11; j++) {
+					for(var k = 0; k < 5; k++) {
+						wins[j + k][i][count] = true;
+					}
+					count++;
+				}
+			}
+			//正斜线赢法(121)种赢法
+			for(var i = 0; i < 11; i++) {
+				for(var j = 0; j < 11; j++) {
+					for(var k = 0; k < 5; k++) {
+						wins[i + k][j + k][count] = true;
+					}
+					count++;
+				}
+			}
+
+			//反斜线赢法(121)种赢法
+			for(var i = 0; i < 11; i++) {
+				for(var j = 14; j > 3; j--) {
+					for(var k = 0; k < 5; k++) {
+						wins[i + k][j - k][count] = true;
+					}
+					count++;
+				}
+			}
+			console.log(count,'总赢法');
+
+			for(var i = 0; i < count; i++) {
+				myWin[i] = 0;
+				computerWin[i] = 0;
+			}
+            function hzqp(){
+                setTimeout(function(){
+                var timer = setInterval(function(){
+                    cx += 15;
+                    if(cx == 435){
+                        clearInterval(timer);
+                    }
+                    diawChessBoard();
+                },20)
+            },2000)
+            setTimeout(function(){
+                sc = 15;
+                    var times = setInterval(function(){
+                    xc += 15;
+                    if(xc == 435){
+                        clearInterval(times);
+                    }
+                    diawChessBoard();
+                    },20)
+               
+            },3000)
+            }
+          
+			//绘制棋盘
+			var diawChessBoard = function() {
+				for(var i = 0; i < 15; i++) {
+					ctx.moveTo(15 + (i * 30), 15);
+					ctx.lineTo(15 + (i * 30), cx);
+					ctx.moveTo(sc, 15 + (i * 30));
+					ctx.lineTo(xc, 15 + (i * 30));
+					ctx.stroke();
+				}
+				ctx.fillStyle = '#985F0D';
+				ctx.fillRect(100, 100, 10, 10);
+				ctx.fillRect(220, 100, 10, 10);
+				ctx.fillRect(340, 100, 10, 10);
+				ctx.fillRect(100, 220, 10, 10);
+				ctx.fillRect(220, 220, 10, 10);
+				ctx.fillRect(340, 220, 10, 10);
+				ctx.fillRect(100, 340, 10, 10);
+				ctx.fillRect(220, 340, 10, 10);
+				ctx.fillRect(340, 340, 10, 10);
+			}
+			
+			//画棋子
+			var oneStop = function(i, j, flag) {
+				ctx.beginPath();
+				ctx.arc(15 + i * 30, 15 + j * 30, 13, 0, 2 * Math.PI); //画圆
+				ctx.closePath();
+				//棋子的渐变色
+				var gradient = ctx.createRadialGradient(15 + i * 30 + 2, 15 + j * 30 - 2, 13, 15 + i * 30 + 2, 15 + j * 30 - 2, 0);
+				//判断黑白棋
+				if(flag) {
+					gradient.addColorStop(0, '#0a0a0a');
+					gradient.addColorStop(1, '#636766');
+				} else {
+					gradient.addColorStop(0, '#d1d1d1');
+					gradient.addColorStop(1, '#f9f9f9');
+				}
+				ctx.fillStyle = gradient;
+				ctx.fill();
+
+			}
+			//下棋功能
+			function xq(){
+			cv.onclick = function(e) {
+				console.log(1);
+				if(over) {
+					return;
+				}
+				if(!flag) {
+					return;
+				}
+				var x = e.offsetX,
+					y = e.offsetY;
+				var i = Math.floor(x / 30);
+				var j = Math.floor(y / 30);
+				black1  = i;
+				white1 = j;
+				console.log(black1,white1,'我下的');
+				if(chessBord[i][j] == 0) {					
+					oneStop(i, j, flag);
+					chessBord[i][j] = 1;
+					for(var k = 0; k < count; k++) {
+						if(wins[i][j][k]) {
+							myWin[k]++;
+							computerWin[k] = 6; //这个位置对方不可能赢了
+							if(myWin[k] == 5) {
+								ctx.beginPath();
+								txt = '你赢了';
+								ctx.fillText(txt,250,300);
+								ctx.fill();
+								over = true;
+							}
+						}
+					}
+					if(!over) {
+						flag = !flag;
+						computerAI(); //计算机下棋
+					}
+				}
+
+			}
+		}
+		
+			//计算机下棋功能
+			var computerAI = function() {
+				var myScore = [];//我的危险分值
+				var computerScore = [];//电脑的危险分值
+				var max = 0;//当前场上分值最高的旗子
+				var u = 0,
+					v = 0;
+				for(var i = 0; i < 15; i++) {//棋盘上所有位置的初识得分为0
+					myScore[i] = [];
+					computerScore[i] = [];
+					for(var j = 0; j < 15; j++) {
+						myScore[i][j] = 0;
+						computerScore[i][j] = 0;
+					}
+				}
+				for(var i = 0; i < 15; i++) {
+					for(var j = 0; j < 15; j++) {
+						if(chessBord[i][j] == 0) {//遍历棋盘，检索可以落子的空位置
+							for(var k = 0; k < count; k++) {//赢法  572种
+								if(wins[i][j][k]) {//判断是否为true，确认我是否落子
+									console.log(wins[i][j][k])
+									//判断我落了几子，几星连珠，并根据连珠状况给威胁分值
+									if(myWin[k] == 1) {
+										myScore[i][j] += 200;
+									} else if(myWin[k] == 2) {
+										myScore[i][j] += 400;
+									} else if(myWin[k] == 3) {
+										myScore[i][j] += 2000;
+									} else if(myWin[k] == 4) {
+										myScore[i][j] += 10000;
+									}
+									//判断电脑落子连星状况，得分稍高于我，当局势僵持时，可以主动去落子连珠
+									if(computerWin[k] == 1) {
+										computerScore[i][j] += 220;
+									} else if(computerWin[k] == 2) {
+										computerScore[i][j] += 420;
+									} else if(computerWin[k] == 3) {
+										computerScore[i][j] += 2100;
+									} else if(computerWin[k] == 4) {
+										computerScore[i][j] += 20000;
+									}
+								}
+							}
+							if(myScore[i][j] > max) {//遍历棋盘数组，判断我现在的落子危险程度是否大于之前落子的威胁程度
+								max = myScore[i][j];//最高威胁值更新
+								u = i;//记录可以落子位置中威胁值最高的落子坐标
+								v = j;
+							} else if(myScore[i][j] == max) {//当我的落子威胁同等于上一次的落子时
+								if(computerScore[i][j] > computerScore[u][v]) {//电脑的将要落子得分值大于上一次时
+									u = i;
+									v = j;
+								}
+							}
+							if(computerScore[i][j] > max) {//电脑的当前骡子得分值高时
+								max = computerScore[i][j];
+								u = i;
+								v = j;
+							} else if(computerScore[i][j] == max) {//电脑落子得分值相同时
+								if(myScore[i][j] > myScore[u][v]) {//判断我将要落子的威胁是否大于上一次
+									u = i;
+									v = j;
+								}
+							}
+						}
+					}
+				}
+				oneStop(u, v, false);//电脑落子
+				chessBord[u][v] = 2;//电脑的值是2,flase代表可以落子，即控制开关开关
+				for(var k = 0; k < count; k++) {//遍历所有赢法
+					if(wins[u][v][k]) {//所下旗子是否为true，即我是否已落子
+						computerWin[k]++;
+						myWin[k] = 6;
+						if(computerWin[k] == 5) {
+							smak.style.display = 'block';
+							ctx.beginPath();
+								ctx.fillStyle = 'red';
+								ctx.font = 'bold 30px 楷体'
+								txt = '计算机赢了';
+								ctx.fillText(txt,150,200);
+								ctx.fill();
+							over = true;
+						}
+					}
+				}
+				if(!over) {
+					flag = !flag;
+				}
+			}
+		var bgsh = 450;
+			//开始游戏
+			inp1.onclick = function(){
+                xq();
+                hzqp();
+                setInterval(function(){
+                    bgsh -= 10;
+                    bgs.style.height = bgsh + 'px';
+                    if(bgsh == 0){
+                        bgs.style.display = 'none';
+                    }
+                },10)
+			}
+			inp2.onclick = function(){
+				location.reload();
+			
+			}
+			
+			inp3.onclick = function(){
+			
+				inps++;
+				if(inps == 1){
+					dtx.clearRect(0,0, dw, dh);
+					dtx.beginPath();
+						dtx.fillStyle = 'red';
+						dtx.font = 'bold 30px 楷体'
+						var bs = '悔棋老麻烦了'
+						dtx.fillText(bs,100,200);
+				}
+				if(inps == 2){
+					dtx.clearRect(0,0, dw, dh);
+					dtx.beginPath();
+						dtx.fillStyle = 'red';
+						dtx.font = 'bold 30px 楷体'
+						var bs = '别难为我了'
+						var ds = '真的好麻烦的';
+						dtx.fillText(bs,80,200);
+						dtx.fillText(ds,80,250);
+				}
+				if(inps == 3){
+					dtx.clearRect(0,0, dw, dh);
+					dtx.beginPath();
+						dtx.fillStyle = 'red';
+						dtx.font = 'bold 30px 楷体'
+						var bs = '你.....'
+						dtx.fillText(bs,100,200);
+				}
+				if(inps == 4){
+					dtx.clearRect(0,0, dw, dh);
+					var img1 = new Image();
+						img1.src = 'xx1.png';
+					img1.onload = function(){	
+						dtx.drawImage(img1, 30, 30, 300, 300);
+						
+					}
+				
+				}
+				if(inps == 5){
+					dtx.clearRect(0,0, dw, dh);
+					var img1 = new Image();
+						img1.src = 'xx2.png';
+					img1.onload = function(){	
+						dtx.drawImage(img1, 30, 30, 300, 300);
+						
+					}
+				
+				}
+				
+			}
+		</script>
+	</body>
+
+</html>
