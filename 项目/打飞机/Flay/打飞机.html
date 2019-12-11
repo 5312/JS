@@ -241,12 +241,8 @@
         enemy_create();
         for (var i = 0; i < foe.length; i++) {
             var enemy = foe[i];
-            if (enemy.y > cvh) {
-                foe.splice(i, 1);
-                i--;
-                continue;
-            }
             if (main_crash(my, enemy)) {
+                console.log(my,enemy)
                 var t = my.y;
                 var b = enemy.y;
                 my.y = t;
@@ -258,6 +254,12 @@
                     clearInterval(mainTimer);
                     end();
                 }, 40)
+                return;
+            }
+            if (enemy.y > cvh) {
+                foe.splice(i, 1);
+                i--;
+                continue;
             }
             // 移动
             enemy.move();
@@ -575,12 +577,11 @@
         var ends = [];
         loca(function(alls) {
             ends.push(alls);
-            console.log(ends)
             // 排序
             for (var i = 0; i < ends.length; i++) {
-                var one = ends[i];
+                // var one = ends[i];
                 for (var x = 0; x < ends.length - i - 1; x++) {
-                    if (ends[i] < ends[x + 1]) {
+                    if (ends[i].score < ends[x + 1].score) {
                         var temp = ends[x];
                         ends[x] = ends[x + 1]
                         ends[x + 1] = temp;
@@ -589,7 +590,7 @@
             }
             for (var j = 0; j < ends.length; j++) {
                 draw_ends(ends, j)
-                console.log(ends)
+                // console.log(ends)
             }
         }, true)
     }
