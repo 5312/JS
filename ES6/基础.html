@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CH">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script>
+// ES6 是js新的语法标准，对ES5版本进行了一些语法上的拓展和更新
+// let & const
+// let 和const 都是用来声明变量的关键字，功能和var 类似
+
+// var 声明的变量特点：
+// 1. 存在变量提升
+// 2. 允许多次声明同一个变量（覆盖）
+// 3，作用域区分全局（函数外）以及 局部 （函数内），同名变量就近原则
+// 4 .var 声明的全局变量会作为window 的对象属性
+
+// let声明变量
+
+// Uncaught ReferenceError: Cannot access 'a' before initialization //在声明之前使用
+// let声明的变量不存在变量提升的现象
+ // let a ;
+ // let a = 20;
+ // Uncaught SyntaxError: Identifier 'a' has already been declared//重复声明同一个变量
+ // 3. let 声明的的全局变量并不会被作为window 的对象属性
+
+ // 4.全局作用域和局部作用域，并存在就进原则
+// 暂时性死区
+ // let a = 10；
+ // function fn(){
+ //     console.log(a);
+ //     let a = 30 ;
+ //
+ //
+ // }
+ // console.log(a);
+ // fn();
+ // console.log(a);
+ // 5 . ES6新增规则，块级作用域{}也会产生局部作用域（直接编写的{}）。循环，函数，分支）
+ // 块级作用域，只会对let count声明的变量进行限制，不会对var或者function 声明的变量或函数产生影响
+ // for (let i = 0; i < 10; i++) {}
+ // console.log(i)
+ //
+ // {
+ //     let a =20 ;
+ // }
+// var ds = document.querySelectorAll('div');
+//  for (let i = 0; i < 5; i++) {
+//      ds[i].onclick = function(){
+//          console.log(i);
+//      }
+//      // 闭包
+//      // (function(i){
+//      //    ds[i].onclick = function(){
+//      //        console.log(i);
+//      //    }
+//      // })(i)
+//      // 自定义属性
+//      // ds[i].index = i;
+//      // ds[i].onclick = function(){
+//      //     console.log(this.index);
+//      // }
+//  }
+// 不要在分支语句中声明函数
+// const :用来声明常量。用法和特点与let 一模一样，区别在于无法二次赋值，否则就会报错,并且只声明不赋值
+ const a ;
+     console.log(a)
+     // var function let const
+</script>
+</html>

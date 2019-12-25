@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>变量的结构赋值</title>
+</head>
+<body>
+    <table>
+
+    </table>
+</body>
+<script>
+    // 解构赋值，还是赋值的表达式，只不过对‘=’的左右两侧格式上有些许要求，通过解析‘=’右边的数据来为左侧声明
+    // 的变量赋值，js支持的数据类型基本都可以解构赋值，但通常值使用数组和对象的解构赋值
+
+    // 1. 数组的解构赋值
+    // 形势上：var/let/const [name1,name2,name3...] = [value1,value2value3...]
+    // 例如：声明 三个变量a，b，c，分别赋值为10，20，30：
+    {
+        // let a =10;
+        // let b =20;
+        // let c =30;
+
+        let [a,b,c] = [10,20,30];
+        console.log(a,b,c);
+    }
+    // 2. 对象的解构赋值
+    // 形式上;let {a,b} = {a:10,b:20};
+    // 对象的解构赋值，无序，根据对应的key与变量名去为变量赋值，当变量名不存在与对象的key中，那末解构失败，不会为声明的变量赋值
+    {
+        // let {a,b} = {a:10,b:20};
+
+        // 另外一种写法 可以使变量名与obj中的key不相同
+        // let {key1:a,key2:b} = {key1:10,key2:20};
+
+        //用途
+        // 从json数据中取值
+        let data= {
+            classID:'xah',
+            students:[{
+                id:001,
+                name:'lala'
+            },{
+                id:002,
+                name:'haha'
+            }]
+        }
+        let {id,name} = data.students[0];
+
+        // 2. 交换变量的值
+        let [a,b] = [10,20];
+        console.log(a,b);
+        console.log(a,b);
+
+        let arr = [10,7,20,3,1,6];
+        for (let i = 0; i < arr.length -1; i++) {
+            for (let j  = 0; j < arr.length; j++) {
+                if(arr[j] < arr[j+1]){
+                    [arr[j],arr[j+1]] = [arr[j+1],arr[j]];
+                }
+            }
+        }
+        console.log(arr)
+    }
+
+    // 字符串的拓展
+    // 1. 遍历器 for..of....循环
+    {
+        let str = '==this is ECMAScripts';
+        for (let x of str) {
+            // 循环变量x表示被遍历值value 不是index
+        }
+    }
+    // 2.模板字符串(``);
+// 这是es6 新增加的
+// 1.支持字符串中换行缩进，保留字符串原有格式
+
+// // 2. 支持字符串内解析变量(需要将变量使用${} 进行包裹)
+// let [r,g,b] =[rn(),rn(),rn()];
+//   let color = `rgb(${r},${g},${b})`;
+//   // 4. 支持表达式的运算
+//   let sumstr = `3 * 4 = ${3*4}`;
+//   console.log(sumstr);
+{
+    for(let i=1;i<=9;i++){
+
+        for(let j = 1;j<=i ;j++){
+            let con =  `${j} * ${i} = ${i*j}`;
+            document.write(con+'&emsp;')
+        }
+        document.write('<br>')
+    }
+}
+// es6 对String.prototype的拓展
+// includes(),startsWidth(),endsWidth()
+//查询指定字符串是否包含指定字符。如果包含返回true，否则返回false
+console.log(str.includes('bcd'));
+//查询指定字符串是否以指定字符结尾
+console.log(str.endsWidth('S'))
+// 新增方法
+// repeat() // 返回给一个重复后的新字符串
+// 新增方法
+// padStart(),padEnd();补足字符串长度的方法
+{
+    let a = 'abc';
+    a.padStart(6,'x');
+}
+{
+    //使用对象的解构赋值从Math中提取方法
+    let {max,min,round,random,abs,pow,sqrt} = Math;
+    console.log(abs());
+}
+</script>
+</html>
