@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>测试</div>
+</body>
+<script>
+    // Number.isNaN()用来判断指定数值是否为NaN
+    // let n5 = false;
+    // console.log(n5 == NaN);
+    // console.log(Number.isNaN(n5));
+    // 将parseInt()以及oarsefloat()方法添加到Number构造函数上
+    //这样做的目的是减少全局的方法，做到模块化
+    // hypot();
+    // 函数拓展
+    // 1. 允许为函数参数设置默认值
+    {
+        // 为函数参数设置默认值
+        // function sum(x=0,y=0){
+        //     console.log(x+y)
+        // }
+        // sum();
+        // 默认参数一定要放在参数列表的最后，否则函数调用结果异常
+    }
+    // 2， rest参数，在函数体内部，得到参数列表，功能和arguments相似
+    {
+        // function sum(){
+        //     var s = 0;
+        //     // ES5使用arguments获取参数列表
+        //     for (var i = 0; i < arguments.length; i++) {
+        //         s+=arguments[i];
+        //
+        //     }
+        //     console.log(s)
+        // }
+        // sum(1,2,2,3)
+        function sum(...rest){
+            var s = 0;
+            for (var i = 0; i < rest.length; i++) {
+                s += rest[i];
+            }
+            console.log(s);
+        }
+        sum(1,2,3,4,5,6)
+        //声明：rest参数功能上和grguments参数一样都是函数内获取参数列表，但是底层实现上，rest参数的工作效率要远远高于grguments参数，所以，今后尽量使用rest参数。
+    }
+    // 3. 箭头函数
+    {
+        // 箭头函数对函数的申明方式进行的改变
+        document.querySelector('div').onclick = function(){
+            // let _this = this;
+            // setTimeout(function(){
+            //     _this.innerHTML = '成功'
+            // },200)
+
+            // 新语法，箭头函数
+            // 箭头函数不会改变函数体内this的指向，this永远指向箭头函数声明时所在作用域的this
+            // 注意：一定不要将箭头函数写成元素的事件处理函数。
+            // 3.不要写成构造函数，无法通过new 得到对象
+            // 3.箭头函数无法使用arguments对象，需要使用rest
+            setTimeout(()=>{
+                this.innerHTML = '成功'
+            })
+
+            // 在不涉及this指向的问题上，箭头函数能一定程度上简化函数声明的代码
+            // function ptint(x){
+            //     console.log(x);
+            // }
+            // let print = x=> x;
+            // print(123);
+            // 0 ，箭头函数声明不需要function关键字
+            // 箭头函数可以省略的部分：
+            // 1. 参数列表：当参数只有一个的时候，（）是可以省略的，没有参数或者参数大于1 那么（）就必须存在。
+            // 2。 函数体内容只有一个表达式或一行代码时{}可以省略
+            // 3. 返回值，返回值包含形式参数，那末return可以省略。
+            let  add = ()=>{
+                let count =0;
+                return () => {return ++count}
+            }
+
+        }
+        //函数也存在length属性..函数的参数列表长度(不包含默认值的参数)
+        {
+            function fn(a,b){}
+                console.log(fn.length)//2
+            // function rn(){};
+            // window[fn.name]();/
+        }
+        // 拓展运算符
+        // 展开啊数组
+        let str = 'abcdef';
+        console.log([...str]);
+
+        function fn(a,b,c,d,e,f){
+            console.log(a,b,c,d,e,f)
+        }
+        // fu(...arrs)/
+    }
+    {
+        // 应用场景
+        // /1. 拷贝数组(深拷贝);
+        let a = [1,2,3];
+        let b =[...a];
+        a.push(4);
+        console.log(a,b);
+
+        // 合并数组
+        [...a,...b];
+
+        // Array.prototype.find()
+        {
+            let a = [10,2,2,3,45];
+            a.find(x => x%11 ==0);
+        }
+        // indexOf方法有两个缺点,一是不够语义化,
+
+        // let a = [0,[1,[2,3,[4,5]]]]
+        // let b = a.flat(4);
+        // console.log(b);
+
+        {
+            let uname = '小王';
+            let age = 20;
+            let obj = {
+                uname,
+                age,
+                say(){
+                    console.log(`${this.name}`)
+                }
+
+            }
+        }
+        // 属性名表达式
+        {
+            let key = 'uname';
+            let obj = {
+                [key]:'小王'
+            }
+        }
+        // 3. 对象属性的描述枚举
+        {
+            let obj = {name:'小王'}
+            Object.getOwnPropertyDescriptor(obj,'name');
+        }
+        // 4. super 箭头函数声明不需要function关键字
+        {
+            // 只能在对象的方法中使用.在对象方法外报错.指向调用方法的对象的原型
+            Object.prototype.type ='obj';
+            let obj = {
+                fn(){
+                    console.log(this);
+                    console.log(super.type);//原型上的属性
+                }
+            }
+            obj.fn()
+        }
+        //拓展运算符
+        {
+            let o = {x:20,y:100};
+
+        }
+        // Object.assign
+        // Class语法:es6 中声明类的方式,本质上还是构造函数
+        class Student{
+            // 构造方法
+            constructor(name,age){
+
+            }
+        }
+        let s1 = new Student();
+        // console.log(s1.constructor)
+        // 与构造函数的区别,语法上更加严谨,class声明的类功能就是创建对象,必须配合new使用,单数构造函数写法,不使用new依然会执行,不会报错
+        // 继承:extends实现继承 原型
+        class middleStudent extends Student{
+            constructor(name,age,sex){
+                // 需要先调用父类的构造方法
+                super(name,age,sex);//构造
+                this.time = '青春期';
+
+            }
+
+            favorite(){
+                console.log(`我是一个初中生`)
+            }
+
+        }
+        let ms = new middleStudent('小张');
+
+
+    }
+
+</script>
+</html>

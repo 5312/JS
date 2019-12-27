@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./lib/icon/f_01.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./lib/icon/emg_02.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>飞机大战</title>
+    <style>
+        body,html{
+            margin:0;
+            padding:0;
+            text-align: center;
+        }
+        canvas{
+            box-shadow: 0px  0px 50px #eee;
+            background-image:url(./lib/img/background.png);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="320" height="568"></canvas>
+</body>
+<script>
+let cv = document.querySelector('canvas');
+let ctx = cv.getContext('2d');
+// 图片预加载
+let imgSrc = ['./lib/img/background.png', './lib/img/bomb.png', './lib/img/bullet1.png', './lib/img/enemy1.png', './lib/img/enemy2.png', './lib/img/enemy3.png', './lib/img/herofly.png', './lib/img/prop.png'];
+let imgs = [];//图片存放
+    // 图片加载后执行代码
+    const loadImage = (callback) =>{
+
+        for (let i = 0; i < imgSrc.length; i++) {
+            const img = new Image();
+            img.src = imgSrc[i];
+            imgs.push(img);
+            img.onload =()=>{
+                if(i == imgSrc.length -1){
+                    callback();
+                }
+            }
+        }
+    }
+    //
+loadImage(()=>{
+
+    // 图片加载完成后创建飞机大战
+    let air = new Aircraft();
+    let flay = new Flay();
+        // 定时器
+        setInterval(()=>{
+            // 清空画布
+            cv.width = cv.width;
+            // 背景移动
+            air.brawBack();
+            // 我方飞机
+            flay.draw();
+
+        },10)
+});
+
+    // 飞机大战总类
+    class Aircraft{
+        constructor(){
+            // 总宽高
+            this.width = 320;
+            this.height = 568;
+            this.x = 0;
+            this.y = 0;
+        }
+        // 背景
+        move(){
+            this.y = this.y > this.height? 0:this.y+=2;
+        }
+        brawBack(){
+            this.move()
+            ctx.beginPath();
+            ctx.drawImage(imgs[0], 0, this.y - this.height)
+            ctx.drawImage(imgs[0], 0, this.y);
+        }
+    }
+// 我方飞机
+class Flay extends Aircraft{
+    constructor(){
+        super();
+        this.img = imgs[6];
+        this.w = this.img.width /5;
+        this.h = this.img.height;
+        this.x = this.width/2 - this.w/2;
+        this.y = 0;
+    }
+}
+Flay.prototype.draw =function(){
+    ctx.beginPath();
+    ctx.drawImage(this.img,this.w,0,this.w,this.h,this.x,this.y,this.w,this.h);
+}
+</script>
+</html>

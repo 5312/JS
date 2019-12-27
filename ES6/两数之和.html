@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    const add = (...arr)=>{
+        console.log(arr)
+        let a =  arr[0].split().reverse()
+        let b = arr[1].split().reverse();
+        let n='',s='';
+        for (let i = 0; i < a.length; i++) {
+            n+= `${a[i]}`;
+            s+=`${b[i]}`;
+        }
+        let nums = n*1 + s*1 +'';
+        let num = nums.split('').reverse().join('')
+        return num
+
+    }
+    console.log(add('123','345'));
+
+</script>
+</html>
